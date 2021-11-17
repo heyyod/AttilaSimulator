@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\trace">
+      <UniqueIdentifier>{366b37cd-fd86-4c8b-af4b-e0612ceae808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\utils">
+      <UniqueIdentifier>{6d4c27ca-d392-4c78-b45e-ec2bb4d278ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\utils\TraceReader">
+      <UniqueIdentifier>{ddd20511-cb90-42c5-9d1a-9a64a3ddb540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\utils\Gen">
+      <UniqueIdentifier>{fa1be859-9f56-4fe4-87e2-560ba211114c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\utils\GL">
+      <UniqueIdentifier>{179bb7f2-e12e-4e60-9b6b-84f0dba45d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\utils\Parsers">
+      <UniqueIdentifier>{ab299a5d-f704-4bf3-9f33-b7881df41d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\utils\log">
+      <UniqueIdentifier>{6facf248-e384-4b3d-9f22-cbd6ec56cf82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\GLLib">
+      <UniqueIdentifier>{ab769121-8e30-4e8f-bc40-d087cbb54a1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\GLLib\ARBP">
+      <UniqueIdentifier>{72d50fa8-91a4-4b22-a243-83332b829861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\GLLib\ARBP\FragmentProgram">
+      <UniqueIdentifier>{078c6143-ebb8-49f5-8450-6806d7c307f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\GLLib\ARBP\VertexProgram">
+      <UniqueIdentifier>{04dfc71d-1869-47aa-9b56-52316bed3693}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\GLLib\BufferObject">
+      <UniqueIdentifier>{c9d70d26-25f2-4ea3-a744-fb253fdf86b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\GLLib\GLObject">
+      <UniqueIdentifier>{42dea498-86de-45a9-a151-94780c313734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\GLLib\Texture">
+      <UniqueIdentifier>{a034d73d-cf38-45dd-be94-dd848781ee14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\AOGL">
+      <UniqueIdentifier>{23fbb08f-65b3-44cd-98c3-3351807e3b4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\AOGL\AGLBaseObject">
+      <UniqueIdentifier>{5f944c8c-47d8-46ba-aba4-560fb3e98139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\AOGL\ARBProgramObject">
+      <UniqueIdentifier>{356be9a8-5c6e-469d-9e3f-e7f0df26e597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\AOGL\AGLTextureObject">
+      <UniqueIdentifier>{0519b0a2-fc4f-461e-a2fb-b5c6e6661d41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trace\AOGL\AGLBufferObject">
+      <UniqueIdentifier>{7400289d-a481-4a8a-b5ae-12ed9a629b96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\AGPTraceDriver.cpp">
+      <Filter>Source Files\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLTraceDriver.cpp">
+      <Filter>Source Files\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\RegisterWriteBufferAGP.cpp">
+      <Filter>Source Files\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\BufferDescriptor.cpp">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\DArray.cpp">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\GLJumpTable.cpp">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\GLResolver.cpp">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\MemoryRegion.cpp">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\UserCallTable.cpp">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\zfstream.cpp">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\GLExec.cpp">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\GLExecStats.cpp">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\StubApiCalls.cpp">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\TraceReader.cpp">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\ConstDescription.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\ConstExtractor.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\FuncDescription.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\FuncExtractor.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\NameModifiers.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\ParamDescription.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\SpecificExtractor.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\StringToFuncDescription.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\StringTokenizer.cpp">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\log\IncludeLog.cpp">
+      <Filter>Source Files\trace\utils\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\log\LogObject.cpp">
+      <Filter>Source Files\trace\utils\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\AuxFuncsLib.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\CodeSnip.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\ContextStateAdapter.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\FPFactory.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\FPStateImpl.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GLContext.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GLState.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GPULib.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GPULibInternals.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GPUMemory.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\MathLib.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Matrixf.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\ProgramObjectCache.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\PushState.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\TextureUnitLib.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\TLFactory.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Transformations.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\VSLoader.cpp">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\CodeGenTraverser.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\CompilerSteps.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\DependencyGraph.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\GenericInstruction.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\IRNode.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\OutputTraverser.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramExecutionEnvironment.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramManager.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramObject.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramTarget.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\Scheduler.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\SemanticTraverser.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\ShaderInstructionTranslator.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\FragmentProgram\FP1ExecEnvironment.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP\FragmentProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Arbp\VertexProgram\VP1ExecEnvironment.cpp">
+      <Filter>Source Files\trace\GLLib\ARBP\VertexProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\BufferObject\BufferManager.cpp">
+      <Filter>Source Files\trace\GLLib\BufferObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\BufferObject\BufferObject.cpp">
+      <Filter>Source Files\trace\GLLib\BufferObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\BufferObject\BufferTarget.cpp">
+      <Filter>Source Files\trace\GLLib\BufferObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GLObject\BaseManager.cpp">
+      <Filter>Source Files\trace\GLLib\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GLObject\BaseObject.cpp">
+      <Filter>Source Files\trace\GLLib\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\GLObject\BaseTarget.cpp">
+      <Filter>Source Files\trace\GLLib\GLObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Texture\TextureManager.cpp">
+      <Filter>Source Files\trace\GLLib\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Texture\TextureObject.cpp">
+      <Filter>Source Files\trace\GLLib\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLLib\Texture\TextureTarget.cpp">
+      <Filter>Source Files\trace\GLLib\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGL.cpp">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLContext.cpp">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLEntryPoints.cpp">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLTextureUnit.cpp">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\GL2ACD.cpp">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\GL2ACDX.cpp">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\MatrixStackImp.cpp">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBaseObject\AGLBaseManager.cpp">
+      <Filter>Source Files\trace\AOGL\AGLBaseObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBaseObject\AGLBaseObject.cpp">
+      <Filter>Source Files\trace\AOGL\AGLBaseObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBaseObject\AGLBaseTarget.cpp">
+      <Filter>Source Files\trace\AOGL\AGLBaseObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBProgramManager.cpp">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBProgramObject.cpp">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBProgramTarget.cpp">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBRegisterBank.cpp">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLTextureObject\AGLTextureManager.cpp">
+      <Filter>Source Files\trace\AOGL\AGLTextureObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLTextureObject\AGLTextureObject.cpp">
+      <Filter>Source Files\trace\AOGL\AGLTextureObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLTextureObject\AGLTextureTarget.cpp">
+      <Filter>Source Files\trace\AOGL\AGLTextureObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBufferObject\AGLBufferManager.cpp">
+      <Filter>Source Files\trace\AOGL\AGLBufferObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBufferObject\AGLBufferObject.cpp">
+      <Filter>Source Files\trace\AOGL\AGLBufferObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBufferObject\AGLBufferTarget.cpp">
+      <Filter>Source Files\trace\AOGL\AGLBufferObject</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\AGPTraceDriver.h">
+      <Filter>Source Files\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLTraceDriver.h">
+      <Filter>Source Files\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\RegisterWriteBufferAGP.h">
+      <Filter>Source Files\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\TraceDriverInterface.h">
+      <Filter>Source Files\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AGPTraceFile.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\BufferDescriptor.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\DArray.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\GLJumpTable.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\GLResolver.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\MemoryRegion.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\UserCallTable.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zconf.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zfstream.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zlib.h">
+      <Filter>Source Files\trace\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\GenericParam.h">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\GLExec.h">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\GLExecStats.h">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\StubApiCalls.h">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\TraceReader.h">
+      <Filter>Source Files\trace\utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\gl.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\glAll.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\glATI.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\glext.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\GLIOthers.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\mesa_wgl.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\OGL_functions_supported_by_bGPU.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Gl\wglext.h">
+      <Filter>Source Files\trace\utils\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\ConstDescription.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\ConstExtractor.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\FuncDescription.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\FuncExtractor.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\NameModifiers.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\ParamDescription.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\SpecificExtractor.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\StringToFuncDescription.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\StringTokenizer.h">
+      <Filter>Source Files\trace\utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\log\IncludeLog.h">
+      <Filter>Source Files\trace\utils\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\log\LogObject.h">
+      <Filter>Source Files\trace\utils\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\AuxFuncsLib.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\CodeSnip.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\ContextStateAdapter.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\DataBuffer.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\FPFactory.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\FPState.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\FPStateImpl.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\GLContext.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\GLState.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\GPULibInternals.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\GPUMemory.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\MathLib.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Matrixf.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\ProgramObjectCache.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\PushState.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\QuadReg.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\RBank.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\TextureUnitLib.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\TLFactory.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\TLShader.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\TLShaderImp.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\TLState.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Transformations.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\VSLoader.h">
+      <Filter>Source Files\trace\GLLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\CodeGenTraverser.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\CompilerSteps.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\DependencyGraph.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\GenericInstruction.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\ImplementationLimits.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\IRNode.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\IRTraverser.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramExecutionEnvironment.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramManager.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramObject.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramTarget.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\Scheduler.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\SemanticTraverser.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\ShaderInstructionTranslator.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\SharedDefinitions.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Arbp\SymbolTable.h">
+      <Filter>Source Files\trace\GLLib\ARBP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\BufferObject\BufferManager.h">
+      <Filter>Source Files\trace\GLLib\BufferObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\BufferObject\BufferObject.h">
+      <Filter>Source Files\trace\GLLib\BufferObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\BufferObject\BufferTarget.h">
+      <Filter>Source Files\trace\GLLib\BufferObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\GLObject\BaseManager.h">
+      <Filter>Source Files\trace\GLLib\GLObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\GLObject\BaseObject.h">
+      <Filter>Source Files\trace\GLLib\GLObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\GLObject\BaseTarget.h">
+      <Filter>Source Files\trace\GLLib\GLObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Texture\TextureManager.h">
+      <Filter>Source Files\trace\GLLib\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Texture\TextureObject.h">
+      <Filter>Source Files\trace\GLLib\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLLib\Texture\TextureTarget.h">
+      <Filter>Source Files\trace\GLLib\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGL.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLContext.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLEntryPoints.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLTextureUnit.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\GL2ACD.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\GL2ACDX.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\MatrixStack.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\MatrixStackImp.h">
+      <Filter>Source Files\trace\AOGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLBaseObject\AGLBaseManager.h">
+      <Filter>Source Files\trace\AOGL\AGLBaseObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLBaseObject\AGLBaseObject.h">
+      <Filter>Source Files\trace\AOGL\AGLBaseObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLBaseObject\AGLBaseTarget.h">
+      <Filter>Source Files\trace\AOGL\AGLBaseObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBImplementationLimits.h">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBProgramManager.h">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBProgramObject.h">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBProgramTarget.h">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBRegisterBank.h">
+      <Filter>Source Files\trace\AOGL\ARBProgramObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLTextureObject\AGLTextureManager.h">
+      <Filter>Source Files\trace\AOGL\AGLTextureObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLTextureObject\AGLTextureObject.h">
+      <Filter>Source Files\trace\AOGL\AGLTextureObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLTextureObject\AGLTextureTarget.h">
+      <Filter>Source Files\trace\AOGL\AGLTextureObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLBufferObject\AGLBufferManager.h">
+      <Filter>Source Files\trace\AOGL\AGLBufferObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLBufferObject\AGLBufferObject.h">
+      <Filter>Source Files\trace\AOGL\AGLBufferObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\AOGL\AGLBufferObject\AGLBufferTarget.h">
+      <Filter>Source Files\trace\AOGL\AGLBufferObject</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\trace\utils\Gen\APICall.gen">
+      <Filter>Source Files\trace\utils\Gen</Filter>
+    </None>
+    <None Include="..\trace\utils\Gen\GLConstantNames.gen">
+      <Filter>Source Files\trace\utils\Gen</Filter>
+    </None>
+    <None Include="..\trace\utils\Gen\GLFunctionNames.gen">
+      <Filter>Source Files\trace\utils\Gen</Filter>
+    </None>
+    <None Include="..\trace\utils\Gen\GLJumpTableFields.gen">
+      <Filter>Source Files\trace\utils\Gen</Filter>
+    </None>
+    <None Include="..\trace\utils\Gen\GLJumpTableSL.gen">
+      <Filter>Source Files\trace\utils\Gen</Filter>
+    </None>
+    <None Include="..\trace\utils\Gen\JumpTableWrapper.gen">
+      <Filter>Source Files\trace\utils\Gen</Filter>
+    </None>
+    <None Include="..\trace\utils\Gen\SwitchBranches.gen">
+      <Filter>Source Files\trace\utils\Gen</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\trace\GLLib\Arbp\FragmentProgram\FP1Grammar.y">
+      <Filter>Source Files\trace\GLLib\ARBP\FragmentProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\GLLib\Arbp\FragmentProgram\FP1Lexic.l">
+      <Filter>Source Files\trace\GLLib\ARBP\FragmentProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\GLLib\Arbp\VertexProgram\VP1Grammar.y">
+      <Filter>Source Files\trace\GLLib\ARBP\VertexProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\GLLib\Arbp\VertexProgram\VP1Lexic.l">
+      <Filter>Source Files\trace\GLLib\ARBP\VertexProgram</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

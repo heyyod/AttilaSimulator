@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{acec9408-dc22-4c3f-bf49-bd0351d91ffb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation">
+      <UniqueIdentifier>{0fe00c30-5f8f-4242-a0d2-06f45e252632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation\ShaderOptimization">
+      <UniqueIdentifier>{7a71d4bc-704b-45c5-a823-e7dfc7439dd2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\ACD\Interface\ACD.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDBlendingStage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDBuffer.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDConstantLimits.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDDevice.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDMatrix.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDRasterizationStage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDRenderTarget.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDResource.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDSampler.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDShaderProgram.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDStoredItemID.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDStoredState.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDStream.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDTexture.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDTexture2D.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDTexture3D.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDTextureCubeMap.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDTypes.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDVector.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDZStencilStage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Interface\ACDZStencilTarget.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDBlendingStageImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDBufferImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDDeviceImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDMacros.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDMath.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDRasterizationStageImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDRenderTargetImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDSamplerImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDShaderProgramImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDStoredStateImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDStreamImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDSupport.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDTexture2DImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDTexture3DImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDTextureCubeMapImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDZStencilStageImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\MemoryObject.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\MemoryObjectAllocator.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\QuadReg.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\RBank.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\StateComponent.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\StateItem.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\StateItemUtils.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\StoredStateItem.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\TextureAdapter.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\TextureMipmap.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\TextureMipmapChain.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationDataStructures.h">
+      <Filter>Implementation\ShaderOptimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationSteps.h">
+      <Filter>Implementation\ShaderOptimization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACD\Implementation\ShaderOptimization\ShaderOptimizer.h">
+      <Filter>Implementation\ShaderOptimization</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDBlendingStageImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDBufferImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDDeviceImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDMath.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDMatrixImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDRasterizationStageImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDRenderTargetImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDSamplerImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDShaderProgramImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDStoredStateImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDStreamImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDSupport.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDTexture2DImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDTexture3DImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDTextureCubeMapImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDZStencilStageImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\MemoryObject.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\MemoryObjectAllocator.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\TextureAdapter.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\TextureMipmap.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\TextureMipmapChain.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationDataStructures.cpp">
+      <Filter>Implementation\ShaderOptimization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationSteps.cpp">
+      <Filter>Implementation\ShaderOptimization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\ShaderOptimization\ShaderOptimizer.cpp">
+      <Filter>Implementation\ShaderOptimization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACD\Implementation\StoredStateItem.cpp">
+      <Filter>Implementation\ShaderOptimization</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

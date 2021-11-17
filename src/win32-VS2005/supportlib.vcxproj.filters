@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\support">
+      <UniqueIdentifier>{f0614d68-a9a4-4de3-916e-8e5d868067e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\support\BitStream.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\BitStreamReader.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\BitStreamWriter.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\DynamicObject.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\GlobalProfiler.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\ImageSaver.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\OptimizedDynamicMemory.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\Parser.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\Profiler.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\QuadFloat.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\QuadInt.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\support.cpp">
+      <Filter>Source Files\support</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\support\BitStream.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\BitStreamReader.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\BitStreamWriter.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\DynamicObject.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\GlobalProfiler.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\GPUTypes.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\ImageSaver.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\OptimizedDynamicMemory.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\Parser.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\Profiler.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\QuadFloat.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\QuadInt.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\support.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

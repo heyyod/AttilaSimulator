@@ -1,0 +1,2 @@
+LIBRARY opengl32.dll
+EXPORTS

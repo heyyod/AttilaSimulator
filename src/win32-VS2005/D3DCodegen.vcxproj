@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CF71A00E-6F7D-4898-8ECB-46E6B7510542}</ProjectGuid>
+    <RootNamespace>DXCodeGen</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>D3DCodeGenerator</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\trace\D3DCodegen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)D3DCodeGenerator.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)DXCodeGen.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>Autogenerate code for D3D9PixRunPlayer</Message>
+      <Command>..\trace\D3DCodegen\autogenerate.bat $(OutDir)D3DCodeGenerator.exe</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\trace\D3DCodegen\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MinimalRebuild />
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)D3DCodeGenerator.exe</OutputFile>
+      <AdditionalLibraryDirectories>../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Autogenerate code for D3D9PixRunPlayer</Message>
+      <Command>..\trace\D3DCodegen\autogenerate.bat $(OutDir)D3DCodeGenerator.exe</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\D3DCodegen\Config\ConfigManager.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Config\GeneratorConfiguration.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Config\ParserConfiguration.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Generator\ClassGenerator.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Generator\D3D9PixRunPlayerGenerator.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Generator\D3D9XMLGenerator.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Generator\DXHGenerator.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Generator\IGenerator.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Items\ClassDescription.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Items\CppMacro.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Items\EnumDescription.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Items\MethodDescription.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Items\StructDescription.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Libgreta\regexpr2.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Libgreta\syntax2.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinystr.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\main.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\ClassExtractor.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\CommentExtractor.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\DXHParser.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\EnumExtractor.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\IExtractor.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\MacroExpander.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\PreprocessorExtractor.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Parser\StructExtractor.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\stdafx.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\Debug.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\FileSystem.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\String.cpp" />
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\System.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\D3D\d3d9.h" />
+    <ClInclude Include="..\D3D\d3d9caps.h" />
+    <ClInclude Include="..\D3D\d3d9types.h" />
+    <ClInclude Include="..\D3D\d3d9_port.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Config\ConfigManager.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Config\GeneratorConfiguration.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Config\ParserConfiguration.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\DXCodeGenException.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Generator\ClassGenerator.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Generator\D3D9PixRunPlayerGenerator.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Generator\D3D9XMLGenerator.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Generator\DXHGenerator.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Generator\IGenerator.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Items\ClassDescription.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Items\CppMacro.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Items\EnumDescription.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Items\MethodDescription.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Items\StructDescription.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\regexpr2.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\reimpl2.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\restack.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\syntax2.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Libtinyxml\tinystr.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Libtinyxml\tinyxml.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\ClassExtractor.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\CommentExtractor.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\DXHParser.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\EnumExtractor.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\IExtractor.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\MacroExpander.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\PreprocessorExtractor.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Parser\StructExtractor.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\stdafx.h" />
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\Debug.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\FileSystem.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\String.hpp" />
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\System.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

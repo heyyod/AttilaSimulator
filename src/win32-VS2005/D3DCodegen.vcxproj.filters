@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Parser">
+      <UniqueIdentifier>{a0428317-1571-45a4-aaa6-21d48bcdd690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Config">
+      <UniqueIdentifier>{1f0513c7-92cf-44b0-a48c-b29a841eca3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generator">
+      <UniqueIdentifier>{03a2088d-e58c-49ba-bfe5-9915eb90de79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{09614ee4-b19b-4ea9-b73d-2d294dde4556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{c16d9a2b-ffb4-41d9-be00-17d1ebaddf1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vld">
+      <UniqueIdentifier>{29a4ee45-fb3c-436a-aa92-027bb880a0ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Libgreta">
+      <UniqueIdentifier>{625ef02b-359a-4794-b44e-cf63f4ac9ad3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Libtinyxml">
+      <UniqueIdentifier>{5c60663b-9fea-46f8-ba5e-5563c47ea80d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Parser">
+      <UniqueIdentifier>{e4132a24-6284-492d-a32e-5635a52c5145}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Config">
+      <UniqueIdentifier>{36e0f3e6-eeba-4cc3-8564-11a21938ed59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{4f921986-cc01-4ba8-8471-7ffce646e8cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generator">
+      <UniqueIdentifier>{fca6acb1-3c6b-4c11-84f9-5e2ef0d58ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{73e4600a-ddd7-4aca-b989-f6e067e5c24b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Vld">
+      <UniqueIdentifier>{ed32c2a9-87fd-45d3-aae9-f0e3af9113cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Libgreta">
+      <UniqueIdentifier>{d1ac071e-c939-4a31-820f-e30821b75901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Libtinyxml">
+      <UniqueIdentifier>{90eb5009-7f5b-41fc-a8c0-149cabf8ff43}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\D3DCodegen\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\ClassExtractor.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\CommentExtractor.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\DXHParser.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\EnumExtractor.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\IExtractor.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\MacroExpander.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\PreprocessorExtractor.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Parser\StructExtractor.cpp">
+      <Filter>Source Files\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Config\ConfigManager.cpp">
+      <Filter>Source Files\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Config\GeneratorConfiguration.cpp">
+      <Filter>Source Files\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Config\ParserConfiguration.cpp">
+      <Filter>Source Files\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Generator\ClassGenerator.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Generator\D3D9PixRunPlayerGenerator.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Generator\D3D9XMLGenerator.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Generator\DXHGenerator.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Generator\IGenerator.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Items\ClassDescription.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Items\CppMacro.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Items\EnumDescription.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Items\MethodDescription.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Items\StructDescription.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\Debug.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\FileSystem.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\String.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Utilities\System.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Libgreta\regexpr2.cpp">
+      <Filter>Source Files\Libgreta</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Libgreta\syntax2.cpp">
+      <Filter>Source Files\Libgreta</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinystr.cpp">
+      <Filter>Source Files\Libtinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinyxml.cpp">
+      <Filter>Source Files\Libtinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinyxmlerror.cpp">
+      <Filter>Source Files\Libtinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DCodegen\Libtinyxml\tinyxmlparser.cpp">
+      <Filter>Source Files\Libtinyxml</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\D3D\d3d9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\D3D\d3d9_port.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\D3D\d3d9caps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\D3D\d3d9types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\DXCodeGenException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\ClassExtractor.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\CommentExtractor.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\DXHParser.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\EnumExtractor.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\IExtractor.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\MacroExpander.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\PreprocessorExtractor.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Parser\StructExtractor.hpp">
+      <Filter>Header Files\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Config\ConfigManager.hpp">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Config\GeneratorConfiguration.hpp">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Config\ParserConfiguration.hpp">
+      <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\Debug.hpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\FileSystem.hpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\String.hpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Utilities\System.hpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Generator\ClassGenerator.hpp">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Generator\D3D9PixRunPlayerGenerator.hpp">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Generator\D3D9XMLGenerator.hpp">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Generator\DXHGenerator.hpp">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Generator\IGenerator.hpp">
+      <Filter>Header Files\Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Items\ClassDescription.hpp">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Items\CppMacro.hpp">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Items\EnumDescription.hpp">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Items\MethodDescription.hpp">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Items\StructDescription.hpp">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\regexpr2.h">
+      <Filter>Header Files\Libgreta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\reimpl2.h">
+      <Filter>Header Files\Libgreta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\restack.h">
+      <Filter>Header Files\Libgreta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Libgreta\syntax2.h">
+      <Filter>Header Files\Libgreta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Libtinyxml\tinystr.h">
+      <Filter>Header Files\Libtinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DCodegen\Libtinyxml\tinyxml.h">
+      <Filter>Header Files\Libtinyxml</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

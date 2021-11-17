@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{fadc18d6-06a6-4e83-9b0f-3ff786b79ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\Parsers">
+      <UniqueIdentifier>{127f7134-561d-41ef-a6c8-d48098dd6765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CodeGenerator">
+      <UniqueIdentifier>{ca064d52-caba-48f8-9447-1e39a33e5159}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\utils\Parsers\ConstDescription.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\ConstExtractor.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\FuncDescription.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\FuncExtractor.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\NameModifiers.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\ParamDescription.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\SpecificExtractor.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\StringToFuncDescription.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\Parsers\StringTokenizer.cpp">
+      <Filter>utils\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\CodeGenerator.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\GLIEntryPointsGenerator.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\GLNamesGenerator.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\JTGenerator.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\main.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\StubGenerator.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\SwitchBranchesGenerator.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\CodeGenerator\WrapperGenerator.cpp">
+      <Filter>CodeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\support.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\utils\Parsers\ConstDescription.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\ConstExtractor.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\FuncDescription.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\FuncExtractor.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\NameModifiers.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\ParamDescription.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\SpecificExtractor.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\StringToFuncDescription.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\Parsers\StringTokenizer.h">
+      <Filter>utils\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\CodeGenerator\CodeGenerator.h">
+      <Filter>CodeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\CodeGenerator\GLIEntryPointsGenerator.h">
+      <Filter>CodeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\CodeGenerator\GLNamesGenerator.h">
+      <Filter>CodeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\CodeGenerator\JTGenerator.h">
+      <Filter>CodeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\CodeGenerator\StubGenerator.h">
+      <Filter>CodeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\CodeGenerator\SwitchBranchesGenerator.h">
+      <Filter>CodeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\CodeGenerator\WrapperGenerator.h">
+      <Filter>CodeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\support\support.h" />
+  </ItemGroup>
+</Project>

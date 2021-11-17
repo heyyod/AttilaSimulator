@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\emul">
+      <UniqueIdentifier>{79c4ccb9-80d7-4577-919d-82a582785101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\emul\Cache.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\Cache64.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\CacheReplacement.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\ClipperEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\ColorCompressorEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\DepthCompressorEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\FixedPoint.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\Fragment.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\FragmentOpEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\GPUMath.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\HiloCompressorEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\MsaaCompressorEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\PixelMapper.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\RasterizerEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\SetupTriangle.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\ShaderEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\ShaderInstruction.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\ShaderOptimization.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\TextureEmulator.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+    <ClCompile Include="..\emul\Tile.cpp">
+      <Filter>Source Files\emul</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\emul\Cache.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\Cache64.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\CacheReplacement.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\ClipperEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\ColorCompressorEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\CompressorEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\DepthCompressorEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\FixedPoint.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\Fragment.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\FragmentOpEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\GPUMath.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\HiloCompressorEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\MsaaCompressorEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\PixelMapper.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\RasterizerEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\SetupTriangle.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\ShaderEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\ShaderInstruction.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\ShaderOptimization.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\TextureEmulator.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\Tile.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+    <ClInclude Include="..\emul\ValidationInfo.h">
+      <Filter>Source Files\emul</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

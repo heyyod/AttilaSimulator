@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Win32">
+      <Configuration>Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6A081EBC-5616-4B1D-A753-755AFFCE1010}</ProjectGuid>
+    <RootNamespace>gllib</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>PGInstrument</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>PGInstrument</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>.\x64\Debug\</OutDir>
+    <IntDir>.\x64\Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.\x64\Release\</OutDir>
+    <IntDir>.\x64\Release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <OutDir>.\x64\Profile\</OutDir>
+    <IntDir>.\x64\Profile\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\sim\shader;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\utils\log;..\trace\ACD\Interface;..\trace\AOGL;..\trace\AOGL\AGLBaseObject;..\trace\AOGL\AGLBufferObject;..\trace\AOGL\ARBProgramObject;..\trace\AOGL\AGLTextureObject;..\trace\ACDX\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <ExternalWarningLevel>Level2</ExternalWarningLevel>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)gllib.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\sim\shader;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\utils\log;..\trace\ACD\Interface;..\trace\AOGL;..\trace\AOGL\AGLBaseObject;..\trace\AOGL\AGLBufferObject;..\trace\AOGL\ARBProgramObject;..\trace\AOGL\AGLTextureObject;..\trace\ACDX\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)gllib.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\sim\shader;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\utils\log;..\trace\ACD\Interface;..\trace\AOGL;..\trace\AOGL\AGLBaseObject;..\trace\AOGL\AGLBufferObject;..\trace\AOGL\ARBProgramObject;..\trace\AOGL\AGLTextureObject;..\trace\ACDX\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)gllib.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\sim\shader;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\utils\log;..\trace\ACD\Interface;..\trace\AOGL;..\trace\AOGL\AGLBaseObject;..\trace\AOGL\AGLBufferObject;..\trace\AOGL\ARBProgramObject;..\trace\AOGL\AGLTextureObject;..\trace\ACDX\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;LOAD_JUMPTABLE_STATICALLY;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)gllib.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\sim\shader;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\utils\log;..\trace\ACD\Interface;..\trace\AOGL;..\trace\AOGL\AGLBaseObject;..\trace\AOGL\AGLBufferObject;..\trace\AOGL\ARBProgramObject;..\trace\AOGL\AGLTextureObject;..\trace\ACDX\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;LOAD_JUMPTABLE_STATICALLY;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)gllib.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\sim\shader;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\utils\log;..\trace\ACD\Interface;..\trace\AOGL;..\trace\AOGL\AGLBaseObject;..\trace\AOGL\AGLBufferObject;..\trace\AOGL\ARBProgramObject;..\trace\AOGL\AGLTextureObject;..\trace\ACDX\Interface;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;LOAD_JUMPTABLE_STATICALLY;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)gllib.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\AGPTraceDriver.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGL.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLBaseObject\AGLBaseManager.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLBaseObject\AGLBaseObject.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLBaseObject\AGLBaseTarget.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLBufferObject\AGLBufferManager.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBufferObject\AGLBufferObject.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLBufferObject\AGLBufferTarget.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\trace\AOGL\AGLContext.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLEntryPoints.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLTextureObject\AGLTextureManager.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLTextureObject\AGLTextureObject.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLTextureObject\AGLTextureTarget.cpp" />
+    <ClCompile Include="..\trace\AOGL\AGLTextureUnit.cpp" />
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBProgramManager.cpp" />
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBProgramObject.cpp" />
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBProgramTarget.cpp" />
+    <ClCompile Include="..\trace\AOGL\ARBProgramObject\ARBRegisterBank.cpp" />
+    <ClCompile Include="..\trace\AOGL\GL2ACD.cpp" />
+    <ClCompile Include="..\trace\AOGL\GL2ACDX.cpp" />
+    <ClCompile Include="..\trace\AOGL\MatrixStackImp.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\CodeGenTraverser.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\CompilerSteps.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\DependencyGraph.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\FragmentProgram\FP1ExecEnvironment.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\GenericInstruction.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\IRNode.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\OutputTraverser.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramExecutionEnvironment.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramManager.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramObject.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\ProgramTarget.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\Scheduler.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\SemanticTraverser.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\ShaderInstructionTranslator.cpp" />
+    <ClCompile Include="..\trace\GLLib\Arbp\VertexProgram\VP1ExecEnvironment.cpp" />
+    <ClCompile Include="..\trace\GLLib\AuxFuncsLib.cpp" />
+    <ClCompile Include="..\trace\GLLib\BufferObject\BufferManager.cpp" />
+    <ClCompile Include="..\trace\GLLib\BufferObject\BufferObject.cpp" />
+    <ClCompile Include="..\trace\GLLib\BufferObject\BufferTarget.cpp" />
+    <ClCompile Include="..\trace\GLLib\CodeSnip.cpp" />
+    <ClCompile Include="..\trace\GLLib\ContextStateAdapter.cpp" />
+    <ClCompile Include="..\trace\GLLib\FPFactory.cpp" />
+    <ClCompile Include="..\trace\GLLib\FPStateImpl.cpp" />
+    <ClCompile Include="..\trace\GLLib\GLContext.cpp" />
+    <ClCompile Include="..\trace\GLLib\GLObject\BaseManager.cpp" />
+    <ClCompile Include="..\trace\GLLib\GLObject\BaseObject.cpp" />
+    <ClCompile Include="..\trace\GLLib\GLObject\BaseTarget.cpp" />
+    <ClCompile Include="..\trace\GLLib\GLState.cpp" />
+    <ClCompile Include="..\trace\GLLib\GPULib.cpp" />
+    <ClCompile Include="..\trace\GLLib\GPULibInternals.cpp" />
+    <ClCompile Include="..\trace\GLLib\GPUMemory.cpp" />
+    <ClCompile Include="..\trace\GLLib\MathLib.cpp" />
+    <ClCompile Include="..\trace\GLLib\Matrixf.cpp" />
+    <ClCompile Include="..\trace\GLLib\ProgramObjectCache.cpp" />
+    <ClCompile Include="..\trace\GLLib\PushState.cpp" />
+    <ClCompile Include="..\trace\GLLib\TextureUnitLib.cpp" />
+    <ClCompile Include="..\trace\GLLib\Texture\TextureManager.cpp" />
+    <ClCompile Include="..\trace\GLLib\Texture\TextureObject.cpp" />
+    <ClCompile Include="..\trace\GLLib\Texture\TextureTarget.cpp" />
+    <ClCompile Include="..\trace\GLLib\TLFactory.cpp" />
+    <ClCompile Include="..\trace\GLLib\Transformations.cpp" />
+    <ClCompile Include="..\trace\GLLib\VSLoader.cpp" />
+    <ClCompile Include="..\trace\GLTraceDriver.cpp" />
+    <ClCompile Include="..\trace\RegisterWriteBufferAGP.cpp" />
+    <ClCompile Include="..\trace\utils\BufferDescriptor.cpp" />
+    <ClCompile Include="..\trace\utils\DArray.cpp" />
+    <ClCompile Include="..\trace\utils\GLJumpTable.cpp" />
+    <ClCompile Include="..\trace\utils\GLResolver.cpp" />
+    <ClCompile Include="..\trace\utils\log\IncludeLog.cpp" />
+    <ClCompile Include="..\trace\utils\log\LogObject.cpp" />
+    <ClCompile Include="..\trace\utils\MemoryRegion.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\ConstDescription.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\ConstExtractor.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\FuncDescription.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\FuncExtractor.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\NameModifiers.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\ParamDescription.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\SpecificExtractor.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\StringToFuncDescription.cpp" />
+    <ClCompile Include="..\trace\utils\Parsers\StringTokenizer.cpp" />
+    <ClCompile Include="..\trace\utils\TraceReader\GLExec.cpp" />
+    <ClCompile Include="..\trace\utils\TraceReader\GLExecStats.cpp" />
+    <ClCompile Include="..\trace\utils\TraceReader\StubApiCalls.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">LOAD_JUMPTABLE_STATICALLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LOAD_JUMPTABLE_STATICALLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\TraceReader.cpp" />
+    <ClCompile Include="..\trace\utils\UserCallTable.cpp" />
+    <ClCompile Include="..\trace\utils\zfstream.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\AGPTraceDriver.h" />
+    <ClInclude Include="..\trace\AGPTraceFile.h" />
+    <ClInclude Include="..\trace\AOGL\AGL.h" />
+    <ClInclude Include="..\trace\AOGL\AGLBaseObject\AGLBaseManager.h" />
+    <ClInclude Include="..\trace\AOGL\AGLBaseObject\AGLBaseObject.h" />
+    <ClInclude Include="..\trace\AOGL\AGLBaseObject\AGLBaseTarget.h" />
+    <ClInclude Include="..\trace\AOGL\AGLBufferObject\AGLBufferManager.h" />
+    <ClInclude Include="..\trace\AOGL\AGLBufferObject\AGLBufferObject.h" />
+    <ClInclude Include="..\trace\AOGL\AGLBufferObject\AGLBufferTarget.h" />
+    <ClInclude Include="..\trace\AOGL\AGLContext.h" />
+    <ClInclude Include="..\trace\AOGL\AGLEntryPoints.h" />
+    <ClInclude Include="..\trace\AOGL\AGLTextureObject\AGLTextureManager.h" />
+    <ClInclude Include="..\trace\AOGL\AGLTextureObject\AGLTextureObject.h" />
+    <ClInclude Include="..\trace\AOGL\AGLTextureObject\AGLTextureTarget.h" />
+    <ClInclude Include="..\trace\AOGL\AGLTextureUnit.h" />
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBImplementationLimits.h" />
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBProgramManager.h" />
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBProgramObject.h" />
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBProgramTarget.h" />
+    <ClInclude Include="..\trace\AOGL\ARBProgramObject\ARBRegisterBank.h" />
+    <ClInclude Include="..\trace\AOGL\GL2ACD.h" />
+    <ClInclude Include="..\trace\AOGL\GL2ACDX.h" />
+    <ClInclude Include="..\trace\AOGL\MatrixStack.h" />
+    <ClInclude Include="..\trace\AOGL\MatrixStackImp.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\CodeGenTraverser.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\CompilerSteps.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\DependencyGraph.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\GenericInstruction.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\ImplementationLimits.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\IRNode.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\IRTraverser.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramExecutionEnvironment.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramManager.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramObject.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\ProgramTarget.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\Scheduler.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\SemanticTraverser.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\ShaderInstructionTranslator.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\SharedDefinitions.h" />
+    <ClInclude Include="..\trace\GLLib\Arbp\SymbolTable.h" />
+    <ClInclude Include="..\trace\GLLib\AuxFuncsLib.h" />
+    <ClInclude Include="..\trace\GLLib\BufferObject\BufferManager.h" />
+    <ClInclude Include="..\trace\GLLib\BufferObject\BufferObject.h" />
+    <ClInclude Include="..\trace\GLLib\BufferObject\BufferTarget.h" />
+    <ClInclude Include="..\trace\GLLib\CodeSnip.h" />
+    <ClInclude Include="..\trace\GLLib\ContextStateAdapter.h" />
+    <ClInclude Include="..\trace\GLLib\DataBuffer.h" />
+    <ClInclude Include="..\trace\GLLib\FPFactory.h" />
+    <ClInclude Include="..\trace\GLLib\FPState.h" />
+    <ClInclude Include="..\trace\GLLib\FPStateImpl.h" />
+    <ClInclude Include="..\trace\GLLib\GLContext.h" />
+    <ClInclude Include="..\trace\GLLib\GLObject\BaseManager.h" />
+    <ClInclude Include="..\trace\GLLib\GLObject\BaseObject.h" />
+    <ClInclude Include="..\trace\GLLib\GLObject\BaseTarget.h" />
+    <ClInclude Include="..\trace\GLLib\GLState.h" />
+    <ClInclude Include="..\trace\GLLib\GPULibInternals.h" />
+    <ClInclude Include="..\trace\GLLib\GPUMemory.h" />
+    <ClInclude Include="..\trace\GLLib\MathLib.h" />
+    <ClInclude Include="..\trace\GLLib\Matrixf.h" />
+    <ClInclude Include="..\trace\GLLib\ProgramObjectCache.h" />
+    <ClInclude Include="..\trace\GLLib\PushState.h" />
+    <ClInclude Include="..\trace\GLLib\QuadReg.h" />
+    <ClInclude Include="..\trace\GLLib\RBank.h" />
+    <ClInclude Include="..\trace\GLLib\TextureUnitLib.h" />
+    <ClInclude Include="..\trace\GLLib\Texture\TextureManager.h" />
+    <ClInclude Include="..\trace\GLLib\Texture\TextureObject.h" />
+    <ClInclude Include="..\trace\GLLib\Texture\TextureTarget.h" />
+    <ClInclude Include="..\trace\GLLib\TLFactory.h" />
+    <ClInclude Include="..\trace\GLLib\TLShader.h" />
+    <ClInclude Include="..\trace\GLLib\TLShaderImp.h" />
+    <ClInclude Include="..\trace\GLLib\TLState.h" />
+    <ClInclude Include="..\trace\GLLib\Transformations.h" />
+    <ClInclude Include="..\trace\GLLib\VSLoader.h" />
+    <ClInclude Include="..\trace\GLTraceDriver.h" />
+    <ClInclude Include="..\trace\RegisterWriteBufferAGP.h" />
+    <ClInclude Include="..\trace\TraceDriverInterface.h" />
+    <ClInclude Include="..\trace\utils\BufferDescriptor.h" />
+    <ClInclude Include="..\trace\utils\DArray.h" />
+    <ClInclude Include="..\trace\utils\GLJumpTable.h" />
+    <ClInclude Include="..\trace\utils\GLResolver.h" />
+    <ClInclude Include="..\trace\utils\Gl\gl.h" />
+    <ClInclude Include="..\trace\utils\Gl\glAll.h" />
+    <ClInclude Include="..\trace\utils\Gl\glATI.h" />
+    <ClInclude Include="..\trace\utils\Gl\glext.h" />
+    <ClInclude Include="..\trace\utils\Gl\GLIOthers.h" />
+    <ClInclude Include="..\trace\utils\Gl\mesa_wgl.h" />
+    <ClInclude Include="..\trace\utils\Gl\OGL_functions_supported_by_bGPU.h" />
+    <ClInclude Include="..\trace\utils\Gl\wglext.h" />
+    <ClInclude Include="..\trace\utils\log\IncludeLog.h" />
+    <ClInclude Include="..\trace\utils\log\LogObject.h" />
+    <ClInclude Include="..\trace\utils\MemoryRegion.h" />
+    <ClInclude Include="..\trace\utils\Parsers\ConstDescription.h" />
+    <ClInclude Include="..\trace\utils\Parsers\ConstExtractor.h" />
+    <ClInclude Include="..\trace\utils\Parsers\FuncDescription.h" />
+    <ClInclude Include="..\trace\utils\Parsers\FuncExtractor.h" />
+    <ClInclude Include="..\trace\utils\Parsers\NameModifiers.h" />
+    <ClInclude Include="..\trace\utils\Parsers\ParamDescription.h" />
+    <ClInclude Include="..\trace\utils\Parsers\SpecificExtractor.h" />
+    <ClInclude Include="..\trace\utils\Parsers\StringToFuncDescription.h" />
+    <ClInclude Include="..\trace\utils\Parsers\StringTokenizer.h" />
+    <ClInclude Include="..\trace\utils\TraceReader\GenericParam.h" />
+    <ClInclude Include="..\trace\utils\TraceReader\GLExec.h" />
+    <ClInclude Include="..\trace\utils\TraceReader\GLExecStats.h" />
+    <ClInclude Include="..\trace\utils\TraceReader\StubApiCalls.h" />
+    <ClInclude Include="..\trace\utils\TraceReader\TraceReader.h" />
+    <ClInclude Include="..\trace\utils\UserCallTable.h" />
+    <ClInclude Include="..\trace\utils\zconf.h" />
+    <ClInclude Include="..\trace\utils\zfstream.h" />
+    <ClInclude Include="..\trace\utils\zlib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\trace\GLLib\Arbp\FragmentProgram\FP1Grammar.y">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Creating grammatic parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bison -p fp1 -t "..\trace\GLLib\ARBP\FragmentProgram\FP1Grammar.y" -o "..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">FP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating grammatic parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bison -p fp1 -t "..\trace\GLLib\ARBP\FragmentProgram\FP1Grammar.y" -o "..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">FP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Creating grammatic parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">bison -p fp1 -t "..\trace\GLLib\ARBP\FragmentProgram\FP1Grammar.y" -o "..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">FP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Creating grammatic parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">bison -p fp1 -t "..\trace\GLLib\ARBP\FragmentProgram\FP1Grammar.y" -o "..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">FP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Creating grammatic parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bison -p fp1 -t "..\trace\GLLib\ARBP\FragmentProgram\FP1Grammar.y" -o "..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">FP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating grammatic parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bison -p fp1 -t "..\trace\GLLib\ARBP\FragmentProgram\FP1Grammar.y" -o "..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">FP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\trace\GLLib\ARBP\FragmentProgram\FP1Bison.gen;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\GLLib\Arbp\FragmentProgram\FP1Lexic.l">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Creating flex parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">flex -Pfp1 -t -8 "..\trace\GLLib\ARBP\FragmentProgram\FP1Lexic.l" &gt; "..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating flex parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">flex -Pfp1 -t -8 "..\trace\GLLib\ARBP\FragmentProgram\FP1Lexic.l" &gt; "..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Creating flex parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">flex -Pfp1 -t -8 "..\trace\GLLib\ARBP\FragmentProgram\FP1Lexic.l" &gt; "..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Creating flex parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">flex -Pfp1 -t -8 "..\trace\GLLib\ARBP\FragmentProgram\FP1Lexic.l" &gt; "..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Creating flex parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">flex -Pfp1 -t -8 "..\trace\GLLib\ARBP\FragmentProgram\FP1Lexic.l" &gt; "..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating flex parser for ARB Fragment Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">flex -Pfp1 -t -8 "..\trace\GLLib\ARBP\FragmentProgram\FP1Lexic.l" &gt; "..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\trace\GLLib\ARBP\FragmentProgram\FP1Flex.gen;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\GLLib\Arbp\VertexProgram\VP1Grammar.y">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Creating bison grammatic parser for ARB Vertex Programs</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bison -p vp1 -t "..\trace\GLLib\ARBP\VertexProgram\VP1Grammar.y" -o "..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">VP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating bison grammatic parser for ARB Vertex Programs</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bison -pvp1 -t "..\trace\GLLib\ARBP\VertexProgram\VP1Grammar.y" -o "..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Creating bison grammatic parser for ARB Vertex Programs</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">bison -p vp1 -t "..\trace\GLLib\ARBP\VertexProgram\VP1Grammar.y" -o "..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">VP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Creating bison grammatic parser for ARB Vertex Programs</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">bison -p vp1 -t "..\trace\GLLib\ARBP\VertexProgram\VP1Grammar.y" -o "..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">VP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Creating bison grammatic parser for ARB Vertex Programs</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bison -p vp1 -t "..\trace\GLLib\ARBP\VertexProgram\VP1Grammar.y" -o "..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">VP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating bison grammatic parser for ARB Vertex Programs</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bison -pvp1 -t "..\trace\GLLib\ARBP\VertexProgram\VP1Grammar.y" -o "..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VP1Lexic.l;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\trace\GLLib\ARBP\VertexProgram\VP1Bison.gen;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\GLLib\Arbp\VertexProgram\VP1Lexic.l">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Creating flex parser for ARB Vertex Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">flex -Pvp1 -t -8 "..\trace\GLLib\ARBP\VertexProgram\VP1Lexic.l" &gt; "..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating flex parser for ARB Vertex Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">flex -Pvp1 -t -8 "..\trace\GLLib\ARBP\VertexProgram\VP1Lexic.l" &gt; "..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">Creating flex parser for ARB Vertex Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">flex -Pvp1 -t -8 "..\trace\GLLib\ARBP\VertexProgram\VP1Lexic.l" &gt; "..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Creating flex parser for ARB Vertex Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">flex -Pvp1 -t -8 "..\trace\GLLib\ARBP\VertexProgram\VP1Lexic.l" &gt; "..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Creating flex parser for ARB Vertex Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">flex -Pvp1 -t -8 "..\trace\GLLib\ARBP\VertexProgram\VP1Lexic.l" &gt; "..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating flex parser for ARB Vertex Program</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">flex -Pvp1 -t -8 "..\trace\GLLib\ARBP\VertexProgram\VP1Lexic.l" &gt; "..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\trace\GLLib\ARBP\VertexProgram\VP1Flex.gen;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\trace\utils\Gen\APICall.gen" />
+    <None Include="..\trace\utils\Gen\GLConstantNames.gen" />
+    <None Include="..\trace\utils\Gen\GLFunctionNames.gen" />
+    <None Include="..\trace\utils\Gen\GLJumpTableFields.gen" />
+    <None Include="..\trace\utils\Gen\GLJumpTableSL.gen" />
+    <None Include="..\trace\utils\Gen\JumpTableWrapper.gen" />
+    <None Include="..\trace\utils\Gen\SwitchBranches.gen" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ACD.vcxproj">
+      <Project>{27666d70-ddab-46d2-8a6a-42e99a4a8704}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="ACDX.vcxproj">
+      <Project>{bc559856-085a-4495-95be-04ea27b162db}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="codegeneration.vcxproj">
+      <Project>{b53c27a5-9637-453e-97e7-ad5002a30673}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="GPUDriver.vcxproj">
+      <Project>{dc596c38-f5c4-4596-a961-0fe0d32c655b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

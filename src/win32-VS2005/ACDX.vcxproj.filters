@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Implementation">
+      <UniqueIdentifier>{fae90309-048d-4f64-9aa9-b2f4e47cf54d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation\ARBCompilers">
+      <UniqueIdentifier>{413fc2a4-fdb9-4b91-a68f-cbf47711b044}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation\ARBCompilers\FragmentProgram">
+      <UniqueIdentifier>{96acc847-8992-41ca-be98-7fcc316f6eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation\ARBCompilers\VertexProgram">
+      <UniqueIdentifier>{5cf81a6a-065c-41cf-ace3-16f0b7a53475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementation\FPEmulation">
+      <UniqueIdentifier>{a70af078-023a-4f1e-be3d-d4c9fda9e39c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{db43973f-b59a-4b01-af62-5ba14390b883}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDX.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDXCompiledProgramImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDXConstantBindingImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDXFixedPipelineStateImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDXLightImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDXMaterialImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDXShaderCache.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ACDXStoredFPStateImp.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ClusterBankAdapter.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\InternalConstantBinding.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\SettingsAdapter.cpp">
+      <Filter>Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXCodeGenTraverser.cpp">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXGenericInstruction.cpp">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXIRNode.cpp">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXOutputTraverser.cpp">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXProgramExecutionEnvironment.cpp">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXSemanticTraverser.cpp">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXShaderInstructionTranslator.cpp">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\FragmentProgram\ACDXFP1ExecEnvironment.cpp">
+      <Filter>Implementation\ARBCompilers\FragmentProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\ARBCompilers\VertexProgram\ACDXVP1ExecEnvironment.cpp">
+      <Filter>Implementation\ARBCompilers\VertexProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\FPEmulation\ACDXCodeSnip.cpp">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\FPEmulation\ACDXFPFactory.cpp">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\FPEmulation\ACDXGLState.cpp">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\FPEmulation\ACDXMatrixf.cpp">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\FPEmulation\ACDXTLFactory.cpp">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\ACDX\Implementation\FPEmulation\ACDXTransformations.cpp">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXCompiledProgramImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXConstantBindingImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXFixedPipelineStateImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXLightImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXMaterialImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXQuadReg.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXRBank.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXShaderCache.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ACDXStoredFPStateImp.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ClusterBankAdapter.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\InternalConstantBinding.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\SettingsAdapter.h">
+      <Filter>Implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXCodeGenTraverser.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXGenericInstruction.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXImplementationLimits.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXIRNode.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXIRTraverser.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXProgramExecutionEnvironment.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXSemanticTraverser.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXShaderInstructionTranslator.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXSharedDefinitions.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\ARBCompilers\ACDXSymbolTable.h">
+      <Filter>Implementation\ARBCompilers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXCodeSnip.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXFPFactory.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXFPState.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXGLState.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXMatrixf.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXTLFactory.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXTLShader.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXTLState.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ACDXTransformations.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Implementation\FPEmulation\ImplementedConstantBindingFunctions.h">
+      <Filter>Implementation\FPEmulation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDX.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXConstantBinding.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXFixedPipelineConstantLimits.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXFixedPipelineSettings.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXFixedPipelineState.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXFragmentShadingStage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXGlobalTypeDefinitions.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXPostShadingStage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXStoredFPItemID.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXStoredFPState.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXTextCoordGenerationStage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\ACDX\Interface\ACDXTransformAndLightingStage.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\trace\ACDX\Implementation\ARBCompilers\FragmentProgram\ACDXFP1Grammar.y">
+      <Filter>Implementation\ARBCompilers\FragmentProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\ACDX\Implementation\ARBCompilers\FragmentProgram\ACDXFP1Lexic.l">
+      <Filter>Implementation\ARBCompilers\FragmentProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\ACDX\Implementation\ARBCompilers\VertexProgram\ACDXVP1Grammar.y">
+      <Filter>Implementation\ARBCompilers\VertexProgram</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\trace\ACDX\Implementation\ARBCompilers\VertexProgram\ACDXVP1Lexic.l">
+      <Filter>Implementation\ARBCompilers\VertexProgram</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

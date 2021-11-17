@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Win32">
+      <Configuration>Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4FDFD9DD-4472-424F-9AEB-088E01DA6489}</ProjectGuid>
+    <RootNamespace>simlib</RootNamespace>
+    <Keyword>MakeFileProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>PGInstrument</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>PGInstrument</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>.\x64\Debug\</OutDir>
+    <IntDir>.\x64\Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.\x64\Release\</OutDir>
+    <IntDir>.\x64\Release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <OutDir>.\x64\Profile\</OutDir>
+    <IntDir>.\x64\Profile\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_ALLOW_RTCc_IN_STL;WIN32;_DEBUG;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <MinimalRebuild />
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <ClCompile>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\gpu\Box.h" />
+    <ClInclude Include="..\gpu\GPUSignal.h" />
+    <ClInclude Include="..\gpu\MultiClockBox.h" />
+    <ClInclude Include="..\gpu\SignalBinder.h" />
+    <ClInclude Include="..\gpu\Statistic.h" />
+    <ClInclude Include="..\gpu\StatisticsManager.h" />
+    <ClInclude Include="..\gpu\toolsQueue.h" />
+    <ClInclude Include="..\sim\Cache\ColorCacheV2.h" />
+    <ClInclude Include="..\sim\Cache\FetchCache.h" />
+    <ClInclude Include="..\sim\Cache\FetchCache64.h" />
+    <ClInclude Include="..\sim\Cache\InputCache.h" />
+    <ClInclude Include="..\sim\Cache\ROPCache.h" />
+    <ClInclude Include="..\sim\Cache\TextureCache.h" />
+    <ClInclude Include="..\sim\Cache\TextureCacheGen.h" />
+    <ClInclude Include="..\sim\Cache\TextureCacheL2.h" />
+    <ClInclude Include="..\sim\Cache\ZCacheV2.h" />
+    <ClInclude Include="..\sim\Clipper\Clipper.h" />
+    <ClInclude Include="..\sim\Clipper\ClipperCommand.h" />
+    <ClInclude Include="..\sim\Clipper\ClipperStateInfo.h" />
+    <ClInclude Include="..\sim\Clipper\ClipperStatusInfo.h" />
+    <ClInclude Include="..\sim\CommandProcessor\AGPTransaction.h" />
+    <ClInclude Include="..\sim\CommandProcessor\CommandProcessor.h" />
+    <ClInclude Include="..\sim\DAC\Blitter.h" />
+    <ClInclude Include="..\sim\Dac\DAC.h" />
+    <ClInclude Include="..\sim\DAC\WakeUpQueue.h" />
+    <ClInclude Include="..\sim\FragmentOperations\BlendOperation.h" />
+    <ClInclude Include="..\sim\FragmentOperations\ColorBlockStateInfo.h" />
+    <ClInclude Include="..\sim\FragmentOperations\ColorWriteV2.h" />
+    <ClInclude Include="..\sim\FragmentOperations\GenericROP.h" />
+    <ClInclude Include="..\sim\FragmentOperations\ROPOperation.h" />
+    <ClInclude Include="..\sim\FragmentOperations\ROPStatusInfo.h" />
+    <ClInclude Include="..\sim\FragmentOperations\ZOperation.h" />
+    <ClInclude Include="..\sim\FragmentOperations\ZStencilStatusInfo.h" />
+    <ClInclude Include="..\sim\FragmentOperations\ZStencilTestV2.h" />
+    <ClInclude Include="..\sim\GPU.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\BankQueueScheduler.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\BankSelectionPolicy.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\ChannelScheduler.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\ChannelTransaction.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRBank.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRBurst.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRCommand.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRModule.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRModuleState.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\DependencyBuffer.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\DependencyQueue.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\FifoScheduler.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\FifoSchedulerBase.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\GPUMemorySpecs.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\MCSplitter.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\MCSplitter2.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryControllerV2.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryRequest.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryRequestSplitter.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryTraceRecorder.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\RWFifoScheduler.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\SchedulerSelector.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\SwitchOperationMode.h" />
+    <ClInclude Include="..\sim\MemoryControllerV2\toolsQueue.h" />
+    <ClInclude Include="..\sim\MemoryController\MemoryController.h" />
+    <ClInclude Include="..\sim\MemoryController\MemoryControllerCommand.h" />
+    <ClInclude Include="..\sim\MemoryController\MemoryControllerDefs.h" />
+    <ClInclude Include="..\sim\MemoryController\MemorySpace.h" />
+    <ClInclude Include="..\sim\MemoryController\MemoryTransaction.h" />
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssembly.h" />
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyCommand.h" />
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyInput.h" />
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyRequest.h" />
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyStateInfo.h" />
+    <ClInclude Include="..\sim\Rasterizer\FFIFOStateInfo.h" />
+    <ClInclude Include="..\sim\Rasterizer\FragmentFIFO.h" />
+    <ClInclude Include="..\sim\Rasterizer\FragmentInput.h" />
+    <ClInclude Include="..\sim\Rasterizer\HierarchicalZ.h" />
+    <ClInclude Include="..\sim\Rasterizer\HZAccess.h" />
+    <ClInclude Include="..\sim\Rasterizer\HZStateInfo.h" />
+    <ClInclude Include="..\sim\Rasterizer\HZUpdate.h" />
+    <ClInclude Include="..\sim\Rasterizer\Interpolator.h" />
+    <ClInclude Include="..\sim\Rasterizer\Rasterizer.h" />
+    <ClInclude Include="..\sim\Rasterizer\RasterizerCommand.h" />
+    <ClInclude Include="..\sim\Rasterizer\RasterizerState.h" />
+    <ClInclude Include="..\sim\Rasterizer\RasterizerStateInfo.h" />
+    <ClInclude Include="..\sim\Rasterizer\TileEvaluatorStateInfo.h" />
+    <ClInclude Include="..\sim\Rasterizer\TileInput.h" />
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetup.h" />
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupInput.h" />
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupOutput.h" />
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupRequest.h" />
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupStateInfo.h" />
+    <ClInclude Include="..\sim\Rasterizer\TriangleTraversal.h" />
+    <ClInclude Include="..\sim\Shader\ConsumerStateInfo.h" />
+    <ClInclude Include="..\sim\Shader\FilterOperation.h" />
+    <ClInclude Include="..\sim\Shader\ShaderArchitectureParameters.h" />
+    <ClInclude Include="..\sim\Shader\ShaderCommand.h" />
+    <ClInclude Include="..\sim\Shader\ShaderCommon.h" />
+    <ClInclude Include="..\sim\Shader\ShaderDecodeCommand.h" />
+    <ClInclude Include="..\sim\Shader\ShaderDecodeExecute.h" />
+    <ClInclude Include="..\sim\Shader\ShaderDecodeStateInfo.h" />
+    <ClInclude Include="..\sim\Shader\ShaderExecInstruction.h" />
+    <ClInclude Include="..\sim\Shader\ShaderFetch.h" />
+    <ClInclude Include="..\sim\Shader\ShaderInput.h" />
+    <ClInclude Include="..\sim\Shader\ShaderState.h" />
+    <ClInclude Include="..\sim\Shader\ShaderStateInfo.h" />
+    <ClInclude Include="..\sim\Shader\TextureRequest.h" />
+    <ClInclude Include="..\sim\Shader\TextureResult.h" />
+    <ClInclude Include="..\sim\Shader\TextureUnit.h" />
+    <ClInclude Include="..\sim\Shader\TextureUnitStateInfo.h" />
+    <ClInclude Include="..\sim\Streamer\Streamer.h" />
+    <ClInclude Include="..\sim\Streamer\StreamerCommand.h" />
+    <ClInclude Include="..\sim\Streamer\StreamerCommit.h" />
+    <ClInclude Include="..\sim\Streamer\StreamerControlCommand.h" />
+    <ClInclude Include="..\sim\Streamer\StreamerFetch.h" />
+    <ClInclude Include="..\sim\Streamer\StreamerLoader.h" />
+    <ClInclude Include="..\sim\Streamer\StreamerOutputCache.h" />
+    <ClInclude Include="..\sim\Streamer\StreamerStateInfo.h" />
+    <ClInclude Include="..\sim\VectorShader\VectorInstructionFetch.h" />
+    <ClInclude Include="..\sim\VectorShader\VectorShaderDecodeExecute.h" />
+    <ClInclude Include="..\sim\VectorShader\VectorShaderFetch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\gpu\Box.cpp" />
+    <ClCompile Include="..\gpu\GPUSignal.cpp" />
+    <ClCompile Include="..\gpu\MultiClockBox.cpp" />
+    <ClCompile Include="..\gpu\SignalBinder.cpp" />
+    <ClCompile Include="..\gpu\Statistic.cpp" />
+    <ClCompile Include="..\gpu\StatisticsManager.cpp" />
+    <ClCompile Include="..\sim\Cache\ColorCacheV2.cpp" />
+    <ClCompile Include="..\sim\Cache\FetchCache.cpp" />
+    <ClCompile Include="..\sim\Cache\FetchCache64.cpp" />
+    <ClCompile Include="..\sim\Cache\InputCache.cpp" />
+    <ClCompile Include="..\sim\Cache\ROPCache.cpp" />
+    <ClCompile Include="..\sim\Cache\TextureCache.cpp" />
+    <ClCompile Include="..\sim\Cache\TextureCacheGen.cpp" />
+    <ClCompile Include="..\sim\Cache\TextureCacheL2.cpp" />
+    <ClCompile Include="..\sim\Cache\ZCacheV2.cpp" />
+    <ClCompile Include="..\sim\Clipper\Clipper.cpp" />
+    <ClCompile Include="..\sim\Clipper\ClipperCommand.cpp" />
+    <ClCompile Include="..\sim\Clipper\ClipperStateInfo.cpp" />
+    <ClCompile Include="..\sim\Clipper\ClipperStatusInfo.cpp" />
+    <ClCompile Include="..\sim\CommandProcessor\AGPTransaction.cpp" />
+    <ClCompile Include="..\sim\CommandProcessor\CommandProcessor.cpp" />
+    <ClCompile Include="..\sim\DAC\Blitter.cpp" />
+    <ClCompile Include="..\sim\Dac\DAC.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\BlendOperation.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\ColorBlockStateInfo.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\ColorWriteV2.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\GenericROP.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\ROPOperation.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\ROPStatusInfo.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\ZOperation.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\ZStencilStatusInfo.cpp" />
+    <ClCompile Include="..\sim\FragmentOperations\ZStencilTestV2.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\BankQueueScheduler.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\BankSelectionPolicy.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\ChannelScheduler.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\ChannelTransaction.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRBank.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRBurst.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRCommand.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRModule.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRModuleState.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\DependencyBuffer.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\DependencyQueue.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\FifoScheduler.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\FifoSchedulerBase.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\MCSplitter.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\MCSplitter2.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryControllerV2.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryRequest.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryRequestSplitter.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryTraceRecorder.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\RWFifoScheduler.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\SchedulerSelector.cpp" />
+    <ClCompile Include="..\sim\MemoryControllerV2\SwitchOperationMode.cpp" />
+    <ClCompile Include="..\sim\MemoryController\MemoryController.cpp" />
+    <ClCompile Include="..\sim\MemoryController\MemoryControllerCommand.cpp" />
+    <ClCompile Include="..\sim\MemoryController\MemoryTransaction.cpp" />
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssembly.cpp" />
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyCommand.cpp" />
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyInput.cpp" />
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyRequest.cpp" />
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyStateInfo.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\FFIFOStateInfo.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\FragmentFIFO.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\FragmentInput.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\HierarchicalZ.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\HZAccess.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\HZStateInfo.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\HZUpdate.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\Interpolator.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\Rasterizer.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\RasterizerCommand.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\RasterizerStateInfo.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TileEvaluatorStateInfo.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TileInput.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetup.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupInput.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupOutput.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupRequest.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupStateInfo.cpp" />
+    <ClCompile Include="..\sim\Rasterizer\TriangleTraversal.cpp" />
+    <ClCompile Include="..\sim\Shader\ConsumerStateInfo.cpp" />
+    <ClCompile Include="..\sim\Shader\FilterOperation.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderArchitectureParameters.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderCommand.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderDecodeCommand.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderDecodeExecute.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderDecodeStateInfo.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderExecInstruction.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderFetch.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderInput.cpp" />
+    <ClCompile Include="..\sim\Shader\ShaderStateInfo.cpp" />
+    <ClCompile Include="..\sim\Shader\TextureRequest.cpp" />
+    <ClCompile Include="..\sim\Shader\TextureResult.cpp" />
+    <ClCompile Include="..\sim\Shader\TextureUnit.cpp" />
+    <ClCompile Include="..\sim\Shader\TextureUnitStateInfo.cpp" />
+    <ClCompile Include="..\sim\Streamer\Streamer.cpp" />
+    <ClCompile Include="..\sim\Streamer\StreamerCommand.cpp" />
+    <ClCompile Include="..\sim\Streamer\StreamerCommit.cpp" />
+    <ClCompile Include="..\sim\Streamer\StreamerControlCommand.cpp" />
+    <ClCompile Include="..\sim\Streamer\StreamerFetch.cpp" />
+    <ClCompile Include="..\sim\Streamer\StreamerLoader.cpp" />
+    <ClCompile Include="..\sim\Streamer\StreamerOutputCache.cpp" />
+    <ClCompile Include="..\sim\Streamer\StreamerStateInfo.cpp" />
+    <ClCompile Include="..\sim\VectorShader\VectorInstructionFetch.cpp" />
+    <ClCompile Include="..\sim\VectorShader\VectorShaderDecodeExecute.cpp" />
+    <ClCompile Include="..\sim\VectorShader\VectorShaderFetch.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

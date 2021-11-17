@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\sim">
+      <UniqueIdentifier>{a9f1bcfd-56be-4b46-a701-c5b36db270bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\Streamer">
+      <UniqueIdentifier>{8f43bf36-01f0-4d20-995f-b10a1d0840e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\Shader">
+      <UniqueIdentifier>{8353b1dd-965b-4207-9190-ca8df1953ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\Rasterizer">
+      <UniqueIdentifier>{f56ccb72-511d-4431-99e4-559c6b635d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\PrimitiveAssembly">
+      <UniqueIdentifier>{df636250-0d17-4401-999c-34176560df92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\MemoryController">
+      <UniqueIdentifier>{24d444bf-cf9f-494c-8054-d622e24e4bfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\FragmentOperations">
+      <UniqueIdentifier>{e3434d2e-d560-4b5f-819e-917b17186f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\DAC">
+      <UniqueIdentifier>{15a3881d-e6d1-4cec-a3e5-4e993bfdfa9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\CommandProcessor">
+      <UniqueIdentifier>{32f700a9-001f-4083-b51e-d8330c2c24cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\Clipper">
+      <UniqueIdentifier>{7d225601-ae71-4b01-ab52-eece491b8728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\Cache">
+      <UniqueIdentifier>{efa6f792-8113-45b0-8b89-30650ee95d78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\MemoryControllerV2">
+      <UniqueIdentifier>{34c459ce-30b5-4f1a-bfb9-d6528ced4659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sim\VectorShader">
+      <UniqueIdentifier>{f111b54c-5285-47cb-bd53-7ed1c321a34c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gpu">
+      <UniqueIdentifier>{a8f53de2-9a9b-4550-b182-82373ef12fc1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sim\GPU.h">
+      <Filter>Source Files\sim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\Streamer.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\StreamerCommand.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\StreamerCommit.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\StreamerControlCommand.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\StreamerFetch.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\StreamerLoader.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\StreamerOutputCache.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Streamer\StreamerStateInfo.h">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ConsumerStateInfo.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\FilterOperation.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderArchitectureParameters.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderCommand.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderCommon.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderDecodeCommand.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderDecodeExecute.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderDecodeStateInfo.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderExecInstruction.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderFetch.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderInput.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderState.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\ShaderStateInfo.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\TextureRequest.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\TextureResult.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\TextureUnit.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Shader\TextureUnitStateInfo.h">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\FFIFOStateInfo.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\FragmentFIFO.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\FragmentInput.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\HierarchicalZ.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\HZAccess.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\HZStateInfo.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\HZUpdate.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\Interpolator.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\Rasterizer.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\RasterizerCommand.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\RasterizerState.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\RasterizerStateInfo.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TileEvaluatorStateInfo.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TileInput.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetup.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupInput.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupOutput.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupRequest.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TriangleSetupStateInfo.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Rasterizer\TriangleTraversal.h">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssembly.h">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyCommand.h">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyInput.h">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyRequest.h">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyStateInfo.h">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryController\MemoryController.h">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryController\MemoryControllerCommand.h">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryController\MemoryControllerDefs.h">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryController\MemorySpace.h">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryController\MemoryTransaction.h">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\BlendOperation.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\ColorBlockStateInfo.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\ColorWriteV2.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\GenericROP.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\ROPOperation.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\ROPStatusInfo.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\ZOperation.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\ZStencilStatusInfo.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\FragmentOperations\ZStencilTestV2.h">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\DAC\Blitter.h">
+      <Filter>Source Files\sim\DAC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Dac\DAC.h">
+      <Filter>Source Files\sim\DAC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\DAC\WakeUpQueue.h">
+      <Filter>Source Files\sim\DAC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\CommandProcessor\AGPTransaction.h">
+      <Filter>Source Files\sim\CommandProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\CommandProcessor\CommandProcessor.h">
+      <Filter>Source Files\sim\CommandProcessor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Clipper\Clipper.h">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Clipper\ClipperCommand.h">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Clipper\ClipperStateInfo.h">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Clipper\ClipperStatusInfo.h">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\ColorCacheV2.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\FetchCache.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\FetchCache64.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\InputCache.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\ROPCache.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\TextureCache.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\TextureCacheGen.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\TextureCacheL2.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\Cache\ZCacheV2.h">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\BankQueueScheduler.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\BankSelectionPolicy.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\ChannelScheduler.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\ChannelTransaction.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRBank.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRBurst.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRCommand.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRModule.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\DDRModuleState.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\DependencyBuffer.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\DependencyQueue.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\FifoScheduler.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\FifoSchedulerBase.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\GPUMemorySpecs.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\MCSplitter.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\MCSplitter2.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryControllerV2.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryRequest.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryRequestSplitter.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\MemoryTraceRecorder.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\RWFifoScheduler.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\SchedulerSelector.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\SwitchOperationMode.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\MemoryControllerV2\toolsQueue.h">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\VectorShader\VectorInstructionFetch.h">
+      <Filter>Source Files\sim\VectorShader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\VectorShader\VectorShaderDecodeExecute.h">
+      <Filter>Source Files\sim\VectorShader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sim\VectorShader\VectorShaderFetch.h">
+      <Filter>Source Files\sim\VectorShader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpu\Box.h">
+      <Filter>Source Files\gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpu\GPUSignal.h">
+      <Filter>Source Files\gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpu\MultiClockBox.h">
+      <Filter>Source Files\gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpu\SignalBinder.h">
+      <Filter>Source Files\gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpu\Statistic.h">
+      <Filter>Source Files\gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpu\StatisticsManager.h">
+      <Filter>Source Files\gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpu\toolsQueue.h">
+      <Filter>Source Files\gpu</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sim\Streamer\Streamer.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Streamer\StreamerCommand.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Streamer\StreamerCommit.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Streamer\StreamerControlCommand.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Streamer\StreamerFetch.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Streamer\StreamerLoader.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Streamer\StreamerOutputCache.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Streamer\StreamerStateInfo.cpp">
+      <Filter>Source Files\sim\Streamer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ConsumerStateInfo.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\FilterOperation.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderArchitectureParameters.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderCommand.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderDecodeCommand.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderDecodeExecute.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderDecodeStateInfo.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderExecInstruction.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderFetch.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderInput.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\ShaderStateInfo.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\TextureRequest.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\TextureResult.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\TextureUnit.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Shader\TextureUnitStateInfo.cpp">
+      <Filter>Source Files\sim\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\FFIFOStateInfo.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\FragmentFIFO.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\FragmentInput.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\HierarchicalZ.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\HZAccess.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\HZStateInfo.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\HZUpdate.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\Interpolator.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\Rasterizer.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\RasterizerCommand.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\RasterizerStateInfo.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TileEvaluatorStateInfo.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TileInput.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetup.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupInput.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupOutput.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupRequest.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TriangleSetupStateInfo.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Rasterizer\TriangleTraversal.cpp">
+      <Filter>Source Files\sim\Rasterizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssembly.cpp">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyCommand.cpp">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyInput.cpp">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyRequest.cpp">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\PrimitiveAssembly\PrimitiveAssemblyStateInfo.cpp">
+      <Filter>Source Files\sim\PrimitiveAssembly</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryController\MemoryController.cpp">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryController\MemoryControllerCommand.cpp">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryController\MemoryTransaction.cpp">
+      <Filter>Source Files\sim\MemoryController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\BlendOperation.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\ColorBlockStateInfo.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\ColorWriteV2.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\GenericROP.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\ROPOperation.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\ROPStatusInfo.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\ZOperation.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\ZStencilStatusInfo.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\FragmentOperations\ZStencilTestV2.cpp">
+      <Filter>Source Files\sim\FragmentOperations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\DAC\Blitter.cpp">
+      <Filter>Source Files\sim\DAC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Dac\DAC.cpp">
+      <Filter>Source Files\sim\DAC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\CommandProcessor\AGPTransaction.cpp">
+      <Filter>Source Files\sim\CommandProcessor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\CommandProcessor\CommandProcessor.cpp">
+      <Filter>Source Files\sim\CommandProcessor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Clipper\Clipper.cpp">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Clipper\ClipperCommand.cpp">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Clipper\ClipperStateInfo.cpp">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Clipper\ClipperStatusInfo.cpp">
+      <Filter>Source Files\sim\Clipper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\ColorCacheV2.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\FetchCache.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\FetchCache64.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\InputCache.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\ROPCache.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\TextureCache.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\TextureCacheGen.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\TextureCacheL2.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\Cache\ZCacheV2.cpp">
+      <Filter>Source Files\sim\Cache</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\BankQueueScheduler.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\BankSelectionPolicy.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\ChannelScheduler.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\ChannelTransaction.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRBank.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRBurst.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRCommand.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRModule.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\DDRModuleState.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\DependencyBuffer.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\DependencyQueue.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\FifoScheduler.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\FifoSchedulerBase.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\MCSplitter.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\MCSplitter2.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryControllerV2.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryRequest.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryRequestSplitter.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\MemoryTraceRecorder.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\RWFifoScheduler.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\SchedulerSelector.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\MemoryControllerV2\SwitchOperationMode.cpp">
+      <Filter>Source Files\sim\MemoryControllerV2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\VectorShader\VectorInstructionFetch.cpp">
+      <Filter>Source Files\sim\VectorShader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\VectorShader\VectorShaderDecodeExecute.cpp">
+      <Filter>Source Files\sim\VectorShader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sim\VectorShader\VectorShaderFetch.cpp">
+      <Filter>Source Files\sim\VectorShader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpu\Box.cpp">
+      <Filter>Source Files\gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpu\GPUSignal.cpp">
+      <Filter>Source Files\gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpu\MultiClockBox.cpp">
+      <Filter>Source Files\gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpu\SignalBinder.cpp">
+      <Filter>Source Files\gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpu\Statistic.cpp">
+      <Filter>Source Files\gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpu\StatisticsManager.cpp">
+      <Filter>Source Files\gpu</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

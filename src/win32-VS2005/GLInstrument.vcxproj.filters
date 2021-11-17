@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GLInstrument">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{a4ec1f6e-6517-4135-b7d6-8d1afba09a5f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\GLInstrument\ConfigManager.cpp">
+      <Filter>GLInstrument</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInstrument\DLLLoader.cpp">
+      <Filter>GLInstrument</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInstrument\GLIEntryPoints.cpp">
+      <Filter>GLInstrument</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInstrument\GLInstrumentImp.cpp">
+      <Filter>GLInstrument</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInstrument\MainGLInstrument.cpp">
+      <Filter>GLInstrument</Filter>
+    </ClCompile>
+    <ClCompile Include="..\support\support.cpp">
+      <Filter>GLInstrument</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\GLJumpTable.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\GLResolver.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\GLInstrument\DemoTool.h">
+      <Filter>GLInstrument</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInstrument\DLLLoader.h">
+      <Filter>GLInstrument</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInstrument\GLIEntryPoints.h">
+      <Filter>GLInstrument</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInstrument\GLInstrument.h">
+      <Filter>GLInstrument</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInstrument\GLInstrumentImp.h">
+      <Filter>GLInstrument</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInstrument\GLITool.h">
+      <Filter>GLInstrument</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInstrument\resource.h">
+      <Filter>GLInstrument</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\GLJumpTable.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\GLResolver.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInstrument\ConfigManager.h" />
+    <ClInclude Include="..\trace\GLInstrument\MainGLInstrument.h" />
+    <ClInclude Include="..\support\support.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\trace\GLInstrument\opengl32.def">
+      <Filter>GLInstrument</Filter>
+    </None>
+  </ItemGroup>
+</Project>

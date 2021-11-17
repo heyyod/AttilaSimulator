@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{91a206b0-f663-4597-a7d0-399450a02a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\TraceReader">
+      <UniqueIdentifier>{34c17f37-45a1-497e-8eb1-b412752654f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\log">
+      <UniqueIdentifier>{6323a7d4-bb39-41ca-8eb5-5a48108f77e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLPlayer_net">
+      <UniqueIdentifier>{06dc028f-9a0a-4c0f-b282-ddcaeedb8e65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\utils\GLJumpTable.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\GLResolver.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\zfstream.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\GLExec.cpp">
+      <Filter>utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\GLExecStats.cpp">
+      <Filter>utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\StubApiCalls.cpp">
+      <Filter>utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\TraceReader\TraceReader.cpp">
+      <Filter>utils\TraceReader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\log\IncludeLog.cpp">
+      <Filter>utils\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\log\LogObject.cpp">
+      <Filter>utils\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLPlayer\main.cpp">
+      <Filter>GLPlayer_net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLPlayer\ScreenUtils.cpp">
+      <Filter>GLPlayer_net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\BufferDescriptor.cpp" />
+    <ClCompile Include="..\trace\utils\DArray.cpp" />
+    <ClCompile Include="..\trace\utils\MemoryRegion.cpp" />
+    <ClCompile Include="..\support\support.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\utils\GLJumpTable.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\GLResolver.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zconf.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zfstream.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zlib.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\GLExec.h">
+      <Filter>utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\GLExecStats.h">
+      <Filter>utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\StubApiCalls.h">
+      <Filter>utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\TraceReader\TraceReader.h">
+      <Filter>utils\TraceReader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\log\IncludeLog.h">
+      <Filter>utils\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\log\LogObject.h">
+      <Filter>utils\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLPlayer\ScreenUtils.h">
+      <Filter>GLPlayer_net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\BufferDescriptor.h" />
+    <ClInclude Include="..\trace\utils\DArray.h" />
+    <ClInclude Include="..\trace\utils\MemoryRegion.h" />
+    <ClInclude Include="..\support\support.h" />
+  </ItemGroup>
+</Project>

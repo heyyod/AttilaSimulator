@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{65feffec-9e60-4927-bc47-d85d0cd023e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils\log">
+      <UniqueIdentifier>{8a2d5585-6e0c-46e2-b62b-9b065b91a5a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLInterceptor">
+      <UniqueIdentifier>{5a7051e9-a131-4758-b7b7-8abb135931ce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\utils\GLJumpTable.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\GLResolver.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\zfstream.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\log\IncludeLog.cpp">
+      <Filter>utils\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\log\LogObject.cpp">
+      <Filter>utils\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\BasicStats.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\GLInterceptor.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\GLIStatsManager.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\GLWrapper.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\ShProgramInfo.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\Specific.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\SpecificStats.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\SpecificSupport.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\GLInterceptor\TraceWriter.cpp">
+      <Filter>GLInterceptor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\utils\BufferDescriptor.cpp" />
+    <ClCompile Include="..\trace\GLInterceptor\CheckStats.cpp" />
+    <ClCompile Include="..\trace\utils\DArray.cpp" />
+    <ClCompile Include="..\trace\utils\MemoryRegion.cpp" />
+    <ClCompile Include="..\trace\GLInterceptor\ShaderStats.cpp" />
+    <ClCompile Include="..\support\support.cpp" />
+    <ClCompile Include="..\trace\GLInterceptor\UserStats.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\utils\GLJumpTable.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\GLResolver.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zconf.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zfstream.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\zlib.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\log\IncludeLog.h">
+      <Filter>utils\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\utils\log\LogObject.h">
+      <Filter>utils\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\GLInterceptor.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\GLIStatsManager.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\GLWrapper.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\ShProgramInfo.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\Specific.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\SpecificStats.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\SpecificSupport.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\TraceWriter.h">
+      <Filter>GLInterceptor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\GLInterceptor\BasicStats.h" />
+    <ClInclude Include="..\trace\utils\BufferDescriptor.h" />
+    <ClInclude Include="..\trace\GLInterceptor\CheckStats.h" />
+    <ClInclude Include="..\trace\utils\DArray.h" />
+    <ClInclude Include="..\trace\GLInterceptor\GLIStat.h" />
+    <ClInclude Include="..\trace\GLInterceptor\GLIVersion.h" />
+    <ClInclude Include="..\trace\utils\MemoryRegion.h" />
+    <ClInclude Include="..\trace\GLInterceptor\resource.h" />
+    <ClInclude Include="..\trace\GLInterceptor\ShaderStats.h" />
+    <ClInclude Include="..\support\support.h" />
+    <ClInclude Include="..\trace\GLInterceptor\UserStats.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\trace\GLInterceptor\opengl32.def">
+      <Filter>GLInterceptor</Filter>
+    </None>
+  </ItemGroup>
+</Project>

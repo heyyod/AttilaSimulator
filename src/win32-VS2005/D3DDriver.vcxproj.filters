@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\AD3D9">
+      <UniqueIdentifier>{fb09cdde-e1f3-4767-bc15-f7fc004a5fe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AD3D9\ShaderTranslator">
+      <UniqueIdentifier>{eb8d200e-46a0-4c85-9a9e-1c42078e4459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AD3D9\FFGenerator">
+      <UniqueIdentifier>{7bf9ef3b-226c-437f-9924-cc982cb9bf1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\D3DDriver\D3DDriver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AD3D9State.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIBaseTextureImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AICubeTextureImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIDeviceImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIDirect3DImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIFunctionsImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIIndexBufferImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIPixelShaderImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIQueryImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIResourceImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIRoot_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIStateBlockImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AISurfaceImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AISwapChainImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AITextureImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIVertexBufferImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIVertexDeclarationImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIVertexShaderImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIVolumeImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\AIVolumeTextureImp_9.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\D3DInterface.cpp">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IR.cpp">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRBuilder.cpp">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRDisassembler.cpp">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRPrinter.cpp">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRTranslator.cpp">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\ShaderGenerate.cpp">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\ShaderTranslator.cpp">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DDriver\AD3D9\FFGenerator\FFShaderGenerator.cpp">
+      <Filter>Source Files\AD3D9\FFGenerator</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\D3DDriver\Utils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AD3D9State.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIBaseTextureImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AICubeTextureImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIDeviceImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIDirect3DImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIFunctionsImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIIndexBufferImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIPixelShaderImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIQueryImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIResourceImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIRoot_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIStateBlockImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AISurfaceImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AISwapChainImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AITextureImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIVertexBufferImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIVertexDeclarationImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIVertexShaderImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIVolumeImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\AIVolumeTextureImp_9.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\Common.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\D3DInterface.h">
+      <Filter>Source Files\AD3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IR.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRBuilder.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRDisassembler.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRPrinter.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\IRTranslator.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\ShaderGenerate.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\ShaderTranslator.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\ShaderTranslator\Types.h">
+      <Filter>Source Files\AD3D9\ShaderTranslator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\AD3D9\FFGenerator\FFShaderGenerator.h">
+      <Filter>Source Files\AD3D9\FFGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DDriver\D3DDriver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

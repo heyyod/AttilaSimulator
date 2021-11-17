@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B53C27A5-9637-453E-97E7-AD5002A30673}</ProjectGuid>
+    <RootNamespace>codegeneration</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>.\x64\CodeGenerator\Debug\</OutDir>
+    <IntDir>.\x64\CodeGenerator\Debug\</IntDir>
+    <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.\x64\CodeGenerator\Release\</OutDir>
+    <IntDir>.\x64\CodeGenerator\Release\</IntDir>
+    <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)codegeneration.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)codegeneration.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)Codecodegeneration.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)codegeneration.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)codegeneration.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)codegeneration.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\trace\CodeGenerator\CGconfigVS.ini">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">OpenGL Framework Autogeneration Pass</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\win32\CodeGenerator\Debug\codegenerator ..\trace\CodeGenerator\CGconfigVS.ini
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\trace\CodeGenerator\CGconfigVS.ini;..\trace\utils\GL\OGL_functions_supported_by_bGPU.h;..\trace\GLInterceptor\Specific.h;..\trace\GLInterceptor\SpecificStats.h;..\trace\utils\GL\*.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\trace\GLInstrument\GLIEntryPoints.cpp;..\trace\GLInstrument\GLIEntryPoints.h;..\trace\GLInterceptor\GLWrapper.cpp;..\trace\GLInterceptor\GLWrapper.h;..\trace\GLInterceptor\opengl32.def;..\trace\utils\Gen\APICall.gen;..\trace\utils\Gen\GLConstantNames.gen;..\trace\utils\Gen\GLFunctionNames.gen;..\trace\utils\Gen\GLJumpTableFields.gen;..\trace\utils\Gen\GLJumpTableSL.gen;..\trace\utils\Gen\JumpTableWrapper.gen;..\trace\utils\Gen\PlayableCalls.gen;..\trace\utils\Gen\SwitchBranches.gen;..\trace\utils\TraceReader\StubApiCalls.cpp;..\trace\utils\TraceReader\StubApiCalls.h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">OpenGL Framework Autogeneration Pass</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\x64\CodeGenerator\Debug\codegenerator ..\trace\CodeGenerator\CGconfigVS.ini
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\trace\CodeGenerator\CGconfigVS.ini;..\trace\utils\GL\OGL_functions_supported_by_bGPU.h;..\trace\GLInterceptor\Specific.h;..\trace\GLInterceptor\SpecificStats.h;..\trace\utils\GL\*.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\trace\GLInstrument\GLIEntryPoints.cpp;..\trace\GLInstrument\GLIEntryPoints.h;..\trace\GLInterceptor\GLWrapper.cpp;..\trace\GLInterceptor\GLWrapper.h;..\trace\GLInterceptor\opengl32.def;..\trace\utils\Gen\APICall.gen;..\trace\utils\Gen\GLConstantNames.gen;..\trace\utils\Gen\GLFunctionNames.gen;..\trace\utils\Gen\GLJumpTableFields.gen;..\trace\utils\Gen\GLJumpTableSL.gen;..\trace\utils\Gen\JumpTableWrapper.gen;..\trace\utils\Gen\PlayableCalls.gen;..\trace\utils\Gen\SwitchBranches.gen;..\trace\utils\TraceReader\StubApiCalls.cpp;..\trace\utils\TraceReader\StubApiCalls.h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">OpenGL Framework Autogeneration Pass</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\win32\CodeGenerator\Release\codegenerator ..\trace\CodeGenerator\CGconfigVS.ini
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\trace\CodeGenerator\CGconfigVS.ini;..\trace\utils\GL\OGL_functions_supported_by_bGPU.h;..\trace\GLInterceptor\Specific.h;..\trace\GLInterceptor\SpecificStats.h;..\trace\utils\GL\*.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\trace\GLInstrument\GLIEntryPoints.cpp;..\trace\GLInstrument\GLIEntryPoints.h;..\trace\GLInterceptor\GLWrapper.cpp;..\trace\GLInterceptor\GLWrapper.h;..\trace\GLInterceptor\opengl32.def;..\trace\utils\Gen\APICall.gen;..\trace\utils\Gen\GLConstantNames.gen;..\trace\utils\Gen\GLFunctionNames.gen;..\trace\utils\Gen\GLJumpTableFields.gen;..\trace\utils\Gen\GLJumpTableSL.gen;..\trace\utils\Gen\JumpTableWrapper.gen;..\trace\utils\Gen\PlayableCalls.gen;..\trace\utils\Gen\SwitchBranches.gen;..\trace\utils\TraceReader\StubApiCalls.cpp;..\trace\utils\TraceReader\StubApiCalls.h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">OpenGL Framework Autogeneration Pass</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\x64\CodeGenerator\Release\codegenerator ..\trace\CodeGenerator\CGconfigVS.ini
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\trace\CodeGenerator\CGconfigVS.ini;..\trace\utils\GL\OGL_functions_supported_by_bGPU.h;..\trace\GLInterceptor\Specific.h;..\trace\GLInterceptor\SpecificStats.h;..\trace\utils\GL\*.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\trace\GLInstrument\GLIEntryPoints.cpp;..\trace\GLInstrument\GLIEntryPoints.h;..\trace\GLInterceptor\GLWrapper.cpp;..\trace\GLInterceptor\GLWrapper.h;..\trace\GLInterceptor\opengl32.def;..\trace\utils\Gen\APICall.gen;..\trace\utils\Gen\GLConstantNames.gen;..\trace\utils\Gen\GLFunctionNames.gen;..\trace\utils\Gen\GLJumpTableFields.gen;..\trace\utils\Gen\GLJumpTableSL.gen;..\trace\utils\Gen\JumpTableWrapper.gen;..\trace\utils\Gen\PlayableCalls.gen;..\trace\utils\Gen\SwitchBranches.gen;..\trace\utils\TraceReader\StubApiCalls.cpp;..\trace\utils\TraceReader\StubApiCalls.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="CodeGenerator.vcxproj">
+      <Project>{f28b2fa6-80ce-4c3a-9790-08cc91ab8697}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

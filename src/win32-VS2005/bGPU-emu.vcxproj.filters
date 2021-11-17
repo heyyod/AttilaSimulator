@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\bgpu-emu">
+      <UniqueIdentifier>{5e6b73cb-b03c-4887-a082-573a8abb42db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\bgpu\bGPU-emu.cpp">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bgpu\ConfigLoader.cpp">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\trace\D3DTraceDriver.cpp">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bgpu\GPUEmulator.cpp">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\bgpu\LineReader.cpp">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\bgpu\bGPU-emu.h">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bgpu\ConfigLoader.h">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace\D3DTraceDriver.h">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bgpu\GPUEmulator.h">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bgpu\LineReader.h">
+      <Filter>Source Files\bgpu-emu</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

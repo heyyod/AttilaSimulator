@@ -1,0 +1,5056 @@
+
+/* A Bison parser, made by GNU Bison 2.4.1.  */
+
+/* Skeleton implementation for Bison's Yacc-like parsers in C
+   
+      Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Free Software Foundation, Inc.
+   
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+
+/* As a special exception, you may create a larger work that contains
+   part or all of the Bison parser skeleton and distribute that work
+   under terms of your choice, so long as that work isn't itself a
+   parser generator using the skeleton or a modified version thereof
+   as a parser skeleton.  Alternatively, if you modify or redistribute
+   the parser skeleton itself, you may (at your option) remove this
+   special exception, which will cause the skeleton and the resulting
+   Bison output files to be licensed under the GNU General Public
+   License without this special exception.
+   
+   This special exception was added by the Free Software Foundation in
+   version 2.2 of Bison.  */
+
+/* C LALR(1) parser skeleton written by Richard Stallman, by
+   simplifying the original so-called "semantic" parser.  */
+
+/* All symbols defined below should begin with yy or YY, to avoid
+   infringing on user name space.  This should be done even for local
+   variables, as they might otherwise be expanded by user macros.
+   There are some unavoidable exceptions within include files to
+   define necessary library symbols; they are noted "INFRINGES ON
+   USER NAME SPACE" below.  */
+
+/* Identify Bison output.  */
+#define YYBISON 1
+
+/* Bison version.  */
+#define YYBISON_VERSION "2.4.1"
+
+/* Skeleton name.  */
+#define YYSKELETON_NAME "yacc.c"
+
+/* Pure parsers.  */
+#define YYPURE 0
+
+/* Push parsers.  */
+#define YYPUSH 0
+
+/* Pull parsers.  */
+#define YYPULL 1
+
+/* Using locations.  */
+#define YYLSP_NEEDED 0
+
+/* Substitute the variable and function names.  */
+#define yyparse         acdxfp1parse
+#define yylex           acdxfp1lex
+#define yyerror         acdxfp1error
+#define yylval          acdxfp1lval
+#define yychar          acdxfp1char
+#define yydebug         acdxfp1debug
+#define yynerrs         acdxfp1nerrs
+
+
+/* Copy the first part of user declarations.  */
+
+/* Line 189 of yacc.c  */
+#line 14 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+int yylex();
+
+#include "ACDXIRNode.h"
+
+using namespace acdlib::GenerationCode;
+using namespace acdlib;
+
+#ifndef YYDEBUG
+    #define YYDEBUG 0
+#endif
+
+#define APPEND_STR(str,str1)                       { (str).append(str1); }
+#define APPEND_NUMBER_SELECTION(string,number)     { stringstream ss; ss << "[" << number << "]"; (string).append(ss.str()); }
+#define APPEND_ROW_RANGE_SELECTION(string,min,max) { stringstream ss; ss << "[" << min << ".." << max << "]"; (string).append(ss.str()); }
+#define STRING_TO_VAR(str, var)                    { stringstream ss(str, ios::in); ss >> var; }
+
+#define CREATE_STRING(str_ptr,TEXT)                { (str_ptr) = new string(TEXT); acdxFp1ASTStringCollector.push_back(str_ptr); }
+
+#define CREATE_EMPTY_STRING(str_ptr)               CREATE_STRING(str_ptr, "")
+
+
+void yyerror(void*, char *s)
+{
+    panic("ACDXFP1Grammar.y","yyerror()","Sintactic error in Fragment Program");
+}
+
+typedef struct{
+  string* texto;
+  int linea;
+} type_token_atrib;  
+
+list<string*> acdxFp1LexSymbolCollector;
+
+list<string*> acdxFp1ASTStringCollector;
+
+
+
+/* Line 189 of yacc.c  */
+#line 125 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Bison.gen"
+
+/* Enabling traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 1
+#endif
+
+/* Enabling verbose error messages.  */
+#ifdef YYERROR_VERBOSE
+# undef YYERROR_VERBOSE
+# define YYERROR_VERBOSE 1
+#else
+# define YYERROR_VERBOSE 0
+#endif
+
+/* Enabling the token table.  */
+#ifndef YYTOKEN_TABLE
+# define YYTOKEN_TABLE 0
+#endif
+
+
+/* Tokens.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+   /* Put the tokens into the symbol table, so that GDB and other debuggers
+      know about them.  */
+   enum yytokentype {
+     TOK_ARBFP10_HEADER = 258,
+     TOK_OPTION = 259,
+     TOK_PARAM = 260,
+     TOK_ATTRIB = 261,
+     TOK_TEMP = 262,
+     TOK_OUTPUT = 263,
+     TOK_ALIAS = 264,
+     TOK_ABS = 265,
+     TOK_ADD = 266,
+     TOK_CMP = 267,
+     TOK_COS = 268,
+     TOK_DP3 = 269,
+     TOK_DP4 = 270,
+     TOK_DPH = 271,
+     TOK_DST = 272,
+     TOK_EX2 = 273,
+     TOK_FLR = 274,
+     TOK_FRC = 275,
+     TOK_KIL = 276,
+     TOK_KLS = 277,
+     TOK_CMPKIL = 278,
+     TOK_CHS = 279,
+     TOK_ZXP = 280,
+     TOK_ZXS = 281,
+     TOK_LG2 = 282,
+     TOK_LIT = 283,
+     TOK_LRP = 284,
+     TOK_MAD = 285,
+     TOK_MAX = 286,
+     TOK_MIN = 287,
+     TOK_MOV = 288,
+     TOK_MUL = 289,
+     TOK_FXMUL = 290,
+     TOK_FXMAD = 291,
+     TOK_FXMAD2 = 292,
+     TOK_POW = 293,
+     TOK_RCP = 294,
+     TOK_RSQ = 295,
+     TOK_SIN = 296,
+     TOK_SCS = 297,
+     TOK_SGE = 298,
+     TOK_SLT = 299,
+     TOK_SUB = 300,
+     TOK_SWZ = 301,
+     TOK_TEX = 302,
+     TOK_TXB = 303,
+     TOK_TXP = 304,
+     TOK_XPD = 305,
+     TOK_ABS_SAT = 306,
+     TOK_ADD_SAT = 307,
+     TOK_CMP_SAT = 308,
+     TOK_COS_SAT = 309,
+     TOK_DP3_SAT = 310,
+     TOK_DP4_SAT = 311,
+     TOK_DPH_SAT = 312,
+     TOK_DST_SAT = 313,
+     TOK_EX2_SAT = 314,
+     TOK_FLR_SAT = 315,
+     TOK_FRC_SAT = 316,
+     TOK_LG2_SAT = 317,
+     TOK_LIT_SAT = 318,
+     TOK_LRP_SAT = 319,
+     TOK_MAD_SAT = 320,
+     TOK_MAX_SAT = 321,
+     TOK_MIN_SAT = 322,
+     TOK_MOV_SAT = 323,
+     TOK_MUL_SAT = 324,
+     TOK_POW_SAT = 325,
+     TOK_RCP_SAT = 326,
+     TOK_RSQ_SAT = 327,
+     TOK_SIN_SAT = 328,
+     TOK_SCS_SAT = 329,
+     TOK_SGE_SAT = 330,
+     TOK_SLT_SAT = 331,
+     TOK_SUB_SAT = 332,
+     TOK_SWZ_SAT = 333,
+     TOK_TEX_SAT = 334,
+     TOK_TXB_SAT = 335,
+     TOK_TXP_SAT = 336,
+     TOK_XPD_SAT = 337,
+     TOK_PROGRAM = 338,
+     TOK_RESULT = 339,
+     TOK_STATE = 340,
+     TOK_FRAGMENT = 341,
+     TOK_TEXTURE = 342,
+     TOK_SAMPLE = 343,
+     TOK_COLOR = 344,
+     TOK_PRIMARY = 345,
+     TOK_SECONDARY = 346,
+     TOK_TEXCOORD = 347,
+     TOK_FOGCOORD = 348,
+     TOK_POSITION = 349,
+     TOK_ATTRIB_M = 350,
+     TOK_ENV = 351,
+     TOK_LOCAL = 352,
+     TOK_MATERIAL = 353,
+     TOK_AMBIENT = 354,
+     TOK_DIFFUSE = 355,
+     TOK_SPECULAR = 356,
+     TOK_EMISSION = 357,
+     TOK_SHININESS = 358,
+     TOK_FRONT = 359,
+     TOK_BACK = 360,
+     TOK_LIGHT = 361,
+     TOK_SPOT = 362,
+     TOK_DIRECTION = 363,
+     TOK_HALF = 364,
+     TOK_ATTENUATION = 365,
+     TOK_LIGHTMODEL = 366,
+     TOK_SCENECOLOR = 367,
+     TOK_LIGHTPROD = 368,
+     TOK_TEXENV = 369,
+     TOK_FOG = 370,
+     TOK_PARAMS = 371,
+     TOK_DEPTH = 372,
+     TOK_RANGE = 373,
+     TOK_MATRIX = 374,
+     TOK_MODELVIEW = 375,
+     TOK_PROJECTION = 376,
+     TOK_MVP = 377,
+     TOK_PALETTE = 378,
+     TOK_INVERSE = 379,
+     TOK_TRANSPOSE = 380,
+     TOK_INVTRANS = 381,
+     TOK_ROW = 382,
+     TOK_POINT_POINT = 383,
+     TOK_INT_CONST = 384,
+     TOK_FLOAT_CONST = 385,
+     TOK_IDENT = 386,
+     TOK_COMPONENT = 387,
+     TOK_1D = 388,
+     TOK_2D = 389,
+     TOK_3D = 390,
+     TOK_CUBE = 391,
+     TOK_RECT = 392,
+     TOK_END = 393
+   };
+#endif
+
+
+
+#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+typedef union YYSTYPE
+{
+
+/* Line 214 of yacc.c  */
+#line 56 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+         
+  type_token_atrib                          token_atrib;
+  string*                                   str;
+  float                                     floatconst;
+  int                                       intconst;
+  bool                                      boolean;
+  list<string>*                             strlist;
+  list<IROption*>*                          optlist;
+  list<IRStatement*>*                       stmntlist;
+  list<IRParamBinding*>*                    pbindlist;
+  ACDXIRNode*                               irnode;
+  IRProgram*                                irprogram;
+  IROption*                                 iroption;
+  IRStatement*                              irstatement;
+  IRInstruction*                            irinstruction;
+  IRSampleInstruction*                      irsamplinstr;
+  IRKillInstruction*                        irkillinstr;
+  IRZExportInstruction*						irzxpinstr;
+  IRSwizzleInstruction*                     irswzinstr;
+  IRSwizzleComponents*                      irswzcomps;
+  IRSwizzleComponents::swzComponent         irswzcomp;
+  IRDstOperand*                             irdstoperand;
+  IRSrcOperand*                             irsrcoperand;
+  IRALIASStatement*                         iraliasstmnt;
+  IRTEMPStatement*                          irtempstmnt;
+  IRATTRIBStatement*                        irattrstmnt;
+  IROUTPUTStatement*                        iroutputstmnt;
+  IRPARAMStatement*                         irparamstmnt;
+  IRParamBinding*                           irparambind;
+  IRLocalEnvBinding*                        irlocalenvbind;
+
+
+
+/* Line 214 of yacc.c  */
+#line 333 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Bison.gen"
+} YYSTYPE;
+# define YYSTYPE_IS_TRIVIAL 1
+# define yystype YYSTYPE /* obsolescent; will be withdrawn */
+# define YYSTYPE_IS_DECLARED 1
+#endif
+
+
+/* Copy the second part of user declarations.  */
+
+
+/* Line 264 of yacc.c  */
+#line 345 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Bison.gen"
+
+#ifdef short
+# undef short
+#endif
+
+#ifdef YYTYPE_UINT8
+typedef YYTYPE_UINT8 yytype_uint8;
+#else
+typedef unsigned char yytype_uint8;
+#endif
+
+#ifdef YYTYPE_INT8
+typedef YYTYPE_INT8 yytype_int8;
+#elif (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+typedef signed char yytype_int8;
+#else
+typedef short int yytype_int8;
+#endif
+
+#ifdef YYTYPE_UINT16
+typedef YYTYPE_UINT16 yytype_uint16;
+#else
+typedef unsigned short int yytype_uint16;
+#endif
+
+#ifdef YYTYPE_INT16
+typedef YYTYPE_INT16 yytype_int16;
+#else
+typedef short int yytype_int16;
+#endif
+
+#ifndef YYSIZE_T
+# ifdef __SIZE_TYPE__
+#  define YYSIZE_T __SIZE_TYPE__
+# elif defined size_t
+#  define YYSIZE_T size_t
+# elif ! defined YYSIZE_T && (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+#  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
+#  define YYSIZE_T size_t
+# else
+#  define YYSIZE_T unsigned int
+# endif
+#endif
+
+#define YYSIZE_MAXIMUM ((YYSIZE_T) -1)
+
+#ifndef YY_
+# if YYENABLE_NLS
+#  if ENABLE_NLS
+#   include <libintl.h> /* INFRINGES ON USER NAME SPACE */
+#   define YY_(msgid) dgettext ("bison-runtime", msgid)
+#  endif
+# endif
+# ifndef YY_
+#  define YY_(msgid) msgid
+# endif
+#endif
+
+/* Suppress unused-variable warnings by "using" E.  */
+#if ! defined lint || defined __GNUC__
+# define YYUSE(e) ((void) (e))
+#else
+# define YYUSE(e) /* empty */
+#endif
+
+/* Identity function, used to suppress warnings about constant conditions.  */
+#ifndef lint
+# define YYID(n) (n)
+#else
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static int
+YYID (int yyi)
+#else
+static int
+YYID (yyi)
+    int yyi;
+#endif
+{
+  return yyi;
+}
+#endif
+
+#if ! defined yyoverflow || YYERROR_VERBOSE
+
+/* The parser invokes alloca or malloc; define the necessary symbols.  */
+
+# ifdef YYSTACK_USE_ALLOCA
+#  if YYSTACK_USE_ALLOCA
+#   ifdef __GNUC__
+#    define YYSTACK_ALLOC __builtin_alloca
+#   elif defined __BUILTIN_VA_ARG_INCR
+#    include <alloca.h> /* INFRINGES ON USER NAME SPACE */
+#   elif defined _AIX
+#    define YYSTACK_ALLOC __alloca
+#   elif defined _MSC_VER
+#    include <malloc.h> /* INFRINGES ON USER NAME SPACE */
+#    define alloca _alloca
+#   else
+#    define YYSTACK_ALLOC alloca
+#    if ! defined _ALLOCA_H && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+#     include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
+#     ifndef _STDLIB_H
+#      define _STDLIB_H 1
+#     endif
+#    endif
+#   endif
+#  endif
+# endif
+
+# ifdef YYSTACK_ALLOC
+   /* Pacify GCC's `empty if-body' warning.  */
+#  define YYSTACK_FREE(Ptr) do { /* empty */; } while (YYID (0))
+#  ifndef YYSTACK_ALLOC_MAXIMUM
+    /* The OS might guarantee only one guard page at the bottom of the stack,
+       and a page size can be as small as 4096 bytes.  So we cannot safely
+       invoke alloca (N) if N exceeds 4096.  Use a slightly smaller number
+       to allow for a few compiler-allocated temporary stack slots.  */
+#   define YYSTACK_ALLOC_MAXIMUM 4032 /* reasonable circa 2006 */
+#  endif
+# else
+#  define YYSTACK_ALLOC YYMALLOC
+#  define YYSTACK_FREE YYFREE
+#  ifndef YYSTACK_ALLOC_MAXIMUM
+#   define YYSTACK_ALLOC_MAXIMUM YYSIZE_MAXIMUM
+#  endif
+#  if (defined __cplusplus && ! defined _STDLIB_H \
+       && ! ((defined YYMALLOC || defined malloc) \
+	     && (defined YYFREE || defined free)))
+#   include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
+#   ifndef _STDLIB_H
+#    define _STDLIB_H 1
+#   endif
+#  endif
+#  ifndef YYMALLOC
+#   define YYMALLOC malloc
+#   if ! defined malloc && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+void *malloc (YYSIZE_T); /* INFRINGES ON USER NAME SPACE */
+#   endif
+#  endif
+#  ifndef YYFREE
+#   define YYFREE free
+#   if ! defined free && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+void free (void *); /* INFRINGES ON USER NAME SPACE */
+#   endif
+#  endif
+# endif
+#endif /* ! defined yyoverflow || YYERROR_VERBOSE */
+
+
+#if (! defined yyoverflow \
+     && (! defined __cplusplus \
+	 || (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
+
+/* A type that is properly aligned for any stack member.  */
+union yyalloc
+{
+  yytype_int16 yyss_alloc;
+  YYSTYPE yyvs_alloc;
+};
+
+/* The size of the maximum gap between one aligned stack and the next.  */
+# define YYSTACK_GAP_MAXIMUM (sizeof (union yyalloc) - 1)
+
+/* The size of an array large to enough to hold all stacks, each with
+   N elements.  */
+# define YYSTACK_BYTES(N) \
+     ((N) * (sizeof (yytype_int16) + sizeof (YYSTYPE)) \
+      + YYSTACK_GAP_MAXIMUM)
+
+/* Copy COUNT objects from FROM to TO.  The source and destination do
+   not overlap.  */
+# ifndef YYCOPY
+#  if defined __GNUC__ && 1 < __GNUC__
+#   define YYCOPY(To, From, Count) \
+      __builtin_memcpy (To, From, (Count) * sizeof (*(From)))
+#  else
+#   define YYCOPY(To, From, Count)		\
+      do					\
+	{					\
+	  YYSIZE_T yyi;				\
+	  for (yyi = 0; yyi < (Count); yyi++)	\
+	    (To)[yyi] = (From)[yyi];		\
+	}					\
+      while (YYID (0))
+#  endif
+# endif
+
+/* Relocate STACK from its old location to the new one.  The
+   local variables YYSIZE and YYSTACKSIZE give the old and new number of
+   elements in the stack, and YYPTR gives the new location of the
+   stack.  Advance YYPTR to a properly aligned location for the next
+   stack.  */
+# define YYSTACK_RELOCATE(Stack_alloc, Stack)				\
+    do									\
+      {									\
+	YYSIZE_T yynewbytes;						\
+	YYCOPY (&yyptr->Stack_alloc, Stack, yysize);			\
+	Stack = &yyptr->Stack_alloc;					\
+	yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
+	yyptr += yynewbytes / sizeof (*yyptr);				\
+      }									\
+    while (YYID (0))
+
+#endif
+
+/* YYFINAL -- State number of the termination state.  */
+#define YYFINAL  5
+/* YYLAST -- Last index in YYTABLE.  */
+#define YYLAST   570
+
+/* YYNTOKENS -- Number of terminals.  */
+#define YYNTOKENS  148
+/* YYNNTS -- Number of nonterminals.  */
+#define YYNNTS  125
+/* YYNRULES -- Number of rules.  */
+#define YYNRULES  281
+/* YYNRULES -- Number of states.  */
+#define YYNSTATES  444
+
+/* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
+#define YYUNDEFTOK  2
+#define YYMAXUTOK   393
+
+#define YYTRANSLATE(YYX)						\
+  ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
+
+/* YYTRANSLATE[YYLEX] -- Bison symbol number corresponding to YYLEX.  */
+static const yytype_uint8 yytranslate[] =
+{
+       0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,   147,   140,   146,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,   139,
+       2,   143,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,   141,     2,   142,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,   144,     2,   145,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
+      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
+      35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
+      45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
+      55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
+      65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
+      75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
+      85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
+      95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
+     105,   106,   107,   108,   109,   110,   111,   112,   113,   114,
+     115,   116,   117,   118,   119,   120,   121,   122,   123,   124,
+     125,   126,   127,   128,   129,   130,   131,   132,   133,   134,
+     135,   136,   137,   138
+};
+
+#if YYDEBUG
+/* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
+   YYRHS.  */
+static const yytype_uint16 yyprhs[] =
+{
+       0,     0,     3,     6,    10,    13,    14,    18,    21,    22,
+      25,    28,    30,    32,    34,    36,    38,    40,    42,    44,
+      46,    48,    50,    52,    54,    59,    61,    63,    65,    67,
+      69,    71,    73,    75,    77,    79,    84,    86,    88,    90,
+      92,    94,    96,    98,   100,   102,   104,   106,   108,   110,
+     112,   119,   121,   123,   130,   132,   134,   136,   138,   140,
+     142,   144,   146,   148,   150,   152,   154,   156,   158,   160,
+     162,   164,   166,   168,   170,   172,   174,   176,   178,   180,
+     189,   191,   193,   195,   197,   199,   201,   203,   205,   207,
+     214,   216,   218,   227,   229,   231,   233,   235,   237,   239,
+     242,   250,   253,   261,   264,   266,   268,   270,   272,   274,
+     275,   279,   281,   285,   289,   292,   304,   306,   308,   310,
+     312,   314,   316,   318,   323,   325,   327,   329,   331,   332,
+     334,   336,   337,   339,   341,   343,   345,   347,   349,   351,
+     356,   359,   362,   365,   367,   369,   374,   376,   378,   380,
+     384,   391,   392,   394,   397,   402,   404,   408,   410,   412,
+     414,   416,   418,   420,   422,   424,   426,   428,   431,   434,
+     437,   440,   443,   446,   449,   452,   455,   459,   461,   463,
+     465,   467,   469,   475,   477,   479,   481,   483,   485,   488,
+     490,   492,   495,   497,   500,   507,   509,   511,   513,   515,
+     519,   521,   522,   526,   528,   531,   533,   535,   538,   540,
+     546,   549,   550,   557,   561,   562,   564,   566,   568,   570,
+     572,   575,   577,   579,   582,   587,   592,   593,   597,   599,
+     600,   604,   606,   608,   610,   612,   614,   616,   618,   624,
+     626,   630,   636,   642,   644,   648,   654,   656,   658,   660,
+     662,   664,   666,   668,   670,   674,   680,   688,   698,   701,
+     702,   704,   706,   710,   711,   715,   720,   723,   726,   727,
+     729,   731,   732,   734,   736,   741,   743,   745,   747,   749,
+     751,   753
+};
+
+/* YYRHS -- A `-1'-separated list of the rules' RHS.  */
+static const yytype_int16 yyrhs[] =
+{
+     149,     0,    -1,     3,   150,    -1,   151,   153,   138,    -1,
+     151,   152,    -1,    -1,     4,   269,   139,    -1,   153,   154,
+      -1,    -1,   155,   139,    -1,   194,   139,    -1,   156,    -1,
+     157,    -1,   158,    -1,   159,    -1,   161,    -1,   163,    -1,
+     165,    -1,   167,    -1,   169,    -1,   171,    -1,   173,    -1,
+     174,    -1,    24,    -1,   160,   181,   140,   180,    -1,    10,
+      -1,    51,    -1,    19,    -1,    60,    -1,    20,    -1,    61,
+      -1,    28,    -1,    63,    -1,    33,    -1,    68,    -1,   162,
+     181,   140,   179,    -1,    13,    -1,    54,    -1,    18,    -1,
+      59,    -1,    27,    -1,    62,    -1,    39,    -1,    71,    -1,
+      40,    -1,    72,    -1,    41,    -1,    73,    -1,    42,    -1,
+      74,    -1,   164,   181,   140,   179,   140,   179,    -1,    38,
+      -1,    70,    -1,   166,   181,   140,   180,   140,   180,    -1,
+      11,    -1,    52,    -1,    14,    -1,    55,    -1,    15,    -1,
+      56,    -1,    16,    -1,    57,    -1,    17,    -1,    58,    -1,
+      31,    -1,    66,    -1,    32,    -1,    67,    -1,    34,    -1,
+      35,    -1,    69,    -1,    43,    -1,    75,    -1,    44,    -1,
+      76,    -1,    45,    -1,    77,    -1,    50,    -1,    82,    -1,
+     168,   181,   140,   180,   140,   180,   140,   180,    -1,    12,
+      -1,    53,    -1,    23,    -1,    29,    -1,    64,    -1,    30,
+      -1,    36,    -1,    37,    -1,    65,    -1,   170,   181,   140,
+     184,   140,   182,    -1,    46,    -1,    78,    -1,   172,   181,
+     140,   180,   140,   175,   140,   176,    -1,    47,    -1,    79,
+      -1,    49,    -1,    81,    -1,    48,    -1,    80,    -1,    21,
+     180,    -1,    22,   180,   140,    88,   141,   271,   142,    -1,
+      25,   180,    -1,    26,   180,   140,    88,   141,   271,   142,
+      -1,    87,   177,    -1,   133,    -1,   134,    -1,   135,    -1,
+     136,    -1,   137,    -1,    -1,   141,   178,   142,    -1,   271,
+      -1,   259,   184,   189,    -1,   259,   184,   190,    -1,   185,
+     192,    -1,   259,   183,   140,   259,   183,   140,   259,   183,
+     140,   259,   183,    -1,   271,    -1,   191,    -1,   268,    -1,
+     196,    -1,   186,    -1,   268,    -1,   263,    -1,   187,   141,
+     188,   142,    -1,   207,    -1,   268,    -1,   271,    -1,   270,
+      -1,    -1,   270,    -1,   269,    -1,    -1,   193,    -1,   270,
+      -1,   195,    -1,   199,    -1,   260,    -1,   262,    -1,   266,
+      -1,     6,   267,   143,   196,    -1,    86,   197,    -1,    89,
+     265,    -1,    92,   239,    -1,    93,    -1,    94,    -1,    95,
+     141,   198,   142,    -1,   271,    -1,   200,    -1,   201,    -1,
+       5,   267,   203,    -1,     5,   267,   141,   202,   142,   204,
+      -1,    -1,   271,    -1,   143,   206,    -1,   143,   144,   205,
+     145,    -1,   208,    -1,   205,   140,   208,    -1,   210,    -1,
+     243,    -1,   253,    -1,   210,    -1,   243,    -1,   254,    -1,
+     209,    -1,   244,    -1,   253,    -1,   210,    -1,    85,   230,
+      -1,    85,   211,    -1,    85,   213,    -1,    85,   216,    -1,
+      85,   218,    -1,    85,   221,    -1,    85,   225,    -1,    85,
+     227,    -1,    85,   229,    -1,    98,   264,   212,    -1,    99,
+      -1,   100,    -1,   101,    -1,   102,    -1,   103,    -1,   106,
+     141,   220,   142,   214,    -1,    99,    -1,   100,    -1,   101,
+      -1,    94,    -1,   110,    -1,   107,   215,    -1,   109,    -1,
+     108,    -1,   111,   217,    -1,    99,    -1,   264,   112,    -1,
+     113,   141,   220,   142,   264,   219,    -1,    99,    -1,   100,
+      -1,   101,    -1,   271,    -1,   114,   223,   222,    -1,    89,
+      -1,    -1,   141,   224,   142,    -1,   271,    -1,   115,   226,
+      -1,    89,    -1,   116,    -1,   117,   228,    -1,   118,    -1,
+     232,   127,   141,   235,   142,    -1,   232,   231,    -1,    -1,
+     127,   141,   235,   128,   235,   142,    -1,   119,   236,   233,
+      -1,    -1,   234,    -1,   124,    -1,   125,    -1,   126,    -1,
+     271,    -1,   120,   237,    -1,   121,    -1,   122,    -1,    87,
+     239,    -1,   123,   141,   241,   142,    -1,    83,   141,   242,
+     142,    -1,    -1,   141,   238,   142,    -1,   271,    -1,    -1,
+     141,   240,   142,    -1,   271,    -1,   271,    -1,   271,    -1,
+     247,    -1,   250,    -1,   245,    -1,   248,    -1,    83,    96,
+     141,   246,   142,    -1,   251,    -1,   251,   128,   251,    -1,
+      83,    96,   141,   251,   142,    -1,    83,    97,   141,   249,
+     142,    -1,   252,    -1,   252,   128,   252,    -1,    83,    97,
+     141,   252,   142,    -1,   271,    -1,   271,    -1,   255,    -1,
+     257,    -1,   256,    -1,   257,    -1,   258,    -1,   272,    -1,
+     144,   258,   145,    -1,   144,   258,   140,   258,   145,    -1,
+     144,   258,   140,   258,   140,   258,   145,    -1,   144,   258,
+     140,   258,   140,   258,   140,   258,   145,    -1,   259,   272,
+      -1,    -1,   146,    -1,   147,    -1,     7,   267,   261,    -1,
+      -1,   261,   140,   267,    -1,     8,   267,   143,   263,    -1,
+      84,    89,    -1,    84,   117,    -1,    -1,   104,    -1,   105,
+      -1,    -1,    90,    -1,    91,    -1,     9,   267,   143,   268,
+      -1,   269,    -1,   269,    -1,   131,    -1,   132,    -1,   129,
+      -1,   130,    -1,   129,    -1
+};
+
+/* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
+static const yytype_uint16 yyrline[] =
+{
+       0,   162,   162,   167,   173,   179,   183,   188,   194,   198,
+     202,   212,   216,   220,   225,   229,   233,   237,   241,   245,
+     250,   254,   258,   263,   268,   278,   282,   286,   290,   294,
+     298,   302,   306,   310,   314,   319,   329,   333,   337,   341,
+     345,   349,   353,   357,   361,   365,   369,   373,   377,   381,
+     386,   398,   402,   407,   419,   423,   427,   431,   435,   439,
+     443,   447,   451,   455,   459,   463,   467,   471,   475,   479,
+     484,   488,   492,   496,   500,   504,   508,   512,   516,   521,
+     536,   540,   544,   548,   552,   556,   560,   565,   570,   575,
+     587,   591,   596,   609,   613,   617,   621,   625,   629,   634,
+     640,   649,   655,   664,   669,   674,   679,   684,   689,   696,
+     699,   704,   713,   720,   727,   733,   745,   750,   755,   762,
+     767,   772,   778,   784,   789,   795,   800,   805,   811,   815,
+     820,   835,   838,   843,   874,   878,   882,   886,   890,   895,
+     902,   907,   914,   921,   926,   931,   939,   946,   950,   955,
+     962,   971,   974,   982,   988,   993,   998,  1004,  1008,  1012,
+    1017,  1022,  1027,  1033,  1037,  1041,  1046,  1050,  1055,  1059,
+    1063,  1067,  1071,  1075,  1079,  1083,  1088,  1097,  1102,  1107,
+    1112,  1117,  1123,  1132,  1137,  1142,  1147,  1152,  1157,  1164,
+    1170,  1176,  1184,  1189,  1197,  1208,  1213,  1218,  1224,  1229,
+    1238,  1245,  1248,  1253,  1258,  1266,  1271,  1277,  1285,  1291,
+    1300,  1309,  1313,  1321,  1331,  1335,  1340,  1345,  1350,  1356,
+    1361,  1368,  1373,  1378,  1385,  1392,  1401,  1404,  1409,  1415,
+    1418,  1423,  1428,  1433,  1438,  1442,  1447,  1451,  1456,  1462,
+    1467,  1473,  1480,  1486,  1491,  1497,  1504,  1509,  1514,  1518,
+    1523,  1527,  1532,  1537,  1542,  1546,  1551,  1557,  1565,  1572,
+    1575,  1579,  1584,  1591,  1594,  1600,  1607,  1612,  1619,  1623,
+    1628,  1635,  1639,  1644,  1650,  1657,  1662,  1667,  1673,  1679,
+    1684,  1688
+};
+#endif
+
+#if YYDEBUG || YYERROR_VERBOSE || YYTOKEN_TABLE
+/* YYTNAME[SYMBOL-NUM] -- String name of the symbol SYMBOL-NUM.
+   First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
+static const char *const yytname[] =
+{
+  "$end", "error", "$undefined", "TOK_ARBFP10_HEADER", "TOK_OPTION",
+  "TOK_PARAM", "TOK_ATTRIB", "TOK_TEMP", "TOK_OUTPUT", "TOK_ALIAS",
+  "TOK_ABS", "TOK_ADD", "TOK_CMP", "TOK_COS", "TOK_DP3", "TOK_DP4",
+  "TOK_DPH", "TOK_DST", "TOK_EX2", "TOK_FLR", "TOK_FRC", "TOK_KIL",
+  "TOK_KLS", "TOK_CMPKIL", "TOK_CHS", "TOK_ZXP", "TOK_ZXS", "TOK_LG2",
+  "TOK_LIT", "TOK_LRP", "TOK_MAD", "TOK_MAX", "TOK_MIN", "TOK_MOV",
+  "TOK_MUL", "TOK_FXMUL", "TOK_FXMAD", "TOK_FXMAD2", "TOK_POW", "TOK_RCP",
+  "TOK_RSQ", "TOK_SIN", "TOK_SCS", "TOK_SGE", "TOK_SLT", "TOK_SUB",
+  "TOK_SWZ", "TOK_TEX", "TOK_TXB", "TOK_TXP", "TOK_XPD", "TOK_ABS_SAT",
+  "TOK_ADD_SAT", "TOK_CMP_SAT", "TOK_COS_SAT", "TOK_DP3_SAT",
+  "TOK_DP4_SAT", "TOK_DPH_SAT", "TOK_DST_SAT", "TOK_EX2_SAT",
+  "TOK_FLR_SAT", "TOK_FRC_SAT", "TOK_LG2_SAT", "TOK_LIT_SAT",
+  "TOK_LRP_SAT", "TOK_MAD_SAT", "TOK_MAX_SAT", "TOK_MIN_SAT",
+  "TOK_MOV_SAT", "TOK_MUL_SAT", "TOK_POW_SAT", "TOK_RCP_SAT",
+  "TOK_RSQ_SAT", "TOK_SIN_SAT", "TOK_SCS_SAT", "TOK_SGE_SAT",
+  "TOK_SLT_SAT", "TOK_SUB_SAT", "TOK_SWZ_SAT", "TOK_TEX_SAT",
+  "TOK_TXB_SAT", "TOK_TXP_SAT", "TOK_XPD_SAT", "TOK_PROGRAM", "TOK_RESULT",
+  "TOK_STATE", "TOK_FRAGMENT", "TOK_TEXTURE", "TOK_SAMPLE", "TOK_COLOR",
+  "TOK_PRIMARY", "TOK_SECONDARY", "TOK_TEXCOORD", "TOK_FOGCOORD",
+  "TOK_POSITION", "TOK_ATTRIB_M", "TOK_ENV", "TOK_LOCAL", "TOK_MATERIAL",
+  "TOK_AMBIENT", "TOK_DIFFUSE", "TOK_SPECULAR", "TOK_EMISSION",
+  "TOK_SHININESS", "TOK_FRONT", "TOK_BACK", "TOK_LIGHT", "TOK_SPOT",
+  "TOK_DIRECTION", "TOK_HALF", "TOK_ATTENUATION", "TOK_LIGHTMODEL",
+  "TOK_SCENECOLOR", "TOK_LIGHTPROD", "TOK_TEXENV", "TOK_FOG", "TOK_PARAMS",
+  "TOK_DEPTH", "TOK_RANGE", "TOK_MATRIX", "TOK_MODELVIEW",
+  "TOK_PROJECTION", "TOK_MVP", "TOK_PALETTE", "TOK_INVERSE",
+  "TOK_TRANSPOSE", "TOK_INVTRANS", "TOK_ROW", "TOK_POINT_POINT",
+  "TOK_INT_CONST", "TOK_FLOAT_CONST", "TOK_IDENT", "TOK_COMPONENT",
+  "TOK_1D", "TOK_2D", "TOK_3D", "TOK_CUBE", "TOK_RECT", "TOK_END", "';'",
+  "','", "'['", "']'", "'='", "'{'", "'}'", "'-'", "'+'", "$accept",
+  "program", "ARBFP10_program", "optionSequence", "option",
+  "statementSequence", "statement", "instruction", "ALUInstruction",
+  "TexInstruction", "CHS_Instruction", "VECTORop_instruction", "VECTORop",
+  "SCALARop_instruction", "SCALARop", "BINSCop_instruction", "BINSCop",
+  "BINop_instruction", "BINop", "TRIop_instruction", "TRIop",
+  "SWZ_instruction", "SWZop", "SAMPLE_instruction", "SAMPLEop",
+  "KIL_instruction", "ZXP_instruction", "texImageUnit", "texTarget",
+  "optTexImageUnitNum", "texImageUnitNum", "scalarSrcReg", "vectorSrcReg",
+  "maskedDstReg", "extendedSwizzle", "ExtSwizSel", "srcReg", "dstReg",
+  "progParamReg", "progParamArray", "progParamArrayAbs", "scalarSuffix",
+  "optionalSuffix", "xyzw_rgbaComponent", "optionalMask", "xyzw_rgbaMask",
+  "namingStatement", "ATTRIB_statement", "fragAttribBinding",
+  "fragAttribItem", "fragAttribNum", "PARAM_statement", "PARAM_singleStmt",
+  "PARAM_multipleStmt", "optArraySize", "paramSingleInit",
+  "paramMultipleInit", "paramMultInitList", "paramSingleItemDecl",
+  "paramSingleItemUse", "paramMultipleItem", "stateMultipleItem",
+  "stateSingleItem", "stateMaterialItem", "stateMatProperty",
+  "stateLightItem", "stateLightProperty", "stateSpotProperty",
+  "stateLightModelItem", "stateLModProperty", "stateLightProdItem",
+  "stateLProdProperty", "stateLightNumber", "stateTexEnvItem",
+  "stateTexEnvProperty", "optLegacyTexUnitNum", "legacyTexUnitNum",
+  "stateFogItem", "stateFogProperty", "stateDepthItem",
+  "stateDepthProperty", "stateMatrixRow", "stateMatrixRows",
+  "optMatrixRows", "stateMatrixItem", "stateOptMatModifier",
+  "stateMatModifier", "stateMatrixRowNum", "stateMatrixName",
+  "stateOptModMatNum", "stateModMatNum", "optTexCoordNum", "texCoordNum",
+  "statePaletteMatNum", "stateProgramMatNum", "programSingleItem",
+  "programMultipleItem", "progEnvParams", "progEnvParamNums",
+  "progEnvParam", "progLocalParams", "progLocalParamNums",
+  "progLocalParam", "progEnvParamNum", "progLocalParamNum",
+  "paramConstDecl", "paramConstUse", "paramConstScalarDecl",
+  "paramConstScalarUse", "paramConstVector", "signedFloatConstant",
+  "optionalSign", "TEMP_statement", "varNameList", "OUTPUT_statement",
+  "resultBinding", "optFaceType", "optColorType", "ALIAS_statement",
+  "establishName", "establishedName", "identifier", "component", "integer",
+  "floatConstant", 0
+};
+#endif
+
+# ifdef YYPRINT
+/* YYTOKNUM[YYLEX-NUM] -- Internal token number corresponding to
+   token YYLEX-NUM.  */
+static const yytype_uint16 yytoknum[] =
+{
+       0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
+     265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
+     275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
+     285,   286,   287,   288,   289,   290,   291,   292,   293,   294,
+     295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
+     305,   306,   307,   308,   309,   310,   311,   312,   313,   314,
+     315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
+     325,   326,   327,   328,   329,   330,   331,   332,   333,   334,
+     335,   336,   337,   338,   339,   340,   341,   342,   343,   344,
+     345,   346,   347,   348,   349,   350,   351,   352,   353,   354,
+     355,   356,   357,   358,   359,   360,   361,   362,   363,   364,
+     365,   366,   367,   368,   369,   370,   371,   372,   373,   374,
+     375,   376,   377,   378,   379,   380,   381,   382,   383,   384,
+     385,   386,   387,   388,   389,   390,   391,   392,   393,    59,
+      44,    91,    93,    61,   123,   125,    45,    43
+};
+# endif
+
+/* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
+static const yytype_uint16 yyr1[] =
+{
+       0,   148,   149,   150,   151,   151,   152,   153,   153,   154,
+     154,   155,   155,   155,   156,   156,   156,   156,   156,   156,
+     157,   157,   157,   158,   159,   160,   160,   160,   160,   160,
+     160,   160,   160,   160,   160,   161,   162,   162,   162,   162,
+     162,   162,   162,   162,   162,   162,   162,   162,   162,   162,
+     163,   164,   164,   165,   166,   166,   166,   166,   166,   166,
+     166,   166,   166,   166,   166,   166,   166,   166,   166,   166,
+     166,   166,   166,   166,   166,   166,   166,   166,   166,   167,
+     168,   168,   168,   168,   168,   168,   168,   168,   168,   169,
+     170,   170,   171,   172,   172,   172,   172,   172,   172,   173,
+     173,   174,   174,   175,   176,   176,   176,   176,   176,   177,
+     177,   178,   179,   180,   181,   182,   183,   183,   184,   184,
+     184,   185,   185,   186,   186,   187,   188,   189,   190,   190,
+     191,   192,   192,   193,   194,   194,   194,   194,   194,   195,
+     196,   197,   197,   197,   197,   197,   198,   199,   199,   200,
+     201,   202,   202,   203,   204,   205,   205,   206,   206,   206,
+     207,   207,   207,   208,   208,   208,   209,   209,   210,   210,
+     210,   210,   210,   210,   210,   210,   211,   212,   212,   212,
+     212,   212,   213,   214,   214,   214,   214,   214,   214,   214,
+     215,   216,   217,   217,   218,   219,   219,   219,   220,   221,
+     222,   223,   223,   224,   225,   226,   226,   227,   228,   229,
+     230,   231,   231,   232,   233,   233,   234,   234,   234,   235,
+     236,   236,   236,   236,   236,   236,   237,   237,   238,   239,
+     239,   240,   241,   242,   243,   243,   244,   244,   245,   246,
+     246,   247,   248,   249,   249,   250,   251,   252,   253,   253,
+     254,   254,   255,   256,   257,   257,   257,   257,   258,   259,
+     259,   259,   260,   261,   261,   262,   263,   263,   264,   264,
+     264,   265,   265,   265,   266,   267,   268,   269,   270,   271,
+     272,   272
+};
+
+/* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
+static const yytype_uint8 yyr2[] =
+{
+       0,     2,     2,     3,     2,     0,     3,     2,     0,     2,
+       2,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     4,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     4,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       6,     1,     1,     6,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     8,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     6,
+       1,     1,     8,     1,     1,     1,     1,     1,     1,     2,
+       7,     2,     7,     2,     1,     1,     1,     1,     1,     0,
+       3,     1,     3,     3,     2,    11,     1,     1,     1,     1,
+       1,     1,     1,     4,     1,     1,     1,     1,     0,     1,
+       1,     0,     1,     1,     1,     1,     1,     1,     1,     4,
+       2,     2,     2,     1,     1,     4,     1,     1,     1,     3,
+       6,     0,     1,     2,     4,     1,     3,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     3,     1,     1,     1,
+       1,     1,     5,     1,     1,     1,     1,     1,     2,     1,
+       1,     2,     1,     2,     6,     1,     1,     1,     1,     3,
+       1,     0,     3,     1,     2,     1,     1,     2,     1,     5,
+       2,     0,     6,     3,     0,     1,     1,     1,     1,     1,
+       2,     1,     1,     2,     4,     4,     0,     3,     1,     0,
+       3,     1,     1,     1,     1,     1,     1,     1,     5,     1,
+       3,     5,     5,     1,     3,     5,     1,     1,     1,     1,
+       1,     1,     1,     1,     3,     5,     7,     9,     2,     0,
+       1,     1,     3,     0,     3,     4,     2,     2,     0,     1,
+       1,     0,     1,     1,     4,     1,     1,     1,     1,     1,
+       1,     1
+};
+
+/* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
+   STATE-NUM when YYTABLE doesn't specify something else to do.  Zero
+   means the default is an error.  */
+static const yytype_uint16 yydefact[] =
+{
+       0,     5,     0,     2,     8,     1,     0,     4,     0,   277,
+       0,     0,     0,     0,     0,     0,    25,    54,    80,    36,
+      56,    58,    60,    62,    38,    27,    29,   259,   259,    82,
+      23,   259,   259,    40,    31,    83,    85,    64,    66,    33,
+      68,    69,    86,    87,    51,    42,    44,    46,    48,    71,
+      73,    75,    90,    93,    97,    95,    77,    26,    55,    81,
+      37,    57,    59,    61,    63,    39,    28,    30,    41,    32,
+      84,    88,    65,    67,    34,    70,    52,    43,    45,    47,
+      49,    72,    74,    76,    91,    94,    98,    96,    78,     3,
+       7,     0,    11,    12,    13,    14,     0,    15,     0,    16,
+       0,    17,     0,    18,     0,    19,     0,    20,     0,    21,
+      22,     0,   134,   135,   147,   148,   136,   137,   138,     6,
+       0,   275,     0,   263,     0,     0,   260,   261,    99,     0,
+       0,   101,     0,     9,     0,     0,   131,   122,   121,   276,
+       0,     0,     0,     0,     0,     0,    10,   151,   259,   149,
+       0,   262,     0,     0,     0,     0,     0,   281,   280,   259,
+     128,   120,     0,   119,   124,   160,   161,   234,   235,   162,
+     250,   251,   118,   253,     0,     0,   266,   267,   259,   278,
+     114,   132,   133,   259,   259,   259,   259,     0,   259,   279,
+       0,   152,   153,   157,   158,   159,   248,   249,   252,     0,
+     139,     0,   265,   274,     0,     0,   268,     0,   268,     0,
+     201,     0,     0,     0,   168,   169,   170,   171,   172,   173,
+     174,   175,     0,   271,   229,   143,   144,     0,   140,     0,
+     113,   129,     0,     0,     0,    24,    35,     0,     0,     0,
+       0,     0,     0,     0,   258,   264,     0,     0,   269,   270,
+       0,     0,   192,   191,     0,     0,     0,     0,   205,   206,
+     204,   208,   207,     0,   229,   226,   221,   222,     0,   214,
+       0,   272,   273,   141,     0,   142,     0,   259,   254,     0,
+     126,     0,     0,     0,   259,   259,   259,   259,     0,     0,
+     150,     0,   246,     0,   247,   177,   178,   179,   180,   181,
+     176,     0,   198,   193,     0,     0,   203,   200,   199,     0,
+     223,     0,   220,     0,   216,   217,   218,   213,   215,     0,
+       0,   231,     0,   146,     0,   123,     0,     0,   112,   127,
+      50,    53,     0,    89,     0,   109,     0,   259,   241,   245,
+       0,   268,   202,     0,   233,     0,   228,     0,   232,     0,
+     219,   230,   145,   259,   255,   100,   102,   259,     0,   117,
+     130,   116,     0,   103,     0,     0,     0,     0,   155,   163,
+     166,   164,   236,   237,   165,   186,   183,   184,   185,     0,
+     189,   187,   182,     0,   225,   227,   224,   209,     0,    79,
+     259,     0,   111,   104,   105,   106,   107,   108,    92,     0,
+       0,   167,   211,   259,   154,   190,   188,   195,   196,   197,
+     194,   259,   256,     0,   110,     0,     0,     0,   210,   156,
+       0,     0,     0,   239,     0,   243,     0,   257,   259,   238,
+       0,   242,     0,     0,     0,   240,   244,     0,     0,     0,
+     259,   212,     0,   115
+};
+
+/* YYDEFGOTO[NTERM-NUM].  */
+static const yytype_int16 yydefgoto[] =
+{
+      -1,     2,     3,     4,     7,     8,    90,    91,    92,    93,
+      94,    95,    96,    97,    98,    99,   100,   101,   102,   103,
+     104,   105,   106,   107,   108,   109,   110,   336,   398,   363,
+     391,   236,   128,   135,   333,   358,   160,   136,   161,   162,
+     279,   328,   230,   359,   180,   181,   111,   112,   163,   228,
+     322,   113,   114,   115,   190,   149,   290,   367,   192,   164,
+     368,   369,   165,   214,   300,   215,   382,   406,   216,   253,
+     217,   410,   301,   218,   308,   257,   305,   219,   260,   220,
+     262,   221,   401,   418,   222,   317,   318,   349,   269,   312,
+     345,   275,   320,   347,   343,   166,   371,   372,   422,   167,
+     373,   424,   168,   291,   293,   374,   169,   196,   170,   171,
+     198,   129,   116,   151,   117,   137,   250,   273,   118,   120,
+     138,   139,   182,   361,   173
+};
+
+/* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
+   STATE-NUM.  */
+#define YYPACT_NINF -384
+static const yytype_int16 yypact[] =
+{
+      37,  -384,    50,  -384,    68,  -384,   -51,  -384,   432,  -384,
+     -46,   -51,   -51,   -51,   -51,   -51,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,   -64,   -64,  -384,
+    -384,   -64,   -64,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,   -38,  -384,  -384,  -384,  -384,   -58,  -384,   -58,  -384,
+     -58,  -384,   -58,  -384,   -58,  -384,   -58,  -384,   -58,  -384,
+    -384,   -26,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+     -95,  -384,   -23,  -384,   -21,    -2,  -384,  -384,  -384,   -52,
+       3,  -384,    11,  -384,   -54,    12,    21,  -384,  -384,  -384,
+      16,    17,    18,    19,    26,    29,  -384,   -44,   -60,  -384,
+      85,    33,    70,   -51,    42,   -59,    14,  -384,  -384,   -64,
+      21,  -384,    34,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,    43,  -384,    95,    97,  -384,  -384,   -64,  -384,
+    -384,  -384,  -384,   -64,   -64,   -64,   -64,   -52,   -64,  -384,
+      44,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,     2,
+    -384,   -51,  -384,  -384,    47,    48,    41,    52,    13,    53,
+      60,   -47,    84,   -55,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,    76,    20,    67,  -384,  -384,    69,  -384,   -96,
+    -384,  -384,   -44,    71,    72,  -384,  -384,   -52,    64,    75,
+      77,    78,    79,    66,  -384,  -384,   -44,   -44,  -384,  -384,
+      62,   -44,  -384,  -384,    99,   -44,   -44,   125,  -384,  -384,
+    -384,  -384,  -384,    80,    67,    81,  -384,  -384,    82,   -27,
+      83,  -384,  -384,  -384,   -44,  -384,   -44,   -64,  -384,    86,
+    -384,   -44,   -44,    21,   -64,   -64,   -64,   -64,   129,    87,
+    -384,    90,  -384,    91,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,    92,  -384,  -384,    93,    94,  -384,  -384,  -384,   -44,
+    -384,   -44,  -384,   -44,  -384,  -384,  -384,  -384,  -384,   -44,
+      96,  -384,    98,  -384,   -69,  -384,   100,   102,  -384,  -384,
+    -384,  -384,    89,  -384,   -67,   104,   101,   -56,  -384,  -384,
+      -5,    41,  -384,   105,  -384,   106,  -384,   107,  -384,   108,
+    -384,  -384,  -384,   -64,  -384,  -384,  -384,   -64,   111,  -384,
+    -384,  -384,   -44,  -384,    63,    51,   -59,   -19,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,   112,
+    -384,  -384,  -384,    35,  -384,  -384,  -384,  -384,   -12,  -384,
+     -64,   110,  -384,  -384,  -384,  -384,  -384,  -384,  -384,   113,
+     114,  -384,   119,   -56,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,   -64,  -384,   -67,  -384,   -44,   -44,   118,  -384,  -384,
+     115,   121,   120,   109,   123,   138,   -44,  -384,   -64,  -384,
+     -44,  -384,   -44,   -85,   -67,  -384,  -384,   -44,   130,   127,
+     -64,  -384,   -67,  -384
+};
+
+/* YYPGOTO[NTERM-NUM].  */
+static const yytype_int16 yypgoto[] =
+{
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -168,   -18,    74,  -384,  -383,  -163,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,   103,  -384,
+    -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -178,  -384,  -146,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,   -29,  -384,  -384,  -384,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -384,  -139,  -384,  -384,  -356,  -384,  -384,
+    -384,   -25,  -384,  -384,  -384,   124,  -384,  -384,  -384,  -384,
+    -384,  -384,  -384,  -377,  -371,   126,  -384,  -384,  -384,  -145,
+    -148,  -147,  -384,  -384,  -384,   128,  -186,  -384,  -384,     6,
+    -112,    -6,  -156,  -132,    88
+};
+
+/* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
+   positive, shift that token.  If negative, reduce the rule which
+   number is the opposite.  If zero, do what YYDEFACT says.
+   If YYTABLE_NINF, syntax error.  */
+#define YYTABLE_NINF -126
+static const yytype_int16 yytable[] =
+{
+      10,   199,   193,   197,   231,   121,   121,   121,   121,   121,
+     130,   229,   199,   131,   132,   191,   238,   172,   122,   123,
+     124,   125,   254,   154,   241,   155,   134,   365,   263,   366,
+     421,   154,   264,   155,   156,   176,   237,   237,   423,   206,
+       1,   203,   258,   437,   277,   425,   147,   207,   148,   278,
+       5,   438,   208,   435,   209,   210,   211,   387,   212,   443,
+     213,   436,   189,   177,     9,   265,   266,   267,   268,   259,
+     433,   353,     6,     9,   283,   172,   354,   157,   158,     9,
+       9,   439,   126,   127,   159,   189,   126,   127,   159,   375,
+     126,   127,   159,   119,   376,   377,   378,   314,   315,   316,
+     280,   133,   379,   223,   380,   381,   224,   225,   226,   227,
+     271,   272,   252,   146,   292,   294,   330,   248,   249,   302,
+     150,   403,   152,   302,   306,   172,   404,   329,   411,   324,
+     199,   157,   158,   412,   407,   408,   409,   237,   204,   205,
+     334,   153,   321,   174,   323,   248,   249,   399,   400,   326,
+     327,   175,   178,   179,   134,   383,   183,   184,   185,   186,
+     235,   295,   296,   297,   298,   299,   187,   239,   240,   188,
+     242,   156,   140,   201,   141,   232,   142,   344,   143,   346,
+     144,   348,   145,   233,  -125,   234,   243,   350,   246,   247,
+     199,   370,   197,   251,   255,   121,   393,   394,   395,   396,
+     397,   256,   261,   270,   284,   388,   199,   245,   274,   289,
+     276,   303,   281,   282,   307,   285,   335,   286,   287,   288,
+     405,   309,   311,   313,   319,   419,   304,   402,   325,   357,
+     392,   337,   338,   339,   340,   341,   342,   430,   351,   310,
+     352,   364,   355,   413,   356,   362,   417,   384,   385,   386,
+     387,   390,   414,   200,   415,   416,   199,   370,   197,   426,
+     427,   428,   429,   420,   199,   431,   432,   331,   332,   441,
+     440,     0,   194,     0,   195,     0,     0,     0,     0,     0,
+     202,   434,     0,   292,   294,     0,     0,   244,     0,     0,
+       0,     0,     0,   442,   350,     0,     0,     0,   292,     0,
+     294,     0,     0,     0,     0,   350,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,   360,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,   389,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,   360,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,   360,     0,
+       0,     0,     0,     0,     0,     0,   360,    11,    12,    13,
+      14,    15,    16,    17,    18,    19,    20,    21,    22,    23,
+      24,    25,    26,    27,    28,    29,    30,    31,    32,    33,
+      34,    35,    36,    37,    38,    39,    40,    41,    42,    43,
+      44,    45,    46,    47,    48,    49,    50,    51,    52,    53,
+      54,    55,    56,    57,    58,    59,    60,    61,    62,    63,
+      64,    65,    66,    67,    68,    69,    70,    71,    72,    73,
+      74,    75,    76,    77,    78,    79,    80,    81,    82,    83,
+      84,    85,    86,    87,    88,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+      89
+};
+
+static const yytype_int16 yycheck[] =
+{
+       6,   148,   148,   148,   160,    11,    12,    13,    14,    15,
+      28,   159,   159,    31,    32,   147,   184,   129,    12,    13,
+      14,    15,   208,    83,   187,    85,    84,    83,    83,    85,
+     413,    83,    87,    85,    86,    89,   183,   184,   415,    98,
+       3,   153,    89,   128,   140,   416,   141,   106,   143,   145,
+       0,   434,   111,   430,   113,   114,   115,   142,   117,   442,
+     119,   432,   129,   117,   131,   120,   121,   122,   123,   116,
+     426,   140,     4,   131,   237,   187,   145,   129,   130,   131,
+     131,   437,   146,   147,   144,   129,   146,   147,   144,    94,
+     146,   147,   144,   139,    99,   100,   101,   124,   125,   126,
+     232,   139,   107,    89,   109,   110,    92,    93,    94,    95,
+      90,    91,    99,   139,   246,   247,   284,   104,   105,   251,
+     143,   140,   143,   255,   256,   237,   145,   283,   140,   277,
+     277,   129,   130,   145,    99,   100,   101,   284,    96,    97,
+     287,   143,   274,   140,   276,   104,   105,    96,    97,   281,
+     282,   140,   140,   132,    84,   341,   140,   140,   140,   140,
+     178,    99,   100,   101,   102,   103,   140,   185,   186,   140,
+     188,    86,    98,   140,   100,   141,   102,   309,   104,   311,
+     106,   313,   108,    88,   141,    88,   142,   319,   141,   141,
+     337,   337,   337,   141,   141,   201,   133,   134,   135,   136,
+     137,   141,   118,   127,   140,   353,   353,   201,   141,   143,
+     141,   112,   141,   141,    89,   140,    87,   140,   140,   140,
+     108,   141,   141,   141,   141,   403,   255,   366,   142,   140,
+     362,   144,   142,   142,   142,   142,   142,   128,   142,   264,
+     142,   140,   142,   390,   142,   141,   127,   142,   142,   142,
+     142,   140,   142,   150,   141,   141,   403,   403,   403,   141,
+     145,   140,   142,   411,   411,   142,   128,   285,   286,   142,
+     140,    -1,   148,    -1,   148,    -1,    -1,    -1,    -1,    -1,
+     152,   428,    -1,   415,   416,    -1,    -1,   199,    -1,    -1,
+      -1,    -1,    -1,   440,   426,    -1,    -1,    -1,   430,    -1,
+     432,    -1,    -1,    -1,    -1,   437,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,   334,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,   357,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,   413,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,   434,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,   442,     5,     6,     7,
+       8,     9,    10,    11,    12,    13,    14,    15,    16,    17,
+      18,    19,    20,    21,    22,    23,    24,    25,    26,    27,
+      28,    29,    30,    31,    32,    33,    34,    35,    36,    37,
+      38,    39,    40,    41,    42,    43,    44,    45,    46,    47,
+      48,    49,    50,    51,    52,    53,    54,    55,    56,    57,
+      58,    59,    60,    61,    62,    63,    64,    65,    66,    67,
+      68,    69,    70,    71,    72,    73,    74,    75,    76,    77,
+      78,    79,    80,    81,    82,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+     138
+};
+
+/* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
+   symbol of state STATE-NUM.  */
+static const yytype_uint16 yystos[] =
+{
+       0,     3,   149,   150,   151,     0,     4,   152,   153,   131,
+     269,     5,     6,     7,     8,     9,    10,    11,    12,    13,
+      14,    15,    16,    17,    18,    19,    20,    21,    22,    23,
+      24,    25,    26,    27,    28,    29,    30,    31,    32,    33,
+      34,    35,    36,    37,    38,    39,    40,    41,    42,    43,
+      44,    45,    46,    47,    48,    49,    50,    51,    52,    53,
+      54,    55,    56,    57,    58,    59,    60,    61,    62,    63,
+      64,    65,    66,    67,    68,    69,    70,    71,    72,    73,
+      74,    75,    76,    77,    78,    79,    80,    81,    82,   138,
+     154,   155,   156,   157,   158,   159,   160,   161,   162,   163,
+     164,   165,   166,   167,   168,   169,   170,   171,   172,   173,
+     174,   194,   195,   199,   200,   201,   260,   262,   266,   139,
+     267,   269,   267,   267,   267,   267,   146,   147,   180,   259,
+     180,   180,   180,   139,    84,   181,   185,   263,   268,   269,
+     181,   181,   181,   181,   181,   181,   139,   141,   143,   203,
+     143,   261,   143,   143,    83,    85,    86,   129,   130,   144,
+     184,   186,   187,   196,   207,   210,   243,   247,   250,   254,
+     256,   257,   268,   272,   140,   140,    89,   117,   140,   132,
+     192,   193,   270,   140,   140,   140,   140,   140,   140,   129,
+     202,   271,   206,   210,   243,   253,   255,   257,   258,   259,
+     196,   140,   263,   268,    96,    97,    98,   106,   111,   113,
+     114,   115,   117,   119,   211,   213,   216,   218,   221,   225,
+     227,   229,   232,    89,    92,    93,    94,    95,   197,   258,
+     190,   270,   141,    88,    88,   180,   179,   259,   179,   180,
+     180,   184,   180,   142,   272,   267,   141,   141,   104,   105,
+     264,   141,    99,   217,   264,   141,   141,   223,    89,   116,
+     226,   118,   228,    83,    87,   120,   121,   122,   123,   236,
+     127,    90,    91,   265,   141,   239,   141,   140,   145,   188,
+     271,   141,   141,   184,   140,   140,   140,   140,   140,   143,
+     204,   251,   271,   252,   271,    99,   100,   101,   102,   103,
+     212,   220,   271,   112,   220,   224,   271,    89,   222,   141,
+     239,   141,   237,   141,   124,   125,   126,   233,   234,   141,
+     240,   271,   198,   271,   258,   142,   271,   271,   189,   270,
+     179,   180,   180,   182,   259,    87,   175,   144,   142,   142,
+     142,   142,   142,   242,   271,   238,   271,   241,   271,   235,
+     271,   142,   142,   140,   145,   142,   142,   140,   183,   191,
+     269,   271,   141,   177,   140,    83,    85,   205,   208,   209,
+     210,   244,   245,   248,   253,    94,    99,   100,   101,   107,
+     109,   110,   214,   264,   142,   142,   142,   142,   258,   180,
+     140,   178,   271,   133,   134,   135,   136,   137,   176,    96,
+      97,   230,   232,   140,   145,   108,   215,    99,   100,   101,
+     219,   140,   145,   259,   142,   141,   141,   127,   231,   208,
+     258,   183,   246,   251,   249,   252,   141,   145,   140,   142,
+     128,   142,   128,   235,   259,   251,   252,   128,   183,   235,
+     140,   142,   259,   183
+};
+
+#define yyerrok		(yyerrstatus = 0)
+#define yyclearin	(yychar = YYEMPTY)
+#define YYEMPTY		(-2)
+#define YYEOF		0
+
+#define YYACCEPT	goto yyacceptlab
+#define YYABORT		goto yyabortlab
+#define YYERROR		goto yyerrorlab
+
+
+/* Like YYERROR except do call yyerror.  This remains here temporarily
+   to ease the transition to the new meaning of YYERROR, for GCC.
+   Once GCC version 2 has supplanted version 1, this can go.  */
+
+#define YYFAIL		goto yyerrlab
+
+#define YYRECOVERING()  (!!yyerrstatus)
+
+#define YYBACKUP(Token, Value)					\
+do								\
+  if (yychar == YYEMPTY && yylen == 1)				\
+    {								\
+      yychar = (Token);						\
+      yylval = (Value);						\
+      yytoken = YYTRANSLATE (yychar);				\
+      YYPOPSTACK (1);						\
+      goto yybackup;						\
+    }								\
+  else								\
+    {								\
+      yyerror (irtree, YY_("syntax error: cannot back up")); \
+      YYERROR;							\
+    }								\
+while (YYID (0))
+
+
+#define YYTERROR	1
+#define YYERRCODE	256
+
+
+/* YYLLOC_DEFAULT -- Set CURRENT to span from RHS[1] to RHS[N].
+   If N is 0, then set CURRENT to the empty location which ends
+   the previous symbol: RHS[0] (always defined).  */
+
+#define YYRHSLOC(Rhs, K) ((Rhs)[K])
+#ifndef YYLLOC_DEFAULT
+# define YYLLOC_DEFAULT(Current, Rhs, N)				\
+    do									\
+      if (YYID (N))                                                    \
+	{								\
+	  (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;	\
+	  (Current).first_column = YYRHSLOC (Rhs, 1).first_column;	\
+	  (Current).last_line    = YYRHSLOC (Rhs, N).last_line;		\
+	  (Current).last_column  = YYRHSLOC (Rhs, N).last_column;	\
+	}								\
+      else								\
+	{								\
+	  (Current).first_line   = (Current).last_line   =		\
+	    YYRHSLOC (Rhs, 0).last_line;				\
+	  (Current).first_column = (Current).last_column =		\
+	    YYRHSLOC (Rhs, 0).last_column;				\
+	}								\
+    while (YYID (0))
+#endif
+
+
+/* YY_LOCATION_PRINT -- Print the location on the stream.
+   This macro was not mandated originally: define only if we know
+   we won't break user code: when these are the locations we know.  */
+
+#ifndef YY_LOCATION_PRINT
+# if YYLTYPE_IS_TRIVIAL
+#  define YY_LOCATION_PRINT(File, Loc)			\
+     fprintf (File, "%d.%d-%d.%d",			\
+	      (Loc).first_line, (Loc).first_column,	\
+	      (Loc).last_line,  (Loc).last_column)
+# else
+#  define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+# endif
+#endif
+
+
+/* YYLEX -- calling `yylex' with the right arguments.  */
+
+#ifdef YYLEX_PARAM
+# define YYLEX yylex (YYLEX_PARAM)
+#else
+# define YYLEX yylex ()
+#endif
+
+/* Enable debugging if requested.  */
+#if YYDEBUG
+
+# ifndef YYFPRINTF
+#  include <stdio.h> /* INFRINGES ON USER NAME SPACE */
+#  define YYFPRINTF fprintf
+# endif
+
+# define YYDPRINTF(Args)			\
+do {						\
+  if (yydebug)					\
+    YYFPRINTF Args;				\
+} while (YYID (0))
+
+# define YY_SYMBOL_PRINT(Title, Type, Value, Location)			  \
+do {									  \
+  if (yydebug)								  \
+    {									  \
+      YYFPRINTF (stderr, "%s ", Title);					  \
+      yy_symbol_print (stderr,						  \
+		  Type, Value, irtree); \
+      YYFPRINTF (stderr, "\n");						  \
+    }									  \
+} while (YYID (0))
+
+
+/*--------------------------------.
+| Print this symbol on YYOUTPUT.  |
+`--------------------------------*/
+
+/*ARGSUSED*/
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static void
+yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, void* irtree)
+#else
+static void
+yy_symbol_value_print (yyoutput, yytype, yyvaluep, irtree)
+    FILE *yyoutput;
+    int yytype;
+    YYSTYPE const * const yyvaluep;
+    void* irtree;
+#endif
+{
+  if (!yyvaluep)
+    return;
+  YYUSE (irtree);
+# ifdef YYPRINT
+  if (yytype < YYNTOKENS)
+    YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
+# else
+  YYUSE (yyoutput);
+# endif
+  switch (yytype)
+    {
+      default:
+	break;
+    }
+}
+
+
+/*--------------------------------.
+| Print this symbol on YYOUTPUT.  |
+`--------------------------------*/
+
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static void
+yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, void* irtree)
+#else
+static void
+yy_symbol_print (yyoutput, yytype, yyvaluep, irtree)
+    FILE *yyoutput;
+    int yytype;
+    YYSTYPE const * const yyvaluep;
+    void* irtree;
+#endif
+{
+  if (yytype < YYNTOKENS)
+    YYFPRINTF (yyoutput, "token %s (", yytname[yytype]);
+  else
+    YYFPRINTF (yyoutput, "nterm %s (", yytname[yytype]);
+
+  yy_symbol_value_print (yyoutput, yytype, yyvaluep, irtree);
+  YYFPRINTF (yyoutput, ")");
+}
+
+/*------------------------------------------------------------------.
+| yy_stack_print -- Print the state stack from its BOTTOM up to its |
+| TOP (included).                                                   |
+`------------------------------------------------------------------*/
+
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static void
+yy_stack_print (yytype_int16 *yybottom, yytype_int16 *yytop)
+#else
+static void
+yy_stack_print (yybottom, yytop)
+    yytype_int16 *yybottom;
+    yytype_int16 *yytop;
+#endif
+{
+  YYFPRINTF (stderr, "Stack now");
+  for (; yybottom <= yytop; yybottom++)
+    {
+      int yybot = *yybottom;
+      YYFPRINTF (stderr, " %d", yybot);
+    }
+  YYFPRINTF (stderr, "\n");
+}
+
+# define YY_STACK_PRINT(Bottom, Top)				\
+do {								\
+  if (yydebug)							\
+    yy_stack_print ((Bottom), (Top));				\
+} while (YYID (0))
+
+
+/*------------------------------------------------.
+| Report that the YYRULE is going to be reduced.  |
+`------------------------------------------------*/
+
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static void
+yy_reduce_print (YYSTYPE *yyvsp, int yyrule, void* irtree)
+#else
+static void
+yy_reduce_print (yyvsp, yyrule, irtree)
+    YYSTYPE *yyvsp;
+    int yyrule;
+    void* irtree;
+#endif
+{
+  int yynrhs = yyr2[yyrule];
+  int yyi;
+  unsigned long int yylno = yyrline[yyrule];
+  YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
+	     yyrule - 1, yylno);
+  /* The symbols being reduced.  */
+  for (yyi = 0; yyi < yynrhs; yyi++)
+    {
+      YYFPRINTF (stderr, "   $%d = ", yyi + 1);
+      yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
+		       &(yyvsp[(yyi + 1) - (yynrhs)])
+		       		       , irtree);
+      YYFPRINTF (stderr, "\n");
+    }
+}
+
+# define YY_REDUCE_PRINT(Rule)		\
+do {					\
+  if (yydebug)				\
+    yy_reduce_print (yyvsp, Rule, irtree); \
+} while (YYID (0))
+
+/* Nonzero means print parse trace.  It is left uninitialized so that
+   multiple parsers can coexist.  */
+int yydebug;
+#else /* !YYDEBUG */
+# define YYDPRINTF(Args)
+# define YY_SYMBOL_PRINT(Title, Type, Value, Location)
+# define YY_STACK_PRINT(Bottom, Top)
+# define YY_REDUCE_PRINT(Rule)
+#endif /* !YYDEBUG */
+
+
+/* YYINITDEPTH -- initial size of the parser's stacks.  */
+#ifndef	YYINITDEPTH
+# define YYINITDEPTH 200
+#endif
+
+/* YYMAXDEPTH -- maximum size the stacks can grow to (effective only
+   if the built-in stack extension method is used).
+
+   Do not make this value too large; the results are undefined if
+   YYSTACK_ALLOC_MAXIMUM < YYSTACK_BYTES (YYMAXDEPTH)
+   evaluated with infinite-precision integer arithmetic.  */
+
+#ifndef YYMAXDEPTH
+# define YYMAXDEPTH 10000
+#endif
+
+
+
+#if YYERROR_VERBOSE
+
+# ifndef yystrlen
+#  if defined __GLIBC__ && defined _STRING_H
+#   define yystrlen strlen
+#  else
+/* Return the length of YYSTR.  */
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static YYSIZE_T
+yystrlen (const char *yystr)
+#else
+static YYSIZE_T
+yystrlen (yystr)
+    const char *yystr;
+#endif
+{
+  YYSIZE_T yylen;
+  for (yylen = 0; yystr[yylen]; yylen++)
+    continue;
+  return yylen;
+}
+#  endif
+# endif
+
+# ifndef yystpcpy
+#  if defined __GLIBC__ && defined _STRING_H && defined _GNU_SOURCE
+#   define yystpcpy stpcpy
+#  else
+/* Copy YYSRC to YYDEST, returning the address of the terminating '\0' in
+   YYDEST.  */
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static char *
+yystpcpy (char *yydest, const char *yysrc)
+#else
+static char *
+yystpcpy (yydest, yysrc)
+    char *yydest;
+    const char *yysrc;
+#endif
+{
+  char *yyd = yydest;
+  const char *yys = yysrc;
+
+  while ((*yyd++ = *yys++) != '\0')
+    continue;
+
+  return yyd - 1;
+}
+#  endif
+# endif
+
+# ifndef yytnamerr
+/* Copy to YYRES the contents of YYSTR after stripping away unnecessary
+   quotes and backslashes, so that it's suitable for yyerror.  The
+   heuristic is that double-quoting is unnecessary unless the string
+   contains an apostrophe, a comma, or backslash (other than
+   backslash-backslash).  YYSTR is taken from yytname.  If YYRES is
+   null, do not copy; instead, return the length of what the result
+   would have been.  */
+static YYSIZE_T
+yytnamerr (char *yyres, const char *yystr)
+{
+  if (*yystr == '"')
+    {
+      YYSIZE_T yyn = 0;
+      char const *yyp = yystr;
+
+      for (;;)
+	switch (*++yyp)
+	  {
+	  case '\'':
+	  case ',':
+	    goto do_not_strip_quotes;
+
+	  case '\\':
+	    if (*++yyp != '\\')
+	      goto do_not_strip_quotes;
+	    /* Fall through.  */
+	  default:
+	    if (yyres)
+	      yyres[yyn] = *yyp;
+	    yyn++;
+	    break;
+
+	  case '"':
+	    if (yyres)
+	      yyres[yyn] = '\0';
+	    return yyn;
+	  }
+    do_not_strip_quotes: ;
+    }
+
+  if (! yyres)
+    return yystrlen (yystr);
+
+  return yystpcpy (yyres, yystr) - yyres;
+}
+# endif
+
+/* Copy into YYRESULT an error message about the unexpected token
+   YYCHAR while in state YYSTATE.  Return the number of bytes copied,
+   including the terminating null byte.  If YYRESULT is null, do not
+   copy anything; just return the number of bytes that would be
+   copied.  As a special case, return 0 if an ordinary "syntax error"
+   message will do.  Return YYSIZE_MAXIMUM if overflow occurs during
+   size calculation.  */
+static YYSIZE_T
+yysyntax_error (char *yyresult, int yystate, int yychar)
+{
+  int yyn = yypact[yystate];
+
+  if (! (YYPACT_NINF < yyn && yyn <= YYLAST))
+    return 0;
+  else
+    {
+      int yytype = YYTRANSLATE (yychar);
+      YYSIZE_T yysize0 = yytnamerr (0, yytname[yytype]);
+      YYSIZE_T yysize = yysize0;
+      YYSIZE_T yysize1;
+      int yysize_overflow = 0;
+      enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
+      char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
+      int yyx;
+
+# if 0
+      /* This is so xgettext sees the translatable formats that are
+	 constructed on the fly.  */
+      YY_("syntax error, unexpected %s");
+      YY_("syntax error, unexpected %s, expecting %s");
+      YY_("syntax error, unexpected %s, expecting %s or %s");
+      YY_("syntax error, unexpected %s, expecting %s or %s or %s");
+      YY_("syntax error, unexpected %s, expecting %s or %s or %s or %s");
+# endif
+      char *yyfmt;
+      char const *yyf;
+      static char const yyunexpected[] = "syntax error, unexpected %s";
+      static char const yyexpecting[] = ", expecting %s";
+      static char const yyor[] = " or %s";
+      char yyformat[sizeof yyunexpected
+		    + sizeof yyexpecting - 1
+		    + ((YYERROR_VERBOSE_ARGS_MAXIMUM - 2)
+		       * (sizeof yyor - 1))];
+      char const *yyprefix = yyexpecting;
+
+      /* Start YYX at -YYN if negative to avoid negative indexes in
+	 YYCHECK.  */
+      int yyxbegin = yyn < 0 ? -yyn : 0;
+
+      /* Stay within bounds of both yycheck and yytname.  */
+      int yychecklim = YYLAST - yyn + 1;
+      int yyxend = yychecklim < YYNTOKENS ? yychecklim : YYNTOKENS;
+      int yycount = 1;
+
+      yyarg[0] = yytname[yytype];
+      yyfmt = yystpcpy (yyformat, yyunexpected);
+
+      for (yyx = yyxbegin; yyx < yyxend; ++yyx)
+	if (yycheck[yyx + yyn] == yyx && yyx != YYTERROR)
+	  {
+	    if (yycount == YYERROR_VERBOSE_ARGS_MAXIMUM)
+	      {
+		yycount = 1;
+		yysize = yysize0;
+		yyformat[sizeof yyunexpected - 1] = '\0';
+		break;
+	      }
+	    yyarg[yycount++] = yytname[yyx];
+	    yysize1 = yysize + yytnamerr (0, yytname[yyx]);
+	    yysize_overflow |= (yysize1 < yysize);
+	    yysize = yysize1;
+	    yyfmt = yystpcpy (yyfmt, yyprefix);
+	    yyprefix = yyor;
+	  }
+
+      yyf = YY_(yyformat);
+      yysize1 = yysize + yystrlen (yyf);
+      yysize_overflow |= (yysize1 < yysize);
+      yysize = yysize1;
+
+      if (yysize_overflow)
+	return YYSIZE_MAXIMUM;
+
+      if (yyresult)
+	{
+	  /* Avoid sprintf, as that infringes on the user's name space.
+	     Don't have undefined behavior even if the translation
+	     produced a string with the wrong number of "%s"s.  */
+	  char *yyp = yyresult;
+	  int yyi = 0;
+	  while ((*yyp = *yyf) != '\0')
+	    {
+	      if (*yyp == '%' && yyf[1] == 's' && yyi < yycount)
+		{
+		  yyp += yytnamerr (yyp, yyarg[yyi++]);
+		  yyf += 2;
+		}
+	      else
+		{
+		  yyp++;
+		  yyf++;
+		}
+	    }
+	}
+      return yysize;
+    }
+}
+#endif /* YYERROR_VERBOSE */
+
+
+/*-----------------------------------------------.
+| Release the memory associated to this symbol.  |
+`-----------------------------------------------*/
+
+/*ARGSUSED*/
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+static void
+yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, void* irtree)
+#else
+static void
+yydestruct (yymsg, yytype, yyvaluep, irtree)
+    const char *yymsg;
+    int yytype;
+    YYSTYPE *yyvaluep;
+    void* irtree;
+#endif
+{
+  YYUSE (yyvaluep);
+  YYUSE (irtree);
+
+  if (!yymsg)
+    yymsg = "Deleting";
+  YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
+
+  switch (yytype)
+    {
+
+      default:
+	break;
+    }
+}
+
+/* Prevent warnings from -Wmissing-prototypes.  */
+#ifdef YYPARSE_PARAM
+#if defined __STDC__ || defined __cplusplus
+int yyparse (void *YYPARSE_PARAM);
+#else
+int yyparse ();
+#endif
+#else /* ! YYPARSE_PARAM */
+#if defined __STDC__ || defined __cplusplus
+int yyparse (void* irtree);
+#else
+int yyparse ();
+#endif
+#endif /* ! YYPARSE_PARAM */
+
+
+/* The lookahead symbol.  */
+int yychar;
+
+/* The semantic value of the lookahead symbol.  */
+YYSTYPE yylval;
+
+/* Number of syntax errors so far.  */
+int yynerrs;
+
+
+
+/*-------------------------.
+| yyparse or yypush_parse.  |
+`-------------------------*/
+
+#ifdef YYPARSE_PARAM
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+int
+yyparse (void *YYPARSE_PARAM)
+#else
+int
+yyparse (YYPARSE_PARAM)
+    void *YYPARSE_PARAM;
+#endif
+#else /* ! YYPARSE_PARAM */
+#if (defined __STDC__ || defined __C99__FUNC__ \
+     || defined __cplusplus || defined _MSC_VER)
+int
+yyparse (void* irtree)
+#else
+int
+yyparse (irtree)
+    void* irtree;
+#endif
+#endif
+{
+
+
+    int yystate;
+    /* Number of tokens to shift before error messages enabled.  */
+    int yyerrstatus;
+
+    /* The stacks and their tools:
+       `yyss': related to states.
+       `yyvs': related to semantic values.
+
+       Refer to the stacks thru separate pointers, to allow yyoverflow
+       to reallocate them elsewhere.  */
+
+    /* The state stack.  */
+    yytype_int16 yyssa[YYINITDEPTH];
+    yytype_int16 *yyss;
+    yytype_int16 *yyssp;
+
+    /* The semantic value stack.  */
+    YYSTYPE yyvsa[YYINITDEPTH];
+    YYSTYPE *yyvs;
+    YYSTYPE *yyvsp;
+
+    YYSIZE_T yystacksize;
+
+  int yyn;
+  int yyresult;
+  /* Lookahead token as an internal (translated) token number.  */
+  int yytoken;
+  /* The variables used to return semantic value and location from the
+     action routines.  */
+  YYSTYPE yyval;
+
+#if YYERROR_VERBOSE
+  /* Buffer for error messages, and its allocated size.  */
+  char yymsgbuf[128];
+  char *yymsg = yymsgbuf;
+  YYSIZE_T yymsg_alloc = sizeof yymsgbuf;
+#endif
+
+#define YYPOPSTACK(N)   (yyvsp -= (N), yyssp -= (N))
+
+  /* The number of symbols on the RHS of the reduced rule.
+     Keep to zero when no symbol should be popped.  */
+  int yylen = 0;
+
+  yytoken = 0;
+  yyss = yyssa;
+  yyvs = yyvsa;
+  yystacksize = YYINITDEPTH;
+
+  YYDPRINTF ((stderr, "Starting parse\n"));
+
+  yystate = 0;
+  yyerrstatus = 0;
+  yynerrs = 0;
+  yychar = YYEMPTY; /* Cause a token to be read.  */
+
+  /* Initialize stack pointers.
+     Waste one element of value and location stack
+     so that they stay on the same level as the state stack.
+     The wasted elements are never initialized.  */
+  yyssp = yyss;
+  yyvsp = yyvs;
+
+  goto yysetstate;
+
+/*------------------------------------------------------------.
+| yynewstate -- Push a new state, which is found in yystate.  |
+`------------------------------------------------------------*/
+ yynewstate:
+  /* In all cases, when you get here, the value and location stacks
+     have just been pushed.  So pushing a state here evens the stacks.  */
+  yyssp++;
+
+ yysetstate:
+  *yyssp = yystate;
+
+  if (yyss + yystacksize - 1 <= yyssp)
+    {
+      /* Get the current used size of the three stacks, in elements.  */
+      YYSIZE_T yysize = yyssp - yyss + 1;
+
+#ifdef yyoverflow
+      {
+	/* Give user a chance to reallocate the stack.  Use copies of
+	   these so that the &'s don't force the real ones into
+	   memory.  */
+	YYSTYPE *yyvs1 = yyvs;
+	yytype_int16 *yyss1 = yyss;
+
+	/* Each stack pointer address is followed by the size of the
+	   data in use in that stack, in bytes.  This used to be a
+	   conditional around just the two extra args, but that might
+	   be undefined if yyoverflow is a macro.  */
+	yyoverflow (YY_("memory exhausted"),
+		    &yyss1, yysize * sizeof (*yyssp),
+		    &yyvs1, yysize * sizeof (*yyvsp),
+		    &yystacksize);
+
+	yyss = yyss1;
+	yyvs = yyvs1;
+      }
+#else /* no yyoverflow */
+# ifndef YYSTACK_RELOCATE
+      goto yyexhaustedlab;
+# else
+      /* Extend the stack our own way.  */
+      if (YYMAXDEPTH <= yystacksize)
+	goto yyexhaustedlab;
+      yystacksize *= 2;
+      if (YYMAXDEPTH < yystacksize)
+	yystacksize = YYMAXDEPTH;
+
+      {
+	yytype_int16 *yyss1 = yyss;
+	union yyalloc *yyptr =
+	  (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
+	if (! yyptr)
+	  goto yyexhaustedlab;
+	YYSTACK_RELOCATE (yyss_alloc, yyss);
+	YYSTACK_RELOCATE (yyvs_alloc, yyvs);
+#  undef YYSTACK_RELOCATE
+	if (yyss1 != yyssa)
+	  YYSTACK_FREE (yyss1);
+      }
+# endif
+#endif /* no yyoverflow */
+
+      yyssp = yyss + yysize - 1;
+      yyvsp = yyvs + yysize - 1;
+
+      YYDPRINTF ((stderr, "Stack size increased to %lu\n",
+		  (unsigned long int) yystacksize));
+
+      if (yyss + yystacksize - 1 <= yyssp)
+	YYABORT;
+    }
+
+  YYDPRINTF ((stderr, "Entering state %d\n", yystate));
+
+  if (yystate == YYFINAL)
+    YYACCEPT;
+
+  goto yybackup;
+
+/*-----------.
+| yybackup.  |
+`-----------*/
+yybackup:
+
+  /* Do appropriate processing given the current state.  Read a
+     lookahead token if we need one and don't already have one.  */
+
+  /* First try to decide what to do without reference to lookahead token.  */
+  yyn = yypact[yystate];
+  if (yyn == YYPACT_NINF)
+    goto yydefault;
+
+  /* Not known => get a lookahead token if don't already have one.  */
+
+  /* YYCHAR is either YYEMPTY or YYEOF or a valid lookahead symbol.  */
+  if (yychar == YYEMPTY)
+    {
+      YYDPRINTF ((stderr, "Reading a token: "));
+      yychar = YYLEX;
+    }
+
+  if (yychar <= YYEOF)
+    {
+      yychar = yytoken = YYEOF;
+      YYDPRINTF ((stderr, "Now at end of input.\n"));
+    }
+  else
+    {
+      yytoken = YYTRANSLATE (yychar);
+      YY_SYMBOL_PRINT ("Next token is", yytoken, &yylval, &yylloc);
+    }
+
+  /* If the proper action on seeing token YYTOKEN is to reduce or to
+     detect an error, take that action.  */
+  yyn += yytoken;
+  if (yyn < 0 || YYLAST < yyn || yycheck[yyn] != yytoken)
+    goto yydefault;
+  yyn = yytable[yyn];
+  if (yyn <= 0)
+    {
+      if (yyn == 0 || yyn == YYTABLE_NINF)
+	goto yyerrlab;
+      yyn = -yyn;
+      goto yyreduce;
+    }
+
+  /* Count tokens shifted since error; after three, turn off error
+     status.  */
+  if (yyerrstatus)
+    yyerrstatus--;
+
+  /* Shift the lookahead token.  */
+  YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
+
+  /* Discard the shifted token.  */
+  yychar = YYEMPTY;
+
+  yystate = yyn;
+  *++yyvsp = yylval;
+
+  goto yynewstate;
+
+
+/*-----------------------------------------------------------.
+| yydefault -- do the default action for the current state.  |
+`-----------------------------------------------------------*/
+yydefault:
+  yyn = yydefact[yystate];
+  if (yyn == 0)
+    goto yyerrlab;
+  goto yyreduce;
+
+
+/*-----------------------------.
+| yyreduce -- Do a reduction.  |
+`-----------------------------*/
+yyreduce:
+  /* yyn is the number of a rule to reduce with.  */
+  yylen = yyr2[yyn];
+
+  /* If YYLEN is nonzero, implement the default value of the action:
+     `$$ = $1'.
+
+     Otherwise, the following line sets YYVAL to garbage.
+     This behavior is undocumented and Bison
+     users should not rely upon it.  Assigning to YYVAL
+     unconditionally makes the parser a bit smaller, and it avoids a
+     GCC warning that YYVAL may be used uninitialized.  */
+  yyval = yyvsp[1-yylen];
+
+
+  YY_REDUCE_PRINT (yyn);
+  switch (yyn)
+    {
+        case 2:
+
+/* Line 1455 of yacc.c  */
+#line 163 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    { 
+            ((IRProgram *)irtree)->setHeaderString(string((yyvsp[(1) - (2)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 3:
+
+/* Line 1455 of yacc.c  */
+#line 168 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            ((IRProgram *)irtree)->addOptionList((yyvsp[(1) - (3)].optlist));
+            ((IRProgram *)irtree)->addStatementList((yyvsp[(2) - (3)].stmntlist));
+        ;}
+    break;
+
+  case 4:
+
+/* Line 1455 of yacc.c  */
+#line 174 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyvsp[(1) - (2)].optlist)->push_back((yyvsp[(2) - (2)].iroption));
+            (yyval.optlist) = (yyvsp[(1) - (2)].optlist);
+        ;}
+    break;
+
+  case 5:
+
+/* Line 1455 of yacc.c  */
+#line 179 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.optlist) = new list<IROption *>;
+        ;}
+    break;
+
+  case 6:
+
+/* Line 1455 of yacc.c  */
+#line 184 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.iroption) = new FP1IROption((yyvsp[(1) - (3)].token_atrib).linea,*(yyvsp[(2) - (3)].str));
+        ;}
+    break;
+
+  case 7:
+
+/* Line 1455 of yacc.c  */
+#line 189 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(1) - (2)].stmntlist)->push_back((yyvsp[(2) - (2)].irstatement));
+            (yyval.stmntlist) = (yyvsp[(1) - (2)].stmntlist);
+        ;}
+    break;
+
+  case 8:
+
+/* Line 1455 of yacc.c  */
+#line 194 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.stmntlist) = new list<IRStatement *>;
+        ;}
+    break;
+
+  case 9:
+
+/* Line 1455 of yacc.c  */
+#line 199 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irstatement) = (yyvsp[(1) - (2)].irinstruction);
+        ;}
+    break;
+
+  case 10:
+
+/* Line 1455 of yacc.c  */
+#line 203 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irstatement) = (yyvsp[(1) - (2)].irstatement);
+        ;}
+    break;
+
+  case 11:
+
+/* Line 1455 of yacc.c  */
+#line 213 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 12:
+
+/* Line 1455 of yacc.c  */
+#line 217 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 13:
+
+/* Line 1455 of yacc.c  */
+#line 221 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 14:
+
+/* Line 1455 of yacc.c  */
+#line 226 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 15:
+
+/* Line 1455 of yacc.c  */
+#line 230 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 16:
+
+/* Line 1455 of yacc.c  */
+#line 234 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 17:
+
+/* Line 1455 of yacc.c  */
+#line 238 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 18:
+
+/* Line 1455 of yacc.c  */
+#line 242 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irinstruction);
+        ;}
+    break;
+
+  case 19:
+
+/* Line 1455 of yacc.c  */
+#line 246 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irswzinstr);
+        ;}
+    break;
+
+  case 20:
+
+/* Line 1455 of yacc.c  */
+#line 251 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irsamplinstr);
+        ;}
+    break;
+
+  case 21:
+
+/* Line 1455 of yacc.c  */
+#line 255 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irkillinstr);
+        ;}
+    break;
+
+  case 22:
+
+/* Line 1455 of yacc.c  */
+#line 259 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = (yyvsp[(1) - (1)].irzxpinstr);
+        ;}
+    break;
+
+  case 23:
+
+/* Line 1455 of yacc.c  */
+#line 264 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRCHSInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 24:
+
+/* Line 1455 of yacc.c  */
+#line 270 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyvsp[(2) - (4)].irdstoperand)->setLine((yyvsp[(1) - (4)].irinstruction)->getLine());
+            (yyvsp[(4) - (4)].irsrcoperand)->setLine((yyvsp[(1) - (4)].irinstruction)->getLine());
+            (yyvsp[(1) - (4)].irinstruction)->setDest((yyvsp[(2) - (4)].irdstoperand));
+            (yyvsp[(1) - (4)].irinstruction)->setSource0((yyvsp[(4) - (4)].irsrcoperand));
+            (yyval.irinstruction)=(yyvsp[(1) - (4)].irinstruction);
+        ;}
+    break;
+
+  case 25:
+
+/* Line 1455 of yacc.c  */
+#line 279 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 26:
+
+/* Line 1455 of yacc.c  */
+#line 283 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 27:
+
+/* Line 1455 of yacc.c  */
+#line 287 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 28:
+
+/* Line 1455 of yacc.c  */
+#line 291 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 29:
+
+/* Line 1455 of yacc.c  */
+#line 295 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 30:
+
+/* Line 1455 of yacc.c  */
+#line 299 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 31:
+
+/* Line 1455 of yacc.c  */
+#line 303 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 32:
+
+/* Line 1455 of yacc.c  */
+#line 307 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 33:
+
+/* Line 1455 of yacc.c  */
+#line 311 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 34:
+
+/* Line 1455 of yacc.c  */
+#line 315 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 35:
+
+/* Line 1455 of yacc.c  */
+#line 321 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyvsp[(2) - (4)].irdstoperand)->setLine((yyvsp[(1) - (4)].irinstruction)->getLine());
+            (yyvsp[(4) - (4)].irsrcoperand)->setLine((yyvsp[(1) - (4)].irinstruction)->getLine());
+            (yyvsp[(1) - (4)].irinstruction)->setDest((yyvsp[(2) - (4)].irdstoperand));
+            (yyvsp[(1) - (4)].irinstruction)->setSource0((yyvsp[(4) - (4)].irsrcoperand));
+            (yyval.irinstruction)=(yyvsp[(1) - (4)].irinstruction);
+        ;}
+    break;
+
+  case 36:
+
+/* Line 1455 of yacc.c  */
+#line 330 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 37:
+
+/* Line 1455 of yacc.c  */
+#line 334 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 38:
+
+/* Line 1455 of yacc.c  */
+#line 338 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 39:
+
+/* Line 1455 of yacc.c  */
+#line 342 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 40:
+
+/* Line 1455 of yacc.c  */
+#line 346 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 41:
+
+/* Line 1455 of yacc.c  */
+#line 350 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 42:
+
+/* Line 1455 of yacc.c  */
+#line 354 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 43:
+
+/* Line 1455 of yacc.c  */
+#line 358 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 44:
+
+/* Line 1455 of yacc.c  */
+#line 362 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 45:
+
+/* Line 1455 of yacc.c  */
+#line 366 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 46:
+
+/* Line 1455 of yacc.c  */
+#line 370 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 47:
+
+/* Line 1455 of yacc.c  */
+#line 374 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 48:
+
+/* Line 1455 of yacc.c  */
+#line 378 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 49:
+
+/* Line 1455 of yacc.c  */
+#line 382 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 50:
+
+/* Line 1455 of yacc.c  */
+#line 388 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyvsp[(2) - (6)].irdstoperand)->setLine((yyvsp[(1) - (6)].irinstruction)->getLine());
+            (yyvsp[(4) - (6)].irsrcoperand)->setLine((yyvsp[(1) - (6)].irinstruction)->getLine());
+            (yyvsp[(6) - (6)].irsrcoperand)->setLine((yyvsp[(1) - (6)].irinstruction)->getLine());
+            (yyvsp[(1) - (6)].irinstruction)->setDest((yyvsp[(2) - (6)].irdstoperand));
+            (yyvsp[(1) - (6)].irinstruction)->setSource0((yyvsp[(4) - (6)].irsrcoperand));
+            (yyvsp[(1) - (6)].irinstruction)->setSource1((yyvsp[(6) - (6)].irsrcoperand));
+            (yyval.irinstruction)=(yyvsp[(1) - (6)].irinstruction);
+        ;}
+    break;
+
+  case 51:
+
+/* Line 1455 of yacc.c  */
+#line 399 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 52:
+
+/* Line 1455 of yacc.c  */
+#line 403 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 53:
+
+/* Line 1455 of yacc.c  */
+#line 409 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyvsp[(2) - (6)].irdstoperand)->setLine((yyvsp[(1) - (6)].irinstruction)->getLine());
+            (yyvsp[(4) - (6)].irsrcoperand)->setLine((yyvsp[(1) - (6)].irinstruction)->getLine());
+            (yyvsp[(6) - (6)].irsrcoperand)->setLine((yyvsp[(1) - (6)].irinstruction)->getLine());
+            (yyvsp[(1) - (6)].irinstruction)->setDest((yyvsp[(2) - (6)].irdstoperand));
+            (yyvsp[(1) - (6)].irinstruction)->setSource0((yyvsp[(4) - (6)].irsrcoperand));
+            (yyvsp[(1) - (6)].irinstruction)->setSource1((yyvsp[(6) - (6)].irsrcoperand));
+            (yyval.irinstruction)=(yyvsp[(1) - (6)].irinstruction);
+        ;}
+    break;
+
+  case 54:
+
+/* Line 1455 of yacc.c  */
+#line 420 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 55:
+
+/* Line 1455 of yacc.c  */
+#line 424 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 56:
+
+/* Line 1455 of yacc.c  */
+#line 428 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 57:
+
+/* Line 1455 of yacc.c  */
+#line 432 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 58:
+
+/* Line 1455 of yacc.c  */
+#line 436 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 59:
+
+/* Line 1455 of yacc.c  */
+#line 440 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 60:
+
+/* Line 1455 of yacc.c  */
+#line 444 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 61:
+
+/* Line 1455 of yacc.c  */
+#line 448 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 62:
+
+/* Line 1455 of yacc.c  */
+#line 452 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 63:
+
+/* Line 1455 of yacc.c  */
+#line 456 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 64:
+
+/* Line 1455 of yacc.c  */
+#line 460 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 65:
+
+/* Line 1455 of yacc.c  */
+#line 464 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 66:
+
+/* Line 1455 of yacc.c  */
+#line 468 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 67:
+
+/* Line 1455 of yacc.c  */
+#line 472 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 68:
+
+/* Line 1455 of yacc.c  */
+#line 476 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 69:
+
+/* Line 1455 of yacc.c  */
+#line 480 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+            (yyval.irinstruction)->setIsFixedPoint();
+        ;}
+    break;
+
+  case 70:
+
+/* Line 1455 of yacc.c  */
+#line 485 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 71:
+
+/* Line 1455 of yacc.c  */
+#line 489 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 72:
+
+/* Line 1455 of yacc.c  */
+#line 493 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 73:
+
+/* Line 1455 of yacc.c  */
+#line 497 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 74:
+
+/* Line 1455 of yacc.c  */
+#line 501 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 75:
+
+/* Line 1455 of yacc.c  */
+#line 505 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 76:
+
+/* Line 1455 of yacc.c  */
+#line 509 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 77:
+
+/* Line 1455 of yacc.c  */
+#line 513 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 78:
+
+/* Line 1455 of yacc.c  */
+#line 517 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 79:
+
+/* Line 1455 of yacc.c  */
+#line 524 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyvsp[(2) - (8)].irdstoperand)->setLine((yyvsp[(1) - (8)].irinstruction)->getLine());
+            (yyvsp[(4) - (8)].irsrcoperand)->setLine((yyvsp[(1) - (8)].irinstruction)->getLine());
+            (yyvsp[(6) - (8)].irsrcoperand)->setLine((yyvsp[(1) - (8)].irinstruction)->getLine());
+            (yyvsp[(8) - (8)].irsrcoperand)->setLine((yyvsp[(1) - (8)].irinstruction)->getLine());
+            (yyvsp[(1) - (8)].irinstruction)->setDest((yyvsp[(2) - (8)].irdstoperand));
+            (yyvsp[(1) - (8)].irinstruction)->setSource0((yyvsp[(4) - (8)].irsrcoperand));
+            (yyvsp[(1) - (8)].irinstruction)->setSource1((yyvsp[(6) - (8)].irsrcoperand));
+            (yyvsp[(1) - (8)].irinstruction)->setSource2((yyvsp[(8) - (8)].irsrcoperand));
+            (yyval.irinstruction)=(yyvsp[(1) - (8)].irinstruction);
+        ;}
+    break;
+
+  case 80:
+
+/* Line 1455 of yacc.c  */
+#line 537 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 81:
+
+/* Line 1455 of yacc.c  */
+#line 541 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 82:
+
+/* Line 1455 of yacc.c  */
+#line 545 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 83:
+
+/* Line 1455 of yacc.c  */
+#line 549 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 84:
+
+/* Line 1455 of yacc.c  */
+#line 553 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 85:
+
+/* Line 1455 of yacc.c  */
+#line 557 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 86:
+
+/* Line 1455 of yacc.c  */
+#line 561 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+            (yyval.irinstruction)->setIsFixedPoint();
+        ;}
+    break;
+
+  case 87:
+
+/* Line 1455 of yacc.c  */
+#line 566 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+            (yyval.irinstruction)->setIsFixedPoint();
+        ;}
+    break;
+
+  case 88:
+
+/* Line 1455 of yacc.c  */
+#line 571 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irinstruction) = new IRInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 89:
+
+/* Line 1455 of yacc.c  */
+#line 577 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(2) - (6)].irdstoperand)->setLine((yyvsp[(1) - (6)].irswzinstr)->getLine());
+            (yyvsp[(4) - (6)].irsrcoperand)->setLine((yyvsp[(1) - (6)].irswzinstr)->getLine());
+            (yyvsp[(6) - (6)].irswzcomps)->setLine((yyvsp[(1) - (6)].irswzinstr)->getLine());
+            (yyvsp[(1) - (6)].irswzinstr)->setDest((yyvsp[(2) - (6)].irdstoperand));
+            (yyvsp[(1) - (6)].irswzinstr)->setSource0((yyvsp[(4) - (6)].irsrcoperand));
+            (yyvsp[(1) - (6)].irswzinstr)->setSwizzleComponents((yyvsp[(6) - (6)].irswzcomps));
+            (yyval.irswzinstr) = (yyvsp[(1) - (6)].irswzinstr);
+        ;}
+    break;
+
+  case 90:
+
+/* Line 1455 of yacc.c  */
+#line 588 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irswzinstr) = new IRSwizzleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 91:
+
+/* Line 1455 of yacc.c  */
+#line 592 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irswzinstr) = new IRSwizzleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 92:
+
+/* Line 1455 of yacc.c  */
+#line 599 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(2) - (8)].irdstoperand)->setLine((yyvsp[(1) - (8)].irsamplinstr)->getLine());
+            (yyvsp[(4) - (8)].irsrcoperand)->setLine((yyvsp[(1) - (8)].irsamplinstr)->getLine());
+            (yyvsp[(1) - (8)].irsamplinstr)->setDest((yyvsp[(2) - (8)].irdstoperand));
+            (yyvsp[(1) - (8)].irsamplinstr)->setSource0((yyvsp[(4) - (8)].irsrcoperand));
+            (yyvsp[(1) - (8)].irsamplinstr)->setTextureImageUnit((yyvsp[(6) - (8)].intconst));
+            (yyvsp[(1) - (8)].irsamplinstr)->setTextureTarget(*(yyvsp[(8) - (8)].str));
+            (yyval.irsamplinstr) = (yyvsp[(1) - (8)].irsamplinstr);
+        ;}
+    break;
+
+  case 93:
+
+/* Line 1455 of yacc.c  */
+#line 610 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsamplinstr) = new IRSampleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 94:
+
+/* Line 1455 of yacc.c  */
+#line 614 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsamplinstr) = new IRSampleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 95:
+
+/* Line 1455 of yacc.c  */
+#line 618 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsamplinstr) = new IRSampleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 96:
+
+/* Line 1455 of yacc.c  */
+#line 622 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsamplinstr) = new IRSampleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 97:
+
+/* Line 1455 of yacc.c  */
+#line 626 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsamplinstr) = new IRSampleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 98:
+
+/* Line 1455 of yacc.c  */
+#line 630 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsamplinstr) = new IRSampleInstruction((yyvsp[(1) - (1)].token_atrib).linea,string((yyvsp[(1) - (1)].token_atrib).texto->c_str()));
+        ;}
+    break;
+
+  case 99:
+
+/* Line 1455 of yacc.c  */
+#line 635 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irkillinstr) = new IRKillInstruction((yyvsp[(1) - (2)].token_atrib).linea,string((yyvsp[(1) - (2)].token_atrib).texto->c_str()));
+            (yyvsp[(2) - (2)].irsrcoperand)->setLine((yyval.irkillinstr)->getLine());
+            (yyval.irkillinstr)->setSource0((yyvsp[(2) - (2)].irsrcoperand));
+        ;}
+    break;
+
+  case 100:
+
+/* Line 1455 of yacc.c  */
+#line 641 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+			(yyval.irkillinstr) = new IRKillInstruction((yyvsp[(1) - (7)].token_atrib).linea,string((yyvsp[(1) - (7)].token_atrib).texto->c_str()));
+            (yyvsp[(2) - (7)].irsrcoperand)->setLine((yyval.irkillinstr)->getLine());
+            (yyval.irkillinstr)->setSource0((yyvsp[(2) - (7)].irsrcoperand));
+            (yyval.irkillinstr)->setIsKillSampleInstr();
+            (yyval.irkillinstr)->setKillSample((yyvsp[(6) - (7)].intconst));
+        ;}
+    break;
+
+  case 101:
+
+/* Line 1455 of yacc.c  */
+#line 650 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irzxpinstr) = new IRZExportInstruction((yyvsp[(1) - (2)].token_atrib).linea,string((yyvsp[(1) - (2)].token_atrib).texto->c_str()));
+            (yyvsp[(2) - (2)].irsrcoperand)->setLine((yyval.irzxpinstr)->getLine());
+            (yyval.irzxpinstr)->setSource0((yyvsp[(2) - (2)].irsrcoperand));
+        ;}
+    break;
+
+  case 102:
+
+/* Line 1455 of yacc.c  */
+#line 656 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+			(yyval.irzxpinstr) = new IRZExportInstruction((yyvsp[(1) - (7)].token_atrib).linea,string((yyvsp[(1) - (7)].token_atrib).texto->c_str()));
+            (yyvsp[(2) - (7)].irsrcoperand)->setLine((yyval.irzxpinstr)->getLine());
+            (yyval.irzxpinstr)->setSource0((yyvsp[(2) - (7)].irsrcoperand));
+            (yyval.irzxpinstr)->setIsExpSampleInstr();
+            (yyval.irzxpinstr)->setExportSample((yyvsp[(6) - (7)].intconst));
+        ;}
+    break;
+
+  case 103:
+
+/* Line 1455 of yacc.c  */
+#line 665 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(2) - (2)].intconst);
+        ;}
+    break;
+
+  case 104:
+
+/* Line 1455 of yacc.c  */
+#line 670 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 105:
+
+/* Line 1455 of yacc.c  */
+#line 675 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 106:
+
+/* Line 1455 of yacc.c  */
+#line 680 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 107:
+
+/* Line 1455 of yacc.c  */
+#line 685 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 108:
+
+/* Line 1455 of yacc.c  */
+#line 690 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 109:
+
+/* Line 1455 of yacc.c  */
+#line 696 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.intconst) = 0; // Default value of texture when no specified unit number
+        ;}
+    break;
+
+  case 110:
+
+/* Line 1455 of yacc.c  */
+#line 700 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.intconst) = (yyvsp[(2) - (3)].intconst);
+        ;}
+    break;
+
+  case 111:
+
+/* Line 1455 of yacc.c  */
+#line 705 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 112:
+
+/* Line 1455 of yacc.c  */
+#line 714 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            if ((yyvsp[(1) - (3)].boolean)) (yyvsp[(2) - (3)].irsrcoperand)->setNegateFlag();
+            (yyvsp[(2) - (3)].irsrcoperand)->setSwizzleMask(*(yyvsp[(3) - (3)].str));
+            (yyval.irsrcoperand) = (yyvsp[(2) - (3)].irsrcoperand);
+        ;}
+    break;
+
+  case 113:
+
+/* Line 1455 of yacc.c  */
+#line 721 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            if ((yyvsp[(1) - (3)].boolean)) (yyvsp[(2) - (3)].irsrcoperand)->setNegateFlag();
+            (yyvsp[(2) - (3)].irsrcoperand)->setSwizzleMask(*(yyvsp[(3) - (3)].str));
+            (yyval.irsrcoperand) = (yyvsp[(2) - (3)].irsrcoperand);
+        ;}
+    break;
+
+  case 114:
+
+/* Line 1455 of yacc.c  */
+#line 728 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(1) - (2)].irdstoperand)->setWriteMask(*(yyvsp[(2) - (2)].str));
+            (yyval.irdstoperand) = (yyvsp[(1) - (2)].irdstoperand);
+        ;}
+    break;
+
+  case 115:
+
+/* Line 1455 of yacc.c  */
+#line 737 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irswzcomps) = new IRSwizzleComponents();
+            (yyval.irswzcomps)->setComponent(0,(yyvsp[(2) - (11)].irswzcomp),(yyvsp[(1) - (11)].boolean));
+            (yyval.irswzcomps)->setComponent(1,(yyvsp[(5) - (11)].irswzcomp),(yyvsp[(4) - (11)].boolean));
+            (yyval.irswzcomps)->setComponent(2,(yyvsp[(8) - (11)].irswzcomp),(yyvsp[(7) - (11)].boolean));
+            (yyval.irswzcomps)->setComponent(3,(yyvsp[(11) - (11)].irswzcomp),(yyvsp[(10) - (11)].boolean));
+        ;}
+    break;
+
+  case 116:
+
+/* Line 1455 of yacc.c  */
+#line 746 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            if ((yyvsp[(1) - (1)].intconst)==0) (yyval.irswzcomp) = IRSwizzleComponents::ZERO;
+            else (yyval.irswzcomp) = IRSwizzleComponents::ONE;
+        ;}
+    break;
+
+  case 117:
+
+/* Line 1455 of yacc.c  */
+#line 751 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irswzcomp) = (yyvsp[(1) - (1)].irswzcomp);
+        ;}
+    break;
+
+  case 118:
+
+/* Line 1455 of yacc.c  */
+#line 759 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsrcoperand) = new IRSrcOperand(*(yyvsp[(1) - (1)].str));
+        ;}
+    break;
+
+  case 119:
+
+/* Line 1455 of yacc.c  */
+#line 763 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsrcoperand) = new IRSrcOperand(*(yyvsp[(1) - (1)].str));
+            (yyval.irsrcoperand)->setIsFragmentRegister(true);
+        ;}
+    break;
+
+  case 120:
+
+/* Line 1455 of yacc.c  */
+#line 768 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irsrcoperand) = (yyvsp[(1) - (1)].irsrcoperand);
+        ;}
+    break;
+
+  case 121:
+
+/* Line 1455 of yacc.c  */
+#line 775 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irdstoperand) = new IRDstOperand(*(yyvsp[(1) - (1)].str));
+        ;}
+    break;
+
+  case 122:
+
+/* Line 1455 of yacc.c  */
+#line 779 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irdstoperand) = new IRDstOperand(*(yyvsp[(1) - (1)].str));
+            (yyval.irdstoperand)->setIsFragmentResultRegister(true);
+        ;}
+    break;
+
+  case 123:
+
+/* Line 1455 of yacc.c  */
+#line 785 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsrcoperand) = new IRSrcOperand(*(yyvsp[(1) - (4)].str));
+            (yyval.irsrcoperand)->setArrayAddressing(new IRArrayAddressing((yyvsp[(3) - (4)].intconst)));
+        ;}
+    break;
+
+  case 124:
+
+/* Line 1455 of yacc.c  */
+#line 790 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irsrcoperand) = new IRSrcOperand(string(""));
+            (yyval.irsrcoperand)->setParamBinding((yyvsp[(1) - (1)].irparambind));
+        ;}
+    break;
+
+  case 125:
+
+/* Line 1455 of yacc.c  */
+#line 796 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str) = (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 126:
+
+/* Line 1455 of yacc.c  */
+#line 801 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 127:
+
+/* Line 1455 of yacc.c  */
+#line 806 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str)= (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 128:
+
+/* Line 1455 of yacc.c  */
+#line 811 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),"xyzw"); 
+            //$$ = new string("xyzw");
+        ;}
+    break;
+
+  case 129:
+
+/* Line 1455 of yacc.c  */
+#line 816 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str) = (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 130:
+
+/* Line 1455 of yacc.c  */
+#line 823 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            if (!(yyvsp[(1) - (1)].str)->compare("x")) (yyval.irswzcomp) = IRSwizzleComponents::X;
+            else if (!(yyvsp[(1) - (1)].str)->compare("y")) (yyval.irswzcomp) = IRSwizzleComponents::Y;
+            else if (!(yyvsp[(1) - (1)].str)->compare("z")) (yyval.irswzcomp) = IRSwizzleComponents::Z;
+            else if (!(yyvsp[(1) - (1)].str)->compare("w")) (yyval.irswzcomp) = IRSwizzleComponents::W;
+            else if (!(yyvsp[(1) - (1)].str)->compare("r")) (yyval.irswzcomp) = IRSwizzleComponents::X;
+            else if (!(yyvsp[(1) - (1)].str)->compare("g")) (yyval.irswzcomp) = IRSwizzleComponents::Y;
+            else if (!(yyvsp[(1) - (1)].str)->compare("b")) (yyval.irswzcomp) = IRSwizzleComponents::Z;
+            else if (!(yyvsp[(1) - (1)].str)->compare("a")) (yyval.irswzcomp) = IRSwizzleComponents::W;
+        ;}
+    break;
+
+  case 131:
+
+/* Line 1455 of yacc.c  */
+#line 835 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),"xyzw"); //$$ = new string("xyzw");
+        ;}
+    break;
+
+  case 132:
+
+/* Line 1455 of yacc.c  */
+#line 839 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str) = (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 133:
+
+/* Line 1455 of yacc.c  */
+#line 865 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str) = (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 134:
+
+/* Line 1455 of yacc.c  */
+#line 875 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irstatement) = (yyvsp[(1) - (1)].irattrstmnt);
+        ;}
+    break;
+
+  case 135:
+
+/* Line 1455 of yacc.c  */
+#line 879 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irstatement) = (yyvsp[(1) - (1)].irparamstmnt);
+        ;}
+    break;
+
+  case 136:
+
+/* Line 1455 of yacc.c  */
+#line 883 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irstatement) = (yyvsp[(1) - (1)].irtempstmnt);
+        ;}
+    break;
+
+  case 137:
+
+/* Line 1455 of yacc.c  */
+#line 887 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irstatement) = (yyvsp[(1) - (1)].iroutputstmnt);
+        ;}
+    break;
+
+  case 138:
+
+/* Line 1455 of yacc.c  */
+#line 891 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irstatement) = (yyvsp[(1) - (1)].iraliasstmnt);
+        ;}
+    break;
+
+  case 139:
+
+/* Line 1455 of yacc.c  */
+#line 897 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irattrstmnt) = new FP1IRATTRIBStatement((yyvsp[(1) - (4)].token_atrib).linea,*(yyvsp[(2) - (4)].str));
+            (yyval.irattrstmnt)->setInputAttribute(*(yyvsp[(4) - (4)].str));
+        ;}
+    break;
+
+  case 140:
+
+/* Line 1455 of yacc.c  */
+#line 903 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str) = (yyvsp[(2) - (2)].str);
+        ;}
+    break;
+
+  case 141:
+
+/* Line 1455 of yacc.c  */
+#line 908 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (2)].token_atrib).texto))
+            APPEND_STR(*(yyval.str),*(yyvsp[(2) - (2)].str))
+        ;}
+    break;
+
+  case 142:
+
+/* Line 1455 of yacc.c  */
+#line 915 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (2)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(2) - (2)].intconst))
+        ;}
+    break;
+
+  case 143:
+
+/* Line 1455 of yacc.c  */
+#line 922 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 144:
+
+/* Line 1455 of yacc.c  */
+#line 927 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 145:
+
+/* Line 1455 of yacc.c  */
+#line 932 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (4)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(3) - (4)].intconst))
+        ;}
+    break;
+
+  case 146:
+
+/* Line 1455 of yacc.c  */
+#line 940 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 147:
+
+/* Line 1455 of yacc.c  */
+#line 947 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparamstmnt) = (yyvsp[(1) - (1)].irparamstmnt);
+        ;}
+    break;
+
+  case 148:
+
+/* Line 1455 of yacc.c  */
+#line 951 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irparamstmnt) = (yyvsp[(1) - (1)].irparamstmnt);
+        ;}
+    break;
+
+  case 149:
+
+/* Line 1455 of yacc.c  */
+#line 956 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparamstmnt) = new IRPARAMStatement((yyvsp[(1) - (3)].token_atrib).linea,*(yyvsp[(2) - (3)].str),false);
+            (yyval.irparamstmnt)->setSize(-1);
+            (yyval.irparamstmnt)->setParamBindings((yyvsp[(3) - (3)].pbindlist));
+        ;}
+    break;
+
+  case 150:
+
+/* Line 1455 of yacc.c  */
+#line 964 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparamstmnt) = new IRPARAMStatement((yyvsp[(1) - (6)].token_atrib).linea,*(yyvsp[(2) - (6)].str),true);
+            (yyval.irparamstmnt)->setSize((yyvsp[(4) - (6)].intconst));
+            (yyval.irparamstmnt)->setParamBindings((yyvsp[(6) - (6)].pbindlist));
+        ;}
+    break;
+
+  case 151:
+
+/* Line 1455 of yacc.c  */
+#line 971 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = -1; // It means that no optional size is specified
+        ;}
+    break;
+
+  case 152:
+
+/* Line 1455 of yacc.c  */
+#line 978 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 153:
+
+/* Line 1455 of yacc.c  */
+#line 983 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.pbindlist) = new list<IRParamBinding *>;
+            (yyval.pbindlist)->push_back((yyvsp[(2) - (2)].irparambind));
+        ;}
+    break;
+
+  case 154:
+
+/* Line 1455 of yacc.c  */
+#line 989 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.pbindlist) = (yyvsp[(3) - (4)].pbindlist);
+        ;}
+    break;
+
+  case 155:
+
+/* Line 1455 of yacc.c  */
+#line 994 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.pbindlist) = new list<IRParamBinding *>;
+            (yyval.pbindlist)->push_back((yyvsp[(1) - (1)].irparambind));
+        ;}
+    break;
+
+  case 156:
+
+/* Line 1455 of yacc.c  */
+#line 999 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(1) - (3)].pbindlist)->push_back((yyvsp[(3) - (3)].irparambind));
+            (yyval.pbindlist) = (yyvsp[(1) - (3)].pbindlist);
+        ;}
+    break;
+
+  case 157:
+
+/* Line 1455 of yacc.c  */
+#line 1005 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 158:
+
+/* Line 1455 of yacc.c  */
+#line 1009 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 159:
+
+/* Line 1455 of yacc.c  */
+#line 1013 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 160:
+
+/* Line 1455 of yacc.c  */
+#line 1018 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(1) - (1)].irparambind)->setIsImplicitBinding(true);
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 161:
+
+/* Line 1455 of yacc.c  */
+#line 1023 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyvsp[(1) - (1)].irparambind)->setIsImplicitBinding(true);
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 162:
+
+/* Line 1455 of yacc.c  */
+#line 1028 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(1) - (1)].irparambind)->setIsImplicitBinding(true);
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 163:
+
+/* Line 1455 of yacc.c  */
+#line 1034 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 164:
+
+/* Line 1455 of yacc.c  */
+#line 1038 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 165:
+
+/* Line 1455 of yacc.c  */
+#line 1042 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 166:
+
+/* Line 1455 of yacc.c  */
+#line 1047 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 167:
+
+/* Line 1455 of yacc.c  */
+#line 1051 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str),true);
+        ;}
+    break;
+
+  case 168:
+
+/* Line 1455 of yacc.c  */
+#line 1056 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 169:
+
+/* Line 1455 of yacc.c  */
+#line 1060 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 170:
+
+/* Line 1455 of yacc.c  */
+#line 1064 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 171:
+
+/* Line 1455 of yacc.c  */
+#line 1068 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 172:
+
+/* Line 1455 of yacc.c  */
+#line 1072 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 173:
+
+/* Line 1455 of yacc.c  */
+#line 1076 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 174:
+
+/* Line 1455 of yacc.c  */
+#line 1080 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 175:
+
+/* Line 1455 of yacc.c  */
+#line 1084 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRStateBinding(*(yyvsp[(2) - (2)].str),true);
+        ;}
+    break;
+
+  case 176:
+
+/* Line 1455 of yacc.c  */
+#line 1089 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (3)].token_atrib).texto))
+            APPEND_STR(*(yyval.str),*(yyvsp[(2) - (3)].str))
+            APPEND_STR(*(yyval.str),*(yyvsp[(3) - (3)].str))
+        ;}
+    break;
+
+  case 177:
+
+/* Line 1455 of yacc.c  */
+#line 1098 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 178:
+
+/* Line 1455 of yacc.c  */
+#line 1103 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 179:
+
+/* Line 1455 of yacc.c  */
+#line 1108 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 180:
+
+/* Line 1455 of yacc.c  */
+#line 1113 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 181:
+
+/* Line 1455 of yacc.c  */
+#line 1118 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 182:
+
+/* Line 1455 of yacc.c  */
+#line 1124 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (5)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(3) - (5)].intconst))
+            APPEND_STR(*(yyval.str),*(yyvsp[(5) - (5)].str))
+        ;}
+    break;
+
+  case 183:
+
+/* Line 1455 of yacc.c  */
+#line 1133 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 184:
+
+/* Line 1455 of yacc.c  */
+#line 1138 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 185:
+
+/* Line 1455 of yacc.c  */
+#line 1143 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 186:
+
+/* Line 1455 of yacc.c  */
+#line 1148 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 187:
+
+/* Line 1455 of yacc.c  */
+#line 1153 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 188:
+
+/* Line 1455 of yacc.c  */
+#line 1158 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (2)].token_atrib).texto))
+            APPEND_STR(*(yyval.str),*(yyvsp[(2) - (2)].str))
+        ;}
+    break;
+
+  case 189:
+
+/* Line 1455 of yacc.c  */
+#line 1165 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 190:
+
+/* Line 1455 of yacc.c  */
+#line 1171 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 191:
+
+/* Line 1455 of yacc.c  */
+#line 1177 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (2)].token_atrib).texto))
+            APPEND_STR(*(yyval.str),*(yyvsp[(2) - (2)].str))
+        ;}
+    break;
+
+  case 192:
+
+/* Line 1455 of yacc.c  */
+#line 1185 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 193:
+
+/* Line 1455 of yacc.c  */
+#line 1190 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*(yyvsp[(1) - (2)].str))
+            APPEND_STR(*(yyval.str),*((yyvsp[(2) - (2)].token_atrib).texto))
+        ;}
+    break;
+
+  case 194:
+
+/* Line 1455 of yacc.c  */
+#line 1199 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (6)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(3) - (6)].intconst))
+            APPEND_STR(*(yyval.str),*(yyvsp[(5) - (6)].str))
+            APPEND_STR(*(yyval.str),*(yyvsp[(6) - (6)].str))
+        ;}
+    break;
+
+  case 195:
+
+/* Line 1455 of yacc.c  */
+#line 1209 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 196:
+
+/* Line 1455 of yacc.c  */
+#line 1214 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 197:
+
+/* Line 1455 of yacc.c  */
+#line 1219 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 198:
+
+/* Line 1455 of yacc.c  */
+#line 1225 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 199:
+
+/* Line 1455 of yacc.c  */
+#line 1230 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (3)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(2) - (3)].intconst))
+            APPEND_STR(*(yyval.str),*(yyvsp[(3) - (3)].str))
+        ;}
+    break;
+
+  case 200:
+
+/* Line 1455 of yacc.c  */
+#line 1239 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 201:
+
+/* Line 1455 of yacc.c  */
+#line 1245 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = 0; // Default value
+        ;}
+    break;
+
+  case 202:
+
+/* Line 1455 of yacc.c  */
+#line 1249 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.intconst) = (yyvsp[(2) - (3)].intconst);
+        ;}
+    break;
+
+  case 203:
+
+/* Line 1455 of yacc.c  */
+#line 1254 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 204:
+
+/* Line 1455 of yacc.c  */
+#line 1259 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (2)].token_atrib).texto));
+            APPEND_STR(*(yyval.str),*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 205:
+
+/* Line 1455 of yacc.c  */
+#line 1267 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 206:
+
+/* Line 1455 of yacc.c  */
+#line 1272 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 207:
+
+/* Line 1455 of yacc.c  */
+#line 1278 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),*((yyvsp[(1) - (2)].token_atrib).texto));
+            APPEND_STR(*(yyval.str),*(yyvsp[(2) - (2)].str));
+        ;}
+    break;
+
+  case 208:
+
+/* Line 1455 of yacc.c  */
+#line 1286 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 209:
+
+/* Line 1455 of yacc.c  */
+#line 1292 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str), *(yyvsp[(1) - (5)].str))
+            APPEND_STR(*(yyval.str),".row")
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(4) - (5)].intconst))
+        ;}
+    break;
+
+  case 210:
+
+/* Line 1455 of yacc.c  */
+#line 1301 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str), *(yyvsp[(1) - (2)].str))
+            APPEND_STR(*(yyval.str), *(yyvsp[(2) - (2)].str))
+        ;}
+    break;
+
+  case 211:
+
+/* Line 1455 of yacc.c  */
+#line 1309 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),".row[0..3]"); 
+            //$$ = new string(".row[0..3]");
+        ;}
+    break;
+
+  case 212:
+
+/* Line 1455 of yacc.c  */
+#line 1314 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str),".row[")
+            APPEND_ROW_RANGE_SELECTION(*(yyval.str),(yyvsp[(3) - (6)].intconst),(yyvsp[(5) - (6)].intconst))
+        ;}
+    break;
+
+  case 213:
+
+/* Line 1455 of yacc.c  */
+#line 1322 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str), *((yyvsp[(1) - (3)].token_atrib).texto))
+            APPEND_STR(*(yyval.str), *(yyvsp[(2) - (3)].str))
+            APPEND_STR(*(yyval.str), *(yyvsp[(3) - (3)].str))
+        ;}
+    break;
+
+  case 214:
+
+/* Line 1455 of yacc.c  */
+#line 1331 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),".normal"); 
+            //$$ = new string(".normal");
+        ;}
+    break;
+
+  case 215:
+
+/* Line 1455 of yacc.c  */
+#line 1336 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str) = (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 216:
+
+/* Line 1455 of yacc.c  */
+#line 1341 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 217:
+
+/* Line 1455 of yacc.c  */
+#line 1346 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 218:
+
+/* Line 1455 of yacc.c  */
+#line 1351 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 219:
+
+/* Line 1455 of yacc.c  */
+#line 1357 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 220:
+
+/* Line 1455 of yacc.c  */
+#line 1362 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str), *((yyvsp[(1) - (2)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(2) - (2)].intconst))
+        ;}
+    break;
+
+  case 221:
+
+/* Line 1455 of yacc.c  */
+#line 1369 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 222:
+
+/* Line 1455 of yacc.c  */
+#line 1374 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 223:
+
+/* Line 1455 of yacc.c  */
+#line 1379 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str), *((yyvsp[(1) - (2)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(2) - (2)].intconst))
+        ;}
+    break;
+
+  case 224:
+
+/* Line 1455 of yacc.c  */
+#line 1386 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str), *((yyvsp[(1) - (4)].token_atrib).texto))
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(3) - (4)].intconst))
+        ;}
+    break;
+
+  case 225:
+
+/* Line 1455 of yacc.c  */
+#line 1393 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_EMPTY_STRING((yyval.str)); 
+            //$$ = new string;
+            APPEND_STR(*(yyval.str), *((yyvsp[(1) - (4)].token_atrib).texto));
+            APPEND_NUMBER_SELECTION(*(yyval.str),(yyvsp[(3) - (4)].intconst));
+        ;}
+    break;
+
+  case 226:
+
+/* Line 1455 of yacc.c  */
+#line 1401 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = 0; // Default value
+        ;}
+    break;
+
+  case 227:
+
+/* Line 1455 of yacc.c  */
+#line 1405 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(2) - (3)].intconst);
+        ;}
+    break;
+
+  case 228:
+
+/* Line 1455 of yacc.c  */
+#line 1410 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 229:
+
+/* Line 1455 of yacc.c  */
+#line 1415 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = 0; // Default value
+        ;}
+    break;
+
+  case 230:
+
+/* Line 1455 of yacc.c  */
+#line 1419 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.intconst) = (yyvsp[(2) - (3)].intconst);
+        ;}
+    break;
+
+  case 231:
+
+/* Line 1455 of yacc.c  */
+#line 1424 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 232:
+
+/* Line 1455 of yacc.c  */
+#line 1429 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 233:
+
+/* Line 1455 of yacc.c  */
+#line 1434 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 234:
+
+/* Line 1455 of yacc.c  */
+#line 1439 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irlocalenvbind);
+        ;}
+    break;
+
+  case 235:
+
+/* Line 1455 of yacc.c  */
+#line 1443 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irlocalenvbind);
+        ;}
+    break;
+
+  case 236:
+
+/* Line 1455 of yacc.c  */
+#line 1448 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 237:
+
+/* Line 1455 of yacc.c  */
+#line 1452 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 238:
+
+/* Line 1455 of yacc.c  */
+#line 1457 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(4) - (5)].irlocalenvbind)->setLine((yyvsp[(1) - (5)].token_atrib).linea);
+            (yyval.irparambind) = (yyvsp[(4) - (5)].irlocalenvbind);
+        ;}
+    break;
+
+  case 239:
+
+/* Line 1455 of yacc.c  */
+#line 1463 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irlocalenvbind) = new IRLocalEnvBinding(IRLocalEnvBinding::ENVPARAM);
+            (yyval.irlocalenvbind)->setIndices((yyvsp[(1) - (1)].intconst),(yyvsp[(1) - (1)].intconst));
+        ;}
+    break;
+
+  case 240:
+
+/* Line 1455 of yacc.c  */
+#line 1468 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irlocalenvbind) = new IRLocalEnvBinding(IRLocalEnvBinding::ENVPARAM);
+            (yyval.irlocalenvbind)->setIndices((yyvsp[(1) - (3)].intconst),(yyvsp[(3) - (3)].intconst));
+        ;}
+    break;
+
+  case 241:
+
+/* Line 1455 of yacc.c  */
+#line 1474 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irlocalenvbind) = new IRLocalEnvBinding(IRLocalEnvBinding::ENVPARAM);
+            (yyval.irlocalenvbind)->setLine((yyvsp[(1) - (5)].token_atrib).linea);
+            (yyval.irlocalenvbind)->setIndices((yyvsp[(4) - (5)].intconst),(yyvsp[(4) - (5)].intconst));
+        ;}
+    break;
+
+  case 242:
+
+/* Line 1455 of yacc.c  */
+#line 1481 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(4) - (5)].irlocalenvbind)->setLine((yyvsp[(1) - (5)].token_atrib).linea);
+            (yyval.irparambind) = (yyvsp[(4) - (5)].irlocalenvbind);
+        ;}
+    break;
+
+  case 243:
+
+/* Line 1455 of yacc.c  */
+#line 1487 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irlocalenvbind) = new IRLocalEnvBinding(IRLocalEnvBinding::LOCALPARAM);
+            (yyval.irlocalenvbind)->setIndices((yyvsp[(1) - (1)].intconst),(yyvsp[(1) - (1)].intconst));
+        ;}
+    break;
+
+  case 244:
+
+/* Line 1455 of yacc.c  */
+#line 1492 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irlocalenvbind) = new IRLocalEnvBinding(IRLocalEnvBinding::LOCALPARAM);
+            (yyval.irlocalenvbind)->setIndices((yyvsp[(1) - (3)].intconst),(yyvsp[(3) - (3)].intconst));
+        ;}
+    break;
+
+  case 245:
+
+/* Line 1455 of yacc.c  */
+#line 1498 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irlocalenvbind) = new IRLocalEnvBinding(IRLocalEnvBinding::LOCALPARAM);
+            (yyval.irlocalenvbind)->setLine((yyvsp[(1) - (5)].token_atrib).linea);
+            (yyval.irlocalenvbind)->setIndices((yyvsp[(4) - (5)].intconst),(yyvsp[(4) - (5)].intconst));
+        ;}
+    break;
+
+  case 246:
+
+/* Line 1455 of yacc.c  */
+#line 1505 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 247:
+
+/* Line 1455 of yacc.c  */
+#line 1510 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.intconst) = (yyvsp[(1) - (1)].intconst);
+        ;}
+    break;
+
+  case 248:
+
+/* Line 1455 of yacc.c  */
+#line 1515 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 249:
+
+/* Line 1455 of yacc.c  */
+#line 1519 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 250:
+
+/* Line 1455 of yacc.c  */
+#line 1524 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 251:
+
+/* Line 1455 of yacc.c  */
+#line 1528 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = (yyvsp[(1) - (1)].irparambind);
+        ;}
+    break;
+
+  case 252:
+
+/* Line 1455 of yacc.c  */
+#line 1533 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRConstantBinding((yyvsp[(1) - (1)].floatconst),0.0f,0.0f,0.0f,true);
+        ;}
+    break;
+
+  case 253:
+
+/* Line 1455 of yacc.c  */
+#line 1538 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRConstantBinding((yyvsp[(1) - (1)].floatconst),(yyvsp[(1) - (1)].floatconst),(yyvsp[(1) - (1)].floatconst),(yyvsp[(1) - (1)].floatconst),true);
+        ;}
+    break;
+
+  case 254:
+
+/* Line 1455 of yacc.c  */
+#line 1543 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRConstantBinding((yyvsp[(2) - (3)].floatconst),0.0f,0.0f,1.0f);
+        ;}
+    break;
+
+  case 255:
+
+/* Line 1455 of yacc.c  */
+#line 1548 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRConstantBinding((yyvsp[(2) - (5)].floatconst),(yyvsp[(4) - (5)].floatconst),0.0f,1.0f);
+        ;}
+    break;
+
+  case 256:
+
+/* Line 1455 of yacc.c  */
+#line 1554 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRConstantBinding((yyvsp[(2) - (7)].floatconst),(yyvsp[(4) - (7)].floatconst),(yyvsp[(6) - (7)].floatconst),1.0f);
+        ;}
+    break;
+
+  case 257:
+
+/* Line 1455 of yacc.c  */
+#line 1561 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irparambind) = new IRConstantBinding((yyvsp[(2) - (9)].floatconst),(yyvsp[(4) - (9)].floatconst),(yyvsp[(6) - (9)].floatconst),(yyvsp[(8) - (9)].floatconst));
+        ;}
+    break;
+
+  case 258:
+
+/* Line 1455 of yacc.c  */
+#line 1566 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            if ((yyvsp[(1) - (2)].boolean)) (yyval.floatconst) = (-1)*(yyvsp[(2) - (2)].floatconst);
+            else (yyval.floatconst) = (yyvsp[(2) - (2)].floatconst);
+        ;}
+    break;
+
+  case 259:
+
+/* Line 1455 of yacc.c  */
+#line 1572 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.boolean) = false;
+        ;}
+    break;
+
+  case 260:
+
+/* Line 1455 of yacc.c  */
+#line 1576 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.boolean) = true;
+        ;}
+    break;
+
+  case 261:
+
+/* Line 1455 of yacc.c  */
+#line 1580 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.boolean) = false;
+        ;}
+    break;
+
+  case 262:
+
+/* Line 1455 of yacc.c  */
+#line 1585 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.irtempstmnt) = new IRTEMPStatement((yyvsp[(1) - (3)].token_atrib).linea,*(yyvsp[(2) - (3)].str));
+            (yyval.irtempstmnt)->setOtherTemporaries((yyvsp[(3) - (3)].strlist));
+        ;}
+    break;
+
+  case 263:
+
+/* Line 1455 of yacc.c  */
+#line 1591 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.strlist) = new list<string>();
+        ;}
+    break;
+
+  case 264:
+
+/* Line 1455 of yacc.c  */
+#line 1595 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyvsp[(1) - (3)].strlist)->push_back(*(yyvsp[(3) - (3)].str));
+            (yyval.strlist) = (yyvsp[(1) - (3)].strlist);
+        ;}
+    break;
+
+  case 265:
+
+/* Line 1455 of yacc.c  */
+#line 1602 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.iroutputstmnt) = new FP1IROUTPUTStatement((yyvsp[(1) - (4)].token_atrib).linea,*(yyvsp[(2) - (4)].str));
+            (yyval.iroutputstmnt)->setOutputAttribute(*(yyvsp[(4) - (4)].str));
+        ;}
+    break;
+
+  case 266:
+
+/* Line 1455 of yacc.c  */
+#line 1608 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(2) - (2)].token_atrib).texto)); 
+            //$$ = new string(*($2.texto));
+        ;}
+    break;
+
+  case 267:
+
+/* Line 1455 of yacc.c  */
+#line 1613 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(2) - (2)].token_atrib).texto)); 
+            //$$ = new string(*($2.texto));
+        ;}
+    break;
+
+  case 268:
+
+/* Line 1455 of yacc.c  */
+#line 1619 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),".front"); 
+            //$$ = new string(".front"); // Default
+        ;}
+    break;
+
+  case 269:
+
+/* Line 1455 of yacc.c  */
+#line 1624 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 270:
+
+/* Line 1455 of yacc.c  */
+#line 1629 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 271:
+
+/* Line 1455 of yacc.c  */
+#line 1635 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),".primary"); 
+            //$$ = new string(".primary"); // Default
+        ;}
+    break;
+
+  case 272:
+
+/* Line 1455 of yacc.c  */
+#line 1640 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 273:
+
+/* Line 1455 of yacc.c  */
+#line 1645 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 274:
+
+/* Line 1455 of yacc.c  */
+#line 1652 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.iraliasstmnt) = new IRALIASStatement((yyvsp[(1) - (4)].token_atrib).linea,*(yyvsp[(2) - (4)].str));
+            (yyval.iraliasstmnt)->setAlias(*(yyvsp[(4) - (4)].str));
+        ;}
+    break;
+
+  case 275:
+
+/* Line 1455 of yacc.c  */
+#line 1658 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {   
+            (yyval.str) = (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 276:
+
+/* Line 1455 of yacc.c  */
+#line 1663 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            (yyval.str) = (yyvsp[(1) - (1)].str);
+        ;}
+    break;
+
+  case 277:
+
+/* Line 1455 of yacc.c  */
+#line 1668 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),*((yyvsp[(1) - (1)].token_atrib).texto)); 
+            //$$ = new string(*($1.texto));
+        ;}
+    break;
+
+  case 278:
+
+/* Line 1455 of yacc.c  */
+#line 1674 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            CREATE_STRING((yyval.str),&((yyvsp[(1) - (1)].token_atrib).texto->c_str()[1])); 
+            //$$ = new string(&($1.texto->c_str()[1]));
+        ;}
+    break;
+
+  case 279:
+
+/* Line 1455 of yacc.c  */
+#line 1680 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            STRING_TO_VAR(*((yyvsp[(1) - (1)].token_atrib).texto), (yyval.intconst))
+        ;}
+    break;
+
+  case 280:
+
+/* Line 1455 of yacc.c  */
+#line 1685 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            STRING_TO_VAR(*((yyvsp[(1) - (1)].token_atrib).texto), (yyval.floatconst))
+        ;}
+    break;
+
+  case 281:
+
+/* Line 1455 of yacc.c  */
+#line 1689 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+    {
+            STRING_TO_VAR(*((yyvsp[(1) - (1)].token_atrib).texto), (yyval.floatconst))
+        ;}
+    break;
+
+
+
+/* Line 1455 of yacc.c  */
+#line 4814 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Bison.gen"
+      default: break;
+    }
+  YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
+
+  YYPOPSTACK (yylen);
+  yylen = 0;
+  YY_STACK_PRINT (yyss, yyssp);
+
+  *++yyvsp = yyval;
+
+  /* Now `shift' the result of the reduction.  Determine what state
+     that goes to, based on the state we popped back to and the rule
+     number reduced by.  */
+
+  yyn = yyr1[yyn];
+
+  yystate = yypgoto[yyn - YYNTOKENS] + *yyssp;
+  if (0 <= yystate && yystate <= YYLAST && yycheck[yystate] == *yyssp)
+    yystate = yytable[yystate];
+  else
+    yystate = yydefgoto[yyn - YYNTOKENS];
+
+  goto yynewstate;
+
+
+/*------------------------------------.
+| yyerrlab -- here on detecting error |
+`------------------------------------*/
+yyerrlab:
+  /* If not already recovering from an error, report this error.  */
+  if (!yyerrstatus)
+    {
+      ++yynerrs;
+#if ! YYERROR_VERBOSE
+      yyerror (irtree, YY_("syntax error"));
+#else
+      {
+	YYSIZE_T yysize = yysyntax_error (0, yystate, yychar);
+	if (yymsg_alloc < yysize && yymsg_alloc < YYSTACK_ALLOC_MAXIMUM)
+	  {
+	    YYSIZE_T yyalloc = 2 * yysize;
+	    if (! (yysize <= yyalloc && yyalloc <= YYSTACK_ALLOC_MAXIMUM))
+	      yyalloc = YYSTACK_ALLOC_MAXIMUM;
+	    if (yymsg != yymsgbuf)
+	      YYSTACK_FREE (yymsg);
+	    yymsg = (char *) YYSTACK_ALLOC (yyalloc);
+	    if (yymsg)
+	      yymsg_alloc = yyalloc;
+	    else
+	      {
+		yymsg = yymsgbuf;
+		yymsg_alloc = sizeof yymsgbuf;
+	      }
+	  }
+
+	if (0 < yysize && yysize <= yymsg_alloc)
+	  {
+	    (void) yysyntax_error (yymsg, yystate, yychar);
+	    yyerror (irtree, yymsg);
+	  }
+	else
+	  {
+	    yyerror (irtree, YY_("syntax error"));
+	    if (yysize != 0)
+	      goto yyexhaustedlab;
+	  }
+      }
+#endif
+    }
+
+
+
+  if (yyerrstatus == 3)
+    {
+      /* If just tried and failed to reuse lookahead token after an
+	 error, discard it.  */
+
+      if (yychar <= YYEOF)
+	{
+	  /* Return failure if at end of input.  */
+	  if (yychar == YYEOF)
+	    YYABORT;
+	}
+      else
+	{
+	  yydestruct ("Error: discarding",
+		      yytoken, &yylval, irtree);
+	  yychar = YYEMPTY;
+	}
+    }
+
+  /* Else will try to reuse lookahead token after shifting the error
+     token.  */
+  goto yyerrlab1;
+
+
+/*---------------------------------------------------.
+| yyerrorlab -- error raised explicitly by YYERROR.  |
+`---------------------------------------------------*/
+yyerrorlab:
+
+  /* Pacify compilers like GCC when the user code never invokes
+     YYERROR and the label yyerrorlab therefore never appears in user
+     code.  */
+  if (/*CONSTCOND*/ 0)
+     goto yyerrorlab;
+
+  /* Do not reclaim the symbols of the rule which action triggered
+     this YYERROR.  */
+  YYPOPSTACK (yylen);
+  yylen = 0;
+  YY_STACK_PRINT (yyss, yyssp);
+  yystate = *yyssp;
+  goto yyerrlab1;
+
+
+/*-------------------------------------------------------------.
+| yyerrlab1 -- common code for both syntax error and YYERROR.  |
+`-------------------------------------------------------------*/
+yyerrlab1:
+  yyerrstatus = 3;	/* Each real token shifted decrements this.  */
+
+  for (;;)
+    {
+      yyn = yypact[yystate];
+      if (yyn != YYPACT_NINF)
+	{
+	  yyn += YYTERROR;
+	  if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
+	    {
+	      yyn = yytable[yyn];
+	      if (0 < yyn)
+		break;
+	    }
+	}
+
+      /* Pop the current state because it cannot handle the error token.  */
+      if (yyssp == yyss)
+	YYABORT;
+
+
+      yydestruct ("Error: popping",
+		  yystos[yystate], yyvsp, irtree);
+      YYPOPSTACK (1);
+      yystate = *yyssp;
+      YY_STACK_PRINT (yyss, yyssp);
+    }
+
+  *++yyvsp = yylval;
+
+
+  /* Shift the error token.  */
+  YY_SYMBOL_PRINT ("Shifting", yystos[yyn], yyvsp, yylsp);
+
+  yystate = yyn;
+  goto yynewstate;
+
+
+/*-------------------------------------.
+| yyacceptlab -- YYACCEPT comes here.  |
+`-------------------------------------*/
+yyacceptlab:
+  yyresult = 0;
+  goto yyreturn;
+
+/*-----------------------------------.
+| yyabortlab -- YYABORT comes here.  |
+`-----------------------------------*/
+yyabortlab:
+  yyresult = 1;
+  goto yyreturn;
+
+#if !defined(yyoverflow) || YYERROR_VERBOSE
+/*-------------------------------------------------.
+| yyexhaustedlab -- memory exhaustion comes here.  |
+`-------------------------------------------------*/
+yyexhaustedlab:
+  yyerror (irtree, YY_("memory exhausted"));
+  yyresult = 2;
+  /* Fall through.  */
+#endif
+
+yyreturn:
+  if (yychar != YYEMPTY)
+     yydestruct ("Cleanup: discarding lookahead",
+		 yytoken, &yylval, irtree);
+  /* Do not reclaim the symbols of the rule which action triggered
+     this YYABORT or YYACCEPT.  */
+  YYPOPSTACK (yylen);
+  YY_STACK_PRINT (yyss, yyssp);
+  while (yyssp != yyss)
+    {
+      yydestruct ("Cleanup: popping",
+		  yystos[*yyssp], yyvsp, irtree);
+      YYPOPSTACK (1);
+    }
+#ifndef yyoverflow
+  if (yyss != yyssa)
+    YYSTACK_FREE (yyss);
+#endif
+#if YYERROR_VERBOSE
+  if (yymsg != yymsgbuf)
+    YYSTACK_FREE (yymsg);
+#endif
+  /* Make sure YYID is used.  */
+  return YYID (yyresult);
+}
+
+
+
+/* Line 1675 of yacc.c  */
+#line 1693 "..\\trace\\ACDX\\Implementation\\ARBCompilers\\FragmentProgram\\ACDXFP1Grammar.y"
+
+
+#include "ACDXFP1Flex.gen" 
+
+int acdxFp1StartParse(void *ptr)
+{
+    yyparse(ptr);
+    
+    list<string*>::iterator iter = acdxFp1LexSymbolCollector.begin();
+    
+    while(iter != acdxFp1LexSymbolCollector.end())
+    {
+        delete (*iter);
+        iter++;
+    }
+    
+    acdxFp1LexSymbolCollector.clear();
+
+    iter = acdxFp1ASTStringCollector.begin();
+    
+    while(iter != acdxFp1ASTStringCollector.end())
+    {   
+        delete (*iter);
+        iter++;
+    }
+    
+    acdxFp1ASTStringCollector.clear();
+    
+    return 0;
+}
+

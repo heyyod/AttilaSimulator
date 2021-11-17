@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Win32">
+      <Configuration>Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{27666D70-DDAB-46D2-8A6A-42E99A4A8704}</ProjectGuid>
+    <RootNamespace>ACD</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>.\x64\Debug\</OutDir>
+    <IntDir>.\x64\Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.\x64\Release\</OutDir>
+    <IntDir>.\x64\Release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <OutDir>.\win32\$(Configuration)\</OutDir>
+    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\trace\ACD\Interface;..\trace\ACD\Implementation;..\trace\ACD\Implementation\ShaderOptimization;..\trace\GPUDriver;..\support;..\sim\shader;..\sim;..\sim\CommandProcessor;..\sim\MemoryController;..\trace\utils;..\emul;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <MinimalRebuild />
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\trace\ACD\Interface;..\trace\ACD\Implementation;..\trace\ACD\Implementation\ShaderOptimization;..\trace\GPUDriver;..\support;..\sim;..\sim\shader;..\sim\CommandProcessor;..\sim\MemoryController;..\trace\utils;..\emul;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\trace\ACD\Interface;..\trace\ACD\Implementation;..\trace\ACD\Implementation\ShaderOptimization;..\trace\GPUDriver;..\support;..\sim;..\sim\shader;..\sim\CommandProcessor;..\sim\MemoryController;..\trace\utils;..\emul;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild />
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>..\trace\ACD\Interface;..\trace\ACD\Implementation;..\trace\ACD\Implementation\ShaderOptimization;..\trace\GPUDriver;..\support;..\sim;..\sim\shader;..\sim\CommandProcessor;..\sim\MemoryController;..\trace\utils;..\emul;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ErrorReporting>Prompt</ErrorReporting>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\trace\ACD\Interface;..\trace\ACD\Implementation;..\trace\ACD\Implementation\ShaderOptimization;..\trace\GPUDriver;..\support;..\sim;..\sim\shader;..\sim\CommandProcessor;..\sim\MemoryController;..\trace\utils;..\emul;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\trace\ACD\Interface;..\trace\ACD\Implementation;..\trace\ACD\Implementation\ShaderOptimization;..\trace\GPUDriver;..\support;..\sim;..\sim\shader;..\sim\CommandProcessor;..\sim\MemoryController;..\trace\utils;..\emul;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ErrorReporting>Prompt</ErrorReporting>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\trace\ACD\Implementation\ACDBlendingStageImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDBufferImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDDeviceImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDMacros.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDMath.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDRasterizationStageImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDRenderTargetImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDSamplerImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDShaderProgramImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDStoredStateImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDStreamImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDSupport.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDTexture2DImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDTexture3DImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDTextureCubeMapImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ACDZStencilStageImp.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\MemoryObject.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\MemoryObjectAllocator.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\QuadReg.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\RBank.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationDataStructures.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationSteps.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\ShaderOptimization\ShaderOptimizer.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\StateComponent.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\StateItem.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\StateItemUtils.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\StoredStateItem.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\TextureAdapter.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\TextureMipmap.h" />
+    <ClInclude Include="..\trace\ACD\Implementation\TextureMipmapChain.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACD.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDBlendingStage.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDBuffer.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDConstantLimits.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDDevice.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDMatrix.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDRasterizationStage.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDRenderTarget.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDResource.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDSampler.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDShaderProgram.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDStoredItemID.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDStoredState.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDStream.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDTexture.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDTexture2D.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDTexture3D.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDTextureCubeMap.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDTypes.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDVector.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDZStencilStage.h" />
+    <ClInclude Include="..\trace\ACD\Interface\ACDZStencilTarget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\trace\ACD\Implementation\ACDBlendingStageImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDBufferImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDDeviceImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDMath.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDMatrixImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDRasterizationStageImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDRenderTargetImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDSamplerImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDShaderProgramImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDStoredStateImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDStreamImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDSupport.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDTexture2DImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDTexture3DImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDTextureCubeMapImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ACDZStencilStageImp.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\MemoryObject.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\MemoryObjectAllocator.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationDataStructures.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ShaderOptimization\OptimizationSteps.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\ShaderOptimization\ShaderOptimizer.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\StoredStateItem.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\TextureAdapter.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\TextureMipmap.cpp" />
+    <ClCompile Include="..\trace\ACD\Implementation\TextureMipmapChain.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
