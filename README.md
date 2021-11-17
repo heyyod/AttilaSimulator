@@ -2,8 +2,9 @@ ATTILA GPU Simulator
 ===============
 
 Main solution in `attila-sim\src\win32-VS2005\ATILA.sln`. 
-
 Bison and Flex in root folder should be added in PATH, in order to build.
+The CodeGenerator project should be run once before a clean build cause it generetes necessary files.
+
 
 Introduction
 -------------
