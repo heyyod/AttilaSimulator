@@ -1,0 +1,17 @@
+log = GLILog.txt
+logtime = FALSE
+logfile = TRUE
+logfunction = TRUE
+logline = TRUE
+logmask = 3
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:DLL_PROCESS_ATTATCH
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:DLL_THREAD_ATTACH
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:DLL_THREAD_ATTACH
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:DLL_PROCESS_DETACH
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:Flushing Trace Writer object... OK
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:Saving buffers IGNORED - LOG_BUFFERS is disabled
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:Saving shader statistics... OK
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:Saving batch statistics...  [IGNORED by this GLI version]
+W:\attila-sim\src\trace\GLInterceptor\GLInterceptor.cpp:DllMain:0:Saving frame statistics... GLIStatsManager::dumpFrameStats::0:Skipped (perFrameStats = DISABLED)
+FAIL
+GLIStatsManager::dumpFrameStats::0:Trace finished

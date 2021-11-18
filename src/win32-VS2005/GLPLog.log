@@ -1,0 +1,8 @@
+log = GLPLog.log
+logtime = FALSE
+logfile = TRUE
+logfunction = TRUE
+logline = TRUE
+logmask = 3
+W:\attila-sim\src\trace\GLPlayer\main.cpp:WinMain:0:Parsing config file... OK
+W:\attila-sim\src\trace\utils\TraceReader\TraceReader.cpp:TraceReader::trOpen:0:Input trace file not found

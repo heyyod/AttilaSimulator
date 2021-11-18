@@ -1143,6 +1143,8 @@ void VectorShaderDecodeExecute::writeBackStage(u64bit cycle)
         if (threadInfo[threadID].end && !threadInfo[threadID].waitTexture && (threadInfo[threadID].pendingInstructions == 0) &&
             (GPU_MOD(shEmuElemID, vectorLength) == (vectorLength - 1)))
         {
+            pc = shEmul.threadPC(shEmuElemID);
+
             //  Remove thread end condition.
             threadInfo[threadID].end = false;
 
