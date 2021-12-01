@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
 
     // Arguments parsing and configuration loading.
     char *configFile = "bGPU.ini";
-    bool debugMode = false;
+    bool debugMode = true;
     bool validationMode = false;
 
     u64bit data;

@@ -102,6 +102,7 @@
     <OutDir>.\win32\$(Configuration)\</OutDir>
     <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>.\x64\Debug\</OutDir>
@@ -132,7 +133,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\VectorShader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\MicroPolygonRasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\CDL\Interface;..\trace\CDL\Implementation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\bgpu;..\sim;..\support;..\emul;..\gpu;..\win32patches;..\sim\CommandProcessor;..\sim\Shader;..\sim\VectorShader;..\sim\Streamer;..\sim\MemoryController;..\sim\MemoryControllerV2;..\sim\Rasterizer;..\sim\MicroPolygonRasterizer;..\sim\Cache;..\sim\FragmentOperations;..\sim\PrimitiveAssembly;..\sim\DAC;..\sim\Clipper;..\trace;..\trace\GPUDriver;..\trace\utils;..\trace\utils\TraceReader;..\trace\utils\Gen;..\trace\utils\GL;..\trace\GLLib;..\trace\GLLib\ARBP;..\trace\GLLib\ARBP\FragmentProgram;..\trace\GLLib\ARBP\VertexProgram;..\trace\GLLib\GLObject;..\trace\GLLib\BufferObject;..\trace\GLLib\Texture;..\trace\CDL\Interface;..\trace\CDL\Implementation;$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_CONSOLE;_DEBUG;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;UNIFIEDSHADER;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
