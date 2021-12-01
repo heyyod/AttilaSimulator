@@ -20,3 +20,10 @@
 /src/win32-VS2005/D3DCodeGenerator.exe
 /src/win32-VS2005/DXCodeGen.pdb
 /src/win32-VS2005/D3DCodeGenerator.pdb
+bin
+flex
+bison
+lib
+*.o
+*.gen
+.gitignore

@@ -93,13 +93,16 @@ export CONFIG
 export CPU
 export PLATFORM
 
+DISABLED_WARNINGS = -Wno-write-strings -Wno-format -Wno-literal-suffix -Wno-deprecated -Wno-unused-result -Wno-return-type -Wno-delete-incomplete -Wno-int-to-pointer-cast -Wno-conversion-null
+
 # C++ compilation flags
 CXXFLAGS = \
 	$(VERBOSE_CXXFLAGS_$(VERBOSE)) \
 	$(CONFIG_CXXFLAGS_$(CONFIG)) \
 	$(CPU_CXXFLAGS_$(CPU)) \
 	$(PLATFORM_CXXFLAGS_$(PLATFORM)) \
-	$(EXTRA_CXXFLAGS)
+	$(EXTRA_CXXFLAGS) \
+	$(DISABLED_WARNINGS)
 
 # Linker flags
 LDFLAGS = \
