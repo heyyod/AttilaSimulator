@@ -396,6 +396,7 @@ f, stampCoord[f][0], stampCoord[f][1], stampCoord[f][2], stampCoord[f][3], stamp
         {
             // Magnification.
             d1 = levelBase;
+            d2 = d1;
 
             //  Set filter mode.
             filter = textureMagFilter[textUnit];

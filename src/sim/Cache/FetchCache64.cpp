@@ -275,6 +275,8 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, DynamicObjec
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
 
+    CacheAccessesFileNewEntry(this->name, "fetch", address, hit);
+
     /*  Check if the line is a masked (partial) write.  */
     if (hit && masked[way][line])
     {
@@ -456,6 +458,8 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, bool &miss, 
 
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
+
+    CacheAccessesFileNewEntry(this->name, "fetch", address, hit);
 
     /*  Check if the line is a masked (partial) write.  */
     if (hit && masked[way][line])

@@ -184,6 +184,12 @@ int main(int argc, char *argv[])
 {
     set_new_handler(out_of_memory);
 
+    // NOTE(Kostas): Set up cache accesses file
+    cacheAccessesOut.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
+    if (!cacheAccessesOut.is_open())
+        printf("Failed to create cache acceses output file\n");
+    cacheAccessesOut.close();
+
     ConfigLoader *cl;
 
     // Arguments parsing and configuration loading.

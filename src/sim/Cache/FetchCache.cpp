@@ -275,6 +275,8 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
+    
+    CacheAccessesFileNewEntry(this->name, "fetch", address, hit);
 
     bool hitNoMask = hit;
 
@@ -495,6 +497,8 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
+
+    CacheAccessesFileNewEntry(this->name, "fetch", address, hit);
 
     bool hitNoMask = hit;
     

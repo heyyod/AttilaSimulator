@@ -38,6 +38,8 @@
 #include "StatisticsManager.h"
 #include "DynamicObject.h"
 
+#include "PrintCacheAccess.h"
+
 namespace gpu3d
 {
 
