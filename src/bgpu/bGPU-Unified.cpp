@@ -39,6 +39,7 @@
 #include <new>
 #include <signal.h>
 
+
 using namespace std;
 using namespace gpu3d;
 
@@ -184,17 +185,11 @@ int main(int argc, char *argv[])
 {
     set_new_handler(out_of_memory);
 
-    // NOTE(Kostas): Set up cache accesses file
-    cacheAccessesOut.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
-    if (!cacheAccessesOut.is_open())
-        printf("Failed to create cache acceses output file\n");
-    cacheAccessesOut.close();
-
     ConfigLoader *cl;
 
     // Arguments parsing and configuration loading.
     char *configFile = "bGPU.ini";
-    bool debugMode = true;
+    bool debugMode = false;
     bool validationMode = false;
 
     u64bit data;
@@ -221,7 +216,6 @@ int main(int argc, char *argv[])
 
     //  Get all the simulator parameters from the configuration file.
     cl->getParameters(&simP);
-
     //  Delete the configuration loader.
     delete cl;
 
@@ -467,7 +461,6 @@ int main(int argc, char *argv[])
                                          GPUDriver::getGPUDriver(),
                                          simP.ras.shadedSetup,
                                          simP.startFrame);
-
             //  No AGP Trace Driver available.
             agpTraceDriver = NULL;
 
@@ -528,7 +521,6 @@ int main(int argc, char *argv[])
         delete gpuSimulator;
         
     }
-
     return 0;
 }
 

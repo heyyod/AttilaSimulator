@@ -1994,7 +1994,7 @@ void DAC::startRefresh()
 #define LINEAR(x) f32bit(GPU_POWER(f64bit(x), f64bit(2.2f)))
 //#define GAMMA(x) (x)
 
-//#define SAVE_AS_PNG
+#define SAVE_AS_PNG
 
 /*  Writes the current color buffer as a ppm file.  */
 void DAC::writeColorBuffer()
@@ -2023,21 +2023,20 @@ void DAC::writeColorBuffer()
     if (lastRSCommand->getCommand() == RSCOM_DUMP_COLOR)
     {
         //  Create current frame filename.
-        sprintf(filename, "frame%04d-batch%05d.sim", frameCounter, batchCounter);
+        sprintf(filename, "out/frame%04d-batch%05d.sim", frameCounter, batchCounter);
     }
     else
     {
         //  Create current frame filename.
-        sprintf(filename, "frame%04d.sim", frameCounter);
+        sprintf(filename, "out/frame%04d.sim", frameCounter);
     }
-
-    
+ 
 #ifndef SAVE_AS_PNG
     FILE *fout;
 
     char filenamePPM[128];
     
-    sprintf(filenamePPM, "%s.ppm", filename);
+    sprintf(filenamePPM, "out/%s.ppm", filename);
     
     //  Open/Create the file for the current frame.
     fout = fopen(filenamePPM, "wb");
@@ -2329,7 +2328,7 @@ void DAC::writeDepthBuffer()
     char filenamePPM[128];
 
     //  Add file extension.
-    sprintf(filenamePPM, "%s.ppm", filename);
+    sprintf(filenamePPM, "out/%s.ppm", filename);
     
     FILE *fout;
 
@@ -2591,7 +2590,7 @@ void DAC::writeStencilBuffer()
     char filenamePPM[128];
 
     //  Add extension.
-    sprintf(filenamePPM, "%s.ppm", filename);
+    sprintf(filenamePPM, "out/%s.ppm", filename);
         
     //  Open/Create the file for the current frame.
     fout = fopen(filenamePPM, "wb");

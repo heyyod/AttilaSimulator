@@ -1462,6 +1462,7 @@ bool HierarchicalZ::searchHZCache(u32bit block, u32bit &cacheEntry)
     /*  Search in the cache entry for the block.  */
     for(i = 0; (i < hzCacheLines) && (hzCache[i].block != (block & hzLineMask)); i++);
 
+    bool hit = false;
     /*  Check if block was found.  */
     if ((i < hzCacheLines) && hzCache[i].valid)
     {
@@ -1472,11 +1473,12 @@ bool HierarchicalZ::searchHZCache(u32bit block, u32bit &cacheEntry)
         cacheEntry = i;
 
         /*  Return valid block found.  */
-        return TRUE;
+        hit = true;
     }
 
-    /*  Block not found in the cache.  */
-    return FALSE;
+    // NOTE(Kostas)
+    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess("HZCache", block, hit);
+    return hit;
 }
 
 /*  Inserts a block inside the HZ cache.  */

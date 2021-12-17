@@ -1712,7 +1712,7 @@ void Blitter::dumpBlitSource(u32bit frameCounter, u32bit blitCounter)
     s32bit x,y;
 
     /*  Create current frame filename.  */
-    sprintf(filename, "blitop-f%04d-%04d.ppm", frameCounter, blitCounter);
+    sprintf(filename, "out/blitop-f%04d-%04d.ppm", frameCounter, blitCounter);
 
     /*  Open/Create the file for the current frame.  */
     fout = fopen(filename, "wb");

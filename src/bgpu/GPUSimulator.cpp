@@ -1050,6 +1050,9 @@ GPUSimulator::~GPUSimulator()
     if (outBatch.is_open())
         outBatch.close();
 
+    // Kostas
+    GPUStatistics::StatisticsManager::instance().SaveCacheAccessesFile();
+
     //  Print end message.
     printf("\n\n");
     printf("End of simulation\n");
@@ -4128,7 +4131,7 @@ void GPUSimulator::simulationLoop()
 
         //  Update cycle counter statistic.
         cyclesCounter->inc();
-        
+
         // Clock all the boxes.
         for(i = 0; i < boxArray.size(); i++)
             boxArray[i]->clock(cycle);
@@ -4619,7 +4622,7 @@ void GPUSimulator::dumpLatencyMap(u32bit w, u32bit h)
     u32bit i;
 
     /*  Create current frame filename.  */
-    sprintf(filename, "latencyMap%04d.ppm", frameCounter);
+    sprintf(filename, "out/latencyMap%04d.ppm", frameCounter);
 
     /*  Open/Create the file for the current frame.  */
     fout = fopen(filename, "wb");

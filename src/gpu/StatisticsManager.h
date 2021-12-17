@@ -23,6 +23,9 @@
 #include "support.h"
 #include "GPUTypes.h"
 
+// Kostas
+#include <fstream>
+
 namespace gpu3d
 {
 
@@ -58,6 +61,9 @@ private:
     /*  output streams for per batch and per frame statistics.  */
     std::ostream* osFrame;
     std::ostream* osBatch;
+
+    // NOTE(Kostas): Cache accesses File
+    std::ofstream osCacheAccesses;
 
     /* singleton instance */
     // static StatisticsManager* sm;
@@ -141,6 +147,34 @@ public:
     void dump(std::ostream& os = std::cout);
 
     void dump(std::string boxName, std::ostream& os = std::cout);
+
+    // Kostas
+    void LogCacheAccess(char* name, u32bit address, bool isHit)
+    {
+        osCacheAccesses <<
+            lastCycle << ';' << 
+            name << ';' <<
+            address << ';' <<
+            (isHit ? "Hit" : "Miss") <<
+            std::endl;
+    }
+    void LogCacheAccess(char* name, u64bit address, bool isHit)
+    {
+        osCacheAccesses <<
+            lastCycle << ';' <<
+            name << ';' <<
+            address << ';' <<
+            (isHit ? "Hit" : "Miss") <<
+            std::endl;
+    }
+
+    void SaveCacheAccessesFile()
+    {
+        if (osCacheAccesses.is_open())
+        {
+            osCacheAccesses.close();
+        }
+    }
 
     void finish();
 

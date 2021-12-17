@@ -122,7 +122,7 @@ TextureAccess *TextureEmulator::textureOperation(u32bit id, TextureOperation tex
     f32bit lod;
     u32bit levelBase;
     u32bit q;
-    u32bit d1, d2;
+    u32bit d1, d2 = 0; // Kostas: set to zero cause an exception is thrown for d2
     FilterMode filter;
     u32bit frag;
     CubeMapFace cubemap;

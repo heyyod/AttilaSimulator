@@ -252,7 +252,6 @@
     <ClInclude Include="..\support\ImageSaver.h" />
     <ClInclude Include="..\support\OptimizedDynamicMemory.h" />
     <ClInclude Include="..\support\Parser.h" />
-    <ClInclude Include="..\support\PrintCacheAccess.h" />
     <ClInclude Include="..\support\Profiler.h" />
     <ClInclude Include="..\support\QuadFloat.h" />
     <ClInclude Include="..\support\QuadInt.h" />
