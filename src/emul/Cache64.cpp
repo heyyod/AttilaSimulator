@@ -182,6 +182,11 @@ Cache64::Cache64(u32bit ways, u32bit lines, u32bit bytesLine,
             panic("Cache64", "Cache64", "Unsupported cache replacemente policy.");
             break;
     }
+
+#if KONDAMASK
+    numSets = numLines * lineSize / ways;
+    linesPerSet = numLines / numSets;
+#endif
 }
 
 /*  Returns the line tag for the given address.  */

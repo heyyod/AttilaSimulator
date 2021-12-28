@@ -55,10 +55,13 @@ private:
     CacheReplacePolicy replacePolicy;   /**<  Replacement policy for the cache.  */
 
     /*  Cache masks and shifts.  */
+#if !KONDAMASK
     u32bit byteMask;        /**<  Address line byte mask.  */
-    u32bit lineMask;        /**<  Address line mask.  */
     u32bit lineShift;       /**<  Address line shift.  */
+    u32bit lineMask;        /**<  Address line mask.  */
     u32bit tagShift;        /**<  Address tag shift.  */
+#endif
+
 
     /*  Cache replacement mechanism.  */
     CacheReplacementPolicy *policy;      /**<  Cache replacement policy.  */
@@ -69,6 +72,13 @@ protected:
     u32bit numWays;         /**<  Number of ways in the cache.  */
     u32bit numLines;        /**<  Number of lines in the cache (total).  */
     u32bit lineSize;        /**<  Size of a cache line in bytes.  */
+    
+#if KONDAMASK
+    u32bit byteMask;        /**<  Address line byte mask.  */
+    u32bit lineShift;       /**<  Address line shift.  */
+    u32bit lineMask;        /**<  Address line mask.  */
+    u32bit tagShift;        /**<  Address tag shift.  */
+#endif
 
     /*  Cache structures.  */
     u8bit ***cache;         /**<  Cache memory.  */
@@ -267,7 +277,6 @@ public:
      */
 
     void reset();
-
 };
 
 

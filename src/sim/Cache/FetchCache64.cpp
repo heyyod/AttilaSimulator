@@ -275,9 +275,6 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, DynamicObjec
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
 
-    // NOTE(Kostas)
-    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, hit);
-
     /*  Check if the line is a masked (partial) write.  */
     if (hit && masked[way][line])
     {
@@ -300,6 +297,10 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, DynamicObjec
         UPDATE_STATS(
             fetchHits->inc();
         )
+
+#if KONDAMASK
+        gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), 0, hit, line, way);
+#endif
 
         /*  Line was reserved.  */
         return TRUE;
@@ -400,6 +401,9 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, DynamicObjec
                     fetchMissOK->inc();
                 )
 
+#if KONDAMASK
+                gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), oldAddress, hit, line, way);
+#endif
                 /*  Line was fetched and reserved.  */
                 return TRUE;
             }
@@ -460,9 +464,6 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, bool &miss, 
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
 
-    // NOTE(Kostas)
-    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, hit);
-
     /*  Check if the line is a masked (partial) write.  */
     if (hit && masked[way][line])
     {
@@ -486,6 +487,9 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, bool &miss, 
             fetchHits->inc();
         )
 
+#if KONDAMASK
+        gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), 0, hit, line, way);
+#endif
         /*  Line was reserved.  */
         return TRUE;
     }
@@ -603,6 +607,9 @@ bool FetchCache64::fetch(u64bit address, u32bit &way, u32bit &line, bool &miss, 
                     fetchMissOK->inc();
                 )
 
+#if KONDAMASK
+                gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), oldAddress, hit, line, way);
+#endif
                 /*  Line was fetched and reserved.  */
                 return TRUE;
             }

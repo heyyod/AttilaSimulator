@@ -275,9 +275,6 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
-    
-    // NOTE(Kostas)
-    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, hit);
 
     bool hitNoMask = hit;
 
@@ -310,6 +307,10 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
         UPDATE_STATS(
             fetchHits->inc();
         )
+
+#if KONDAMASK
+        gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), 0, hit, line, way);
+#endif
 
         /*  Line was reserved.  */
         return TRUE;
@@ -451,6 +452,9 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
                 )
 
                 /*  Line was fetched and reserved.  */
+#if KONDAMASK
+                gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), oldAddress, hit, line, way);
+#endif
                 return TRUE;
             }
             else
@@ -499,9 +503,6 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
     /*  Search the address in the fetch cache tag file.  */
     hit = search(address, line, way);
 
-    // NOTE(Kostas)
-    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, hit);
-
     bool hitNoMask = hit;
     
     /*  If hit check if the line is a masked (partial) write.  */
@@ -526,6 +527,10 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
         UPDATE_STATS(
             fetchHits->inc();
         )
+
+#if KONDAMASK
+        gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), 0, hit, line, way);
+#endif
 
         /*  Line was reserved.  */
         return TRUE;
@@ -666,6 +671,10 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
                 UPDATE_STATS(
                     fetchMissOK->inc();
                 )
+
+#if KONDAMASK
+                    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(this->name, address, line2address(way, line), oldAddress, hit, line, way);
+#endif
 
                 /*  Line was fetched and reserved.  */
                 return TRUE;
@@ -940,6 +949,10 @@ bool FetchCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bi
     /*  Check if the line is available.  */
     if (!replaceLine[way][line])
     {
+#if KONDAMASK
+        // memory IS in cache
+        // fetch it
+#endif
         /*  Get the requested amount of data.  */
         for(i = 0, off = (offset(address) & 0xfffffffc); i < size; i = i + 4, off = off + 4)
         {
@@ -966,6 +979,10 @@ bool FetchCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bi
     }
     else
     {
+#if KONDAMASK
+        // memory is not in cache
+        // fetch it
+#endif
         GPU_DEBUG(
             printf("FetchCache (%s) => Cache line (%d, %d) for address %x %d bytes not yet ready.\n",
                 name, way, line, address, size);
@@ -1081,7 +1098,7 @@ bool FetchCache::write(u32bit address, u32bit way, u32bit line, u32bit size,
         address are dropped.  */
 
     /*  Check if size is larger than the line size.  */
-    GPU_ASSERT(
+   GPU_ASSERT(
         if (size > lineSize)
             panic("FetchCache", "write", "Trying to write more than a cache line.");
     )

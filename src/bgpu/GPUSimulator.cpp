@@ -1050,8 +1050,9 @@ GPUSimulator::~GPUSimulator()
     if (outBatch.is_open())
         outBatch.close();
 
-    // Kostas
+#if KONDAMASK
     GPUStatistics::StatisticsManager::instance().SaveCacheAccessesFile();
+#endif
 
     //  Print end message.
     printf("\n\n");

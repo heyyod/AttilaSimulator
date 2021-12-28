@@ -25,13 +25,17 @@ StatisticsManager::StatisticsManager() :
     startCycle(0), nCycles(1000), nextDump(999), lastCycle(-1), autoReset(true),
     osCycle(NULL), osFrame(NULL), osBatch(NULL), cyclesFlagNamesDumped(false)
 {
+#if KONDAMASK
     osCacheAccesses.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
     if (!osCacheAccesses.is_open())
     {
         printf("Couldn't open out/CacheAccesses.csv.\n");
         return;
     }
-    osCacheAccesses << "Cycle;Cache Unit;Address;Hit/Miss" << std::endl;
+    osCacheAccesses << "Cycle;Cache Unit;Address;Hit/Miss;Set;Way;InsertToHitCycles;HitToHitCycles;HitToReplaceCycles" << std::endl;
+
+    accessCycles.reserve(600);
+#endif
 }
 
 StatisticsManager& StatisticsManager::instance()

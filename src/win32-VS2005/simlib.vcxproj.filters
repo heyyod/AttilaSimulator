@@ -394,10 +394,10 @@
     <ClInclude Include="..\gpu\Statistic.h">
       <Filter>Source Files\gpu</Filter>
     </ClInclude>
-    <ClInclude Include="..\gpu\StatisticsManager.h">
+    <ClInclude Include="..\gpu\toolsQueue.h">
       <Filter>Source Files\gpu</Filter>
     </ClInclude>
-    <ClInclude Include="..\gpu\toolsQueue.h">
+    <ClInclude Include="..\gpu\StatisticsManager.h">
       <Filter>Source Files\gpu</Filter>
     </ClInclude>
   </ItemGroup>

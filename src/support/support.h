@@ -21,6 +21,8 @@
 
 #define _GPU_SUPPORT_
 
+#define KONDAMASK 1
+
 #include <string>
 #include <iostream>
 #include "GPUTypes.h"

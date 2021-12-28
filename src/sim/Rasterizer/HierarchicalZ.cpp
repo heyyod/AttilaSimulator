@@ -1476,8 +1476,9 @@ bool HierarchicalZ::searchHZCache(u32bit block, u32bit &cacheEntry)
         hit = true;
     }
 
-    // NOTE(Kostas)
-    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess("HZCache", block, hit);
+#if 0 //KONDAMASK
+    gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess("HZCache", block, 0, hit, 0, 0);
+#endif
     return hit;
 }
 
