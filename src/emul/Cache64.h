@@ -57,10 +57,8 @@ private:
 
     /*  Cache masks and shifts.  */
     u32bit byteMask;        /**<  Address line byte mask.  */
-#if !KONDAMASK
     u32bit lineMask;        /**<  Address line mask.  */
     u32bit lineShift;       /**<  Address line shift.  */
-#endif
     u32bit tagShift;        /**<  Address tag shift.  */
 
     /*  Cache replacement mechanism.  */
@@ -72,13 +70,6 @@ protected:
     u32bit numWays;         /**<  Number of ways in the cache.  */
     u32bit numLines;        /**<  Number of lines in the cache (total).  */
     u32bit lineSize;        /**<  Size of a cache line in bytes.  */
-    
-#if KONDAMASK
-    u32bit lineMask;        /**<  Address line mask.  */
-    u32bit lineShift;       /**<  Address line shift.  */
-    u32bit numSets;
-    u32bit linesPerSet;
-#endif
 
     /*  Cache structures.  */
     u8bit ***cache;         /**<  Cache memory.  */
