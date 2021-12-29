@@ -77,11 +77,19 @@ TextureCacheL2::TextureCacheL2(u32bit waysL0, u32bit linesL0, u32bit bytesLineL0
     /*  Update the number of created Texture Caches.  */
     cacheCounter++;
 
+    char name[12] = {};
+    u8bit iChar;
+    for (iChar = 0; postfix[iChar] != '\0'; iChar++)
+        name[iChar] = postfix[iChar];
+    name[iChar] = 'L';
+
     /*  Create the L0 fetch cache object.  */
-    cacheL0 = new FetchCache64(waysL0, linesL0, lineSizeL0, reqQSize, postfix);
+    name[iChar + 1] = '0';
+    cacheL0 = new FetchCache64(waysL0, linesL0, lineSizeL0, reqQSize, name);
 
     /*  Create the L1 fetch cache object.  */
-    cacheL1 = new FetchCache(waysL1, linesL1, lineSizeL1, reqQSize, postfix);
+    name[iChar + 1] = '1';
+    cacheL1 = new FetchCache(waysL1, linesL1, lineSizeL1, reqQSize, name);
 
     /*  Create statistics.  */
     fetchBankConflicts = &GPUStatistics::StatisticsManager::instance().getNumericStatistic("FetchBankConflicts", u32bit(0), "TextureCache", postfix);

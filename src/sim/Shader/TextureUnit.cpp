@@ -948,32 +948,32 @@ void TextureUnit::fetch(u64bit cycle)
                         texAccessReqQ[fetchAccess]
                         ))
                     {
-GPU_TEX_TRACE(
-    u64bit address64 = texAccessQ[fetchAccess]->trilinear[nextTrilinear]->address[frag][start + i];
-    u32bit address32;
+                        GPU_TEX_TRACE(
+                            u64bit address64 = texAccessQ[fetchAccess]->trilinear[nextTrilinear]->address[frag][start + i];
+                            u32bit address32;
 
-    switch(address64 & TEXTURE_ADDRESS_SPACE_MASK)
-    {
-        case UNCOMPRESSED_TEXTURE_SPACE:
+                            switch(address64 & TEXTURE_ADDRESS_SPACE_MASK)
+                            {
+                                case UNCOMPRESSED_TEXTURE_SPACE:
 
-            address32 = (u32bit) (address64 & 0xffffffff);
-            break;
+                                    address32 = (u32bit) (address64 & 0xffffffff);
+                                    break;
 
-        case COMPRESSED_TEXTURE_SPACE_DXT1_RGB:
-        case COMPRESSED_TEXTURE_SPACE_DXT1_RGBA:
-            address32 = (u32bit) ((address64 >> DXT1_SPACE_SHIFT) & 0xffffffff);
-            break;
+                                case COMPRESSED_TEXTURE_SPACE_DXT1_RGB:
+                                case COMPRESSED_TEXTURE_SPACE_DXT1_RGBA:
+                                    address32 = (u32bit) ((address64 >> DXT1_SPACE_SHIFT) & 0xffffffff);
+                                    break;
 
-        case COMPRESSED_TEXTURE_SPACE_DXT3_RGBA:
-        case COMPRESSED_TEXTURE_SPACE_DXT5_RGBA:
+                                case COMPRESSED_TEXTURE_SPACE_DXT3_RGBA:
+                                case COMPRESSED_TEXTURE_SPACE_DXT5_RGBA:
 
-            address32 = (u32bit) ((address64 >> DXT3_DXT5_SPACE_SHIFT) & 0xffffffff);
+                                    address32 = (u32bit) ((address64 >> DXT3_DXT5_SPACE_SHIFT) & 0xffffffff);
 
-            break;
+                                    break;
 
-    }
-    texAddrTrace << address32 << endl;
-)
+                            }
+                            texAddrTrace << address32 << endl;
+                        )
 
                         /*  Set texel as fetched.  */
                         texAccessQ[fetchAccess]->trilinear[nextTrilinear]->fetched[frag][start + i] = TRUE;
@@ -1001,9 +1001,10 @@ GPU_TEX_TRACE(
         /*  Check if all texels in the loop were fetched.  */
         if (allFetched)
         {
-GPU_TEX_TRACE(
-    texAddrTrace << "EndLoop" << endl;
-)
+            GPU_TEX_TRACE(
+                texAddrTrace << "EndLoop" << endl;
+            )
+
             /*  Last loop?  */
             lastLoop = TRUE;
 
@@ -1024,9 +1025,9 @@ GPU_TEX_TRACE(
             /*  Check if all the loops have been finished.  */
             if (lastLoop)
             {
-GPU_TEX_TRACE(
-    texAddrTrace << "EndTrilinear" << endl;
-)
+                GPU_TEX_TRACE(
+                    texAddrTrace << "EndTrilinear" << endl;
+                )
                 /*  A whole trilinear element has been fetched.  */
 
                 GPU_DEBUG_BOX(
@@ -1093,9 +1094,9 @@ GPU_TEX_TRACE(
                 /*  Determine if all trilinear samples fetched for the texture access.  */
                 if (texAccessQ[fetchAccess]->nextTrilinearFetch == texAccessQ[fetchAccess]->anisoSamples)
                 {
-GPU_TEX_TRACE(
-    texAddrTrace << "EndTexAccess" << endl;
-)
+                    GPU_TEX_TRACE(
+                        texAddrTrace << "EndTexAccess" << endl;
+                    )
                     GPU_DEBUG_BOX(
                         printf("%s => End of fetch for for texture access at %d\n", getName(), fetchAccess);
                     )

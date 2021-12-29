@@ -160,7 +160,7 @@ namespace gpu3d
             void dump(std::string boxName, std::ostream& os = std::cout);
 
 #if KONDAMASK
-#define Column(name)    (name) << ';'
+#define Column(name)    name << ';'
 #define ColumnEmpty()   ';'
 
             void LogCacheAccess(char* name, u64bit newAddress, u64bit baseAddress, u64bit oldAddress, bool isHit, u32bit set, u32bit way)
@@ -176,20 +176,26 @@ namespace gpu3d
                 // - HitToHitCycles
                 // - HitToReplaceCycles
 
+                // remove any mask on spare bits
+                newAddress &= 0xffffffff;
+                baseAddress &= 0xffffffff;
+                oldAddress &= 0xffffffff;
+
                 osCacheAccesses <<
                     Column(lastCycle) <<
                     Column(name) <<
                     Column(newAddress) <<
-                    Column(isHit ? "Hit" : "Miss") <<
+                    Column((isHit ? "Hit" : "Miss")) <<
                     Column(set) <<
                     Column(way);
 
                 u32bit nameSum = 0;
                 for (u8bit iChar = 0; name[iChar] != '\0'; iChar++)
-                    nameSum += name[iChar];
-                nameSum &= 0x000000ff;
-                u64bit keyBase = (baseAddress << 8) | nameSum;
-                u64bit keyOld = (oldAddress << 8) | nameSum;
+                    nameSum += name[iChar] * (iChar + 1);
+                nameSum &= 0x0000ffff;
+                u64bit keyBase = (baseAddress << 16) | nameSum;
+                u64bit keyOld = (oldAddress << 16) | nameSum;
+
 
                 if (!isHit)
                 {
