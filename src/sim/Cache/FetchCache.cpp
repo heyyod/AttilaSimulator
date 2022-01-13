@@ -45,7 +45,7 @@ using namespace gpu3d;
  */
 #define UPDATE_STATS(instr) { if (name != NULL) { instr } }
 
-/*  Fetch cache constructor.  */
+ /*  Fetch cache constructor.  */
 FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQSize,
 	char *fetchCacheName
 #if KONDAMASK_CACHE_DECAY
@@ -61,7 +61,6 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 	/*  Check if a name has been provided.  */
 	if (fetchCacheName == NULL)
 	{
-
 		/*  The fetch cache has no name.  */
 		name = NULL;
 	}

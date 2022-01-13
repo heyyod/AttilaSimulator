@@ -45,7 +45,7 @@ using namespace gpu3d;
  */
 #define UPDATE_STATS(instr) { if (name != NULL) { instr } }
 
-/*  Fetch cache constructor.  */
+ /*  Fetch cache constructor.  */
 FetchCache64::FetchCache64(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQSize,
 	char* fetchCacheName
 #if KONDAMASK_CACHE_DECAY
