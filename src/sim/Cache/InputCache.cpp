@@ -252,6 +252,10 @@ MemoryTransaction *InputCache::update(u64bit cycle, MemState memState)
 /*  Input cache simulation rutine.  */
 void InputCache::clock(u64bit cycle)
 {
+#if KONDAMASK
+    cache->decay(cycle, KONDAMASK_INPUT_CACHE_DECAY);
+#endif
+
     u32bit i;
     u32bit readEndReq;
     MemoryTransaction *memTrans;

@@ -477,6 +477,11 @@ MemoryTransaction *TextureCacheL2::update(u64bit cycle, MemState memState, bool 
 /*  Input cache simulation rutine.  */
 void TextureCacheL2::clock(u64bit cycle)
 {
+#if KONDAMASK
+    cacheL0->decay(cycle, KONDAMASK_TEXTURE_CACHE_L0_DECAY);
+    cacheL1->decay(cycle, KONDAMASK_TEXTURE_CACHE_L1_DECAY);
+#endif
+
     u32bit i;
     u32bit readEndReq;
     MemoryTransaction *memTrans;

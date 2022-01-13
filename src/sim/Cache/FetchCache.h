@@ -100,6 +100,18 @@ private:
     u32bit maxLRU;          /**<  Number of entries used in the pseudo LRU victim list (takes into account number of ways).   */
     u32bit firstWay;        /**<  First way from which to start searching a victim.  */
 
+#if KONDAMASK
+    u64bit cycle;
+
+    struct cache_line_cycle_info
+    {
+        u64bit insert;
+        u64bit lastHit;
+        u64bit lastOn;
+    };
+    cache_line_cycle_info** accessCycles;
+#endif
+
     /*  Memory request queue.  */
     CacheRequest *requestQueue; /**<  Memory request queue.  */
     u32bit freeRequests;    /**<  Number of free requests.  */
@@ -430,6 +442,34 @@ public:
      */
 
     void setDebug(bool enable);
+
+#if KONDAMASK
+    void decay(u64bit cycleIn, u32bit decayCycles)
+    {
+        cycle = cycleIn;
+        for (u32bit w = 0; w < numWays; w++)
+        {
+            for (u32bit l = 0; l < numLines; l++)
+            {
+                if (valid[w][l])
+                {
+                    accessCycles[w][l].lastOn = cycle;
+                    if ((cycle - accessCycles[w][l].lastHit) > decayCycles)
+                    {
+                        printf("DECAY %s way %d set %d\n", name, w, l);
+                        gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+                            this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY, l, w, cycle);
+                        // What exacty should I reset here
+                        valid[w][l] = FALSE;
+                        dirty[w][l] = FALSE;
+                        //reserve[w][l] = 0;
+                        tags[w][l] = 0;
+                    }
+                }
+            }
+        }
+    }
+#endif
 
 };
 

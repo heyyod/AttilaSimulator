@@ -1,4 +1,5 @@
 ﻿/src/win32-VS2005/.vs
+/src/win32-VS2005/.vscode
 /src/win32-VS2005/win32
 /test
 /run-dir
@@ -14,3 +15,5 @@
 /src/win32-VS2005/ATTILAsnapshot07
 /src/win32-VS2005/ATTILAsnapshot08
 /src/win32-VS2005/ATTILAsnapshot09
+/src/win32-VS2005/x64
+/src/win32-VS2005/debug

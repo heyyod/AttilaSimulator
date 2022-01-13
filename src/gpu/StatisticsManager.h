@@ -31,224 +31,233 @@
 namespace gpu3d
 {
 
-    namespace GPUStatistics
-    {
+	namespace GPUStatistics
+	{
 
-        static const u32bit FREQ_CYCLES = 0;
-        static const u32bit FREQ_FRAME = 1;
-        static const u32bit FREQ_BATCH = 2;
+		static const u32bit FREQ_CYCLES = 0;
+		static const u32bit FREQ_FRAME = 1;
+		static const u32bit FREQ_BATCH = 2;
 
-        class StatisticsManager
-        {
-        private:
+		class StatisticsManager
+		{
+		private:
 
-            bool cyclesFlagNamesDumped;
+			bool cyclesFlagNamesDumped;
 
-            /* list of current stats */
-            std::map<std::string, GPUStatistics::Statistic*> stats;
+			/* list of current stats */
+			std::map<std::string, GPUStatistics::Statistic*> stats;
 
-            /* Helper method to find a Statistic with name 'name' */
-            Statistic* find(std::string name);
+			/* Helper method to find a Statistic with name 'name' */
+			Statistic* find(std::string name);
 
-            /* dump scheduling */
-            u64bit startCycle;
-            u64bit nCycles;
-            u64bit nextDump;
-            u64bit lastCycle;
-            bool autoReset;
+			/* dump scheduling */
+			u64bit startCycle;
+			u64bit nCycles;
+			u64bit nextDump;
+			u64bit lastCycle;
+			bool autoReset;
 
-            /* current output per cycle stream */
-            std::ostream* osCycle;
+			/* current output per cycle stream */
+			std::ostream* osCycle;
 
-            /*  output streams for per batch and per frame statistics.  */
-            std::ostream* osFrame;
-            std::ostream* osBatch;
+			/*  output streams for per batch and per frame statistics.  */
+			std::ostream* osFrame;
+			std::ostream* osBatch;
 
-#if KONDAMASK
-            std::ofstream osCacheAccesses;
-            typedef u64bit memory_access_key; // just an address
-            struct memory_access_cycle_info
-            {
-                u64bit insertCycle;
-                u64bit lastHitCycle;
-            };
-            // adress, cycles
-            std::unordered_map<memory_access_key, memory_access_cycle_info> accessCycles;
+#if KONDAMASK_CACHE_ACCESSES_CSV
+			std::ofstream osCacheAccesses;
 #endif
 
-            /* singleton instance */
-            // static StatisticsManager* sm;
+			/* singleton instance */
+			// static StatisticsManager* sm;
 
-            /* avoid copying */
-            StatisticsManager();
-            StatisticsManager(const StatisticsManager&);
-            StatisticsManager& operator=(const StatisticsManager&);
+			/* avoid copying */
+			StatisticsManager();
+			StatisticsManager(const StatisticsManager&);
+			StatisticsManager& operator=(const StatisticsManager&);
 
-        public:
+		public:
 
-            static StatisticsManager& instance();
+			static StatisticsManager& instance();
 
 
-            template<typename T>
-            GPUStatistics::NumericStatistic<T>& getNumericStatistic(const char* name, T initialValue, const char* owner = 0, const char* postfix = 0)
-            {
-                char temp[256];
-                if (postfix != 0)
-                {
-                    sprintf(temp, "%s_%s", name, postfix);
-                    name = temp;
-                }
-                Statistic* st = find(name);
-                NumericStatistic<T>* nst;
-                if (st)
-                {
-                    /*
-                     * Warning (in windows):
-                     * Use this flag (-GR) in VS6 to achive RTTI in dynamic_cast
-                     *
-                     *  -GR    enable standard C++ RTTI (Run Time Type
-                     *         Identification)
-                     */
-                    nst = dynamic_cast<NumericStatistic<T>*>(st);
+			template<typename T>
+			GPUStatistics::NumericStatistic<T>& getNumericStatistic(const char* name, T initialValue, const char* owner = 0, const char* postfix = 0)
+			{
+				char temp[256];
+				if (postfix != 0)
+				{
+					sprintf(temp, "%s_%s", name, postfix);
+					name = temp;
+				}
+				Statistic* st = find(name);
+				NumericStatistic<T>* nst;
+				if (st)
+				{
+					/*
+					 * Warning (in windows):
+					 * Use this flag (-GR) in VS6 to achive RTTI in dynamic_cast
+					 *
+					 *  -GR    enable standard C++ RTTI (Run Time Type
+					 *         Identification)
+					 */
+					nst = dynamic_cast<NumericStatistic<T>*>(st);
 
-                    if (nst == 0)
-                    {
-                        char temp[128];
-                        sprintf(temp, "Another Statistic exists with name '%s' but has different type", name);
-                        panic("StatisticsManager", "getNumericStatistic()", temp);
-                    }
-                    return *nst;
-                }
+					if (nst == 0)
+					{
+						char temp[128];
+						sprintf(temp, "Another Statistic exists with name '%s' but has different type", name);
+						panic("StatisticsManager", "getNumericStatistic()", temp);
+					}
+					return *nst;
+				}
 
-                nst = new NumericStatistic<T>(name, initialValue);
-                stats.insert(std::make_pair(name, nst));
+				nst = new NumericStatistic<T>(name, initialValue);
+				stats.insert(std::make_pair(name, nst));
 
-                if (owner != 0)
-                    nst->setOwner(owner);
+				if (owner != 0)
+					nst->setOwner(owner);
 
-                return *nst;
-            }
+				return *nst;
+			}
 
-            Statistic* operator[](std::string statName);
+			Statistic* operator[](std::string statName);
 
-            virtual void clock(u64bit cycle);
+			virtual void clock(u64bit cycle);
 
-            virtual void frame(u32bit frame);
+			virtual void frame(u32bit frame);
 
-            virtual void batch();
+			virtual void batch();
 
-            void setDumpScheduling(u64bit startCycle, u64bit nCycles, bool autoReset = true);
+			void setDumpScheduling(u64bit startCycle, u64bit nCycles, bool autoReset = true);
 
-            void setOutputStream(std::ostream& os);
+			void setOutputStream(std::ostream& os);
 
-            void setPerFrameStream(std::ostream& os);
+			void setPerFrameStream(std::ostream& os);
 
-            void setPerBatchStream(std::ostream& os);
+			void setPerBatchStream(std::ostream& os);
 
-            void reset(u32bit freq);
+			void reset(u32bit freq);
 
-            void dumpNames(std::ostream& os = std::cout);
+			void dumpNames(std::ostream& os = std::cout);
 
-            void dumpValues(std::ostream& os = std::cout);
+			void dumpValues(std::ostream& os = std::cout);
 
-            void dumpNames(char* str, std::ostream& os = std::cout);
+			void dumpNames(char* str, std::ostream& os = std::cout);
 
-            void dumpValues(u32bit n, u32bit freq, std::ostream& os = std::cout);
+			void dumpValues(u32bit n, u32bit freq, std::ostream& os = std::cout);
 
-            void dump(std::ostream& os = std::cout);
+			void dump(std::ostream& os = std::cout);
 
-            void dump(std::string boxName, std::ostream& os = std::cout);
+			void dump(std::string boxName, std::ostream& os = std::cout);
 
 #if KONDAMASK
+			enum CACHE_FETCH_INFO
+			{
+				CACHE_FETCH_HIT = 'H',
+				CACHE_FETCH_MISS = 'M',
+				CACHE_FETCH_FAIL = 'F',
+				CACHE_DECAY = 'D'
+			};
+
+#if KONDAMASK_CACHE_ACCESSES_CSV
 #define Column(name)    name << ';'
 #define ColumnEmpty()   ';'
 
-            void LogCacheAccess(char* name, u64bit newAddress, u64bit baseAddress, u64bit oldAddress, bool isHit, u32bit set, u32bit way)
-            {
-                // Columns:
-                // - Cycle
-                // - Cache Unit
-                // - Address
-                // - Hit/Miss
-                // - Set
-                // - Way
-                // - InsertToHitCycles
-                // - HitToHitCycles
-                // - HitToReplaceCycles
+			void LogCacheAccess(char* name, u64bit address, CACHE_FETCH_INFO fetchInfo, u32bit set, u32bit way, u64bit thisCycle, u64bit insertCycle = 0, u64bit lastHitCycle = 0, u64bit lastOnCycle = 0, bool isReplace = false)
+			{
+				address &= 0xffffffff;
+				/*
+				Columns :
+				- Cycle
+				- Cache Unit
+				- Address
+				- Hit/Miss
+				- Set
+				- Way
+				- InsertToHitCycles
+				- HitToHitCycles
+				- HitToReplaceCycles / Dead Time
+				- CacheOffCycles
+				*/
 
-                // remove any mask on spare bits
-                newAddress &= 0xffffffff;
-                baseAddress &= 0xffffffff;
-                oldAddress &= 0xffffffff;
+				osCacheAccesses <<
+					Column(thisCycle) <<
+					Column(name) <<
+					Column(address) <<
+					Column((char)fetchInfo) <<
+					Column(set) <<
+					Column(way);
 
-                osCacheAccesses <<
-                    Column(lastCycle) <<
-                    Column(name) <<
-                    Column(newAddress) <<
-                    Column((isHit ? "Hit" : "Miss")) <<
-                    Column(set) <<
-                    Column(way);
+				if (fetchInfo == CACHE_FETCH_HIT)
+				{
+					osCacheAccesses <<
+						Column(thisCycle - insertCycle) <<
+						Column(thisCycle - lastHitCycle) <<
+						ColumnEmpty() <<
+						ColumnEmpty();
+				}
+				else if (fetchInfo == CACHE_DECAY  || (fetchInfo == CACHE_FETCH_MISS && isReplace))
+				{
+					osCacheAccesses <<
+						ColumnEmpty() <<
+						ColumnEmpty() <<
+						Column(thisCycle - lastHitCycle) <<
+						ColumnEmpty();
+				}
+				else
+				{
+					osCacheAccesses <<
+						ColumnEmpty() <<
+						ColumnEmpty() <<
+						ColumnEmpty() <<
+						Column(thisCycle - lastOnCycle);
+				}
+				osCacheAccesses << std::endl;
+			}
 
-                u32bit nameSum = 0;
-                for (u8bit iChar = 0; name[iChar] != '\0'; iChar++)
-                    nameSum += name[iChar] * (iChar + 1);
-                nameSum &= 0x0000ffff;
-                u64bit keyBase = (baseAddress << 16) | nameSum;
-                u64bit keyOld = (oldAddress << 16) | nameSum;
+			void InitializeCacheAccessesCSV()
+			{
+				osCacheAccesses.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
+				if (!osCacheAccesses.is_open())
+				{
+					printf("Couldn't open out/CacheAccesses.csv.\n");
+					return;
+				}
+				osCacheAccesses << "Cycle;Cache Unit;Address;Hit/Miss;Set;Way;InsertToHitCycles;HitToHitCycles;CacheIdleCycles;CacheOffCycles" << std::endl;
+			}
 
+			void SaveCacheAccessesFile()
+			{
+				if (osCacheAccesses.is_open())
+				{
+					osCacheAccesses.close();
+				}
+			}
+#else
+			void LogCacheAccess(char* name, u64bit address, CACHE_FETCH_INFO fetchInfo, u32bit set, u32bit way, u64bit thisCycle, u64bit insertCycle = 0, u64bit lastHitCycle = 0, u64bit lastOnCycle = 0, bool isReplace = false)
+			{
+				return;
+			}
 
-                if (!isHit)
-                {
-                    if (accessCycles.find(keyOld) != accessCycles.end())
-                    {
-                        // an old adress is replaced
-                        u64bit idleTime = lastCycle - accessCycles.at(keyOld).lastHitCycle;
-                        accessCycles.erase(keyOld);
-                        accessCycles.emplace(keyBase, memory_access_cycle_info{ lastCycle, lastCycle });
-                        osCacheAccesses <<
-                            ColumnEmpty() <<
-                            ColumnEmpty() <<
-                            Column(idleTime);
-                    }
-                    else
-                    {
-                        accessCycles.emplace(
-                            keyBase,
-                            memory_access_cycle_info{ lastCycle, lastCycle });
-                        osCacheAccesses <<
-                            ColumnEmpty() <<
-                            ColumnEmpty() <<
-                            ColumnEmpty();
-                    }
-                }
-                else
-                {
-                    // The address must already be in cache. I'm not testing it for better perfromance
-                    // If it's not in cache it's a problem.
-                    osCacheAccesses <<
-                        Column(lastCycle - accessCycles.at(keyBase).insertCycle) <<
-                        Column(lastCycle - accessCycles.at(keyBase).lastHitCycle) <<
-                        ColumnEmpty();
-                    accessCycles.at(keyBase).lastHitCycle = lastCycle;
-                }
-                osCacheAccesses << std::endl;
-            }
-
-            void SaveCacheAccessesFile()
-            {
-                if (osCacheAccesses.is_open())
-                {
-                    osCacheAccesses.close();
-                }
-            }
+			void InitializeCacheAccessesCSV()
+			{
+				return;
+			}
+			
+			void SaveCacheAccessesFile()
+			{
+				return;
+			}
+#endif
 #endif
 
-            void finish();
+			void finish();
 
-        };
+		};
 
 
-    } // namespace GPUStatistics
+	} // namespace GPUStatistics
 
 } // namespace gpu3d
 

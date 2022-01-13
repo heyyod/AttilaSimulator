@@ -697,6 +697,14 @@ void ROPCache::setStateAddress(u32bit address)
 //  ROP cache simulation rutine.
 void ROPCache::clock(u64bit cycle)
 {
+#if KONDAMASK
+    // Called both for Z cache AND Color Cache
+    if (ropCacheName[0] == 'Z')
+        cache->decay(cycle, KONDAMASK_Z_CACHE_DECAY);
+    else
+        cache->decay(cycle, KONDAMASK_COLOR_CACHE_DECAY);
+#endif
+
     u32bit i, e;
     u32bit readEndReq;
     MemoryTransaction *memTrans;
