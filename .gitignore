@@ -17,3 +17,6 @@
 /src/win32-VS2005/ATTILAsnapshot09
 /src/win32-VS2005/x64
 /src/win32-VS2005/debug
+/src/win32-VS2005/D3DCodeGenerator.exe
+/src/win32-VS2005/DXCodeGen.pdb
+/src/win32-VS2005/D3DCodeGenerator.pdb

@@ -54,8 +54,7 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\trace\ACD\Interface;..\sim;..\emul;.\;..\trace\D3DPixRunPlayer;..\support;..\trace\utils;..\trace\ACD\Implementation\ShaderOptimization;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WORKLOAD_STATS;D3D9_USER_STADISTICS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>
-      </MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader />
@@ -77,7 +76,7 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <MinimalRebuild />
+      <MinimalRebuild>false</MinimalRebuild>
       <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;6271;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
     </ClCompile>
     <Lib>

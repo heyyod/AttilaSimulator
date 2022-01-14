@@ -65,26 +65,26 @@
     <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\win32\$(Configuration)\</OutDir>
-    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>.\x64\CodeGenerator\Debug\</OutDir>
-    <IntDir>.\x64\CodeGenerator\Debug\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\win32\$(Configuration)\</OutDir>
-    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>.\x64\CodeGenerator\Release\</OutDir>
-    <IntDir>.\x64\CodeGenerator\Release\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <ExtensionsToDeleteOnClean>..\trace\GLInstrument\GLIEntryPoints.cpp%3b..\trace\GLInstrument\GLIEntryPoints.h%3b..\trace\GLInterceptor\GLWrapper.cpp%3b..\trace\GLInterceptor\GLWrapper.h%3b..\trace\GLInterceptor\opengl32.def%3b..\trace\utils\Gen\GenAPICall.gen%3b..\trace\utils\Gen\GenGLConstantNames.gen%3b..\trace\utils\Gen\GenGLFunctionNames.gen%3b..\trace\utils\Gen\GenGLJumpTableFields.gen%3b..\trace\utils\Gen\GenGLJumpTableSL.gen%3b..\trace\utils\Gen\GenJumpTableWrapper.gen%3b..\trace\utils\Gen\GenPlayableCalls.gen%3b..\trace\utils\Gen\GenSwitchBranches.gen%3b..\trace\utils\TraceReader\StubApiCalls.cpp%3b..\trace\utils\TraceReader\StubApiCalls.h</ExtensionsToDeleteOnClean>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>

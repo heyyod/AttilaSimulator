@@ -69,23 +69,23 @@
     <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\win32\$(Configuration)\</OutDir>
-    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>.\x64\CodeGenerator\Debug\</OutDir>
-    <IntDir>.\x64\CodeGenerator\Debug\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\win32\$(Configuration)\</OutDir>
-    <IntDir>.\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>.\x64\CodeGenerator\Release\</OutDir>
-    <IntDir>.\x64\CodeGenerator\Release\</IntDir>
+    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -107,8 +107,8 @@
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <MinimalRebuild />
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;6271;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4267;4290;4389;4456;4458;6271;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -143,6 +143,8 @@
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4267;4290;4389;4456;4458;6271;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -178,8 +180,8 @@
       <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <MinimalRebuild />
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;6271;4477;4505;4701;4715;4996;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4267;4290;4389;4456;4458;6271;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -207,7 +209,7 @@
       <AdditionalIncludeDirectories>.;..\trace\utils\Parsers;..\trace\utils;..\support;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>false</StringPooling>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
@@ -221,6 +223,7 @@
       <WarningLevel>Level1</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4267;4290;4389;4456;4458;6271;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
