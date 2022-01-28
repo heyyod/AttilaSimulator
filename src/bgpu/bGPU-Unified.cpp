@@ -170,7 +170,6 @@ bool gpu3d::checkAGPTraceParameters(AGPTraceFileHeader *agpTraceHeader)
                        (simP.fsh.fetchRate == agpTraceHeader->parameters.fetchRate) &&
                        (simP.mem.memoryControllerV2 == agpTraceHeader->parameters.memoryControllerV2) &&
                        (simP.mem.v2SecondInterleaving == agpTraceHeader->parameters.v2SecondInterleaving);
-
     return allParamsOK;
 }
 

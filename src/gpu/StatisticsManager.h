@@ -30,59 +30,58 @@
 
 namespace gpu3d
 {
-
+    
 	namespace GPUStatistics
 	{
-
+        
 		static const u32bit FREQ_CYCLES = 0;
 		static const u32bit FREQ_FRAME = 1;
 		static const u32bit FREQ_BATCH = 2;
-
+        
 		class StatisticsManager
 		{
-		private:
-
+            private:
+            
 			bool cyclesFlagNamesDumped;
-
+            
 			/* list of current stats */
 			std::map<std::string, GPUStatistics::Statistic*> stats;
-
+            
 			/* Helper method to find a Statistic with name 'name' */
 			Statistic* find(std::string name);
-
+            
 			/* dump scheduling */
 			u64bit startCycle;
 			u64bit nCycles;
 			u64bit nextDump;
 			u64bit lastCycle;
 			bool autoReset;
-
+            
 			/* current output per cycle stream */
 			std::ostream* osCycle;
-
+            
 			/*  output streams for per batch and per frame statistics.  */
 			std::ostream* osFrame;
 			std::ostream* osBatch;
-
+            
 #if KONDAMASK_CACHE_ACCESSES_CSV
 			std::ofstream osCacheAccesses;
 #endif
-
 			/* singleton instance */
 			// static StatisticsManager* sm;
-
+            
 			/* avoid copying */
 			StatisticsManager();
 			StatisticsManager(const StatisticsManager&);
 			StatisticsManager& operator=(const StatisticsManager&);
-
-		public:
-
+            
+            public:
+            
 			static StatisticsManager& instance();
-
-
+            
+            
 			template<typename T>
-			GPUStatistics::NumericStatistic<T>& getNumericStatistic(const char* name, T initialValue, const char* owner = 0, const char* postfix = 0)
+                GPUStatistics::NumericStatistic<T>& getNumericStatistic(const char* name, T initialValue, const char* owner = 0, const char* postfix = 0)
 			{
 				char temp[256];
 				if (postfix != 0)
@@ -102,7 +101,7 @@ namespace gpu3d
 					 *         Identification)
 					 */
 					nst = dynamic_cast<NumericStatistic<T>*>(st);
-
+                    
 					if (nst == 0)
 					{
 						char temp[128];
@@ -111,60 +110,66 @@ namespace gpu3d
 					}
 					return *nst;
 				}
-
+                
 				nst = new NumericStatistic<T>(name, initialValue);
 				stats.insert(std::make_pair(name, nst));
-
+                
 				if (owner != 0)
 					nst->setOwner(owner);
-
+                
 				return *nst;
 			}
-
+            
 			Statistic* operator[](std::string statName);
-
+            
 			virtual void clock(u64bit cycle);
-
+            
 			virtual void frame(u32bit frame);
-
+            
 			virtual void batch();
-
+            
 			void setDumpScheduling(u64bit startCycle, u64bit nCycles, bool autoReset = true);
-
+            
 			void setOutputStream(std::ostream& os);
-
+            
 			void setPerFrameStream(std::ostream& os);
-
+            
 			void setPerBatchStream(std::ostream& os);
-
+            
 			void reset(u32bit freq);
-
+            
 			void dumpNames(std::ostream& os = std::cout);
-
+            
 			void dumpValues(std::ostream& os = std::cout);
-
+            
 			void dumpNames(char* str, std::ostream& os = std::cout);
-
+            
 			void dumpValues(u32bit n, u32bit freq, std::ostream& os = std::cout);
-
+            
 			void dump(std::ostream& os = std::cout);
-
+            
 			void dump(std::string boxName, std::ostream& os = std::cout);
-
+            
 #if KONDAMASK
-			enum CACHE_FETCH_INFO
+			enum CACHE_LOG_INFO
 			{
-				CACHE_FETCH_HIT = 'H',
-				CACHE_FETCH_MISS = 'M',
-				CACHE_FETCH_FAIL = 'F',
-				CACHE_DECAY = 'D'
+				CACHE_FETCH_HIT,
+				CACHE_FETCH_MISS,
+				CACHE_FETCH_FAIL,
+				CACHE_DECAY,
+				CACHE_DECAY_RESERVED,
+				CACHE_DECAY_REPLACING
 			};
-
+            
 #if KONDAMASK_CACHE_ACCESSES_CSV
 #define Column(name)    name << ';'
 #define ColumnEmpty()   ';'
-
-			void LogCacheAccess(char* name, u64bit address, CACHE_FETCH_INFO fetchInfo, u32bit set, u32bit way, u64bit thisCycle, u64bit insertCycle = 0, u64bit lastHitCycle = 0, u64bit lastOnCycle = 0, bool isReplace = false)
+            
+			void LogCacheAccess(char* name, u64bit address, CACHE_LOG_INFO logInfo,
+                                u32bit set, u32bit way,
+                                u64bit thisCycle, u64bit insertCycle = 0,
+                                u64bit lastHitCycle = 0, u64bit lastOnCycle = 0,
+                                bool isReplace = false)
 			{
 				address &= 0xffffffff;
 				/*
@@ -180,16 +185,44 @@ namespace gpu3d
 				- HitToReplaceCycles / Dead Time
 				- CacheOffCycles
 				*/
-
+                
 				osCacheAccesses <<
 					Column(thisCycle) <<
 					Column(name) <<
-					Column(address) <<
-					Column((char)fetchInfo) <<
+					Column(address);
+                
+				switch (logInfo)
+				{
+					case CACHE_FETCH_HIT:
+					{
+						osCacheAccesses << Column("HIT");
+					} break;
+					case CACHE_FETCH_MISS:
+					{
+						osCacheAccesses << Column("MISS");
+					} break;
+					case CACHE_FETCH_FAIL:
+					{
+						osCacheAccesses << Column("FAIL");
+					} break;
+					case CACHE_DECAY:
+					{
+						osCacheAccesses << Column("DECAY");
+					} break;
+					case CACHE_DECAY_RESERVED:
+					{
+						osCacheAccesses << Column("DECAY-FAIL-RESERVED");
+					} break;
+					case CACHE_DECAY_REPLACING:
+					{
+						osCacheAccesses << Column("DECAY-FAIL-REPLACING");
+					} break;
+				}
+				osCacheAccesses <<
 					Column(set) <<
 					Column(way);
-
-				if (fetchInfo == CACHE_FETCH_HIT)
+                
+				if (logInfo == CACHE_FETCH_HIT)
 				{
 					osCacheAccesses <<
 						Column(thisCycle - insertCycle) <<
@@ -197,7 +230,7 @@ namespace gpu3d
 						ColumnEmpty() <<
 						ColumnEmpty();
 				}
-				else if (fetchInfo == CACHE_DECAY  || (fetchInfo == CACHE_FETCH_MISS && isReplace))
+				else if (logInfo == CACHE_DECAY || (logInfo == CACHE_FETCH_MISS && isReplace))
 				{
 					osCacheAccesses <<
 						ColumnEmpty() <<
@@ -215,7 +248,7 @@ namespace gpu3d
 				}
 				osCacheAccesses << std::endl;
 			}
-
+            
 			void InitializeCacheAccessesCSV()
 			{
 				osCacheAccesses.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
@@ -226,7 +259,7 @@ namespace gpu3d
 				}
 				osCacheAccesses << "Cycle;Cache Unit;Address;Hit/Miss;Set;Way;InsertToHitCycles;HitToHitCycles;CacheIdleCycles;CacheOffCycles" << std::endl;
 			}
-
+            
 			void SaveCacheAccessesFile()
 			{
 				if (osCacheAccesses.is_open())
@@ -239,26 +272,26 @@ namespace gpu3d
 			{
 				return;
 			}
-
+            
 			void InitializeCacheAccessesCSV()
 			{
 				return;
 			}
-			
+            
 			void SaveCacheAccessesFile()
 			{
 				return;
 			}
 #endif
 #endif
-
+            
 			void finish();
-
+            
 		};
-
-
+        
+        
 	} // namespace GPUStatistics
-
+    
 } // namespace gpu3d
 
 #endif // STATISTICSMANAGER_H

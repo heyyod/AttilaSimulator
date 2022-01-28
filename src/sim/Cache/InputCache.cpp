@@ -180,7 +180,7 @@ bool InputCache::read(u32bit address, u32bit way, u32bit line, u32bit size,
 void InputCache::unreserve(u32bit way, u32bit line)
 {
     /*  Unreserve fetch cache line.  */
-    cache->unreserve(way, line);
+   cache->unreserve(way, line);
 }
 
 /*  Resets the input cache structures.  */

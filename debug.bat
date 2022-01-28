@@ -1,0 +1,1 @@
+devenv ./src/win32-VS2005/bGPU-Unified.vcxproj /nosplash

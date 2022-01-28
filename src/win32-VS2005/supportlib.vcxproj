@@ -251,6 +251,7 @@
     <ClInclude Include="..\support\GlobalProfiler.h" />
     <ClInclude Include="..\support\GPUTypes.h" />
     <ClInclude Include="..\support\ImageSaver.h" />
+    <ClInclude Include="..\support\Kondamask_Defines.h" />
     <ClInclude Include="..\support\OptimizedDynamicMemory.h" />
     <ClInclude Include="..\support\Parser.h" />
     <ClInclude Include="..\support\Profiler.h" />

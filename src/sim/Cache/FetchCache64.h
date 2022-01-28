@@ -48,15 +48,15 @@ namespace gpu3d
 	 */
 	struct Cache64Request
 	{
-		u64bit inAddress;   /**<  Address of the first byte of the line requested into the cache.  */
-		u64bit outAddress;  /**<  Address of the first byte of the line requested out of the cache.  */
-		u32bit line;        /**<  Fetch cache line for the line.  */
-		u32bit way;         /**<  Fetch cache way for the line.  */
-		bool spill;         /**<  If the line is to be written back to memory.  */
-		bool fill;          /**<  If the line is going to be read from memory.  */
-		bool masked;        /**<  If it will use a masked write.  */
-		bool free;          /**<  If the entry is free.  */
-		DynamicObject *source;  /**<  Pointer to a Dynamic Object that is the source of the cache request.  */
+		u64bit inAddress; /**<  Address of the first byte of the line requested into the cache.  */
+		u64bit outAddress; /**<  Address of the first byte of the line requested out of the cache.  */
+		u32bit line; /**<  Fetch cache line for the line.  */
+		u32bit way; /**<  Fetch cache way for the line.  */
+		bool spill; /**<  If the line is to be written back to memory.  */
+		bool fill; /**<  If the line is going to be read from memory.  */
+		bool masked; /**<  If it will use a masked write.  */
+		bool free; /**<  If the entry is free.  */
+		DynamicObject *source; /**<  Pointer to a Dynamic Object that is the source of the cache request.  */
 	};
 
 
@@ -87,22 +87,21 @@ namespace gpu3d
 
 
 		/*  Fetch cache parameters.  */
-		u32bit requestQueueSize;/**<  Size of the memory request queue.  */
-		char *name;             /**<  Name/prefix/postfix for the fetch cache.  */
+		u32bit requestQueueSize; /**<  Size of the memory request queue.  */
+		char *name; /**<  Name/prefix/postfix for the fetch cache.  */
 
 		/* Fetch cache structures.  */
-		u32bit **reserve;       /**<  Fetch cache line reserve counter.  */
-		u32bit **victim;        /**<  Victim lists per line.  */
-		bool **replaceLine;     /**<  The line is being replaced.  */
-		bool **dirty;           /**<  Line dirty bit.  Stores if the line has been modified.  */
-		bool **masked;          /**<  Masked line.  Stores if the line uses the line write mask.  */
-		bool ***writeMask;      /**<  Write mask for the bytes in a line.  */
-		u32bit maxLRU;          /**<  Number of entries used in the pseudo LRU victim list (takes into account number of ways).   */
-		u32bit firstWay;        /**<  First way from which to start searching a victim.  */
+		u32bit **reserve; /**<  Fetch cache line reserve counter.  */
+		u32bit **victim; /**<  Victim lists per line.  */
+		bool **replaceLine; /**<  The line is being replaced.  */
+		bool **dirty; /**<  Line dirty bit.  Stores if the line has been modified.  */
+		bool **masked; /**<  Masked line.  Stores if the line uses the line write mask.  */
+		bool ***writeMask; /**<  Write mask for the bytes in a line.  */
+		u32bit maxLRU; /**<  Number of entries used in the pseudo LRU victim list (takes into account number of ways).   */
+		u32bit firstWay; /**<  First way from which to start searching a victim.  */
 
 #if KONDAMASK
 		u64bit cycle;
-
 		struct cache_line_cycle_info
 		{
 			u64bit insert;
@@ -113,39 +112,39 @@ namespace gpu3d
 #endif
 
 		/*  Memory request queue.  */
-		Cache64Request *requestQueue;   /**<  Memory request queue.  */
-		u32bit freeRequests;    /**<  Number of free requests.  */
-		u32bit activeRequests;  /**<  Number of active requests entries.  */
+		Cache64Request *requestQueue; /**<  Memory request queue.  */
+		u32bit freeRequests; /**<  Number of free requests.  */
+		u32bit activeRequests; /**<  Number of active requests entries.  */
 		u32bit nextFreeRequest; /**<  Pointer to the next free request.  */
-		u32bit nextRequest;     /**<  Pointer to the next memory request.  */
-		u32bit *freeRequestList;/**<  List of free memory request entries.  */
-		u32bit *activeList;     /**<  List of active memory request entries.  */
+		u32bit nextRequest; /**<  Pointer to the next memory request.  */
+		u32bit *freeRequestList; /**<  List of free memory request entries.  */
+		u32bit *activeList; /**<  List of active memory request entries.  */
 
 		//  Debug.
-		bool debugMode;         /**<  Flag that stores if debug output is enabled.  */
+		bool debugMode; /**<  Flag that stores if debug output is enabled.  */
 
 		/*  Statistics.  */
-		GPUStatistics::Statistic *fetchMisses;      /**<  Misses produced by fetch operations.  */
-		GPUStatistics::Statistic *fetchHits;        /**<  Hits produced by fetch operations.  */
-		GPUStatistics::Statistic *fetchMissOK;      /**<  Misses produced by fetch operations that were started/queued when produced.  */
-		GPUStatistics::Statistic *fetchMissFail;    /**<  Misses produced by fetch operations that were not started/queued when produced.  */
-		GPUStatistics::Statistic *fetchMissFailReqQ;/**<  Misses produced by fetch operations that were not started/queued when produced because the cache request queue was full.  */
+		GPUStatistics::Statistic *fetchMisses; /**<  Misses produced by fetch operations.  */
+		GPUStatistics::Statistic *fetchHits; /**<  Hits produced by fetch operations.  */
+		GPUStatistics::Statistic *fetchMissOK; /**<  Misses produced by fetch operations that were started/queued when produced.  */
+		GPUStatistics::Statistic *fetchMissFail; /**<  Misses produced by fetch operations that were not started/queued when produced.  */
+		GPUStatistics::Statistic *fetchMissFailReqQ; /**<  Misses produced by fetch operations that were not started/queued when produced because the cache request queue was full.  */
 		GPUStatistics::Statistic *fetchMissFailRes; /**<  Misses produced by fetch operations that were not started/queued when produced because there was no available cache line.  */
-		GPUStatistics::Statistic *fetchMissFailMiss;/**<  Misses produced by fetch operations that were not started/queued when produced because no misses were allowed.  */
-		GPUStatistics::Statistic *allocMisses;      /**<  Misses produced by alloc operations.  */
-		GPUStatistics::Statistic *allocHits;        /**<  Hits produced by alloc operations.  */
-		GPUStatistics::Statistic *allocMissOK;      /**<  Misses produced by alloc operations that were started/queued when produced.  */
-		GPUStatistics::Statistic *allocMissFail;    /**<  Misses produced by alloc operations that were not started/queued when produced.  */
-		GPUStatistics::Statistic *allocMissFailReqQ;/**<  Misses produced by alloc operations that were not started/queued when produced because the cache request queue was full.  */
+		GPUStatistics::Statistic *fetchMissFailMiss; /**<  Misses produced by fetch operations that were not started/queued when produced because no misses were allowed.  */
+		GPUStatistics::Statistic *allocMisses; /**<  Misses produced by alloc operations.  */
+		GPUStatistics::Statistic *allocHits; /**<  Hits produced by alloc operations.  */
+		GPUStatistics::Statistic *allocMissOK; /**<  Misses produced by alloc operations that were started/queued when produced.  */
+		GPUStatistics::Statistic *allocMissFail; /**<  Misses produced by alloc operations that were not started/queued when produced.  */
+		GPUStatistics::Statistic *allocMissFailReqQ; /**<  Misses produced by alloc operations that were not started/queued when produced because the cache request queue was full.  */
 		GPUStatistics::Statistic *allocMissFailRes; /**<  Misses produced by alloc operations that were not started/queued when produced because there was no available cache line.  */
 		GPUStatistics::Statistic *allocMissFailMiss; /**<  Misses produced by alloc operations that were not started/queued when produced because no misses were allowed.  */
-		GPUStatistics::Statistic *readOK;           /**<  Succesful read operations.  */
-		GPUStatistics::Statistic *readFail;         /**<  Failed read operations.  */
-		GPUStatistics::Statistic *writeOK;          /**<  Succesful write operations.  */
-		GPUStatistics::Statistic *writeFail;        /**<  Failed write operations.  */
-		GPUStatistics::Statistic *readBytes;        /**<  Total bytes read.  */
-		GPUStatistics::Statistic *writeBytes;       /**<  Total bytes written.  */
-		GPUStatistics::Statistic *unreserves;       /**<  Unreserve operations.  */
+		GPUStatistics::Statistic *readOK; /**<  Succesful read operations.  */
+		GPUStatistics::Statistic *readFail; /**<  Failed read operations.  */
+		GPUStatistics::Statistic *writeOK; /**<  Succesful write operations.  */
+		GPUStatistics::Statistic *writeFail; /**<  Failed write operations.  */
+		GPUStatistics::Statistic *readBytes; /**<  Total bytes read.  */
+		GPUStatistics::Statistic *writeBytes; /**<  Total bytes written.  */
+		GPUStatistics::Statistic *unreserves; /**<  Unreserve operations.  */
 
 		/**
 		 *
@@ -466,23 +465,43 @@ namespace gpu3d
 		void decay(u64bit cycleIn, u32bit decayCycles)
 		{
 			cycle = cycleIn;
-			for (u32bit w = 0; w < numWays; w++)
+			for (u32bit l = 0; l < numLines; l++)
 			{
-				for (u32bit l = 0; l < numLines; l++)
+				/*for (u32bit iVictim = 0; iVictim < maxLRU; iVictim++)
+				{
+				u32bit w = victim[l][iVictim]; // the way set as a victim
+				*/
+				for (u32bit w = 0; w < numWays; w++)
 				{
 					if (valid[w][l])
 					{
 						accessCycles[w][l].lastOn = cycle;
-						if ((cycle - accessCycles[w][l].lastHit) > decayCycles)
+						if (cycle - accessCycles[w][l].lastHit > decayCycles)
 						{
-							printf("DECAY %s way %d set %d\n", name, w, l);
+							if (reserve[w][l] != 0)
+							{
+								gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+									this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY_RESERVED,
+									l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
+								return;
+							}
+							else if (replaceLine[w][l] == TRUE)
+							{
+								gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+									this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY_REPLACING,
+									l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
+								return;
+							}
+							
 							gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-								this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY, l, w, cycle);
-							// What exacty should I reset here
+								this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY,
+								l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
+							
+							// this is what is resetted in reset()
+							tags[w][l] = 0;
 							valid[w][l] = FALSE;
 							dirty[w][l] = FALSE;
-							//reserve[w][l] = 0;
-							tags[w][l] = 0;
+							masked[w][l] = FALSE;
 						}
 					}
 				}
@@ -490,8 +509,8 @@ namespace gpu3d
 		}
 #endif
 
-		};
+	};
 
-	} // namespace gpu3d
+} // namespace gpu3d
 
 #endif

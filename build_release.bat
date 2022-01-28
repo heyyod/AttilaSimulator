@@ -1,0 +1,1 @@
+msbuild /t:"bGPU-Unified" /p:Configuration="Release" /p:Platform="x64" "./src/win32-VS2005/ATILA.sln" /m /nologo /v:m

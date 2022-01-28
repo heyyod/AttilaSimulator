@@ -385,8 +385,8 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 							printf("FetchCache (%s) => Adding spill-fill to request queue entry %d\n", name, freeRequest);
 						)
 
-							/*  Add new request to memory request queue.  */
-							requestQueue[freeRequest].inAddress = line2address(way, line);
+						/*  Add new request to memory request queue.  */
+						requestQueue[freeRequest].inAddress = line2address(way, line);
 						requestQueue[freeRequest].outAddress = oldAddress;
 						requestQueue[freeRequest].line = line;
 						requestQueue[freeRequest].way = way;
@@ -412,8 +412,8 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 							printf("FetchCache (%s) => Adding fill to request queue entry %d\n", name, freeRequest);
 						)
 
-							/*  Add a read request to read the new data for the line.  */
-							requestQueue[freeRequest].inAddress = line2address(way, line);
+						/*  Add a read request to read the new data for the line.  */
+						requestQueue[freeRequest].inAddress = line2address(way, line);
 						requestQueue[freeRequest].outAddress = oldAddress;
 						requestQueue[freeRequest].line = line;
 						requestQueue[freeRequest].way = way;

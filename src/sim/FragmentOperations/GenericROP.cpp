@@ -249,6 +249,10 @@ GenericROP::GenericROP(
 /*  Generic ROP simulation function.  */
 void GenericROP::clock(u64bit cycle)
 {
+#if KONDAMASK
+	if (cycle == 10768)
+		int breakHere = 0;
+#endif
     MemoryTransaction *memTrans;
     RasterizerCommand *rastComm;
     ROPStatusInfo *consumerStateInfo;
@@ -867,7 +871,7 @@ void GenericROP::fetchStamp()
                 if (!fetchQueue.full())
                 {
                     bool fetchResult;
-                    
+
                     //  Check if multisampling is enabled.
                     if (!multisampling)
                     {
@@ -1057,7 +1061,7 @@ void GenericROP::readStamp()
             if ((currentStamp->address[currentStamp->nextBuffer] == rawCAM[i]->address[currentStamp->nextBuffer]) &&
                  (currentStamp != rawCAM[i]))
             {
-                GPU_DEBUG_BOX(
+                GPU_DEBUG_BOX(  
                     printf("%s => Reading a stamp at %x before writing it.\n", getName(),
                         currentStamp->address[currentStamp->nextBuffer]);
                 )
