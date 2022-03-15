@@ -26,6 +26,8 @@
  * read texels from texture data.
  *
  */
+#define KONDAMASK_TEXTURE_CACHE_L2_0_DECAY 1000U
+#define KONDAMASK_TEXTURE_CACHE_L2_1_DECAY 1000U
 
 #include "TextureCacheL2.h"
 #include "TextureEmulator.h"
@@ -243,7 +245,10 @@ TextureCacheL2::TextureCacheL2(u32bit waysL0, u32bit linesL0, u32bit bytesLineL0
     string queueName;
     queueName = "ReadTicketQueue";
     queueName.append(postfix);
-    ticketList.setName(queueName);    
+    ticketList.setName(queueName);   
+
+	cacheL0->decayCycles = KONDAMASK_TEXTURE_CACHE_L2_0_DECAY;
+	cacheL1->decayCycles = KONDAMASK_TEXTURE_CACHE_L2_1_DECAY;
 }
 
 /*  Fetches a cache line.  */
@@ -478,8 +483,11 @@ MemoryTransaction *TextureCacheL2::update(u64bit cycle, MemState memState, bool 
 void TextureCacheL2::clock(u64bit cycle)
 {
 #if KONDAMASK
-    cacheL0->decay(cycle, KONDAMASK_TEXTURE_CACHE_L0_DECAY);
-    cacheL1->decay(cycle, KONDAMASK_TEXTURE_CACHE_L1_DECAY);
+	cacheL0->cycle = cycle;
+	cacheL1->cycle = cycle;
+
+	cacheL0->decay(cycle, KONDAMASK_TEXTURE_CACHE_L2_0_DECAY);
+	cacheL1->decay(cycle, KONDAMASK_TEXTURE_CACHE_L2_1_DECAY);
 #endif
 
     u32bit i;

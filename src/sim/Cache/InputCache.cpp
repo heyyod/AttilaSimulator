@@ -26,6 +26,7 @@
  * retrieve vertex input data from memory in the Streamer unit.
  *
  */
+#define KONDAMASK_INPUT_CACHE_DECAY 1000U
 
 #include "InputCache.h"
 #include "GPUMath.h"
@@ -109,7 +110,9 @@ InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLi
     string queueName;
     queueName.clear();
     queueName = "ReadTicketQueue-InCache";
-    ticketList.setName(queueName);    
+    ticketList.setName(queueName);   
+
+	cache->decayCycles = KONDAMASK_INPUT_CACHE_DECAY;
 }
 
 
@@ -253,7 +256,9 @@ MemoryTransaction *InputCache::update(u64bit cycle, MemState memState)
 void InputCache::clock(u64bit cycle)
 {
 #if KONDAMASK
-    cache->decay(cycle, KONDAMASK_INPUT_CACHE_DECAY);
+	cache->cycle = cycle;
+
+	cache->decay(cycle, KONDAMASK_INPUT_CACHE_DECAY);
 #endif
 
     u32bit i;

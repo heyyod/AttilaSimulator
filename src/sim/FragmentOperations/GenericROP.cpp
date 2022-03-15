@@ -249,10 +249,6 @@ GenericROP::GenericROP(
 /*  Generic ROP simulation function.  */
 void GenericROP::clock(u64bit cycle)
 {
-#if KONDAMASK
-	if (cycle == 10768)
-		int breakHere = 0;
-#endif
     MemoryTransaction *memTrans;
     RasterizerCommand *rastComm;
     ROPStatusInfo *consumerStateInfo;
@@ -273,10 +269,10 @@ void GenericROP::clock(u64bit cycle)
 
     //  Check if a memory transaction was generated.
     if (memTrans != NULL)
-    {
-        //  Send memory transaction to the Memory Controller.
-        memRequest->write(cycle, memTrans);
-
+    {		
+		//  Send memory transaction to the Memory Controller.
+		memRequest->write(cycle, memTrans);
+		
         //  Update statistics.
         switch(memTrans->getCommand())
         {

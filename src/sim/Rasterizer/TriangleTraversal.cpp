@@ -479,7 +479,7 @@ storedTriangles, requestedTriangles, lastFragment?"T":"F");
             }
             else if (!traversalFinished && lastFragment)
             {
-printf("B");
+				printf("B");
                 /*  Set current triangle as finished.  */
                 traversalFinished = TRUE;
 

@@ -1050,9 +1050,10 @@ GPUSimulator::~GPUSimulator()
     if (outBatch.is_open())
         outBatch.close();
 
-#if KONDAMASK
-    GPUStatistics::StatisticsManager::instance().SaveCacheAccessesFile();
-#endif
+	if (KONDAMASK_CACHE_LOG_CSV)
+	{
+		GPUStatistics::StatisticsManager::instance().SaveCacheAccessesFile();
+	}
 
     //  Print end message.
     printf("\n\n");
@@ -4123,7 +4124,7 @@ void GPUSimulator::simulationLoop()
     
     //  Simulation loop.
     for(cycle = 0, end = false, dotCount = 0; !end; cycle++)
-    {
+    {	
         GPU_DEBUG( printf("Cycle %ld ----------------------------\n", cycle); )
 
         //  Dump the signals.

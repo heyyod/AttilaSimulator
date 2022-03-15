@@ -285,6 +285,18 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 	/*  Search the address in the fetch cache tag file.  */
 	hit = search(address, line, way);
 
+	gpu3d::GPUStatistics::StatisticsManager& stats = gpu3d::GPUStatistics::StatisticsManager::instance();
+
+	if (KONDAMASK_CACHE_DECAY)
+	{
+		// If we hit, check if it's decayed.
+		// If it is, ingore the hit and treat as miss.
+		if (hit && isDecayed(line, way))
+		{
+			hit = false;
+		}
+	}
+
 	/*  Check if the line is a masked (partial) write.  */
 	if (hit && masked[way][line])
 	{
@@ -308,12 +320,13 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 			fetchHits->inc();
 		)
 
-#if KONDAMASK
-			gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-				this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_HIT,
-				line, way, cycle, accessCycles[way][line].insert, accessCycles[way][line].lastHit);
+		stats.LogCacheAccess(
+			this->name, address, 
+			GPUStatistics::StatisticsManager::CACHE_FETCH_HIT,
+			line, way, cycle,
+			accessCycles[way][line].insert,
+			accessCycles[way][line].lastHit);
 		accessCycles[way][line].lastHit = cycle;
-#endif
 
 		/*  Line was reserved.  */
 		return TRUE;
@@ -338,6 +351,8 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 			/*  Check if there is a free entry in the memory request queue.  */
 			if (freeRequests > 0)
 			{
+				decayWay(line, way);
+
 				/*  Get next free request queue entry.  */
 				freeRequest = freeRequestList[nextFreeRequest];
 
@@ -347,14 +362,16 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 				/*  Set the new tag for the fetch cache line.  */
 				tags[way][line] = tag(address);
 
-#if KONDAMASK
-				gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-					this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_MISS,
-					line, way, cycle, accessCycles[way][line].insert, accessCycles[way][line].lastHit,
-					accessCycles[way][line].lastOn, valid[way][line]);
+				stats.LogCacheAccess(
+					this->name, address,
+					GPUStatistics::StatisticsManager::CACHE_FETCH_MISS,
+					line, way, cycle,
+					accessCycles[way][line].insert,
+					accessCycles[way][line].lastHit,
+					accessCycles[way][line].lastOn,
+					valid[way][line]);
 				accessCycles[way][line].insert = cycle;
 				accessCycles[way][line].lastHit = cycle;
-#endif
 
 				/*  Check if the current data in the line is valid.  */
 				if (valid[way][line] && dirty[way][line])
@@ -438,11 +455,10 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 				fetchMissFailReqQ->inc();
 				)
 
-#if KONDAMASK
-					gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-						this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
-						line, way, cycle);
-#endif
+				stats.LogCacheAccess(
+					this->name, address,
+					GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
+					line, way, cycle);
 
 				/*  No free entry in the memory request queue.  */
 				return FALSE;
@@ -459,11 +475,12 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 					fetchMissFail->inc();
 			fetchMissFailRes->inc();
 			)
-#if KONDAMASK
-				gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-					this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
-					line, way, cycle);
-#endif
+
+			stats.LogCacheAccess(
+				this->name, address,
+				GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
+				line, way, cycle);
+
 			/*  No unreserved line available for the the address. Data cannot be fetched.  */
 			return FALSE;
 		}
@@ -493,6 +510,18 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 	/*  Search the address in the fetch cache tag file.  */
 	hit = search(address, line, way);
 
+	gpu3d::GPUStatistics::StatisticsManager& stats = gpu3d::GPUStatistics::StatisticsManager::instance();
+
+	if (KONDAMASK_CACHE_DECAY)
+	{
+		// If we hit, check if it's decayed.
+		// If it is, ingore the hit and treat as miss.
+		if (hit && isDecayed(line, way))
+		{
+			hit = false;
+		}
+	}
+
 	/*  Check if the line is a masked (partial) write.  */
 	if (hit && masked[way][line])
 	{
@@ -516,12 +545,14 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 			fetchHits->inc();
 		)
 
-#if KONDAMASK
-			gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-				this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_HIT,
-				line, way, cycle, accessCycles[way][line].insert, accessCycles[way][line].lastHit);
+		stats.LogCacheAccess(
+			this->name, address, 
+			GPUStatistics::StatisticsManager::CACHE_FETCH_HIT,
+			line, way, cycle,
+			accessCycles[way][line].insert,
+			accessCycles[way][line].lastHit);
 		accessCycles[way][line].lastHit = cycle;
-#endif
+
 		/*  Line was reserved.  */
 		return TRUE;
 	}
@@ -555,8 +586,8 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 			printf("%s => Fetch miss address %016llx.\n", name, address);
 		)
 
-			/*  Miss.  Search for a line to reserve.  */
-			way = nextVictim(line);
+		/*  Miss.  Search for a line to reserve.  */
+		way = nextVictim(line);
 
 		/*  Check if there is an unreserved line.  */
 		if (reserve[way][line] == 0)
@@ -564,6 +595,8 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 			/*  Check if there is a free entry in the memory request queue.  */
 			if (freeRequests > 0)
 			{
+				decayWay(line, way);
+
 				/*  Get next free request queue entry.  */
 				freeRequest = freeRequestList[nextFreeRequest];
 
@@ -573,14 +606,16 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 				/*  Set the new tag for the fetch cache line.  */
 				tags[way][line] = tag(address);
 
-#if KONDAMASK
-				gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-					this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_MISS,
-					line, way, cycle, accessCycles[way][line].insert, accessCycles[way][line].lastHit,
-					accessCycles[way][line].lastOn, valid[way][line]);
+				stats.LogCacheAccess(
+					this->name, address,
+					GPUStatistics::StatisticsManager::CACHE_FETCH_MISS,
+					line, way, cycle,
+					accessCycles[way][line].insert,
+					accessCycles[way][line].lastHit,
+					accessCycles[way][line].lastOn,
+					valid[way][line]);
 				accessCycles[way][line].insert = cycle;
 				accessCycles[way][line].lastHit = cycle;
-#endif
 
 				/*  Check if the current data in the line is valid.  */
 				if (valid[way][line] && dirty[way][line])
@@ -662,11 +697,12 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 						fetchMissFail->inc();
 				fetchMissFailReqQ->inc();
 				)
-#if KONDAMASK
-					gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-						this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
-						line, way, cycle);
-#endif
+
+				stats.LogCacheAccess(
+					this->name, address,
+					GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
+					line, way, cycle);
+
 				/*  No free entry in the memory request queue.  */
 				return FALSE;
 			}
@@ -687,11 +723,11 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 			fetchMissFailRes->inc();
 			)
 
-#if KONDAMASK
-				gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-					this->name, address, GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
-					line, way, cycle);
-#endif
+			stats.LogCacheAccess(
+				this->name, address,
+				GPUStatistics::StatisticsManager::CACHE_FETCH_FAIL,
+				line, way, cycle);
+
 			/*  No unreserved line available for the the address. Data cannot be fetched.  */
 			return FALSE;
 		}
@@ -1482,4 +1518,92 @@ void FetchCache64::setDebug(bool enable)
 	debugMode = enable;
 }
 
+#if KONDAMASK
+inline bool FetchCache64::isDecayed(u32bit line, u32bit way)
+{
+	return (
+		valid[way][line] &&
+		cycle - accessCycles[way][line].lastHit > decayCycles &&
+		reserve[way][line] == 0);
+}
 
+void FetchCache64::decayWay(u32bit line, u32bit way)
+{
+	if (!KONDAMASK_CACHE_DECAY)
+		return;
+
+	if (valid[way][line] &&
+		cycle - accessCycles[way][line].lastHit + 1 > decayCycles)
+	{
+		// IMPORTANT: This assumes that the decay happend exactly afte the number
+		// of cycles specified and so that decay was NOT blocked because the line was
+		// reserved.
+		// HOW MUCH DO WE CARE ABOUT IT THOUGH?
+		// On the simple trace file the decay cycles were exceeded by at most 100 cycles.
+		// MUST TEST WITH OTHER TRACES!!!
+		u64bit decayCycle = accessCycles[way][line].lastHit + decayCycles;
+
+		accessCycles[way][line].lastOn = decayCycle;
+
+		gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+			this->name, line2address(way, line),
+			GPUStatistics::StatisticsManager::CACHE_DECAY,
+			line, way,
+			decayCycle, // cycle at which decay happened
+			accessCycles[way][line].insert, // cycle at which this data was firt inserted
+			accessCycles[way][line].lastHit, // cycle at which the lasta access happened
+			decayCycle // cycle at which cache had valid data
+			// NOTE: The other version still uses this. Here it's redundant
+		);
+
+		// Reset this way
+		tags[way][line] = 0;
+		valid[way][line] = FALSE;
+		dirty[way][line] = FALSE;
+		masked[way][line] = FALSE;
+	}
+}
+
+void FetchCache64::decay(u64bit cycleIn, u32bit decayCycles)
+{
+	if (!KONDAMASK_CACHE_DECAY_PER_CYCLE)
+		return;
+
+	for (u32bit l = 0; l < numLines; l++)
+	{
+		for (u32bit w = 0; w < numWays; w++)
+		{
+			if (valid[w][l])
+			{
+				accessCycles[w][l].lastOn = cycle;
+				if (cycle - accessCycles[w][l].lastHit > decayCycles)
+				{
+					if (reserve[w][l] != 0)
+					{
+						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+							this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY_RESERVED,
+							l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
+						return;
+					}
+					else if (replaceLine[w][l] == TRUE)
+					{
+						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+							this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY_REPLACING,
+							l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
+						return;
+					}
+
+					gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+						this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY,
+						l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
+
+					valid[w][l] = FALSE;
+					/*tags[w][l] = 0;
+					dirty[w][l] = FALSE;
+					masked[w][l] = FALSE;*/
+				}
+			}
+		}
+	}
+}
+#endif

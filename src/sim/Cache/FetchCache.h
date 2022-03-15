@@ -77,9 +77,11 @@ namespace gpu3d
 
 	class FetchCache : private Cache
 	{
-
+#if KONDAMASK
+	public:
+#else
 	private:
-
+#endif
         /*  Constants.  */
 		enum {
 			MAX_LRU = 4     /**<  Defines the number of accesses remembered by the pseudo LRU replacement policy. */
@@ -99,17 +101,6 @@ namespace gpu3d
 		bool ***writeMask; /**<  Write mask for the bytes in a line.  */
 		u32bit maxLRU; /**<  Number of entries used in the pseudo LRU victim list (takes into account number of ways).   */
 		u32bit firstWay; /**<  First way from which to start searching a victim.  */
-
-#if KONDAMASK
-		u64bit cycle;
-		struct cache_line_cycle_info
-		{
-			u64bit insert;
-			u64bit lastHit;
-			u64bit lastOn;
-		};
-		cache_line_cycle_info** accessCycles;
-#endif
 
         /*  Memory request queue.  */
 		CacheRequest *requestQueue; /**<  Memory request queue.  */
@@ -443,53 +434,76 @@ namespace gpu3d
 		void setDebug(bool enable);
 
 #if KONDAMASK
-		void decay(u64bit cycleIn, u32bit decayCycles)
+		bool **waitForDecay;
+		
+		u64bit cycle;
+
+		struct cache_line_cycle_info
 		{
-			cycle = cycleIn;
-			for (u32bit l = 0; l < numLines; l++)
+			u64bit insert;
+			u64bit lastHit;
+			u64bit lastOn;
+		};
+		cache_line_cycle_info** accessCycles;
+		u64bit decayCycles;
+
+		inline bool isDecayed(u32bit line, u32bit way);
+
+		void decayWay(u32bit line, u32bit way);
+
+		void decay(u64bit cycleIn, u32bit decayCycles);
+		
+		bool flushForDecay(u32bit line, u32bit way);
+		
+		/*
+			void decayLine(u32bit line)
 			{
-				/*for (u32bit iVictim = 0; iVictim < maxLRU; iVictim++)
-				{
-					u32bit w = victim[l][iVictim]; // the way set as a victim
-				*/
-				for (u32bit w = 0; w < numWays; w++)
-				{
-					if (valid[w][l])
-					{
-						accessCycles[w][l].lastOn = cycle;
-						if (cycle - accessCycles[w][l].lastHit > decayCycles)
-						{
-							if (reserve[w][l] != 0)
-							{
-								gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-									this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY_RESERVED, l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
-								return;
-							}
-							else if (replaceLine[w][l] == TRUE)
-							{
-								gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-									this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY_REPLACING,
-									l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
-								return;
-							}
+			if (!KONDAMASK_CACHE_DECAY)
+			return;
+			
+			for (u32bit iWay = 0; iWay < numWays; iWay++)
+			{
+			if (valid[iWay][line] && isDecayed(line, iWay))
+			{
+			// IMPORTANT: This assumes that the decay happend exactly afte the number
+			// of cycles specified and so that decay was NOT blocked because the line was
+			// reserved.
+			// HOW MUCH DO WE CARE ABOUT IT THOUGH?
+			// On the simple trace file the decay cycles were exceeded by at most 100 cycles.
+			// MUST TEST WITH OTHER TRACES!!!
+			u64bit decayCycle = accessCycles[iWay][line].lastHit + decayCycles;
 
-							gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-								this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY,
-								l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
+			accessCycles[iWay][line].lastOn = decayCycle;
 
-							// this is what is resetted in reset()
-							tags[w][l] = 0;
-							valid[w][l] = FALSE;
-							dirty[w][l] = FALSE;
-							masked[w][l] = FALSE;
-						}
-					}
-				}
+			gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+			this->name, line2address(iWay, line),
+			GPUStatistics::StatisticsManager::CACHE_DECAY,
+			line, iWay,
+			decayCycle, // cycle at which decay happened
+			accessCycles[iWay][line].insert, // cycle at which this data was firt inserted
+			accessCycles[iWay][line].lastHit, // cycle at which the lasta access happened
+			decayCycle // cycle at which cache had valid data
+			// NOTE: The other version still uses this. Here it's redundant
+			);
+					
+			// Reset this way
+			tags[iWay][line] = 0;
+			valid[iWay][line] = FALSE;
+			dirty[iWay][line] = FALSE;
+			masked[iWay][line] = FALSE;
 			}
-		}
-#endif
-
+			}
+			}
+			*/
 	};
+#endif
 
 } // namespace gpu3d
 #endif
+
+
+
+
+
+
+

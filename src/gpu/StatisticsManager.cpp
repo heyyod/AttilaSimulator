@@ -1,4 +1,4 @@
-/**************************************************************************
+/***********************************************************							***************
  *
  * Copyright (c) 2002 - 2011 by Computer Architecture Department,
  * Universitat Politecnica de Catalunya.
@@ -25,7 +25,7 @@ StatisticsManager::StatisticsManager() :
     startCycle(0), nCycles(1000), nextDump(999), lastCycle(-1), autoReset(true),
     osCycle(NULL), osFrame(NULL), osBatch(NULL), cyclesFlagNamesDumped(false)
 {
-    InitializeCacheAccessesCSV();
+	InitializeCacheAccessesCSV();
 }
 
 StatisticsManager& StatisticsManager::instance()

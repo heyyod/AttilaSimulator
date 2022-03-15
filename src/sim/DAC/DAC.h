@@ -230,10 +230,10 @@ private:
     void processMemoryTransaction(MemoryTransaction *memTrans);
 
     /**
-     *
-     *  Outputs the current color buffer as a PPM file.
-     *
-     */
+        *
+        *  Outputs the current color buffer as a PPM file.
+        *
+        */
 
     void writeColorBuffer();
 
