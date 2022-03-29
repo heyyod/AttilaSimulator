@@ -124,9 +124,11 @@ public:
 
 class ROPCache
 {
-
+#if KONDAMASK
+public:
+#else
 private:
-
+#endif
     //  ROP cache identification.
     char *ropCacheName;             /**<  Name of the ROP cache.  */
     GPUUnit gpuUnitID;              /**<  Stores the ROP cache GPU unit type identifier for the Memory Controller.  */

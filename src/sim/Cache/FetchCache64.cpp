@@ -1573,11 +1573,14 @@ void FetchCache64::decay(u64bit cycleIn, u32bit decayCycles)
 	{
 		for (u32bit w = 0; w < numWays; w++)
 		{
-			if (valid[w][l])
+			if (valid[w][l] &&
+				!reserve[w][l] &&
+				!replaceLine[w][l])
 			{
 				accessCycles[w][l].lastOn = cycle;
 				if (cycle - accessCycles[w][l].lastHit > decayCycles)
 				{
+					/*
 					if (reserve[w][l] != 0)
 					{
 						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
@@ -1592,15 +1595,13 @@ void FetchCache64::decay(u64bit cycleIn, u32bit decayCycles)
 							l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
 						return;
 					}
+					*/
 
 					gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
 						this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY,
 						l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
 
 					valid[w][l] = FALSE;
-					/*tags[w][l] = 0;
-					dirty[w][l] = FALSE;
-					masked[w][l] = FALSE;*/
 				}
 			}
 		}

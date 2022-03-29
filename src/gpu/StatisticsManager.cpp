@@ -231,3 +231,142 @@ void StatisticsManager::finish()
         }    
     }
 }
+
+#if KONDAMASK
+void StatisticsManager::LogCacheAccess(char* name, u64bit address, CACHE_LOG_INFO logInfo, u32bit set, u32bit way,
+	u64bit thisCycle, u64bit insertCycle, u64bit lastHitCycle, u64bit lastOnCycle, bool isReplace)
+{
+	if (!KONDAMASK_CACHE_LOG_CSV)
+		return;
+
+	address &= 0xffffffff;
+	/*
+		Columns :
+		- Cycle
+		- Cache Unit
+		- Address
+		- Hit/Miss
+		- Set
+		- Way
+		- InsertToHitCycles
+		- HitToHitCycles
+		- HitToReplaceCycles / Dead Time
+		- CacheOffCycles
+		*/
+
+#define Column(name)    name << ';'
+#define ColumnEmpty()   ';'
+
+	osCacheAccesses <<
+		Column(thisCycle) <<
+		Column(name) <<
+		Column(address);
+
+	switch (logInfo)
+	{
+		case CACHE_FETCH_HIT:
+		{
+			osCacheAccesses << Column("HIT");
+		} break;
+		case CACHE_FETCH_MISS:
+		{
+			osCacheAccesses << Column("MISS");
+		} break;
+		case CACHE_FETCH_FAIL:
+		{
+			osCacheAccesses << Column("FAIL");
+		} break;
+		case CACHE_DECAY:
+		{
+			osCacheAccesses << Column("DECAY");
+		} break;
+		case CACHE_DECAY_RESERVED:
+		{
+			osCacheAccesses << Column("DECAY-FAIL-RESERVED");
+		} break;
+		case CACHE_DECAY_REPLACING:
+		{
+			osCacheAccesses << Column("DECAY-FAIL-REPLACING");
+		} break;
+		case CACHE_WRITE_REQUEST:
+		{
+			osCacheAccesses << Column("WRITE-REQUEST");
+		} break;
+		case CACHE_READ_REQUEST:
+		{
+			osCacheAccesses << Column("READ-REQUEST");
+		} break;
+		case CACHE_WRITE_TRANS:
+		{
+			osCacheAccesses << Column("WRITE-TRANS");
+		} break;
+		case CACHE_READ_TRANS:
+		{
+			osCacheAccesses << Column("READ-TRANS");
+		} break;
+		case CACHE_DECAY_FLUSH_FAILED:
+		{
+			osCacheAccesses << Column("FLUSH-FAILED");
+		} break;
+
+
+	}
+	osCacheAccesses <<
+		Column(set) <<
+		Column(way);
+
+	if (logInfo == CACHE_FETCH_HIT)
+	{
+		osCacheAccesses <<
+			Column(thisCycle - insertCycle) <<
+			Column(thisCycle - lastHitCycle) <<
+			ColumnEmpty() <<
+			ColumnEmpty();
+	}
+	else if (logInfo == CACHE_DECAY || (logInfo == CACHE_FETCH_MISS && isReplace))
+	{
+		osCacheAccesses <<
+			ColumnEmpty() <<
+			ColumnEmpty() <<
+			Column(thisCycle - lastHitCycle) <<
+			ColumnEmpty();
+	}
+	else if (
+		logInfo == CACHE_DECAY_RESERVED ||
+		logInfo == CACHE_DECAY_REPLACING ||
+		logInfo == CACHE_FETCH_MISS)
+	{
+		osCacheAccesses <<
+			ColumnEmpty() <<
+			ColumnEmpty() <<
+			ColumnEmpty() <<
+			Column(thisCycle - lastOnCycle);
+	}
+	osCacheAccesses << std::endl;
+}
+
+void StatisticsManager::InitializeCacheAccessesCSV()
+{
+	if (!KONDAMASK_CACHE_LOG_CSV)
+		return;
+
+	osCacheAccesses.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
+	if (!osCacheAccesses.is_open())
+	{
+		printf("Couldn't open out/CacheAccesses.csv.\n");
+		return;
+	}
+	osCacheAccesses << "Cycle;Cache Unit;Address;Hit/Miss;Set;Way;InsertToHitCycles;HitToHitCycles;CacheIdleCycles;CacheOffCycles" << std::endl;
+}
+
+void StatisticsManager::SaveCacheAccessesFile()
+{
+	if (!KONDAMASK_CACHE_LOG_CSV)
+		return;
+
+	if (osCacheAccesses.is_open())
+	{
+		osCacheAccesses.close();
+	}
+}
+#endif

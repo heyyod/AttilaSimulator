@@ -161,7 +161,7 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	)
 
 	//  Allocate individual buffers.
-	for(i = 0; i < inputRequests; i++)
+	for (i = 0; i < inputRequests; i++)
 	{
 		//  Allocate input buffer.
 		inputBuffer[i] = new u8bit[lineSize];
@@ -174,7 +174,7 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	}
 
 	//  Allocate individual buffers.
-	for(i = 0; i < outputRequests; i++)
+	for (i = 0; i < outputRequests; i++)
 	{
 		//  Allocate output buffer.
 		outputBuffer[i] = new u8bit[lineSize];
@@ -232,7 +232,7 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	)
 
 	//  Reset clear color vale.
-	for(u32bit i = 0; i < MAX_BYTES_PER_PIXEL; i++)
+	for (u32bit i = 0; i < MAX_BYTES_PER_PIXEL; i++)
 		clearResetValue[i] = 0x00;
 
 	//  Calculate the shift bits for block addresses.
@@ -314,7 +314,7 @@ bool ROPCache::allocate(u32bit address, u32bit &way, u32bit &line, DynamicObject
 		wait = false;
 
 		//  Search the block inside the write queue.
-		for(i = 0, e = GPU_MOD(nextFreeWrite + freeWrites, outputRequests);
+		for (i = 0, e = GPU_MOD(nextFreeWrite + freeWrites, outputRequests);
 			((i < (outputRequests - freeWrites)) && (!wait));
 			i++, e = GPU_MOD(e + 1, outputRequests))
 		{
@@ -336,7 +336,7 @@ bool ROPCache::allocate(u32bit address, u32bit &way, u32bit &line, DynamicObject
 			return false;
 
 		//  Check the state of the block.
-		switch(blockState[block].state)
+		switch (blockState[block].state)
 		{
 			case ROPBlockState::CLEAR:
 			case ROPBlockState::UNCOMPRESSED:
@@ -367,7 +367,7 @@ bool ROPCache::allocate(u32bit address, u32bit &way, u32bit &line, DynamicObject
 bool ROPCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bit *data)
 {
 	//  Search for the next free write port.
-	for(; (nextReadPort < readPorts) && (readCycles[nextReadPort] > 0); nextReadPort++);
+	for (; (nextReadPort < readPorts) && (readCycles[nextReadPort] > 0); nextReadPort++);
 
 	//  Check if cache read port is busy.
 	if ((nextReadPort < readPorts) && (readCycles[nextReadPort] == 0))
@@ -398,7 +398,7 @@ bool ROPCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bit 
 bool ROPCache::write(u32bit address, u32bit way, u32bit line, u32bit size, u8bit *data, bool *mask)
 {
 	//  Search for the next free write port.
-	for(; (nextWritePort < writePorts) && (writeCycles[nextWritePort] > 0); nextWritePort++);
+	for (; (nextWritePort < writePorts) && (writeCycles[nextWritePort] > 0); nextWritePort++);
 
 	//  Check if write port is busy.
 	if ((nextWritePort < writePorts) && (writeCycles[nextWritePort] == 0))
@@ -430,7 +430,7 @@ bool ROPCache::write(u32bit address, u32bit way, u32bit line, u32bit size, u8bit
 bool ROPCache::write(u32bit address, u32bit way, u32bit line, u32bit size, u8bit *data)
 {
 	//  Search for the next free write port.
-	for(; (nextWritePort < writePorts) && (writeCycles[nextWritePort] > 0); nextWritePort++);
+	for (; (nextWritePort < writePorts) && (writeCycles[nextWritePort] > 0); nextWritePort++);
 
 	//  Check if the cache write port is busy.
 	if ((nextWritePort < writePorts) && (writeCycles[nextWritePort] == 0))
@@ -478,7 +478,7 @@ void ROPCache::reset()
 void ROPCache::processMemoryTransaction(MemoryTransaction *memTrans)
 {
 	//  Process memory transaction.
-	switch(memTrans->getCommand())
+	switch (memTrans->getCommand())
 	{
 		case MT_READ_DATA:
 
@@ -646,8 +646,8 @@ bool ROPCache::resetState()
 		//  NOTE:  SHOULD TAKE INTO ACCOUNT THE RESOLUTION SO NOT ALL
 		//  BLOCKS HAD TO BE CLEARED EVEN IF UNUSED AT CURRENT RESOLUTION.  */
 
-			//  Compute cycles required to reset all the block state info.
-			resetStateCycles = (u32bit) ceil((f32bit) maxBlocks / (f32bit) blocksCycle);
+		//  Compute cycles required to reset all the block state info.
+		resetStateCycles = (u32bit) ceil((f32bit) maxBlocks / (f32bit) blocksCycle);
 	}
 	else
 	{
@@ -758,7 +758,7 @@ void ROPCache::clock(u64bit cycle)
 	fetchPerformed = false;
 
 	//  Update read port cycle counters.
-	for(i = 0; i < readPorts; i++)
+	for (i = 0; i < readPorts; i++)
 	{
 		//  Check if there is line being read from the cache.
 		if (readCycles[i] > 0)
@@ -778,6 +778,7 @@ void ROPCache::clock(u64bit cycle)
 					nextReadPort = i;
 
 				GPU_DEBUG(
+					printf("%d\t", cycle);
 					printf("%s%02d => Cache read end.\n", ropCacheName, cacheID);
 				)
 
@@ -801,7 +802,7 @@ void ROPCache::clock(u64bit cycle)
 	}
 
 	//  Update write port cycle counters.
-	for(i = 0; i < writePorts; i++)
+	for (i = 0; i < writePorts; i++)
 	{
 		//  Check if there is a line being written to the cache.
 		if (writeCycles[i] > 0)
@@ -857,7 +858,7 @@ void ROPCache::clock(u64bit cycle)
 
 	//  No memory transaction generated yet.
 	memTrans = NULL;
-	
+
 	//  Check if there is no cache request to process.
 	if (cacheRequest == NULL)
 	{
@@ -880,7 +881,7 @@ void ROPCache::clock(u64bit cycle)
 		{
 			GPU_ASSERT(
 				//  Search in the read request queue for the address to write.
-				for(i = 0, e = GPU_MOD(nextFreeRead - 1, inputRequests); i < (inputs + readInputs + uncompressed);
+				for (i = 0, e = GPU_MOD(nextFreeRead - 1, inputRequests); i < (inputs + readInputs + uncompressed);
 				i++, e = GPU_MOD(e - 1, inputRequests))
 				{
 					//  Check if it is the same line.
@@ -911,7 +912,7 @@ void ROPCache::clock(u64bit cycle)
 			writeQueue[nextFreeWrite].written = 0;
 			writeQueue[nextFreeWrite].request = cacheRequest;
 			writeQueue[nextFreeWrite].requestID = requestID;
-			
+
 			//  Check if the request is also doing a fill.
 			if (cacheRequest->fill)
 			{
@@ -926,7 +927,7 @@ void ROPCache::clock(u64bit cycle)
 				//  Only spill request.  No dependency with a read request.
 				writeQueue[nextFreeWrite].isReadWaiting = false;
 			}
-			
+
 			gpu3d::GPUStatistics::StatisticsManager::instance().
 				LogCacheAccess(cache->name, cacheRequest->outAddress,
 				GPUStatistics::StatisticsManager::CACHE_WRITE_REQUEST,
@@ -943,7 +944,7 @@ void ROPCache::clock(u64bit cycle)
 			)
 
 			//  Search in the write request queue for the address to read.
-			for(i = 0, e = GPU_MOD(nextFreeWrite + freeWrites, outputRequests);
+			for (i = 0, e = GPU_MOD(nextFreeWrite + freeWrites, outputRequests);
 				((i < (outputRequests - freeWrites)) && (!waitWrite));
 				i++, e = GPU_MOD(e + 1, outputRequests))
 			{
@@ -1003,7 +1004,7 @@ void ROPCache::clock(u64bit cycle)
 
 				//  Update statistics.
 				readReqQueued->inc();
-				
+
 				gpu3d::GPUStatistics::StatisticsManager::instance().
 					LogCacheAccess(cache->name, cacheRequest->inAddress,
 					GPUStatistics::StatisticsManager::CACHE_READ_REQUEST,
@@ -1082,7 +1083,7 @@ void ROPCache::clock(u64bit cycle)
 		if (memoryCycles == 0)
 		{
 			//  Check if it was a read transaction.
-			if(memoryRead)
+			if (memoryRead)
 			{
 				//  Check for restore state mode.
 				if (!restoreStateMode)
@@ -1147,11 +1148,6 @@ void ROPCache::clock(u64bit cycle)
 					//  Check if current block has been fully written.
 					if (writeQueue[nextCompressed].written == writeQueue[nextCompressed].size)
 					{
-#if KONDAMASK
-						u32bit w = writeQueue[nextCompressed].request->way;
-						u32bit l = writeQueue[nextCompressed].request->line;
-						cache->waitForDecay[w][l] = false;
-#endif
 						GPU_DEBUG(
 							printf("%s%02d => Output block %d fully written.\n",
 							ropCacheName, cacheID, nextUncompressed);
@@ -1228,7 +1224,7 @@ void ROPCache::clock(u64bit cycle)
 			//    ((block.state == ROPBlockState::COMPRESSED) ? "COMPR" : "UNCOM")));
 
 			//  Check compression state for the current block.
-			switch(block.state)
+			switch (block.state)
 			{
 				case ROPBlockState::CLEAR:
 
@@ -1348,18 +1344,19 @@ void ROPCache::clock(u64bit cycle)
 			}
 		}
 	}
-	
+
 	//  Request output blocks to the cache.
-	if ((outputs > 0) && (!readingLine) &&  (nextReadPort < readPorts) && (readCycles[nextReadPort] == 0))
+	if ((outputs > 0) && (!readingLine) && (nextReadPort < readPorts) && (readCycles[nextReadPort] == 0))
 	{
 		//  Try to read the cache line for the write request.
 		if (cache->readLine(writeQueue[nextOutput].request->way,
 			writeQueue[nextOutput].request->line, outputBuffer[nextOutput]))
 		{
 			GPU_DEBUG(
+				printf("%d\t", cycle);
 				printf("%s%02d => Reading output block %d from cache.\n", ropCacheName, cacheID, nextOutput);
 			)
-		
+
 			//  Check if it is a masked write.
 			if (writeQueue[nextOutput].request->masked)
 			{
@@ -1372,7 +1369,7 @@ void ROPCache::clock(u64bit cycle)
 			cache->resetMask(writeQueue[nextOutput].request->way, writeQueue[nextOutput].request->line);
 
 			//  Set cycles until the line is fully received.
-			readCycles[nextReadPort] += (u32bit) ceil( (f32bit) lineSize/ (f32bit) portWidth);
+			readCycles[nextReadPort] += (u32bit) ceil((f32bit) lineSize / (f32bit) portWidth);
 
 			//  Set port the line read.
 			readLinePort = nextReadPort;
@@ -1447,7 +1444,7 @@ void ROPCache::clock(u64bit cycle)
 				ROPBlockState(ROPBlockState::UNCOMPRESSED);
 
 			//  Check block state.
-			switch(nextReadBlock.state)
+			switch (nextReadBlock.state)
 			{
 				case ROPBlockState::CLEAR:
 
@@ -1457,8 +1454,8 @@ void ROPCache::clock(u64bit cycle)
 				)
 
 					//  Fill the block/line with the clear ROP value.
-					for(i = 0; i < lineSize; i += bytesPixel)
-						for(u32bit j = 0; j < (bytesPixel >> 2); j++)
+					for (i = 0; i < lineSize; i += bytesPixel)
+						for (u32bit j = 0; j < (bytesPixel >> 2); j++)
 							*((u32bit *) &inputBuffer[nextRead][i + j * 4]) = ((u32bit *) clearROPValue)[j];
 
 					break;
@@ -1552,6 +1549,7 @@ void ROPCache::clock(u64bit cycle)
 	if ((writeOutputs > 0) && (compressCycles == 0))
 	{
 		GPU_DEBUG(
+			printf("%d\t", cycle);
 			printf("%s%02d => Compressing block for output request %d\n", ropCacheName, cacheID, nextWrite);
 		)
 
@@ -1572,9 +1570,9 @@ void ROPCache::clock(u64bit cycle)
 				printf("%s%02d => Block marked as CLEAR and masked.\n", ropCacheName, cacheID);
 			}
 			//  Clear masked pixels
-			for(i = 0; i < lineSize; i += bytesPixel)
+			for (i = 0; i < lineSize; i += bytesPixel)
 			{
-				for(u32bit j = 0; j < (bytesPixel >> 2); j++)
+				for (u32bit j = 0; j < (bytesPixel >> 2); j++)
 				{
 					//  Write clear ROP value on unmasked writes.
 					*((u32bit *) &outputBuffer[nextWrite][i + j * 4]) =
@@ -1686,12 +1684,6 @@ void ROPCache::clock(u64bit cycle)
 				//  Check if current block has been fully written.
 				if (writeQueue[nextCompressed].written == writeQueue[nextCompressed].size)
 				{
-#if KONDAMASK
-					u32bit w = writeQueue[nextCompressed].request->way;
-					u32bit l = writeQueue[nextCompressed].request->line;
-					cache->waitForDecay[w][l] = false;
-#endif
-					
 					GPU_DEBUG(
 						printf("%s%02d => Output block %d fully written.\n",
 						ropCacheName, cacheID, nextCompressed);
@@ -1878,7 +1870,7 @@ MemoryTransaction *ROPCache::requestBlock(u64bit cycle, u32bit readReq)
 
 		//  Update number of free tickets.
 		freeTickets--;
-		
+
 		gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
 			cache->name, memTrans->address,
 			GPUStatistics::StatisticsManager::CACHE_READ_TRANS,
@@ -1927,7 +1919,7 @@ MemoryTransaction *ROPCache::writeBlock(u64bit cycle, u32bit writeReq)
 			//  Check if the whole block is masked.
 			bool wholeBlockMasked = true;
 
-			for (u32bit dw = 0; (dw < (size >> 2)) && wholeBlockMasked; dw ++)
+			for (u32bit dw = 0; (dw < (size >> 2)) && wholeBlockMasked; dw++)
 				wholeBlockMasked = (maskBuffer[writeReq][(offset >> 2) + dw] == 0);
 
 			//if ((writeQueue[writeReq].address + offset) == 0x00259f00)
@@ -1951,7 +1943,7 @@ MemoryTransaction *ROPCache::writeBlock(u64bit cycle, u32bit writeReq)
 					printf("%s%02d (%lld) => MT_WRITE_DATA (masked) addr %x size %d.\n", ropCacheName, cacheID, cycle,
 					writeQueue[writeReq].address + offset, size);
 				)
-/*if ((writeQueue[writeReq].address + offset) == 0x00259f00)
+				/*if ((writeQueue[writeReq].address + offset) == 0x00259f00)
 {
 printf("%s%02d (%lld) => MT_WRITE_DATA (masked) addr %x size %d.\n", ropCacheName, cacheID, cycle,
     writeQueue[writeReq].address + offset, size);
@@ -1994,7 +1986,7 @@ printf("\n");
 				printf("%s%02d (%lld) => MT_WRITE_DATA addr %x size %d.\n", ropCacheName, cacheID, cycle,
 				writeQueue[writeReq].address + offset, size);
 			)
-/*if ((writeQueue[writeReq].address + offset) == 0x00259f00)
+			/*if ((writeQueue[writeReq].address + offset) == 0x00259f00)
 {
 printf("%s%02d (%lld) => MT_WRITE_DATA addr %x size %d.\n", ropCacheName, cacheID, cycle,
    writeQueue[writeReq].address + offset, size);
@@ -2143,22 +2135,22 @@ void ROPCache::encodeBlocks(u8bit *data, u32bit blocks)
 	//  The block state information is encoded as two fields: 2-bits encode the state and 2-bits encode the compression level.
 	//  The destination data buffer must be padded to 32-bit words.  
 
-	for(u32bit i = 0; i < (blocks >> 3); i++)
+	for (u32bit i = 0; i < (blocks >> 3); i++)
 	{
 		//  Encode the state in the higher 2 bits and the compression level in the lower 2-bits.
-		encodedBlockState[0] =  ((blockState[i * 8 + 0].state & 0x03) << 2) | (blockState[i * 8 + 0].comprLevel & 0x03);
-		encodedBlockState[1] =  ((blockState[i * 8 + 1].state & 0x03) << 2) | (blockState[i * 8 + 1].comprLevel & 0x03);
-		encodedBlockState[2] =  ((blockState[i * 8 + 2].state & 0x03) << 2) | (blockState[i * 8 + 2].comprLevel & 0x03);
-		encodedBlockState[3] =  ((blockState[i * 8 + 3].state & 0x03) << 2) | (blockState[i * 8 + 3].comprLevel & 0x03);
-		encodedBlockState[4] =  ((blockState[i * 8 + 4].state & 0x03) << 2) | (blockState[i * 8 + 4].comprLevel & 0x03);
-		encodedBlockState[5] =  ((blockState[i * 8 + 5].state & 0x03) << 2) | (blockState[i * 8 + 5].comprLevel & 0x03);
-		encodedBlockState[6] =  ((blockState[i * 8 + 6].state & 0x03) << 2) | (blockState[i * 8 + 6].comprLevel & 0x03);
-		encodedBlockState[7] =  ((blockState[i * 8 + 7].state & 0x03) << 2) | (blockState[i * 8 + 7].comprLevel & 0x03);
+		encodedBlockState[0] = ((blockState[i * 8 + 0].state & 0x03) << 2) | (blockState[i * 8 + 0].comprLevel & 0x03);
+		encodedBlockState[1] = ((blockState[i * 8 + 1].state & 0x03) << 2) | (blockState[i * 8 + 1].comprLevel & 0x03);
+		encodedBlockState[2] = ((blockState[i * 8 + 2].state & 0x03) << 2) | (blockState[i * 8 + 2].comprLevel & 0x03);
+		encodedBlockState[3] = ((blockState[i * 8 + 3].state & 0x03) << 2) | (blockState[i * 8 + 3].comprLevel & 0x03);
+		encodedBlockState[4] = ((blockState[i * 8 + 4].state & 0x03) << 2) | (blockState[i * 8 + 4].comprLevel & 0x03);
+		encodedBlockState[5] = ((blockState[i * 8 + 5].state & 0x03) << 2) | (blockState[i * 8 + 5].comprLevel & 0x03);
+		encodedBlockState[6] = ((blockState[i * 8 + 6].state & 0x03) << 2) | (blockState[i * 8 + 6].comprLevel & 0x03);
+		encodedBlockState[7] = ((blockState[i * 8 + 7].state & 0x03) << 2) | (blockState[i * 8 + 7].comprLevel & 0x03);
 
 		//  Pack the encoded block state data.
 		encodedBlocks = (encodedBlockState[7] << 28) | (encodedBlockState[6] << 24) | (encodedBlockState[5] << 20) |
-			(encodedBlockState[4] << 16) | (encodedBlockState[3] << 12) | (encodedBlockState[2] << 8)  |
-			(encodedBlockState[1] << 4)  |  encodedBlockState[0];
+			(encodedBlockState[4] << 16) | (encodedBlockState[3] << 12) | (encodedBlockState[2] << 8) |
+			(encodedBlockState[1] << 4) | encodedBlockState[0];
 
 		//  Store the packed block state data.
 		((u32bit *) data)[i] = encodedBlocks;
@@ -2167,7 +2159,7 @@ void ROPCache::encodeBlocks(u8bit *data, u32bit blocks)
 	u32bit i;
 
 	//  Fill the last word.
-	for(i = 0; i < (blocks & 0x07); i++)
+	for (i = 0; i < (blocks & 0x07); i++)
 	{
 		//  Encode the blocks for the last 32-bit word.
 		encodedBlockState[i] = ((blockState[(blocks & 0xfffffff8) + i].state & 0x03) << 2) |
@@ -2178,15 +2170,15 @@ void ROPCache::encodeBlocks(u8bit *data, u32bit blocks)
 	if ((blocks & 0x07) != 0)
 	{
 		//  Fill the remaining bits with zeros.
-		for(; i < 8; i++)
+		for (; i < 8; i++)
 		{
 			encodedBlockState[i] = 0;
 		}
 
 		// Pack the last word
 		encodedBlocks = (encodedBlockState[7] << 28) | (encodedBlockState[6] << 24) | (encodedBlockState[5] << 20) |
-			(encodedBlockState[4] << 16) | (encodedBlockState[3] << 12) | (encodedBlockState[2] << 8)  |
-			(encodedBlockState[1] << 4)  |  encodedBlockState[0];
+			(encodedBlockState[4] << 16) | (encodedBlockState[3] << 12) | (encodedBlockState[2] << 8) |
+			(encodedBlockState[1] << 4) | encodedBlockState[0];
 
 		//  Store the packed block state data.
 		((u32bit *) data)[(blocks >> 3) + 1] = encodedBlocks;
@@ -2199,7 +2191,7 @@ void ROPCache::decodeAndFillBlocks(u8bit *data, u32bit blocks)
 {
 	//printf("%s%02d => Restoring compression state blocks = %d\n", ropCacheName, cacheID, blocks);
 	u32bit packedBlockData;
-	for(u32bit i = 0; i < (blocks >> 3); i++)
+	for (u32bit i = 0; i < (blocks >> 3); i++)
 	{
 		//  Read packed block state data.
 		packedBlockData = ((u32bit *) data)[i];
@@ -2222,7 +2214,7 @@ void ROPCache::decodeAndFillBlocks(u8bit *data, u32bit blocks)
 		blockState[i * 8 + 7].state = decodeState((packedBlockData >> 30) & 0x03);
 		blockState[i * 8 + 7].comprLevel = (packedBlockData >> 28) & 0x03;
 
-/*printf("   block %06x - %06x => (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d)\n",
+		/*printf("   block %06x - %06x => (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d)\n",
     i * 8, i * 8 + 7,
     (blockState[i * 8 + 0].state == ROPBlockState::CLEAR) ? "CLEAR " :
         ((blockState[i * 8 + 0].state == ROPBlockState::COMPRESSED) ? "COMPR" : "UNCOM"),
@@ -2276,7 +2268,7 @@ void ROPCache::decodeAndFillBlocks(u8bit *data, u32bit blocks)
 		lastBlocks[7].state = decodeState(packedBlockData >> 30);
 		lastBlocks[7].comprLevel = (packedBlockData >> 28) & 0x03;
 
-/*printf("   block %06x - %06x => (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d)\n",
+		/*printf("   block %06x - %06x => (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d) (%s %d)\n",
         (blocks & 0xfffffff8), (blocks & 0xfffffff8) + 7,
         (lastBlocks[0].state == ROPBlockState::CLEAR) ? "CLEAR " :
             ((lastBlocks[0].state == ROPBlockState::COMPRESSED) ? "COMPR" : "UNCOM"),
@@ -2304,7 +2296,7 @@ void ROPCache::decodeAndFillBlocks(u8bit *data, u32bit blocks)
         lastBlocks[7].comprLevel);*/
 
 		//  Set the last blocks.
-		for(u32bit i = 0; i < (blocks & 0x07); i++)
+		for (u32bit i = 0; i < (blocks & 0x07); i++)
 		{
 			blockState[(blocks & 0xfffffff8) + i] = lastBlocks[i];
 		}
@@ -2314,7 +2306,7 @@ void ROPCache::decodeAndFillBlocks(u8bit *data, u32bit blocks)
 //  Decode the block state.
 ROPBlockState::State ROPCache::decodeState(u32bit state)
 {
-	switch(state)
+	switch (state)
 	{
 		case ROPBlockState::CLEAR        : return ROPBlockState::CLEAR;
 		case ROPBlockState::UNCOMPRESSED : return ROPBlockState::UNCOMPRESSED;
@@ -2347,11 +2339,11 @@ void ROPCache::performeReset()
 		ropBufferAddress = 0x200000;
 
 		//  Set default value of the clear ROP value register.
-		for(u32bit i = 0; i < MAX_BYTES_PER_PIXEL; i++)
+		for (u32bit i = 0; i < MAX_BYTES_PER_PIXEL; i++)
 			clearROPValue[i] = clearResetValue[i];
 
 		//  Reset the state of the ROP data block state table.
-		for(u32bit i = 0; i < maxBlocks; i++)
+		for (u32bit i = 0; i < maxBlocks; i++)
 		{
 			//  Set block as uncompressed at reset.
 			blockState[i].state = ROPBlockState::UNCOMPRESSED;
@@ -2364,7 +2356,7 @@ void ROPCache::performeReset()
 	else
 	{
 		//  Reset the state of the ROP data block state table.
-		for(u32bit i = 0; i < maxBlocks; i++)
+		for (u32bit i = 0; i < maxBlocks; i++)
 		{
 			//  Set block as clear at clear.
 			blockState[i].state = ROPBlockState::CLEAR;
@@ -2376,7 +2368,7 @@ void ROPCache::performeReset()
 
 	//  Fill the ticket list.
 	ticketList.clear();
-	for(u32bit i = 0; i < MAX_MEMORY_TICKETS; i++)
+	for (u32bit i = 0; i < MAX_MEMORY_TICKETS; i++)
 		ticketList.add(i);
 
 	//  Reset write ticket counter.
@@ -2386,11 +2378,11 @@ void ROPCache::performeReset()
 	memoryCycles = 0;
 
 	//  Reset cache write port cycles.
-	for(u32bit i = 0; i < writePorts; i++)
+	for (u32bit i = 0; i < writePorts; i++)
 		writeCycles[i] = 0;
 
 	//  Reset cache read port cycles.
-	for(u32bit i = 0; i < readPorts; i++)
+	for (u32bit i = 0; i < readPorts; i++)
 		readCycles[i] = 0;
 
 	//  Reset compress cycles.
@@ -2627,7 +2619,7 @@ void ROPCache::updateResetState(u64bit cycle)
 		if (resetStateCycles == 0)
 		{
 			//  Reset the state of the ROP data block state table.
-			for(u32bit i = 0; i < maxBlocks; i++)
+			for (u32bit i = 0; i < maxBlocks; i++)
 			{
 				//  Set block as clear at reset.
 				blockState[i].state = ROPBlockState::UNCOMPRESSED;
@@ -2656,9 +2648,9 @@ void ROPCache::stallReport(u64bit cycle, string &stallReport)
 	reportStream << " Spill pipeline " << endl;
 	reportStream << "   outputs = " << outputs << " | writeOutputs = " << writeOutputs << " | compressed = " << compressed << endl;
 	reportStream << " Cache state : " << endl;
-	for(u32bit port = 0; port < readPorts; port ++)
+	for (u32bit port = 0; port < readPorts; port++)
 		reportStream << "    Read port " << port << " -> readCycles = " << readCycles[port] << endl;
-	for(u32bit port = 0; port < writePorts; port ++)
+	for (u32bit port = 0; port < writePorts; port++)
 		reportStream << "    Write port " << port << " -> writeCycles = " << writeCycles[port] << endl;
 	reportStream << "    readingLine = " << readingLine << " | writingLine = " << writingLine << endl;
 	reportStream << " Memory state : " << endl;

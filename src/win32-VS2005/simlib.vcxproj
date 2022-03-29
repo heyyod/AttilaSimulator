@@ -119,9 +119,9 @@
       <SmallerTypeCheck>true</SmallerTypeCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>Level2</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -134,9 +134,9 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>Level1</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
       <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -148,7 +148,8 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <MinimalRebuild>false</MinimalRebuild>
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Lib>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
@@ -174,9 +175,9 @@
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <WarningLevel>Level1</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
     </ClCompile>
     <Lib>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
@@ -189,8 +190,9 @@
       <PreprocessorDefinitions>WIN32;YY_NEVER_INTERACTIVE;LOAD_JUMPTABLE_STATICALLY;GL_GLEXT_LEGACY;GL_GLEXT_PROTOTYPES;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
       <MinimalRebuild />
+      <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Lib>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
@@ -208,8 +210,9 @@
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4702;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4290;4389;4456;4458;4474;4477;4505;4701;4715;4996;5205;6001;6011;6201;6271;6328;6385;6386;26451;26495;26812</DisableSpecificWarnings>
       <MinimalRebuild />
+      <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Lib>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>

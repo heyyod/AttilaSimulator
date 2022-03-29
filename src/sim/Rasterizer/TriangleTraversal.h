@@ -46,102 +46,102 @@
 namespace gpu3d
 {
 
-/**  Defines the different Triangle Traversal  states.  */
-enum TriangleTraversaState
-{
-    TT_READY,
-    TT_TRAVERSING,
-};
+	/**  Defines the different Triangle Traversal  states.  */
+	enum TriangleTraversaState
+	{
+		TT_READY,
+		TT_TRAVERSING,
+	};
 
-/**
- *
- *  This class implements the Triangle Traversal box.
- *
- *  This class implements the Triangle Traversal box that
- *  simulates the Triangle Traversal and Fragment Generation
- *  unit of a GPU.
- *
- *  Inherits from the Box class that offers basic simulation
- *  support.
- *
- */
+	/**
+	*
+	*  This class implements the Triangle Traversal box.
+	*
+	*  This class implements the Triangle Traversal box that
+	*  simulates the Triangle Traversal and Fragment Generation
+	*  unit of a GPU.
+	*
+	*  Inherits from the Box class that offers basic simulation
+	*  support.
+	*
+	*/
 
-class TriangleTraversal : public Box
-{
-private:
+	class TriangleTraversal : public Box
+	{
+	private:
 
-    /*  Triangle Traversal signals.  */
-    Signal *traversalCommand;   /**<  Command signal from the main Rasterizer Box.  */
-    Signal *traversalState;     /**<  State signal to the main Rasterizer Box.  */
-    Signal *setupTriangle;      /**<  Setup triangle signal from the Setup box.  */
-    Signal *setupRequest;       /**<  Triangle Traversal request to the Triangle Setup box.  */
-    Signal *newFragment;        /**<  New fragment signal to the Hierarchical Z box.  */
-    Signal *hzState;            /**<  State signal from the Hierarchical Z box.  */
+		/*  Triangle Traversal signals.  */
+		Signal *traversalCommand; /**<  Command signal from the main Rasterizer Box.  */
+		Signal *traversalState; /**<  State signal to the main Rasterizer Box.  */
+		Signal *setupTriangle; /**<  Setup triangle signal from the Setup box.  */
+		Signal *setupRequest; /**<  Triangle Traversal request to the Triangle Setup box.  */
+		Signal *newFragment; /**<  New fragment signal to the Hierarchical Z box.  */
+		Signal *hzState; /**<  State signal from the Hierarchical Z box.  */
 
-    //  Triangle Traversal registers.
-    u32bit hRes;                /**<  Display horizontal resolution.  */
-    u32bit vRes;                /**<  Display vertical resolution.  */
-    s32bit startX;              /**<  Viewport initial x coordinate.  */
-    s32bit startY;              /**<  Viewport initial y coordinate.  */
-    u32bit width;               /**<  Viewport width.  */
-    u32bit height;              /**<  Viewport height.  */
-    bool multisampling;         /**<  Flag that stores if MSAA is enabled.  */
-    u32bit msaaSamples;         /**<  Number of MSAA Z samples generated per fragment when MSAA is enabled.  */
-    bool perspectTransform;     /**<  Current vertex position transformation is perspective.  */
+		//  Triangle Traversal registers.
+		u32bit hRes; /**<  Display horizontal resolution.  */
+		u32bit vRes; /**<  Display vertical resolution.  */
+		s32bit startX; /**<  Viewport initial x coordinate.  */
+		s32bit startY; /**<  Viewport initial y coordinate.  */
+		u32bit width; /**<  Viewport width.  */
+		u32bit height; /**<  Viewport height.  */
+		bool multisampling; /**<  Flag that stores if MSAA is enabled.  */
+		u32bit msaaSamples; /**<  Number of MSAA Z samples generated per fragment when MSAA is enabled.  */
+		bool perspectTransform; /**<  Current vertex position transformation is perspective.  */
 
-    /*  Triangle Traversal parameters.  */
-    RasterizerEmulator &rastEmu;    /**<  Reference to the Rasterizer Emulator used to generate fragments.  */
-    u32bit trianglesCycle;          /**<  Numbers of triangles to receive from Triangle Setup per cycle.  */
-    u32bit setupLatency;            /**<  Latency of the triangle bus with Triangle Setup.  */
-    u32bit stampsCycle;             /**<  Stamps to generate each cycle.  */
-    u32bit samplesCycle;            /**<  Number of depth samples per fragment that can be generated per cycle when MSAA is enabled.  */
-    u32bit triangleBatch;           /**<  Number of triangles to batch for (recursive) traversal.  */
-    u32bit triangleQSize;           /**<  Size of the triangle queue.  */
-    bool recursiveMode;             /**<  Flags that determines the rasterization method (TRUE: recursive, FALSE: scanline based).  */
-    u32bit numStampUnits;           /**<  Number of stamp units in the GPU.  */
-    u32bit overW;                    /**<  Over scan tile width in scan tiles.  */
-    u32bit overH;                    /**<  Over scan tile height in scan tiles.  */
-    u32bit scanW;                    /**<  Scan tile width in generation tiles.  */
-    u32bit scanH;                    /**<  Scan tile height in generation tiles.  */
-    u32bit genW;                     /**<  Generation tile width in stamps.  */
-    u32bit genH;                     /**<  Generation tile height in stamps.  */
+		/*  Triangle Traversal parameters.  */
+		RasterizerEmulator &rastEmu; /**<  Reference to the Rasterizer Emulator used to generate fragments.  */
+		u32bit trianglesCycle; /**<  Numbers of triangles to receive from Triangle Setup per cycle.  */
+		u32bit setupLatency; /**<  Latency of the triangle bus with Triangle Setup.  */
+		u32bit stampsCycle; /**<  Stamps to generate each cycle.  */
+		u32bit samplesCycle; /**<  Number of depth samples per fragment that can be generated per cycle when MSAA is enabled.  */
+		u32bit triangleBatch; /**<  Number of triangles to batch for (recursive) traversal.  */
+		u32bit triangleQSize; /**<  Size of the triangle queue.  */
+		bool recursiveMode; /**<  Flags that determines the rasterization method (TRUE: recursive, FALSE: scanline based).  */
+		u32bit numStampUnits; /**<  Number of stamp units in the GPU.  */
+		u32bit overW; /**<  Over scan tile width in scan tiles.  */
+		u32bit overH; /**<  Over scan tile height in scan tiles.  */
+		u32bit scanW; /**<  Scan tile width in generation tiles.  */
+		u32bit scanH; /**<  Scan tile height in generation tiles.  */
+		u32bit genW; /**<  Generation tile width in stamps.  */
+		u32bit genH; /**<  Generation tile height in stamps.  */
 
-    /*  Triangle Traversal state.  */
-    RasterizerState state;                  /**<  Current triangle traversal state.  */
-    RasterizerCommand *lastRSCommand;       /**<  Stores the last Rasterizer Command received (for signal tracing).  */
-    u32bit triangleCounter;                 /**<  Number of processed triangles.  */
-    TriangleSetupOutput **triangleQueue;    /**<  Pointer an array of stored triangles to be traversed.  */
-    u32bit storedTriangles;                 /**<  Number of stored triangles.  */
-    u32bit nextTriangle;                    /**<  Pointer to the first triangle in the next batch to traverse.  */
-    u32bit nextStore;                       /**<  Pointer to the next position where to store a new triangle.  */
-    u32bit batchID;                         /**<  Identifier of the current batch of triangle being rasterized.  */
-    u32bit batchTriangles;                  /**<  Number of triangles in the current batch.  */
-    u32bit requestedTriangles;              /**<  Number of triangles requested to Triangle Setup.  */
-    u32bit fragmentCounter;                 /**<  Number of fragments generated in the current batch/stream.  */
-    u32bit nextMSAAQuadCycles;              /**<  Number of cycles until the next group of quads can be processed by the MSAA sample generator.  */
-    u32bit msaaCycles;                      /**<  Number of cycles that it takes to generate all the MSAA samples for a fragment/quad.  */
-    bool traversalFinished;                 /**<  Stores if the traversal of the current triangle has finished.  */
-    bool lastFragment;                      /**<  Last batch fragment was generated.  */
+		/*  Triangle Traversal state.  */
+		RasterizerState state; /**<  Current triangle traversal state.  */
+		RasterizerCommand *lastRSCommand; /**<  Stores the last Rasterizer Command received (for signal tracing).  */
+		u32bit triangleCounter; /**<  Number of processed triangles.  */
+		TriangleSetupOutput **triangleQueue; /**<  Pointer an array of stored triangles to be traversed.  */
+		u32bit storedTriangles; /**<  Number of stored triangles.  */
+		u32bit nextTriangle; /**<  Pointer to the first triangle in the next batch to traverse.  */
+		u32bit nextStore; /**<  Pointer to the next position where to store a new triangle.  */
+		u32bit batchID; /**<  Identifier of the current batch of triangle being rasterized.  */
+		u32bit batchTriangles; /**<  Number of triangles in the current batch.  */
+		u32bit requestedTriangles; /**<  Number of triangles requested to Triangle Setup.  */
+		u32bit fragmentCounter; /**<  Number of fragments generated in the current batch/stream.  */
+		u32bit nextMSAAQuadCycles; /**<  Number of cycles until the next group of quads can be processed by the MSAA sample generator.  */
+		u32bit msaaCycles; /**<  Number of cycles that it takes to generate all the MSAA samples for a fragment/quad.  */
+		bool traversalFinished; /**<  Stores if the traversal of the current triangle has finished.  */
+		bool lastFragment; /**<  Last batch fragment was generated.  */
 
-    //  Pixel Mapper
-    PixelMapper pixelMapper;    /**<  Maps pixels to addresses and processing units.  */
+		//  Pixel Mapper
+		PixelMapper pixelMapper; /**<  Maps pixels to addresses and processing units.  */
 
-    /*  Statistics.  */
-    GPUStatistics::Statistic *inputs;            /**<  Input triangles.  */
-    GPUStatistics::Statistic *requests;          /**<  Triangle requests.  */
-    GPUStatistics::Statistic *outputs;           /**<  Output fragments.  */
-    GPUStatistics::Statistic* utilizationCycles; /**<  Cycle when rasterizer is doing real work (ie: waiting HZ is not accounted as utilizationCycles) */
+		/*  Statistics.  */
+		GPUStatistics::Statistic *inputs; /**<  Input triangles.  */
+		GPUStatistics::Statistic *requests; /**<  Triangle requests.  */
+		GPUStatistics::Statistic *outputs; /**<  Output fragments.  */
+		GPUStatistics::Statistic* utilizationCycles; /**<  Cycle when rasterizer is doing real work (ie: waiting HZ is not accounted as utilizationCycles) */
 
-    /* Stamp coverage related stats */
-    GPUStatistics::Statistic *stamps0frag;           /**<  Empty stamps.                              */
-    GPUStatistics::Statistic *stamps1frag;           /**<  Output stamps with 1 covered fragment.     */
-    GPUStatistics::Statistic *stamps2frag;           /**<  Output stamps with 2 covered fragments.    */
-    GPUStatistics::Statistic *stamps3frag;           /**<  Output stamps with 3 covered fragments.    */
-    GPUStatistics::Statistic *stamps4frag;           /**<  Full covered stamps.                       */
+		/* Stamp coverage related stats */
+		GPUStatistics::Statistic *stamps0frag; /**<  Empty stamps.                              */
+		GPUStatistics::Statistic *stamps1frag; /**<  Output stamps with 1 covered fragment.     */
+		GPUStatistics::Statistic *stamps2frag; /**<  Output stamps with 2 covered fragments.    */
+		GPUStatistics::Statistic *stamps3frag; /**<  Output stamps with 3 covered fragments.    */
+		GPUStatistics::Statistic *stamps4frag; /**<  Full covered stamps.                       */
 
-    /*  Private functions.  */
+		/*  Private functions.  */
 
-    /**
+		/**
      *
      *  Processes a rasterizer command.
      *
@@ -150,9 +150,9 @@ private:
      *
      */
 
-    void processCommand(RasterizerCommand *command, u64bit cycle);
+		void processCommand(RasterizerCommand *command, u64bit cycle);
 
-    /**
+		/**
      *
      *  Processes a register write.
      *
@@ -162,11 +162,11 @@ private:
      *
      */
 
-    void processRegisterWrite(GPURegister reg, u32bit subreg, GPURegData data);
+		void processRegisterWrite(GPURegister reg, u32bit subreg, GPURegData data);
 
-public:
+	public:
 
-    /**
+		/**
      *
      *  Triangle Traversal constructor.
      *
@@ -196,13 +196,13 @@ public:
      *
      */
 
-    TriangleTraversal(RasterizerEmulator &rasEmu, u32bit trianglesCycle, u32bit setupLat,
-        u32bit stampsCycle, u32bit samplesCycle, u32bit batchTriangles, u32bit trQueueSize,       
-        bool recursiveMode, bool microTrisAsFrag, u32bit nStampUnits,
-        u32bit overW, u32bit overH, u32bit scanW, u32bit scanH, u32bit genW, u32bit genH,
-        char *name, Box *parent);
+		TriangleTraversal(RasterizerEmulator &rasEmu, u32bit trianglesCycle, u32bit setupLat,
+			u32bit stampsCycle, u32bit samplesCycle, u32bit batchTriangles, u32bit trQueueSize,
+			bool recursiveMode, bool microTrisAsFrag, u32bit nStampUnits,
+			u32bit overW, u32bit overH, u32bit scanW, u32bit scanH, u32bit genW, u32bit genH,
+			char *name, Box *parent);
 
-    /**
+		/**
      *
      *  Triangle Traversal simulation function.
      *
@@ -213,9 +213,9 @@ public:
      *
      */
 
-    void clock(u64bit cycle);
+		void clock(u64bit cycle);
 
-    /**
+		/**
      *
      *  Returns a single line string with state and debug information about the
      *  Triangle Traversal box.
@@ -224,9 +224,9 @@ public:
      *
      */
 
-    void getState(std::string &stateString);
+		void getState(std::string &stateString);
 
-};
+	};
 
 } // namespace gpu3d
 

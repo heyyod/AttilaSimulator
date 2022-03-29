@@ -1050,10 +1050,7 @@ GPUSimulator::~GPUSimulator()
     if (outBatch.is_open())
         outBatch.close();
 
-	if (KONDAMASK_CACHE_LOG_CSV)
-	{
-		GPUStatistics::StatisticsManager::instance().SaveCacheAccessesFile();
-	}
+	GPUStatistics::StatisticsManager::instance().SaveCacheAccessesFile();
 
     //  Print end message.
     printf("\n\n");
