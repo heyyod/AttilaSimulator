@@ -308,7 +308,11 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
         slPrefixes,                   //  Streamer Loader prefixes.
         vshPrefix,                    //  Vertex Shader Prefixes.
         "Streamer",
-        NULL);
+        NULL
+#if KONDAMASK_CACHE_DECAY
+		, simP.decayInput
+#endif
+	);
 
     //  Add Streamer box to the box array.
     boxArray.push_back(streamer);
@@ -780,6 +784,9 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
                 boxName,                        //  Unit name.
                 tuPrefix,                       //  Unit prefix.
                 NULL                            //  Parent box.
+#if KONDAMASK_CACHE_DECAY
+				, simP.decayTexL0, simP.decayTexL1
+#endif
                 );
 
             //  Add Texture Unit box to the box array.
@@ -855,6 +862,9 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
             boxName,                        //  Box name.
             suPrefix[i],                    //  Unit prefix.
             NULL                            //  Box parent box.
+#if KONDAMASK_CACHE_DECAY
+			, simP.decayZ
+#endif
             );
 
         //  Add Z Stencil Test box to the box array.
@@ -902,6 +912,9 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
             boxName,                        //  Box name.
             suPrefix[i],                    //  Unit prefix.
             NULL                            //  Box parent box.
+#if KONDAMASK_CACHE_DECAY
+			, simP.decayColor
+#endif
             );
 
         //  Add Color Write box to the box array.

@@ -299,7 +299,11 @@ public:
         u32bit zTestRate, u32bit zTestLatency, bool disableHZUpdate, u32bit hzUpdateLatency,
         u32bit blockStateLatency,
         FragmentOpEmulator &frOp, RasterizerEmulator &rastEmu,
-        char *name, char *prefix = 0, Box* parent = 0);
+        char *name, char *prefix, Box* parent
+#if KONDAMASK_CACHE_DECAY
+		, u32bit decayCycles
+#endif
+	);
 
     /**
      *

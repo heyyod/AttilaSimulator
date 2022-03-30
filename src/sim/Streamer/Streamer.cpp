@@ -53,7 +53,11 @@ Streamer::Streamer(u32bit idxCycle, u32bit idxBufferSz, u32bit outFIFOSz, u32bit
     u32bit sLoaderUnits, u32bit slIdxCycle, u32bit slInputReqQSize, u32bit slFillAttrCycle, u32bit slInCacheLines,
     u32bit slInCacheLineSize, u32bit slInCachePortWidth, u32bit slInCacheReqQSz, u32bit slInCacheInQSz,
     bool slForceAttrLoadBypass,
-    char **slPrefixArray, char **shPrefixArray, char *name, Box *parent):
+    char **slPrefixArray, char **shPrefixArray, char *name, Box *parent
+#if KONDAMASK_CACHE_DECAY
+	, u32bit decayCycles
+#endif
+):
 
     indicesCycle(idxCycle), indexBufferSize(idxBufferSz), outputFIFOSize(outFIFOSz), outputMemorySize(outMemSz),
     numShaders(numSh), maxShOutLat(shOutLat), verticesCycle(vertCycle), paAttributes(paAttrCycle), outputBusLat(outLat),
@@ -178,7 +182,11 @@ printf("Creating StreamerLoader Unit %d\n", i);
                 &shPrefixArray[i * numShadersPerSL],  /*  Array of prefixes for the vertex shaders.  */
                 sLoaderName[i],                       /*  Streamer Loader Unit name.  */
                 slPrefixArray[i],                     /*  Streamer Loader Unit prefix. */
-                this);
+                this
+#if KONDAMASK_CACHE_DECAY
+			, decayCycles
+#endif
+		);
 
         /*  Create command signal to the Streamer Loader.  */
         streamerLoaderCom[i] = newOutputSignal("StreamerLoaderCommand", 1, 1, slPrefixArray[i]);

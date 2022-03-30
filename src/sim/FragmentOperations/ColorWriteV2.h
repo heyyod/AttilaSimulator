@@ -458,7 +458,11 @@ public:
         u32bit colorWriteQSz,
         u32bit blendRate, u32bit blendLatency, u32bit blockStateLatency,
         u32bit fragMapMode, FragmentOpEmulator &frOp,
-        char *name, char *prefix = 0, Box* parent = 0);
+        char *name, char *prefix, Box* parent
+#if KONDAMASK_CACHE_DECAY
+		, u32bit decayCycles
+#endif
+	);
 
     /**
      *

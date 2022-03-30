@@ -41,7 +41,7 @@
 namespace gpu3d
 {
 
-/**
+	/**
  *
  *  This class describes and implements the behaviour of the cache
  *  used to access the color buffer in a GPU.
@@ -53,23 +53,23 @@ namespace gpu3d
  *
  */
 
-class ColorCacheV2 : public ROPCache
-{
+	class ColorCacheV2 : public ROPCache
+	{
 
-private:
+	private:
 
-    static u32bit cacheCounter;     /**<  Class variable used to count and create identifiers for the created Color Caches.  */
+		static u32bit cacheCounter; /**<  Class variable used to count and create identifiers for the created Color Caches.  */
 
-protected:
-    //virtual void processNextWrittenBlock(u8bit* outputBuffer, u32bit size);
-    
-    virtual CompressorEmulator& getCompressor() {
-        return ColorCompressorEmulator::getInstance();
-    }
+	protected:
+		//virtual void processNextWrittenBlock(u8bit* outputBuffer, u32bit size);
 
-public:
+		virtual CompressorEmulator& getCompressor() {
+			return ColorCompressorEmulator::getInstance();
+		}
 
-    /**
+	public:
+
+		/**
      *
      *  Color Cache constructor.
      *
@@ -98,12 +98,16 @@ public:
      *
      */
 
-    ColorCacheV2(u32bit numWays, u32bit numLines, u32bit lineSize,
-        u32bit readPorts, u32bit writePorts, u32bit portWidth, u32bit reqQueueSize,
-        u32bit inputRequests, u32bit outputRequests, bool disableCompr, u32bit numStampUnits,
-        u32bit stampUnitStride, u32bit maxBlocks, u32bit blocksCycle, u32bit compCycles, u32bit decompCycles, char *postfix);
+		ColorCacheV2(u32bit numWays, u32bit numLines, u32bit lineSize,
+			u32bit readPorts, u32bit writePorts, u32bit portWidth, u32bit reqQueueSize,
+			u32bit inputRequests, u32bit outputRequests, bool disableCompr, u32bit numStampUnits,
+			u32bit stampUnitStride, u32bit maxBlocks, u32bit blocksCycle, u32bit compCycles, u32bit decompCycles, char *postfix
+#if KONDAMASK_CACHE_DECAY
+			, u32bit decayCycles
+#endif
+		);
 
-    /**
+		/**
      *
      *  Clears the color buffer.
      *
@@ -114,9 +118,9 @@ public:
      *
      */
 
-    bool clear(u8bit *clearColor);
+		bool clear(u8bit *clearColor);
 
-    /**
+		/**
      *
      *  Copies the block state memory.
      *
@@ -125,9 +129,9 @@ public:
      *
      */
 
-    void copyBlockStateMemory(ROPBlockState *buffer, u32bit blocks);
+		void copyBlockStateMemory(ROPBlockState *buffer, u32bit blocks);
 
-};
+	};
 
 } // namespace gpu3d
 

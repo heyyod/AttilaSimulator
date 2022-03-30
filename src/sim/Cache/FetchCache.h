@@ -434,69 +434,23 @@ namespace gpu3d
 		void setDebug(bool enable);
 
 #if KONDAMASK
-		bool **waitForDecay;
-		
-		u64bit cycle;
-
 		struct cache_line_cycle_info
 		{
 			u64bit insert;
 			u64bit lastHit;
 			u64bit lastOn;
 		};
-		cache_line_cycle_info** accessCycles;
+		
+		u64bit cycle;
 		u64bit decayCycles;
+		cache_line_cycle_info** accessCycles;
+		bool **waitForDecay;
 
-		inline bool isDecayed(u32bit line, u32bit way);
-
-		void decayWay(u32bit line, u32bit way);
-
-		void decay(u64bit cycleIn, u32bit decayCycles);
+		void decay();
 		
 		bool flushForDecay(u32bit line, u32bit way);
-		
-		/*
-			void decayLine(u32bit line)
-			{
-			if (!KONDAMASK_CACHE_DECAY)
-			return;
-			
-			for (u32bit iWay = 0; iWay < numWays; iWay++)
-			{
-			if (valid[iWay][line] && isDecayed(line, iWay))
-			{
-			// IMPORTANT: This assumes that the decay happend exactly afte the number
-			// of cycles specified and so that decay was NOT blocked because the line was
-			// reserved.
-			// HOW MUCH DO WE CARE ABOUT IT THOUGH?
-			// On the simple trace file the decay cycles were exceeded by at most 100 cycles.
-			// MUST TEST WITH OTHER TRACES!!!
-			u64bit decayCycle = accessCycles[iWay][line].lastHit + decayCycles;
-
-			accessCycles[iWay][line].lastOn = decayCycle;
-
-			gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-			this->name, line2address(iWay, line),
-			GPUStatistics::StatisticsManager::CACHE_DECAY,
-			line, iWay,
-			decayCycle, // cycle at which decay happened
-			accessCycles[iWay][line].insert, // cycle at which this data was firt inserted
-			accessCycles[iWay][line].lastHit, // cycle at which the lasta access happened
-			decayCycle // cycle at which cache had valid data
-			// NOTE: The other version still uses this. Here it's redundant
-			);
-					
-			// Reset this way
-			tags[iWay][line] = 0;
-			valid[iWay][line] = FALSE;
-			dirty[iWay][line] = FALSE;
-			masked[iWay][line] = FALSE;
-			}
-			}
-			}
-			*/
-	};
 #endif
+	};
 
 } // namespace gpu3d
 #endif

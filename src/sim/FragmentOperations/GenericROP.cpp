@@ -1085,7 +1085,6 @@ void GenericROP::readStamp()
                                        &currentStamp->data[STAMP_FRAGMENTS * bytesPixel[currentStamp->nextBuffer] * currentStamp->nextBuffer]))
                     {
                         GPU_DEBUG_BOX(
-							printf("%d\t", ropCache->cache->cycle);
                             printf("%s => Reading stamp at %x for buffer %d\n", getName(),
                                 currentStamp->address[currentStamp->nextBuffer], currentStamp->nextBuffer);
                         )
@@ -1150,7 +1149,6 @@ void GenericROP::readStamp()
                                        &currentStamp->data[dataOffset]))
                     {
                         GPU_DEBUG_BOX(
-							printf("%d\t", ropCache->cache->cycle);
                            	printf("%s => Reading sample %d for stamp at %x for buffer %d\n", getName(), currentStamp->nextSample,
                                 currentStamp->address[currentStamp->nextBuffer], currentStamp->nextBuffer);
                         )

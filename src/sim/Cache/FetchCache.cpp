@@ -294,17 +294,6 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 
 	gpu3d::GPUStatistics::StatisticsManager& stats = gpu3d::GPUStatistics::StatisticsManager::instance();
 
-#if KONDAMASK_CACHE_DECAY
-	{
-		// If we hit, check if it's decayed.
-		// If it is, ingore the hit and treat as miss.
-		if (hit && isDecayed(line, way))
-		{
-			hit = false;
-		}
-	}
-#endif
-
 	bool hitNoMask = hit;
 
 	/*  If hit check if the line is a masked (partial) write.  */
@@ -365,7 +354,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 			way = nextVictim(line);
 		
 		/*  Check if there is an unreserved line.  */
-#if KONDAMASK_CACHE_DECAY_PER_CYCLE
+#if KONDAMASK_CACHE_DECAY
 		if (reserve[way][line] == 0 && !waitForDecay[way][line])
 #else
 			if (reserve[way][line] == 0)
@@ -574,17 +563,6 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 
 	gpu3d::GPUStatistics::StatisticsManager& stats = gpu3d::GPUStatistics::StatisticsManager::instance();
 
-#if KONDAMASK_CACHE_DECAY
-	{
-		// If we hit, check if it's waitForDecay.
-		// If it is, ingore the hit and treat as miss.
-		if (hit && isDecayed(line, way))
-		{
-			hit = false;
-		}
-	}
-#endif
-
 	bool hitNoMask = hit;
 
 	/*  If hit check if the line is a masked (partial) write.  */
@@ -652,7 +630,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 			way = nextVictim(line);
 
 		/*  Check if there is an unreserved line.  */
-#if KONDAMASK_CACHE_DECAY_PER_CYCLE
+#if KONDAMASK_CACHE_DECAY
 		if (reserve[way][line] == 0 && !waitForDecay[way][line])
 #else
 			if (reserve[way][line] == 0)
@@ -1575,7 +1553,7 @@ void FetchCache::freeRequest(u32bit cacheRequest, bool freeSpill, bool freeFill)
 		}
 		)
 				
-#if KONDAMASK_CACHE_DECAY_PER_CYCLE
+#if KONDAMASK_CACHE_DECAY
 		waitForDecay[way][line] = false;
 #endif
 
@@ -1647,7 +1625,7 @@ u32bit FetchCache::nextVictim(u32bit line)
 	/*  Update from which way to start searching.  */
 	firstWay = GPU_MOD(firstWay + 1, numWays);
 
-#if KONDAMASK_CACHE_DECAY_PER_CYCLE
+#if KONDAMASK_CACHE_DECAY
 	if (name[0] == 'C' || name[0] == 'Z')
 	{
 		/*  First search if any of the not last MAX_LRU accessed ways is not reserved.  */
@@ -1718,54 +1696,9 @@ void FetchCache::setDebug(bool enable)
 }
 
 #if KONDAMASK
-inline bool FetchCache::isDecayed(u32bit line, u32bit way)
-{
-	return (
-		valid[way][line] &&
-		cycle - accessCycles[way][line].lastHit > decayCycles &&
-		reserve[way][line] == 0);
-}
-
-void FetchCache::decayWay(u32bit line, u32bit way)
+void FetchCache::decay()
 {
 	if (!KONDAMASK_CACHE_DECAY)
-		return;
-
-	if (valid[way][line] &&
-		cycle - accessCycles[way][line].lastHit > decayCycles)
-	{
-		// IMPORTANT: This assumes that the decay happend exactly afte the number
-		// of cycles specified and so that decay was NOT blocked because the line was
-		// reserved.
-		// HOW MUCH DO WE CARE ABOUT IT THOUGH?
-		// On the simple trace file the decay cycles were exceeded by at most 100 cycles.
-		// MUST TEST WITH OTHER TRACES!!!
-		u64bit decayCycle = accessCycles[way][line].lastHit + decayCycles;
-
-		accessCycles[way][line].lastOn = decayCycle;
-
-		gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-			this->name, line2address(way, line),
-			GPUStatistics::StatisticsManager::CACHE_DECAY,
-			line, way,
-			decayCycle, // cycle at which decay happened
-			accessCycles[way][line].insert, // cycle at which this data was firt inserted
-			accessCycles[way][line].lastHit, // cycle at which the lasta access happened
-			decayCycle // cycle at which cache had valid data
-			// NOTE: The other version still uses this. Here it's redundant
-		);
-
-		// Reset this way
-		tags[way][line] = 0;
-		valid[way][line] = FALSE;
-		dirty[way][line] = FALSE;
-		masked[way][line] = FALSE;
-	}
-}
-
-void FetchCache::decay(u64bit cycleIn, u32bit decayCycles)
-{
-	if (!KONDAMASK_CACHE_DECAY_PER_CYCLE)
 		return;
 
 	for (u32bit l = 0; l < numLines; l++)
@@ -1788,22 +1721,6 @@ void FetchCache::decay(u64bit cycleIn, u32bit decayCycles)
 				accessCycles[w][l].lastOn = cycle;
 				if (cycle - accessCycles[w][l].lastHit + 1 > decayCycles)
 				{
-					/*
-					if (reserve[w][l] != 0)
-					{
-						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-							this->name, address, GPUStatistics::StatisticsManager::CACHE_DECAY_RESERVED,
-							l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
-						return;
-					}
-					else if (replaceLine[w][l] == TRUE)
-					{
-						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-							this->name, address, GPUStatistics::StatisticsManager::CACHE_DECAY_REPLACING,
-							l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
-						return;
-					}
-					*/
 					bool performedDecay = true;
 					if (name[0] == 'C' || name[0] == 'Z' && dirty[w][l])
 					{

@@ -233,7 +233,11 @@ public:
         u32bit portWidth, u32bit reqQueueSize, u32bit inputRequests,
         u32bit numBanks, u32bit numAccess, u32bit bWidth, u32bit maxMiss,
         u32bit decomprLat, u32bit numWaysL1, u32bit numLinesL1, u32bit lineSizeL1,
-        u32bit inputRequestsL1, char *postfix);
+        u32bit inputRequestsL1, char *postfix
+#if KONDAMASK_CACHE_DECAY
+		, u32bit decayCyclesL0, u32bit decayCyclesL1
+#endif
+	);
 
     /**
      *

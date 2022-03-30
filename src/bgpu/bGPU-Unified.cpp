@@ -237,6 +237,23 @@ int main(int argc, char *argv[])
             simP.inputFile = new char[strlen(argList[argIndex]) + 1];
             strcpy(simP.inputFile, argList[argIndex]);
         }
+#if KONDAMASK_CACHE_DECAY
+		else if (strcmp(argList[argIndex], "--decay:input") == 0 && ++argIndex < argCount) {
+			simP.decayInput = parse_cycles(argList[argIndex]);
+		}
+		else if (strcmp(argList[argIndex], "--decay:texL0") == 0 && ++argIndex < argCount) {
+			simP.decayTexL0 = parse_cycles(argList[argIndex]);
+		}
+		else if (strcmp(argList[argIndex], "--decay:texL1") == 0 && ++argIndex < argCount) {
+			simP.decayTexL1 = parse_cycles(argList[argIndex]);
+		}
+		else if (strcmp(argList[argIndex], "--decay:z") == 0 && ++argIndex < argCount) {
+			simP.decayZ = parse_cycles(argList[argIndex]);
+		}
+		else if (strcmp(argList[argIndex], "--decay:color") == 0 && ++argIndex < argCount) {
+			simP.decayColor = parse_cycles(argList[argIndex]);
+		}
+#endif
         else { // traditional arguments style
             switch (argPos) {
                 case 0: // trace file

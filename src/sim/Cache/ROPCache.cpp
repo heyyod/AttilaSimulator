@@ -27,9 +27,6 @@
  *
  */
 
-#define KONDAMASK_Z_CACHE_DECAY 1000U
-#define KONDAMASK_COLOR_CACHE_DECAY 1000U
-
 #include "GPUMath.h"
 #include "ROPCache.h"
 using gpu3d::tools::Queue;
@@ -46,7 +43,11 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	u32bit readP, u32bit writeP, u32bit pWidth, u32bit reqQSize, u32bit inReqs,
 	u32bit outReqs, bool comprDisabled, u32bit numStampUnits_, u32bit stampUnitStride_,
 	u32bit maxColorBlocks, u32bit blocksPerCycle,
-	u32bit compCycles, u32bit decompCycles, GPUUnit gpuUnit, char *nameCache, char *postfix) :
+	u32bit compCycles, u32bit decompCycles, GPUUnit gpuUnit, char *nameCache, char *postfix
+#if KONDAMASK_CACHE_DECAY
+	, u32bit decayCycles
+#endif
+) :
 
 	readPorts(readP), writePorts(writeP),
 	portWidth(pWidth), inputRequests(inReqs), outputRequests(outReqs),
@@ -268,11 +269,9 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	queueName.append(postfix);
 	ticketList.setName(queueName);
 
-	// Called both for Z cache AND Color Cache
-	if (ropCacheName[0] == 'Z')
-		cache->decayCycles = KONDAMASK_Z_CACHE_DECAY;
-	else
-		cache->decayCycles = KONDAMASK_COLOR_CACHE_DECAY;
+#if KONDAMASK_CACHE_DECAY
+	cache->decayCycles = decayCycles;
+#endif
 }
 
 //  Fetches a cache line.
@@ -708,12 +707,7 @@ void ROPCache::clock(u64bit cycle)
 {
 #if KONDAMASK
 	cache->cycle = cycle;
-
-	// Called both for Z cache AND Color Cache
-	if (ropCacheName[0] == 'Z')
-		cache->decay(cycle, KONDAMASK_Z_CACHE_DECAY);
-	else
-		cache->decay(cycle, KONDAMASK_COLOR_CACHE_DECAY);
+	cache->decay();
 #endif
 
 	u32bit i, e;

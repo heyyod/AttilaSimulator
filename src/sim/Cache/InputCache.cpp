@@ -26,7 +26,6 @@
  * retrieve vertex input data from memory in the Streamer unit.
  *
  */
-#define KONDAMASK_INPUT_CACHE_DECAY 1000U
 
 #include "InputCache.h"
 #include "GPUMath.h"
@@ -37,7 +36,11 @@ using namespace gpu3d;
 
 /*  Input cache constructor.  */
 InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLine,
-        u32bit ports, u32bit pWidth, u32bit reqQSize, u32bit inReqs) :
+        u32bit ports, u32bit pWidth, u32bit reqQSize, u32bit inReqs
+#if KONDAMASK_CACHE_DECAY
+	, u32bit decayCycles
+#endif
+) :
 
     cacheId(cacheId), numPorts(ports), portWidth(pWidth), inputRequests(inReqs), lineSize(bytesLine)
 
@@ -111,8 +114,10 @@ InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLi
     queueName.clear();
     queueName = "ReadTicketQueue-InCache";
     ticketList.setName(queueName);   
-
-	cache->decayCycles = KONDAMASK_INPUT_CACHE_DECAY;
+	
+#if KONDAMASK_CACHE_DECAY
+	cache->decayCycles = decayCycles;
+#endif
 }
 
 
@@ -257,8 +262,7 @@ void InputCache::clock(u64bit cycle)
 {
 #if KONDAMASK
 	cache->cycle = cycle;
-
-	cache->decay(cycle, KONDAMASK_INPUT_CACHE_DECAY);
+	cache->decay();
 #endif
 
     u32bit i;

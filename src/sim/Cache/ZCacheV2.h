@@ -41,7 +41,7 @@
 namespace gpu3d
 {
 
-/**
+	/**
  *
  *  This class describes and implements the behaviour of the cache
  *  used to access the Z buffer in a GPU.
@@ -53,33 +53,33 @@ namespace gpu3d
  *
  */
 
-class ZCacheV2 : public ROPCache
-{
+	class ZCacheV2 : public ROPCache
+	{
 
-private:
+	private:
 
-    //  Z cache identification.
-    static u32bit cacheCounter;     /**<  Class variable used to count and create identifiers for the created Z Caches.  */
+		//  Z cache identification.
+		static u32bit cacheCounter; /**<  Class variable used to count and create identifiers for the created Z Caches.  */
 
-    //  Z cache registers.
-    u32bit clearDepth;      /**<  Depth clear value.  */
-    u8bit clearStencil;     /**<  Stencil clear value.  */
-    
-    // Z cache state
-    u32bit wrBlockMaxVal;   /**<  Maximum value the elements of ROP data buffer block that was written to memory .  */
-    
-    //static const int compressorBlockSizes[] = {64, 128, 192};
+		//  Z cache registers.
+		u32bit clearDepth; /**<  Depth clear value.  */
+		u8bit clearStencil; /**<  Stencil clear value.  */
 
-protected:
-    virtual void processNextWrittenBlock(u8bit* outputBuffer, u32bit size);
-    
-    virtual CompressorEmulator& getCompressor() {
-        return DepthCompressorEmulator::getInstance();
-    }
-    
-public:
+		// Z cache state
+		u32bit wrBlockMaxVal; /**<  Maximum value the elements of ROP data buffer block that was written to memory .  */
 
-    /**
+		//static const int compressorBlockSizes[] = {64, 128, 192};
+
+	protected:
+		virtual void processNextWrittenBlock(u8bit* outputBuffer, u32bit size);
+
+		virtual CompressorEmulator& getCompressor() {
+			return DepthCompressorEmulator::getInstance();
+		}
+
+	public:
+
+		/**
      *
      *  Z Cache constructor.
      *
@@ -107,13 +107,17 @@ public:
      *
      */
 
-    ZCacheV2(u32bit numWays, u32bit numLines, u32bit lineSize,
-        u32bit readPorts, u32bit writePorts, u32bit portWidth, u32bit reqQueueSize,
-        u32bit inputRequests, u32bit outputRequests, bool disableCompr, u32bit numStampUnits,
-        u32bit stampUnitStride, u32bit maxBlocks,
-        u32bit blocksCycle, u32bit compCycles, u32bit decompCycles, char *postfix);
+		ZCacheV2(u32bit numWays, u32bit numLines, u32bit lineSize,
+			u32bit readPorts, u32bit writePorts, u32bit portWidth, u32bit reqQueueSize,
+			u32bit inputRequests, u32bit outputRequests, bool disableCompr, u32bit numStampUnits,
+			u32bit stampUnitStride, u32bit maxBlocks,
+			u32bit blocksCycle, u32bit compCycles, u32bit decompCycles, char *postfix
+#if KONDAMASK_CACHE_DECAY
+			, u32bit decayCycles
+#endif
+		);
 
-    /**
+		/**
      *
      *  Clears the Z buffer.
      *
@@ -124,9 +128,9 @@ public:
      *
      */
 
-    bool clear(u32bit clearDepth, u8bit clearStencil);
+		bool clear(u32bit clearDepth, u8bit clearStencil);
 
-    /**
+		/**
      *
      *  Checks if there is an update for the Hierarchical Z ready
      *  and returns it.
@@ -140,9 +144,9 @@ public:
      *
      */
 
-    bool updateHZ(u32bit &block, u32bit &z);
+		bool updateHZ(u32bit &block, u32bit &z);
 
-    /**
+		/**
      *
      *  Copies the block state memory.
      *
@@ -151,9 +155,9 @@ public:
      *
      */
 
-    void copyBlockStateMemory(ROPBlockState *buffer, u32bit blocks);
+		void copyBlockStateMemory(ROPBlockState *buffer, u32bit blocks);
 
-};
+	};
 
 } // namespace gpu3d
 
