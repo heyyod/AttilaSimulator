@@ -77,11 +77,7 @@ namespace gpu3d
 
 	class FetchCache : private Cache
 	{
-#if KONDAMASK
-	public:
-#else
 	private:
-#endif
         /*  Constants.  */
 		enum {
 			MAX_LRU = 4     /**<  Defines the number of accesses remembered by the pseudo LRU replacement policy. */
@@ -178,7 +174,11 @@ namespace gpu3d
          */
 
 		FetchCache(u32bit numWays, u32bit numLines, u32bit lineBytes, u32bit reqQueueSize,
-			char *name = NULL);
+			char *name
+#if KONDAMASK_CACHE_DECAY
+			, u32bit decayCyclesIn
+#endif
+		);
 
         /**
          *
@@ -445,10 +445,16 @@ namespace gpu3d
 		u64bit decayCycles;
 		cache_line_cycle_info** accessCycles;
 		bool **waitForDecay;
+		bool **decayed;
+		u64bit goodOffCycles = 0;
+		u64bit badOffCycles = 0;
+		u64bit refetchesAfterDecay = 0;
 
 		void decay();
 		
 		bool flushForDecay(u32bit line, u32bit way);
+		
+		void onDecayedFetch(u32bit oldTag, u32bit way, u32bit line);
 #endif
 	};
 

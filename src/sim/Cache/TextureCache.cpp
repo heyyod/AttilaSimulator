@@ -77,7 +77,11 @@ TextureCache::TextureCache(u32bit ways, u32bit lines, u32bit bytesLine,
 	cacheCounter++;
 
 	/*  Create the fetch cache object.  */
-	cache = new FetchCache64(ways, lines, lineSize, reqQSize, postfix);
+	cache = new FetchCache64(ways, lines, lineSize, reqQSize, postfix
+#if KONDAMASK_CACHE_DECAY
+		, decayCycles
+#endif
+	);
 
 	/*  Create statistics.  */
 	fetchBankConflicts = &GPUStatistics::StatisticsManager::instance().getNumericStatistic("FetchBankConflicts", u32bit(0), "TextureCache", postfix);
@@ -199,10 +203,6 @@ TextureCache::TextureCache(u32bit ways, u32bit lines, u32bit bytesLine,
 	queueName = "ReadTicketQueue";
 	queueName.append(postfix);
 	ticketList.setName(queueName);
-	
-#if KONDAMASK_CACHE_DECAY
-	cache->decayCycles = decayCycles;
-#endif
 }
 
 /*  Fetches a cache line.  */

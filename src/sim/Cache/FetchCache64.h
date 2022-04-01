@@ -176,7 +176,12 @@ namespace gpu3d
 		 */
 
 		FetchCache64(u32bit numWays, u32bit numLines, u32bit lineBytes, u32bit reqQueueSize,
-			char *name = NULL);
+			char *name
+#if KONDAMASK_CACHE_DECAY
+			, u32bit decayCyclesIn
+#endif
+		);
+
 
 		/**
 		 *
@@ -461,8 +466,14 @@ namespace gpu3d
 		u64bit cycle;
 		u64bit decayCycles;
 		cache_line_cycle_info** accessCycles;
+		bool **decayed;
+		u64bit goodOffCycles = 0;
+		u64bit badOffCycles = 0;
+		u64bit refetchesAfterDecay = 0;
 
 		void decay();
+		
+		void onDecayedFetch(u32bit oldTag, u32bit way, u32bit line);
 #endif
 	};
 

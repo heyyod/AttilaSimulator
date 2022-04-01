@@ -47,8 +47,11 @@ using namespace gpu3d;
 
 /*  Fetch cache constructor.  */
 FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQSize,
-	char *fetchCacheName) :
-
+	char *fetchCacheName
+#if KONDAMASK_CACHE_DECAY
+	, u32bit decayCyclesIn
+#endif
+	) :
 	requestQueueSize(reqQSize), debugMode(false),
 	Cache(ways, lines, lineBytes, CACHE_NONE)
 {
@@ -259,21 +262,27 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 			panic("FetchCache", "FetchCache", "Error allocating active request list.");
 	)
 
-#if KONDAMASK
+#if KONDAMASK_CACHE_DECAY
+	decayCycles = decayCyclesIn;
 	accessCycles = new cache_line_cycle_info * [numWays];
 	waitForDecay = new bool * [numWays];
-
+	decayed = new bool * [numWays];
+	
 	for (i = 0; i < numWays; i++)
 	{
 		accessCycles[i] = new cache_line_cycle_info[numLines];
 		waitForDecay[i] = new bool[lineSize];
+		decayed[i] = new bool[lineSize];
 
 		for (j = 0; j < numLines; j++)
 		{
 			accessCycles[i][j].lastOn = 0;
 			waitForDecay[i][j] = false;
+			decayed[i][j] = false;
 		}
 	}
+	
+	printf("%s Decay Cycles = %d\n", name, decayCycles);
 #endif
 
 	/*  Reset the fetch cache.  */
@@ -364,12 +373,8 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 			if (freeRequests > 0)
 			{
 				GPU_DEBUG(
-				if (name[0] == 'Z' && name[6] == '1')
-				{
-					printf("%d\t", cycle);
 					printf("FetchCache (%s) => Miss cache line selected (%d, %d) | line reserves = %d | free requests = %d\n",
 						name, way, line, reserve[way][line], freeRequests);
-				}
 				)
 				
 				/*  Get next free request queue entry.  */
@@ -379,7 +384,16 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 				oldAddress = line2address(way, line);
 
 				/*  Set the new tag for the fetch cache line.  */
+#if KONDAMASK_CACHE_DECAY
+				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
+				if (decayed[way][line])
+				{
+					onDecayedFetch(oldTag, way, line);
+				}
+#else
+				tags[way][line] = tag(address);
+#endif
 				//printf("FetchCache (%s) => Setting tag %x for way = %d line = %d\n", name, tag(address), way, line);
 
 				stats.LogCacheAccess(
@@ -492,10 +506,6 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 
 				/*  Mark as not a dirty line.  */
 				dirty[way][line] = FALSE;
-
-#if KONDAMASK
-				waitForDecay[way][line] = FALSE;
-#endif
 
 				/*  Update statistics.  */
 				UPDATE_STATS(
@@ -652,7 +662,16 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 				oldAddress = line2address(way, line);
 
 				/*  Set the new tag for the fetch cache line.  */
+#if KONDAMASK_CACHE_DECAY
+				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
+				if (decayed[way][line])
+				{
+					onDecayedFetch(oldTag, way, line);
+				}
+#else
+				tags[way][line] = tag(address);
+#endif
 				
 				if (name[0] == 'Z' && name[6] == '1')
 				{
@@ -1733,6 +1752,8 @@ void FetchCache::decay()
 
 					if (performedDecay)
 					{
+						decayed[w][l] = true;
+						
 						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
 							this->name, line2address(w, l),
 							GPUStatistics::StatisticsManager::CACHE_DECAY,
@@ -1789,17 +1810,15 @@ bool FetchCache::flushForDecay(u32bit line, u32bit way)
 
 		/*  Mark line as valid.  */
 		valid[way][line] = FALSE;
-
+		
+		// These two are for the decay
 		waitForDecay[way][line] = TRUE;
 		
+		accessCycles[way][line].lastOn = cycle;
 		
 		GPU_DEBUG(
-		if (name[0] == 'Z' && name[6] == '1')
-		{
-			printf("%d\t", cycle);
 			printf("DECAY (%s) => line (%d, %d) flush requested | line reserves = %d | free requests = %d\n",
 				name, way, line,  reserve[way][line], freeRequests);
-		}
 		)
 
 		return true;
@@ -1810,5 +1829,23 @@ bool FetchCache::flushForDecay(u32bit line, u32bit way)
 		line, way, cycle);
 
 	return false;
+}
+
+void FetchCache::onDecayedFetch(u32bit oldTag, u32bit way, u32bit line)
+{
+	u64bit offCycles = cycle - accessCycles[way][line].lastOn;
+	if (oldTag == tags[way][line])
+	{
+		refetchesAfterDecay++;
+		badOffCycles += offCycles;
+		
+		printf("\n%s\t=> Refetched %x after decay at line (%d, %d) | Good Off Cycles = %d | Bad Off Cycles = %d | BtoG Ratio = %.2f%%\n",
+			name, line2address(way, line), way, line, goodOffCycles, badOffCycles, (double)badOffCycles/(double)goodOffCycles * 100.0);
+	}
+	else
+	{
+		goodOffCycles += offCycles;
+	}
+	decayed[way][line] = FALSE;
 }
 #endif

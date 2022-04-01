@@ -114,7 +114,11 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	comprBlocks256 = &GPUStatistics::StatisticsManager::instance().getNumericStatistic("ComprBlock256", u32bit(0), "RopCache", postfix);
 
 	//  Create the fetch cache object.
-	cache = new FetchCache(ways, lines, lineSize, reqQSize, postfix);
+	cache = new FetchCache(ways, lines, lineSize, reqQSize, postfix
+#if KONDAMASK_CACHE_DECAY
+		, decayCycles
+#endif
+	);
 
 	//  Create the input buffer.
 	inputBuffer = new u8bit*[inputRequests];
@@ -268,10 +272,6 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	queueName = "ReadTicketQueue";
 	queueName.append(postfix);
 	ticketList.setName(queueName);
-
-#if KONDAMASK_CACHE_DECAY
-	cache->decayCycles = decayCycles;
-#endif
 }
 
 //  Fetches a cache line.
@@ -921,11 +921,6 @@ void ROPCache::clock(u64bit cycle)
 				//  Only spill request.  No dependency with a read request.
 				writeQueue[nextFreeWrite].isReadWaiting = false;
 			}
-
-			gpu3d::GPUStatistics::StatisticsManager::instance().
-				LogCacheAccess(cache->name, cacheRequest->outAddress,
-				GPUStatistics::StatisticsManager::CACHE_WRITE_REQUEST,
-				cacheRequest->line, cacheRequest->way, cache->cycle);
 		}
 
 		//  Add a read request to the queue if the cache request is a fill.
@@ -998,11 +993,6 @@ void ROPCache::clock(u64bit cycle)
 
 				//  Update statistics.
 				readReqQueued->inc();
-
-				gpu3d::GPUStatistics::StatisticsManager::instance().
-					LogCacheAccess(cache->name, cacheRequest->inAddress,
-					GPUStatistics::StatisticsManager::CACHE_READ_REQUEST,
-					cacheRequest->line, cacheRequest->way, cache->cycle);
 			}
 		}
 
@@ -1864,11 +1854,6 @@ MemoryTransaction *ROPCache::requestBlock(u64bit cycle, u32bit readReq)
 
 		//  Update number of free tickets.
 		freeTickets--;
-
-		gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-			cache->name, memTrans->address,
-			GPUStatistics::StatisticsManager::CACHE_READ_TRANS,
-			readQueue[readReq].request->line, readQueue[readReq].request->way, cycle);
 	}
 	else
 	{
@@ -2009,11 +1994,6 @@ printf("\n");
 
 			//  Update number of free tickets.
 			freeTickets--;
-
-			gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-				cache->name, memTrans->address,
-				GPUStatistics::StatisticsManager::CACHE_WRITE_TRANS,
-				writeQueue[writeReq].request->line, writeQueue[writeReq].request->way, cycle);
 		}
 
 		//  Update requested block bytes counter.

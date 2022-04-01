@@ -49,7 +49,11 @@ InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLi
 
 
     /*  Create the fetch cache object.  */
-    cache = new FetchCache(ways, lines, lineSize, reqQSize, "InC");
+    cache = new FetchCache(ways, lines, lineSize, reqQSize, "InC"
+#if KONDAMASK_CACHE_DECAY
+		, decayCycles
+#endif
+	);
 
     /*  Create the input buffer.  */
     inputBuffer = new u8bit*[inputRequests];
@@ -113,11 +117,7 @@ InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLi
     string queueName;
     queueName.clear();
     queueName = "ReadTicketQueue-InCache";
-    ticketList.setName(queueName);   
-	
-#if KONDAMASK_CACHE_DECAY
-	cache->decayCycles = decayCycles;
-#endif
+    ticketList.setName(queueName);
 }
 
 

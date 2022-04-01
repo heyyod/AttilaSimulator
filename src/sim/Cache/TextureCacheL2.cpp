@@ -89,11 +89,19 @@ TextureCacheL2::TextureCacheL2(u32bit waysL0, u32bit linesL0, u32bit bytesLineL0
 
 	/*  Create the L0 fetch cache object.  */
 	name[iChar + 1] = '0';
-	cacheL0 = new FetchCache64(waysL0, linesL0, lineSizeL0, reqQSize, name);
+	cacheL0 = new FetchCache64(waysL0, linesL0, lineSizeL0, reqQSize, name
+#if KONDAMASK_CACHE_DECAY
+		, decayCyclesL0
+#endif
+	);
 
 	/*  Create the L1 fetch cache object.  */
 	name[iChar + 1] = '1';
-	cacheL1 = new FetchCache(waysL1, linesL1, lineSizeL1, reqQSize, name);
+	cacheL1 = new FetchCache(waysL1, linesL1, lineSizeL1, reqQSize, name
+#if KONDAMASK_CACHE_DECAY
+		, decayCyclesL1
+#endif
+	);
 
 	/*  Create statistics.  */
 	fetchBankConflicts = &GPUStatistics::StatisticsManager::instance().getNumericStatistic("FetchBankConflicts", u32bit(0), "TextureCache", postfix);
@@ -248,11 +256,6 @@ TextureCacheL2::TextureCacheL2(u32bit waysL0, u32bit linesL0, u32bit bytesLineL0
 	queueName = "ReadTicketQueue";
 	queueName.append(postfix);
 	ticketList.setName(queueName);
-
-#if KONDAMASK_CACHE_DECAY
-	cacheL0->decayCycles = decayCyclesL0;
-	cacheL1->decayCycles = decayCyclesL1;
-#endif
 }
 
 /*  Fetches a cache line.  */
