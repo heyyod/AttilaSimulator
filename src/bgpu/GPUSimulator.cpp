@@ -4214,7 +4214,7 @@ void GPUSimulator::simulationLoop()
         if (dotCount == 10000)
         {
             dotCount = 0;
-            putchar('.');
+            printf("\n.");
             fflush(stdout);
 
 //OptimizedDynamicMemory::usage();

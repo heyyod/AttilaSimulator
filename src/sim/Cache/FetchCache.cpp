@@ -385,6 +385,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
+				totalMisses++;
 				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
 				if (decayed[way][line])
@@ -663,6 +664,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
+				totalMisses++;
 				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
 				if (decayed[way][line])
@@ -1720,6 +1722,22 @@ void FetchCache::decay()
 	if (!KONDAMASK_CACHE_DECAY)
 		return;
 
+	u64bit offCycles = badOffCycles + goodOffCycles;
+	if (cycle % 10000 == 0 && offCycles > 0)
+	{
+		double refetchesToMiss = (double)refetchesAfterDecay / (double)totalMisses * 100.0;
+		
+		u64bit offCycles = badOffCycles + goodOffCycles;
+		u64bit onCycles = cycle * numWays * numLines;
+		
+		double badToOff = (double)badOffCycles / (double)offCycles * 100.0;
+		double goodToOff = (double)goodOffCycles / (double)offCycles * 100.0;
+		double offToOn = (double)(offCycles) / (double)onCycles * 100.0;
+
+		printf("\n%s Cycle %d => Misses = %d | Refetches = %.2f%% | BadToOff = %.2f%% | GoodToOff = %.2f%% | Off Cycles = %.2f%%  ",
+			name, cycle, totalMisses, refetchesToMiss, badToOff, goodToOff, offToOn);
+	}
+
 	for (u32bit l = 0; l < numLines; l++)
 	{
 		for (u32bit w = 0; w < numWays; w++)
@@ -1839,8 +1857,8 @@ void FetchCache::onDecayedFetch(u32bit oldTag, u32bit way, u32bit line)
 		refetchesAfterDecay++;
 		badOffCycles += offCycles;
 		
-		printf("\n%s\t=> Refetched %x after decay at line (%d, %d) | Good Off Cycles = %d | Bad Off Cycles = %d | BtoG Ratio = %.2f%%\n",
-			name, line2address(way, line), way, line, goodOffCycles, badOffCycles, (double)badOffCycles/(double)goodOffCycles * 100.0);
+		//printf("\n%s\t=> Refetched %x after decay at line (%d, %d) | Good Off Cycles = %d | Bad Off Cycles = %d | BtoG Ratio = %.2f%%\n",
+		//	name, line2address(way, line), way, line, goodOffCycles, badOffCycles, (double)badOffCycles/(double)goodOffCycles * 100.0);
 	}
 	else
 	{

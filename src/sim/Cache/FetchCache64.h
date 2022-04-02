@@ -470,6 +470,7 @@ namespace gpu3d
 		u64bit goodOffCycles = 0;
 		u64bit badOffCycles = 0;
 		u64bit refetchesAfterDecay = 0;
+		u64bit totalMisses = 0;
 
 		void decay();
 		
