@@ -21,6 +21,8 @@
 
 #define _GPU_SUPPORT_
 
+#include "Kondamask_Defines.h"
+
 #include <string>
 #include <iostream>
 #include "GPUTypes.h"

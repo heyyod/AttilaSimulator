@@ -201,7 +201,11 @@ public:
         u32bit sLoaderUnits, u32bit slIdxCycle, u32bit slInputReqQSize, u32bit slFillAttrCycle, u32bit slInCacheLines,
         u32bit slInCacheLinesize, u32bit slInCachePortWidth, u32bit slInCacheReqQSz, u32bit slInCacheInQSz,
         bool slForceAttrLoadBypass,
-        char **slPrefixArray, char **shPrefixArray, char *name, Box *parent);
+        char **slPrefixArray, char **shPrefixArray, char *name, Box *parent
+#if KONDAMASK_CACHE_DECAY
+		, u32bit decayCycles
+#endif
+	);
 
     /**
      *

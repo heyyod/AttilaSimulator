@@ -153,7 +153,6 @@ private:
     gzofstream outBatch;        /**<  Compressed stream output file for per batch statistics.  */
     gzofstream sigTraceFile;    /**<  Compressed stream output file for signal dump trace.  */
 
-
     static GPUSimulator* current;       /**<  Stores the pointer to the currently executing GPU simulator instance.  */
     
     bool pendingSaveSnapshot;   /**<  Flag that stores if there is pending snapshot in process. */

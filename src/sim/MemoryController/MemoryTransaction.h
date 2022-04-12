@@ -177,8 +177,11 @@ public:
 
     static u32bit countInstances();
 
-
+#if KONDAMASK
+public:
+#else
 private:
+#endif
 
     static u32bit instances;
 

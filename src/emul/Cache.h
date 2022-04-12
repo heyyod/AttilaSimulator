@@ -56,8 +56,8 @@ private:
 
     /*  Cache masks and shifts.  */
     u32bit byteMask;        /**<  Address line byte mask.  */
-    u32bit lineMask;        /**<  Address line mask.  */
     u32bit lineShift;       /**<  Address line shift.  */
+    u32bit lineMask;        /**<  Address line mask.  */
     u32bit tagShift;        /**<  Address tag shift.  */
 
     /*  Cache replacement mechanism.  */
@@ -267,7 +267,6 @@ public:
      */
 
     void reset();
-
 };
 
 

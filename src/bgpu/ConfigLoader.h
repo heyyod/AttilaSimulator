@@ -604,6 +604,14 @@ struct SimParameters
     u32bit bucketSize0;     /**<  Number of objects in the optimized dynamic memory bucket 0;  */
     u32bit bucketSize1;     /**<  Number of objects in the optimized dynamic memory bucket 1;  */
     u32bit bucketSize2;     /**<  Number of objects in the optimized dynamic memory bucket 2;  */
+	
+#if KONDAMASK_CACHE_DECAY
+	u32bit decayInput;
+	u32bit decayTexL0;
+	u32bit decayTexL1;
+	u32bit decayZ;
+	u32bit decayColor;
+#endif
 
     bool useACD; /**< Selects OpenGL implementation (false -> legacy, true -> new on ACD)*/
 

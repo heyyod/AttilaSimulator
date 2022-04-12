@@ -269,10 +269,10 @@ void GenericROP::clock(u64bit cycle)
 
     //  Check if a memory transaction was generated.
     if (memTrans != NULL)
-    {
-        //  Send memory transaction to the Memory Controller.
-        memRequest->write(cycle, memTrans);
-
+    {		
+		//  Send memory transaction to the Memory Controller.
+		memRequest->write(cycle, memTrans);
+		
         //  Update statistics.
         switch(memTrans->getCommand())
         {
@@ -560,6 +560,7 @@ void GenericROP::clock(u64bit cycle)
     else
     {
         GPU_DEBUG_BOX(
+			printf("%d\t", cycle);
             printf("%s => Sending BUSY.\n", getName());
         )
 
@@ -867,7 +868,7 @@ void GenericROP::fetchStamp()
                 if (!fetchQueue.full())
                 {
                     bool fetchResult;
-                    
+
                     //  Check if multisampling is enabled.
                     if (!multisampling)
                     {
@@ -1057,7 +1058,7 @@ void GenericROP::readStamp()
             if ((currentStamp->address[currentStamp->nextBuffer] == rawCAM[i]->address[currentStamp->nextBuffer]) &&
                  (currentStamp != rawCAM[i]))
             {
-                GPU_DEBUG_BOX(
+                GPU_DEBUG_BOX(  
                     printf("%s => Reading a stamp at %x before writing it.\n", getName(),
                         currentStamp->address[currentStamp->nextBuffer]);
                 )
@@ -1148,7 +1149,7 @@ void GenericROP::readStamp()
                                        &currentStamp->data[dataOffset]))
                     {
                         GPU_DEBUG_BOX(
-                            printf("%s => Reading sample %d for stamp at %x for buffer %d\n", getName(), currentStamp->nextSample,
+                           	printf("%s => Reading sample %d for stamp at %x for buffer %d\n", getName(), currentStamp->nextSample,
                                 currentStamp->address[currentStamp->nextBuffer], currentStamp->nextBuffer);
                         )
 

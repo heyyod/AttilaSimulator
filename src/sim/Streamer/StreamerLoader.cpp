@@ -29,7 +29,11 @@ using namespace gpu3d;
 StreamerLoader::StreamerLoader(u32bit unitId, u32bit idxCycle, u32bit irqSize, u32bit attrCycle,
     u32bit lines, u32bit lineSz, u32bit portWidth, u32bit cacheRequests, u32bit cacheInputReqs,
     bool forceAttrLoadBypass, u32bit shNumber, char **shPrefixes,
-    char *name, char *prefix, Box *parent) :
+    char *name, char *prefix, Box *parent
+#if KONDAMASK_CACHE_DECAY
+	, u32bit decayCycles
+#endif
+) :
 
     indicesCycle(idxCycle), IRQSize(irqSize), attributesCycle(attrCycle),
     inputCacheLines(lines), inputCacheLineSize(lineSz), inputCachePortWidth(portWidth),
@@ -118,7 +122,10 @@ StreamerLoader::StreamerLoader(u32bit unitId, u32bit idxCycle, u32bit irqSize, u
         inputCachePortWidth,            /*  Width in bytes of the cache read/write ports.  */
         inputCacheReqQSize,             /*  Number of entries in the cache request queue.  */
         inputCacheFillQSize             /*  Number of entries in the cache input request queue.  */
-        );
+#if KONDAMASK_CACHE_DECAY
+		,decayCycles
+#endif
+	);
 
 
     /*  Allocate memory for the input request queue.  */

@@ -49,7 +49,11 @@ ZStencilTestV2::ZStencilTestV2(u32bit numStamps, u32bit overWidth, u32bit overHe
     u32bit zInQSize, u32bit zFetchQSize, u32bit zReadQSize, u32bit zOpQSize, u32bit zWriteQSize,
     u32bit zTestRate, u32bit testLat, bool hzUpdDisabled, u32bit updateLatency,  u32bit blockLatency,
     FragmentOpEmulator &fragEmu, RasterizerEmulator &rastEmul,
-    char *name, char *prefix, Box *parent) :
+    char *name, char *prefix, Box *parent
+#if KONDAMASK_CACHE_DECAY
+	, u32bit decayCycles
+#endif
+) :
 
     disableZCompression(zComprDisabled), zCacheWays(cacheWays), zCacheLines(cacheLines),
     stampsLine(stampsPerLine), cachePortWidth(portWidth), extraReadPort(extraReadP), extraWritePort(extraWriteP),
@@ -203,6 +207,9 @@ ZStencilTestV2::ZStencilTestV2(u32bit numStamps, u32bit overWidth, u32bit overHe
         comprCycles,                        /*  Number of cycles to compress a Z block.  */
         decomprCycles,                      /*  Number of cycles to decompress a Z block.  */
         postfix                             /*  Postfix for the cache statistics.  */
+#if KONDAMASK_CACHE_DECAY
+		, decayCycles
+#endif
         );
 
     //  Set ROP cache.

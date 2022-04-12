@@ -181,7 +181,11 @@ public:
      */
 
     InputCache(u32bit cacheId, u32bit numWays, u32bit numLines, u32bit lineSize,
-        u32bit ports, u32bit portWidth, u32bit reqQueueSize, u32bit inputRequests);
+        u32bit ports, u32bit portWidth, u32bit reqQueueSize, u32bit inputRequests
+#if KONDAMASK_CACHE_DECAY
+		, u32bit decayCycles
+#endif
+	);
 
     /**
      *

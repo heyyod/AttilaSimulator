@@ -283,7 +283,11 @@ public:
 
     StreamerLoader(u32bit unitId, u32bit idxCycle, u32bit irqSize, u32bit attrCycle, u32bit lines, u32bit linesize,
         u32bit portWidth, u32bit requestQSize, u32bit fillQSize, bool forceAttrLoadBypass,
-        u32bit numShaders, char **shPrefixArray, char *name, char *prefix, Box *parent);
+        u32bit numShaders, char **shPrefixArray, char *name, char *prefix, Box *parent
+#if KONDAMASK_CACHE_DECAY
+		, u32bit decayCycles
+#endif
+	);
 
     /**
      *

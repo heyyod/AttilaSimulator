@@ -1,0 +1,15 @@
+#ifndef KONDAMASK
+#define KONDAMASK 1
+
+#if KONDAMASK
+
+#define KONDAMASK_CACHE_LOG_CSV 0
+#define KONDAMASK_CACHE_DECAY 1
+
+#else
+
+#define KONDAMASK_CACHE_LOG_CSV 0
+#define KONDAMASK_CACHE_DECAY 0
+
+#endif
+#endif

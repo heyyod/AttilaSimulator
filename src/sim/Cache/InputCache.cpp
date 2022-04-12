@@ -36,7 +36,11 @@ using namespace gpu3d;
 
 /*  Input cache constructor.  */
 InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLine,
-        u32bit ports, u32bit pWidth, u32bit reqQSize, u32bit inReqs) :
+        u32bit ports, u32bit pWidth, u32bit reqQSize, u32bit inReqs
+#if KONDAMASK_CACHE_DECAY
+	, u32bit decayCycles
+#endif
+) :
 
     cacheId(cacheId), numPorts(ports), portWidth(pWidth), inputRequests(inReqs), lineSize(bytesLine)
 
@@ -45,7 +49,11 @@ InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLi
 
 
     /*  Create the fetch cache object.  */
-    cache = new FetchCache(ways, lines, lineSize, reqQSize, "InC");
+    cache = new FetchCache(ways, lines, lineSize, reqQSize, "InC"
+#if KONDAMASK_CACHE_DECAY
+		, decayCycles
+#endif
+	);
 
     /*  Create the input buffer.  */
     inputBuffer = new u8bit*[inputRequests];
@@ -109,7 +117,7 @@ InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLi
     string queueName;
     queueName.clear();
     queueName = "ReadTicketQueue-InCache";
-    ticketList.setName(queueName);    
+    ticketList.setName(queueName);
 }
 
 
@@ -180,7 +188,7 @@ bool InputCache::read(u32bit address, u32bit way, u32bit line, u32bit size,
 void InputCache::unreserve(u32bit way, u32bit line)
 {
     /*  Unreserve fetch cache line.  */
-    cache->unreserve(way, line);
+   cache->unreserve(way, line);
 }
 
 /*  Resets the input cache structures.  */
@@ -252,6 +260,11 @@ MemoryTransaction *InputCache::update(u64bit cycle, MemState memState)
 /*  Input cache simulation rutine.  */
 void InputCache::clock(u64bit cycle)
 {
+#if KONDAMASK
+	cache->cycle = cycle;
+	cache->decay();
+#endif
+
     u32bit i;
     u32bit readEndReq;
     MemoryTransaction *memTrans;

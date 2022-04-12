@@ -39,6 +39,7 @@
 #include <new>
 #include <signal.h>
 
+
 using namespace std;
 using namespace gpu3d;
 
@@ -169,7 +170,6 @@ bool gpu3d::checkAGPTraceParameters(AGPTraceFileHeader *agpTraceHeader)
                        (simP.fsh.fetchRate == agpTraceHeader->parameters.fetchRate) &&
                        (simP.mem.memoryControllerV2 == agpTraceHeader->parameters.memoryControllerV2) &&
                        (simP.mem.v2SecondInterleaving == agpTraceHeader->parameters.v2SecondInterleaving);
-
     return allParamsOK;
 }
 
@@ -215,7 +215,6 @@ int main(int argc, char *argv[])
 
     //  Get all the simulator parameters from the configuration file.
     cl->getParameters(&simP);
-
     //  Delete the configuration loader.
     delete cl;
 
@@ -238,6 +237,28 @@ int main(int argc, char *argv[])
             simP.inputFile = new char[strlen(argList[argIndex]) + 1];
             strcpy(simP.inputFile, argList[argIndex]);
         }
+#if KONDAMASK_CACHE_DECAY
+		else if (strcmp(argList[argIndex], "--decay:input") == 0 && ++argIndex < argCount) {
+			simP.decayInput = parse_cycles(argList[argIndex]);
+			printf("Input Cache Decay = %d\n", simP.decayInput);
+		}
+		else if (strcmp(argList[argIndex], "--decay:texL0") == 0 && ++argIndex < argCount) {
+			simP.decayTexL0 = parse_cycles(argList[argIndex]);
+			printf("Texture L0 Cache Decay = %d\n", simP.decayTexL0);
+		}
+		else if (strcmp(argList[argIndex], "--decay:texL1") == 0 && ++argIndex < argCount) {
+			simP.decayTexL1 = parse_cycles(argList[argIndex]);
+			printf("Texture L1 Cache Decay = %d\n", simP.decayTexL1);
+		}
+		else if (strcmp(argList[argIndex], "--decay:z") == 0 && ++argIndex < argCount) {
+			simP.decayZ = parse_cycles(argList[argIndex]);
+			printf("Z Cache Decay = %d\n", simP.decayZ);
+		}
+		else if (strcmp(argList[argIndex], "--decay:color") == 0 && ++argIndex < argCount) {
+			simP.decayColor = parse_cycles(argList[argIndex]);
+			printf("Color Cache Decay = %d\n", simP.decayColor);
+		}
+#endif
         else { // traditional arguments style
             switch (argPos) {
                 case 0: // trace file
@@ -365,6 +386,8 @@ int main(int argc, char *argv[])
     printf("--------------------\n\n");
 
     printf("Input File = %s\n", simP.inputFile);
+	
+#if !defined(KONDAMASK)
     printf("Signal Trace File = %s\n", simP.signalDumpFile);
     printf("Statistics File = %s\n", simP.statsFile);
     printf("Statistics (Per Frame) File = %s\n", simP.statsFilePerFrame);
@@ -392,6 +415,7 @@ int main(int argc, char *argv[])
         if (memoryClockDomain)
             printf("Memory Clock Period = %d ps\n", memoryClockPeriod);
     }
+#endif
 
     //  Initialize the optimized dynamic memory system.
     OptimizedDynamicMemory::initialize(simP.objectSize0, simP.bucketSize0, simP.objectSize1, simP.bucketSize1,
@@ -461,7 +485,6 @@ int main(int argc, char *argv[])
                                          GPUDriver::getGPUDriver(),
                                          simP.ras.shadedSetup,
                                          simP.startFrame);
-
             //  No AGP Trace Driver available.
             agpTraceDriver = NULL;
 
@@ -522,7 +545,6 @@ int main(int argc, char *argv[])
         delete gpuSimulator;
         
     }
-
     return 0;
 }
 

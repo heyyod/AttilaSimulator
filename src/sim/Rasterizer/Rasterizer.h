@@ -247,8 +247,7 @@ public:
      *  @param disableHZ Disables Hierarchical Z.
      *  @param blockStamps Stamps per HZ block.
      *  @param hzBufferSize Size of the Hierarchical Z Buffer (number of blocks stored).
-     *  @param hzCacheLines Lines in the fast access Hierarchical Z Buffer cache.
-     *  @param hzCacheLineSize Blocks per line of the fast access Hierarchical Z Buffer cache.
+
      *  @param hzQueueSize Size of the stamp queue for the Early test.
      *  @param hzBufferLatency Access latency to the HZ Buffer Level 0.
      *  @param hzUpdateLantecy Update signal latency from Z Stencil Test box.

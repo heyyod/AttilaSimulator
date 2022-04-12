@@ -45,7 +45,30 @@ GLTraceDriver::GLTraceDriver(char *traceFile, bool useACD, GPUDriver* driver, bo
     bm.acceptDeferredBuffers(true);
 
     GLOBALPROFILER_ENTERREGION("GLExec", "", "")
-    initValue = gle.init(traceFile, "BufferDescriptors.dat", "MemoryRegions.dat");
+
+    // NOTE(Kostas): I edited the paths to the two .dat files so that the exe can find them
+    int filepathLength = strlen(traceFile);
+    int iRootFolder = 0;
+    for (iRootFolder = filepathLength - 1; iRootFolder > 0; iRootFolder--)
+    {
+        if (traceFile[iRootFolder] == '/')
+            break;
+    }
+    char bdFile[255];
+    char mrFile[255];
+    for (int i = 0; i <= iRootFolder; i++)
+    {
+        bdFile[i] = traceFile[i];
+        mrFile[i] = traceFile[i];
+    }
+    char bdFile0[] = "BufferDescriptors.dat\0";
+    char mrFile0[] = "MemoryRegions.dat\0";
+    for (int i = 0; i < 23; i++)
+        bdFile[i + iRootFolder + 1] = bdFile0[i];
+    for (int i = 0; i < 19; i++)
+        mrFile[i + iRootFolder + 1] = mrFile0[i];
+
+    initValue = gle.init(traceFile, bdFile, mrFile);
     GLOBALPROFILER_EXITREGION()
 
     if ( _useACD ) {

@@ -122,7 +122,7 @@ TextureAccess *TextureEmulator::textureOperation(u32bit id, TextureOperation tex
     f32bit lod;
     u32bit levelBase;
     u32bit q;
-    u32bit d1, d2;
+    u32bit d1, d2 = 0; // Kostas: set to zero cause an exception is thrown for d2
     FilterMode filter;
     u32bit frag;
     CubeMapFace cubemap;
@@ -396,6 +396,7 @@ f, stampCoord[f][0], stampCoord[f][1], stampCoord[f][2], stampCoord[f][3], stamp
         {
             // Magnification.
             d1 = levelBase;
+            d2 = d1;
 
             //  Set filter mode.
             filter = textureMagFilter[textUnit];

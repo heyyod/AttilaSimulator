@@ -95,6 +95,9 @@
     <ClInclude Include="..\support\support.h">
       <Filter>Source Files\support</Filter>
     </ClInclude>
+    <ClInclude Include="..\support\Kondamask_Defines.h">
+      <Filter>Source Files\support</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

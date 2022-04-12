@@ -4785,7 +4785,7 @@ void GPUEmulator::dumpFrame(char *filename, u32bit rt, bool dumpAlpha)
         }
     }
 
-    ImageSaver::getInstance().savePNG(filename, state.displayResX, state.displayResY, data);
+   ImageSaver::getInstance().savePNG(filename, state.displayResX, state.displayResY, data);
 }
 
 //  Writes the current depth buffer as a ppm file.
@@ -8787,9 +8787,9 @@ void GPUEmulator::emulationLoop()
             printf("End of trace.\n");
         }
     }
-
-if (abortEmulation)
-printf("Emulation aborted\n");
+	
+	if (abortEmulation)
+		printf("Emulation aborted\n");
 
     GLOBALPROFILER_EXITREGION()
 }

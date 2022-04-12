@@ -308,7 +308,11 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
         slPrefixes,                   //  Streamer Loader prefixes.
         vshPrefix,                    //  Vertex Shader Prefixes.
         "Streamer",
-        NULL);
+        NULL
+#if KONDAMASK_CACHE_DECAY
+		, simP.decayInput
+#endif
+	);
 
     //  Add Streamer box to the box array.
     boxArray.push_back(streamer);
@@ -780,6 +784,9 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
                 boxName,                        //  Unit name.
                 tuPrefix,                       //  Unit prefix.
                 NULL                            //  Parent box.
+#if KONDAMASK_CACHE_DECAY
+				, simP.decayTexL0, simP.decayTexL1
+#endif
                 );
 
             //  Add Texture Unit box to the box array.
@@ -855,6 +862,9 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
             boxName,                        //  Box name.
             suPrefix[i],                    //  Unit prefix.
             NULL                            //  Box parent box.
+#if KONDAMASK_CACHE_DECAY
+			, simP.decayZ
+#endif
             );
 
         //  Add Z Stencil Test box to the box array.
@@ -902,6 +912,9 @@ GPUSimulator::GPUSimulator(SimParameters simP, TraceDriverInterface *trDriver, b
             boxName,                        //  Box name.
             suPrefix[i],                    //  Unit prefix.
             NULL                            //  Box parent box.
+#if KONDAMASK_CACHE_DECAY
+			, simP.decayColor
+#endif
             );
 
         //  Add Color Write box to the box array.
@@ -1049,6 +1062,8 @@ GPUSimulator::~GPUSimulator()
         outFrame.close();
     if (outBatch.is_open())
         outBatch.close();
+
+	GPUStatistics::StatisticsManager::instance().SaveCacheAccessesFile();
 
     //  Print end message.
     printf("\n\n");
@@ -4119,7 +4134,7 @@ void GPUSimulator::simulationLoop()
     
     //  Simulation loop.
     for(cycle = 0, end = false, dotCount = 0; !end; cycle++)
-    {
+    {	
         GPU_DEBUG( printf("Cycle %ld ----------------------------\n", cycle); )
 
         //  Dump the signals.
@@ -4128,7 +4143,7 @@ void GPUSimulator::simulationLoop()
 
         //  Update cycle counter statistic.
         cyclesCounter->inc();
-        
+
         // Clock all the boxes.
         for(i = 0; i < boxArray.size(); i++)
             boxArray[i]->clock(cycle);
@@ -4199,7 +4214,7 @@ void GPUSimulator::simulationLoop()
         if (dotCount == 10000)
         {
             dotCount = 0;
-            putchar('.');
+            printf("\n.");
             fflush(stdout);
 
 //OptimizedDynamicMemory::usage();
@@ -4619,7 +4634,7 @@ void GPUSimulator::dumpLatencyMap(u32bit w, u32bit h)
     u32bit i;
 
     /*  Create current frame filename.  */
-    sprintf(filename, "latencyMap%04d.ppm", frameCounter);
+    sprintf(filename, "out/latencyMap%04d.ppm", frameCounter);
 
     /*  Open/Create the file for the current frame.  */
     fout = fopen(filename, "wb");

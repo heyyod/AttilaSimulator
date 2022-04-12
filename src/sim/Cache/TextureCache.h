@@ -205,7 +205,11 @@ public:
     TextureCache(u32bit numWays, u32bit numLines, u32bit lineSize,
         u32bit portWidth, u32bit reqQueueSize, u32bit inputRequests,
         u32bit numBanks, u32bit numAccess, u32bit bWidth, u32bit maxMiss,
-        u32bit decomprLat, char *postfix);
+        u32bit decomprLat, char *postfix
+#if KONDAMASK_CACHE_DECAY
+		, u32bit decayCycles
+#endif
+	);
 
     /**
      *

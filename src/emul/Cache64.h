@@ -272,7 +272,6 @@ public:
      */
 
     void reset();
-
 };
 
 } // namespace gpu3d
