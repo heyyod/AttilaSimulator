@@ -2,3 +2,10 @@
 /src/win32-VS2005/win32
 /test
 /run-dir
+bin
+flex
+bison
+lib
+*.o
+*.gen
+.gitignore

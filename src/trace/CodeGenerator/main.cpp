@@ -180,7 +180,7 @@ int main( int argc, char* argv[] )
         inFiles.push_back(string(FILES[i]));
    
     if ( argc < 2 )
-        parseConfig("..\\trace\\CodeGenerator\\CGconfigVS.ini");        
+        parseConfig("CGconfig.ini");        
     else
         parseConfig(argv[1]);
 
@@ -305,7 +305,7 @@ int main( int argc, char* argv[] )
      *****************************/
     
 
-    char *filters[] = 
+     char *filters[] =
     {
         "*MESA",
         "*SUN",
