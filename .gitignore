@@ -6,6 +6,11 @@ bin
 flex
 bison
 lib
+doc
+obj
+.vs
 *.o
 *.gen
 .gitignore
+src/.how
+src/.what
