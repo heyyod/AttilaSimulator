@@ -15,3 +15,7 @@ bison
 *.o
 *.gen
 *.obj
+*.tlog
+*.log
+*.recipe
+*.obj

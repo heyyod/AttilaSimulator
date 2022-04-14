@@ -99,33 +99,33 @@
     <_ProjectFileVersion>16.0.31727.243</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\bin\</OutDir>
     <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(DXSDK_DIR)Include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\bin\</OutDir>
     <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\bin\</OutDir>
     <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\bin\</OutDir>
     <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
-    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\bin\</OutDir>
     <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
-    <OutDir>.\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\bin\</OutDir>
     <IntDir>.\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>

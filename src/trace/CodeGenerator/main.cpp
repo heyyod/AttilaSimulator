@@ -168,21 +168,25 @@ void parseConfig( const char* config )
         strcpy(inGLConstants,inGL);
 }
 
-int main( int argc, char* argv[] )
+int main(int argc, char* argv[])
 {
     unsigned int i;
     unsigned int j = 0;
 
     system("cd");
-    
+
     /* default files */
-    for ( i = 0; i < sizeof(FILES)/sizeof(FILES[0]); i++ )
+    for (i = 0; i < sizeof(FILES) / sizeof(FILES[0]); i++)
         inFiles.push_back(string(FILES[i]));
-   
-    if ( argc < 2 )
-        parseConfig("CGconfig.ini");        
+
+    if (argc < 2)
+    {
+        parseConfig("CGconfig.ini");
+    }
     else
+    {
         parseConfig(argv[1]);
+    }
 
     //  Check if files already exist
     ifstream checkFile;
@@ -196,6 +200,7 @@ int main( int argc, char* argv[] )
     filename.append(name); \
     checkFile.open(filename.c_str()); \
     allOutFilesCreated = allOutFilesCreated && checkFile.is_open(); \
+    checkFile.close(); \
     filename.clear();
 
     CHECK_FILE(dirGLInterceptor, "\\GLWrapper.cpp")
@@ -205,8 +210,8 @@ int main( int argc, char* argv[] )
     CHECK_FILE(dirGLInstrument, "\\GLIEntryPoints.cpp")
     CHECK_FILE(dirGLInstrument, "\\GLIEntryPoints.h")
 
-    CHECK_FILE(dirTraceReader, "\\StubApiCalls.cpp");
-    CHECK_FILE(dirTraceReader, "\\StubApiCalls.cpp");
+    CHECK_FILE(dirTraceReader, "\\StubApiCalls.cpp")
+    CHECK_FILE(dirTraceReader, "\\StubApiCalls.cpp")
 
     CHECK_FILE(dirGen, "\\GenAPICall.gen")
     CHECK_FILE(dirGen, "\\GenGLConstantNames.gen")

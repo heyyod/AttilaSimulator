@@ -278,8 +278,6 @@ FetchCache64::FetchCache64(u32bit ways, u32bit lines, u32bit lineBytes, u32bit r
 			decayed[i][j] = false;
 		}
 	}
-
-	printf("%s Decay Cycles = %d\n", name, decayCycles);
 #endif
 
 
@@ -1546,8 +1544,8 @@ void FetchCache64::decay()
 		double goodToOff = (double)goodOffCycles / (double)offCycles * 100.0;
 		double offToOn = (double)(offCycles) / (double)onCycles * 100.0;
 
-		printf("\n%s Cycle %d => Misses = %d | Refetches = %.2f%% | BadToOff = %.2f%% | GoodToOff = %.2f%% | Off Cycles = %.2f%%  ",
-			name, cycle, totalMisses, refetchesToMiss, badToOff, goodToOff, offToOn);
+		//printf("\n%s Cycle %d => Misses = %d | Refetches = %.2f%% | BadToOff = %.2f%% | GoodToOff = %.2f%% | Off Cycles = %.2f%%  ",
+		//	name, cycle, totalMisses, refetchesToMiss, badToOff, goodToOff, offToOn);
 	}
 	
 	for (u32bit l = 0; l < numLines; l++)
