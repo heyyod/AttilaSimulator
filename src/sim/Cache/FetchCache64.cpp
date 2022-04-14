@@ -1531,7 +1531,7 @@ void FetchCache64::setDebug(bool enable)
 #if KONDAMASK
 void FetchCache64::decay()
 {
-	if (!KONDAMASK_CACHE_DECAY)
+	if (!KONDAMASK_CACHE_DECAY || decayCycles == 0)
 		return;
 	
 	u64bit offCycles = badOffCycles + goodOffCycles;
