@@ -130,7 +130,7 @@ void ConfigLoader::getParameters(SimParameters *simP)
         skipSpaces();
 
         /*  Second skip all the comment and empty lines.  */
-        if ((str[pos] != '#') && (str[pos] != '\n'))
+        if (str[pos] != '#' && str[pos] != '\n' && str[pos] != '\r')
         {
             /*  Parse a section.  */
             if (!parseSection(simP))

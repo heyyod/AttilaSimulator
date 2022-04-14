@@ -182,7 +182,6 @@ bool gpu3d::checkAGPTraceParameters(AGPTraceFileHeader *agpTraceHeader)
 //  Main Function.
 int main(int argc, char *argv[])
 {
-    system("dir");
     set_new_handler(out_of_memory);
 
     ConfigLoader *cl;
