@@ -353,6 +353,11 @@ public:
      */
 
     void setDebug(bool enable);
+	
+#if KONDAMASK
+	FetchCache64 *GetFetchCacheL0() { return cacheL0; }
+	FetchCache *GetFetchCacheL1() { return cacheL1; }
+#endif
 };
 
 } // namespace gpu3d

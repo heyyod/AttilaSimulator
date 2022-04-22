@@ -1,8 +1,9 @@
 ﻿/src/win32-VS2005/.vs
-/src/win32-VS2005/.vscode
-/src/win32-VS2005/win32
-/test
-/run-dir
+src/win32-VS2005/.vscode/*
+src/win32-VS2005/win32/*
+src/win32-VS2005/x64/*
+test/*
+run-dir/*
 src/.how
 src/.what
 bin/*
@@ -19,3 +20,5 @@ bison
 *.log
 *.recipe
 *.obj
+*.pdb
+*.ilk

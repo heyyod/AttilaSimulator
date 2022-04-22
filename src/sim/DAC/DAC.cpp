@@ -495,7 +495,7 @@ void DAC::clock(u64bit cycle)
             writeColorBuffer();
 
             // GPU_DEBUG_BOX(
-            printf("DAC => Cycle %lld Color Buffer Dumped.\n", cycle);
+            printf("\nDAC => Cycle %lld Color Buffer Dumped.\n", cycle);
             //)
 
             //  Delete the color buffer.
@@ -597,7 +597,7 @@ void DAC::clock(u64bit cycle)
                 writeColorBuffer();
 
                 // GPU_DEBUG_BOX(
-                printf("DAC => Cycle %lld Color Buffer Dumped.\n", cycle);
+                printf("\nDAC => Cycle %lld Color Buffer Dumped.\n", cycle);
                 //)
 
                 //  Delete the color buffer.
@@ -611,7 +611,7 @@ void DAC::clock(u64bit cycle)
                 writeDepthBuffer();
 
                 // GPU_DEBUG_BOX(
-                printf("DAC => Cycle %lld Depth Buffer Dumped.\n", cycle);
+                printf("\nDAC => Cycle %lld Depth Buffer Dumped.\n", cycle);
                 //)
 
                 //  Delete the z stencil buffer.
@@ -625,7 +625,7 @@ void DAC::clock(u64bit cycle)
                 writeStencilBuffer();
 
                 // GPU_DEBUG_BOX(
-                printf("DAC => Cycle %lld Stencil Buffer Dumped.\n", cycle);
+                printf("\nDAC => Cycle %lld Stencil Buffer Dumped.\n", cycle);
                 //)
 
                 //  Delete the z stencil buffer.

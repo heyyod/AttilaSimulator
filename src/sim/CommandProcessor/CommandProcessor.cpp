@@ -8710,6 +8710,11 @@ void CommandProcessor::processGPUEvent(u64bit cycle, GPUEvent gpuEvent, string e
             }
             else
             {
+#if KONDAMASK
+                if (eventMsg.compare("End of preload phase.  Starting simulation.") == 0)
+                    simStartCycle = cycle;
+#endif
+
                 //  Print the current cycle and the event message.
                 cout << "CP => Cycle " << cycle << ". " << eventMsg << endl;
 
@@ -8738,7 +8743,7 @@ void CommandProcessor::processGPUEvent(u64bit cycle, GPUEvent gpuEvent, string e
                 else
                 {
                     //  Print the event message.
-                    cout << "CP => Cycle " << cycle << ". Lasted " << (cycle - lastEventCycle[gpuEvent]) << " cycles. " << eventMsg << endl;
+                    cout << "\nCP => Cycle " << cycle << ". Lasted " << (cycle - lastEventCycle[gpuEvent]) << " cycles. " << eventMsg << endl;
 
                     //  Update the last cycle register for the event.
                     lastEventCycle[gpuEvent] = cycle;

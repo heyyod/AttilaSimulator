@@ -266,16 +266,19 @@ FetchCache64::FetchCache64(u32bit ways, u32bit lines, u32bit lineBytes, u32bit r
 	decayCycles = decayCyclesIn;
 	accessCycles = new cache_line_cycle_info * [numWays];
 	decayed = new bool * [numWays];
+	isOff = new bool* [numWays];
 
 	for (i = 0; i < numWays; i++)
 	{
 		accessCycles[i] = new cache_line_cycle_info[numLines];
 		decayed[i] = new bool[lineSize];
+		isOff[i] = new bool[lineSize];
 
 		for (j = 0; j < numLines; j++)
 		{
 			accessCycles[i][j].lastOn = 0;
 			decayed[i][j] = false;
+			isOff[i][j] = true;
 		}
 	}
 #endif
@@ -364,6 +367,7 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 				totalMisses++;
 				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
+				isOff[way][line] = false;
 				if (decayed[way][line])
 				{
 					onDecayedFetch(oldTag, way, line);
@@ -606,6 +610,7 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 				totalMisses++;
 				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
+				isOff[way][line] = false;
 				if (decayed[way][line])
 				{
 					onDecayedFetch(oldTag, way, line);
@@ -1529,30 +1534,18 @@ void FetchCache64::setDebug(bool enable)
 #if KONDAMASK
 void FetchCache64::decay()
 {
-	if (!KONDAMASK_CACHE_DECAY || decayCycles == 0)
+	if (!KONDAMASK_CACHE_DECAY)
 		return;
-	
-	u64bit offCycles = badOffCycles + goodOffCycles;
-	if (cycle % 10000 == 0 && offCycles > 0)
-	{
-		double refetchesToMiss = (double)refetchesAfterDecay / (double)totalMisses * 100.0;
-		
-		u64bit offCycles = badOffCycles + goodOffCycles;
-		u64bit onCycles = cycle * numWays * numLines;
-		
-		double badToOff = (double)badOffCycles / (double)offCycles * 100.0;
-		double goodToOff = (double)goodOffCycles / (double)offCycles * 100.0;
-		double offToOn = (double)(offCycles) / (double)onCycles * 100.0;
 
-		//printf("\n%s Cycle %d => Misses = %d | Refetches = %.2f%% | BadToOff = %.2f%% | GoodToOff = %.2f%% | Off Cycles = %.2f%%  ",
-		//	name, cycle, totalMisses, refetchesToMiss, badToOff, goodToOff, offToOn);
-	}
-	
 	for (u32bit l = 0; l < numLines; l++)
 	{
 		for (u32bit w = 0; w < numWays; w++)
 		{
-			if (valid[w][l] &&
+			if (isOff[w][l])
+				linesOffSum++;
+			else if (
+				(decayCycles != 0) &&
+				valid[w][l] &&
 				!reserve[w][l] &&
 				!replaceLine[w][l])
 			{
@@ -1564,6 +1557,8 @@ void FetchCache64::decay()
 						l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
 
 					valid[w][l] = FALSE;
+					
+					isOff[w][l] = true;
 				}
 			}
 		}
@@ -1572,18 +1567,9 @@ void FetchCache64::decay()
 
 void FetchCache64::onDecayedFetch(u32bit oldTag, u32bit way, u32bit line)
 {
-	u64bit offCycles = cycle - accessCycles[way][line].lastOn;
 	if (oldTag == tags[way][line])
 	{
-		refetchesAfterDecay++;
-		badOffCycles += offCycles;
-
-		/*printf("\n%s\t=> Refetched %x after decay at line (%d, %d) | Good Off Cycles = %d | Bad Off Cycles = %d | BtoG Ratio = %.2f%%\n",
-			name, line2address(way, line), way, line, goodOffCycles, badOffCycles, (double)badOffCycles / (double)goodOffCycles * 100.0);*/
-	}
-	else
-	{
-		goodOffCycles += offCycles;
+		decayedRefetches++;
 	}
 	decayed[way][line] = FALSE;
 }

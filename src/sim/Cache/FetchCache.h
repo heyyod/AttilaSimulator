@@ -446,16 +446,18 @@ namespace gpu3d
 		cache_line_cycle_info** accessCycles;
 		bool **waitForDecay;
 		bool **decayed;
-		u64bit goodOffCycles = 0;
-		u64bit badOffCycles = 0;
-		u64bit refetchesAfterDecay = 0;
-		u64bit totalMisses = 0;
+		bool **isOff;
+        u64bit linesOffSum = 0;
+        u64bit totalMisses = 0;
+		u64bit decayedRefetches = 0;
 
 		void decay();
 		
 		bool flushForDecay(u32bit line, u32bit way);
 		
 		void onDecayedFetch(u32bit oldTag, u32bit way, u32bit line);
+
+        u32bit getLinesCount() { return numLines * numWays; }
 #endif
 	};
 

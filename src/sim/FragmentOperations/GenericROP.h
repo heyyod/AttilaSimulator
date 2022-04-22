@@ -573,7 +573,18 @@ public:
      */
      
     void stallReport(u64bit cycle, string &stallReport);
-
+		
+#if KONDAMASK
+	/*
+		* This function will get called at the end of each frame
+		* for the streamer, texutures, z stencil and color write
+		* units. It will be implemented on each class update the 
+		* decay stats that are passed. It's a ptr because the texture
+		* unit hase 2 caches: L0 and L1
+		*/
+	void onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats);
+#endif
+	
 };
 
 } // namespace gpu3d

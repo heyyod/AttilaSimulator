@@ -19,13 +19,13 @@
  */
 
 /**
-  *
-  * @file FetchCache.cpp
-  *
-  * Implements the Fetch Cache class.  This class implements a type of
-  * cache that supports fetching lines before using them.
-  *
-  */
+   *
+   * @file FetchCache.cpp
+   *
+   * Implements the Fetch Cache class.  This class implements a type of
+   * cache that supports fetching lines before using them.
+   *
+   */
 
 #include "FetchCache.h"
 #include "GPUMath.h"
@@ -45,13 +45,13 @@ using namespace gpu3d;
  */
 #define UPDATE_STATS(instr) { if (name != NULL) { instr } }
 
- /*  Fetch cache constructor.  */
+/*  Fetch cache constructor.  */
 FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQSize,
-	char *fetchCacheName
+	char* fetchCacheName
 #if KONDAMASK_CACHE_DECAY
 	, u32bit decayCyclesIn
 #endif
-	) :
+) :
 	requestQueueSize(reqQSize), debugMode(false),
 	Cache(ways, lines, lineBytes, CACHE_NONE)
 {
@@ -104,7 +104,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 
 
 	/*  Allocate the line reserve counters.  */
-	reserve = new u32bit*[numWays];
+	reserve = new u32bit * [numWays];
 
 	/*  Check allocation.  */
 	GPU_ASSERT(
@@ -113,7 +113,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 	)
 
 	/*  Allocate replace bit.  */
-	replaceLine = new bool*[numWays];
+	replaceLine = new bool* [numWays];
 
 	/*  Check allocation.  */
 	GPU_ASSERT(
@@ -122,7 +122,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 	)
 
 	/*  Allocate dirty bit (per way).  */
-	dirty = new bool*[numWays];
+	dirty = new bool* [numWays];
 
 	/*  Check allocation.  */
 	GPU_ASSERT(
@@ -131,7 +131,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 	)
 
 	/*  Allocated masked bit (per way).  */
-	masked = new bool*[numWays];
+	masked = new bool* [numWays];
 
 	/*  Check allocation.  */
 	GPU_ASSERT(
@@ -140,7 +140,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 	)
 
 	/*  Allocate line write mask.  */
-	writeMask = new bool**[numWays];
+	writeMask = new bool** [numWays];
 
 	/*  Check allocation.  */
 	GPU_ASSERT(
@@ -188,7 +188,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 		)
 
 		/*  Allocate line write mask for a way.  */
-		writeMask[i] = new bool*[numLines];
+		writeMask[i] = new bool* [numLines];
 
 		/*  Check allocation.  */
 		GPU_ASSERT(
@@ -214,7 +214,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 	maxLRU = GPU_MIN(u32bit(MAX_LRU), numWays);
 
 	/*  Allocate victim lists for the cache lines.  */
-	victim = new u32bit*[numLines];
+	victim = new u32bit * [numLines];
 
 	/*  Check allocation.  */
 	GPU_ASSERT(
@@ -264,20 +264,23 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 #if KONDAMASK_CACHE_DECAY
 	decayCycles = decayCyclesIn;
 	accessCycles = new cache_line_cycle_info * [numWays];
-	waitForDecay = new bool * [numWays];
-	decayed = new bool * [numWays];
-	
+	waitForDecay = new bool* [numWays];
+	decayed = new bool* [numWays];
+	isOff = new bool* [numWays];
+
 	for (i = 0; i < numWays; i++)
 	{
 		accessCycles[i] = new cache_line_cycle_info[numLines];
 		waitForDecay[i] = new bool[lineSize];
 		decayed[i] = new bool[lineSize];
+		isOff[i] = new bool[lineSize];
 
 		for (j = 0; j < numLines; j++)
 		{
 			accessCycles[i][j].lastOn = 0;
 			waitForDecay[i][j] = false;
 			decayed[i][j] = false;
+			isOff[i][j] = true;
 		}
 	}
 #endif
@@ -287,13 +290,13 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 }
 
 /*  Fetches a cache line.  */
-bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject *source, u32bit reserves)
+bool FetchCache::fetch(u32bit address, u32bit& way, u32bit& line, DynamicObject* source, u32bit reserves)
 {
 	u32bit freeRequest;
 	u32bit oldAddress;
 	bool hit;
 	u32bit i;
-	DynamicObject *cookieContainer;
+	DynamicObject* cookieContainer;
 
 	/*  Search the address in the fetch cache tag file.  */
 	hit = search(address, line, way);
@@ -358,7 +361,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 		/*  Miss.  Search for a line to reserve.  */
 		if (!hitNoMask)
 			way = nextVictim(line);
-		
+
 		/*  Check if there is an unreserved line.  */
 #if KONDAMASK_CACHE_DECAY
 		if (reserve[way][line] == 0 && !waitForDecay[way][line])
@@ -371,9 +374,9 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 			{
 				GPU_DEBUG(
 					printf("FetchCache (%s) => Miss cache line selected (%d, %d) | line reserves = %d | free requests = %d\n",
-						name, way, line, reserve[way][line], freeRequests);
+					name, way, line, reserve[way][line], freeRequests);
 				)
-				
+
 				/*  Get next free request queue entry.  */
 				freeRequest = freeRequestList[nextFreeRequest];
 
@@ -385,6 +388,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 				totalMisses++;
 				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
+				isOff[way][line] = false;
 				if (decayed[way][line])
 				{
 					onDecayedFetch(oldTag, way, line);
@@ -404,11 +408,11 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 					valid[way][line]);
 				accessCycles[way][line].insert = cycle;
 				accessCycles[way][line].lastHit = cycle;
-				
+
 				GPU_DEBUG(
-				printf("%d\t", cycle);
-				printf("FetchCache (%s) => Flush line (%d, %d) at address %x and allocate line at address %x\n",
-					name, way, line, oldAddress, line2address(way, line));
+					printf("%d\t", cycle);
+					printf("FetchCache (%s) => Flush line (%d, %d) at address %x and allocate line at address %x\n",
+						name, way, line, oldAddress, line2address(way, line));
 				)
 
 				/* Check if the current data in the line is valid.  */
@@ -416,7 +420,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 				{
 					//printf("FetchCache (%s) => Evicting line at way = %d line = %d | outAddress = %x | inAddress = %x\n", name, way, line, oldAddress, line2address(way, line));
 					/*  Add a write request to write back the fetch cache
-					line to memory.  */
+						line to memory.  */
 
 					GPU_DEBUG(
 						printf("FetchCache (%s) => Adding spill-fill to request queue entry %d\n", name, freeRequest);
@@ -558,13 +562,13 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 }
 
 /*  Fetches a cache line.  */
-bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, DynamicObject *source, u32bit reserves)
+bool FetchCache::fetch(u32bit address, u32bit& way, u32bit& line, bool& miss, DynamicObject* source, u32bit reserves)
 {
 	u32bit freeRequest;
 	u32bit oldAddress;
 	bool hit;
 	u32bit i;
-	DynamicObject *cookieContainer;
+	DynamicObject* cookieContainer;
 
 	/*  Search the address in the fetch cache tag file.  */
 	hit = search(address, line, way);
@@ -648,11 +652,11 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 			if (freeRequests > 0)
 			{
 				GPU_DEBUG(
-				printf("%d\t", cycle);
-				printf("FetchCache (%s) => Miss cache line selected (%d, %d) | line reserves = %d | free requests = %d\n",
-					name, way, line, reserve[way][line], freeRequests);
+					printf("%d\t", cycle);
+					printf("FetchCache (%s) => Miss cache line selected (%d, %d) | line reserves = %d | free requests = %d\n",
+						name, way, line, reserve[way][line], freeRequests);
 				)
-				
+
 				/*  Get next free request queue entry.  */
 				freeRequest = freeRequestList[nextFreeRequest];
 
@@ -664,6 +668,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 				totalMisses++;
 				u32bit oldTag = tags[way][line];
 				tags[way][line] = tag(address);
+				isOff[way][line] = false;
 				if (decayed[way][line])
 				{
 					onDecayedFetch(oldTag, way, line);
@@ -671,7 +676,7 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 #else
 				tags[way][line] = tag(address);
 #endif
-				
+
 				if (name[0] == 'Z' && name[6] == '1')
 				{
 					GPU_DEBUG(
@@ -833,12 +838,12 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 }
 
 /*  Fetches a cache line.  */
-bool FetchCache::allocate(u32bit address, u32bit &way, u32bit &line, DynamicObject *source, u32bit reserves)
+bool FetchCache::allocate(u32bit address, u32bit& way, u32bit& line, DynamicObject* source, u32bit reserves)
 {
 	u32bit i;
 	u32bit freeRequest;
 	u32bit oldAddress;
-	DynamicObject *cookieContainer;
+	DynamicObject* cookieContainer;
 
 	/*  Search the address in the fetch cache tag file.  */
 	if (search(address, line, way))
@@ -891,7 +896,7 @@ bool FetchCache::allocate(u32bit address, u32bit &way, u32bit &line, DynamicObje
 				if (freeRequests > 0)
 				{
 					/*  Add a write request to write back the fetch cache
-							line to memory.  */
+								line to memory.  */
 
 					/*  Get address of the line to be replaced.  */
 					oldAddress = line2address(way, line);
@@ -1027,7 +1032,7 @@ bool FetchCache::allocate(u32bit address, u32bit &way, u32bit &line, DynamicObje
 }
 
 /*  Reads data from the cache.  */
-bool FetchCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bit *data)
+bool FetchCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bit* data)
 {
 	u32bit i;
 	u32bit off;
@@ -1068,16 +1073,16 @@ bool FetchCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bi
 			/*  Copy a data byte.  */
 			*((u32bit*)&data[i]) = *((u32bit*)&cache[way][line][off]);
 		}
-		
+
 		GPU_DEBUG(
-		if (name[0] == 'Z' && name[6] == '1')
-		{
-			printf("%d\t", cycle);
-			printf("FetchCache (%s) => Reading from cache line (%d, %d) address %x %d bytes\n",
-				name, way, line, address, size);
-		}
+			if (name[0] == 'Z' && name[6] == '1')
+			{
+				printf("%d\t", cycle);
+				printf("FetchCache (%s) => Reading from cache line (%d, %d) address %x %d bytes\n",
+					name, way, line, address, size);
+			}
 		)
-		
+
 		/*  Update replacement policy.  */
 		access(way, line);
 
@@ -1093,9 +1098,9 @@ bool FetchCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bi
 	else
 	{
 		GPU_DEBUG(
-		printf("%d\t", cycle);
-		printf("FetchCache (%s) => Cache line (%d, %d) for address %x %d bytes not yet ready.\n",
-			name, way, line, address, size);
+			printf("%d\t", cycle);
+			printf("FetchCache (%s) => Cache line (%d, %d) for address %x %d bytes not yet ready.\n",
+				name, way, line, address, size);
 		)
 
 		/*  Update statistics.  */
@@ -1110,7 +1115,7 @@ bool FetchCache::read(u32bit address, u32bit way, u32bit line, u32bit size, u8bi
 
 /*  Writes data to the fetch cache.  */
 bool FetchCache::write(u32bit address, u32bit way, u32bit line, u32bit size,
-	u8bit *data)
+	u8bit* data)
 {
 	u32bit i;
 	u32bit off;
@@ -1152,11 +1157,11 @@ bool FetchCache::write(u32bit address, u32bit way, u32bit line, u32bit size,
 			*((u32bit*)&cache[way][line][off]) = *((u32bit*)&data[i]);
 
 			/*
-				 *  NOTE:  MASKED WRITES AND UNMASKED WRITES SHOULDN'T BE
-				 *  MIXED.  IF THEY NEED TO BE MIXED THE WRITE MASK SHOULD
-				 *  BE SET AS SHOWN BELOW.
-				 *
-				 */
+					 *  NOTE:  MASKED WRITES AND UNMASKED WRITES SHOULDN'T BE
+					 *  MIXED.  IF THEY NEED TO BE MIXED THE WRITE MASK SHOULD
+					 *  BE SET AS SHOWN BELOW.
+					 *
+					 */
 
 			/*  Set write mask.  */
 			//writeMask[way][line][off] = TRUE;
@@ -1198,7 +1203,7 @@ bool FetchCache::write(u32bit address, u32bit way, u32bit line, u32bit size,
 
 /*  Writes masked data to the fetch cache.  */
 bool FetchCache::write(u32bit address, u32bit way, u32bit line, u32bit size,
-	u8bit *data, bool *mask)
+	u8bit* data, bool* mask)
 {
 	u32bit i;
 	u32bit off;
@@ -1286,7 +1291,7 @@ bool FetchCache::write(u32bit address, u32bit way, u32bit line, u32bit size,
 }
 
 /*  Reads a full cache line.  */
-bool FetchCache::readLine(u32bit way, u32bit line, u8bit *linedata)
+bool FetchCache::readLine(u32bit way, u32bit line, u8bit* linedata)
 {
 	u32bit i;
 
@@ -1294,7 +1299,7 @@ bool FetchCache::readLine(u32bit way, u32bit line, u8bit *linedata)
 	for (i = 0; i < lineSize; i = i + 4)
 	{
 		/*  Copy a data byte.  */
-		*((u32bit *) &linedata[i]) = *((u32bit *) &cache[way][line][i]);
+		*((u32bit*)&linedata[i]) = *((u32bit*)&cache[way][line][i]);
 	}
 
 	/*  Update statistics.  */
@@ -1307,17 +1312,17 @@ bool FetchCache::readLine(u32bit way, u32bit line, u8bit *linedata)
 }
 
 /*  Reads the line mask for a cache line.  */
-void FetchCache::readMask(u32bit way, u32bit line, u32bit *mask)
+void FetchCache::readMask(u32bit way, u32bit line, u32bit* mask)
 {
 	u32bit i;
 
 	/*  Build the write mask.  */
 	for (i = 0; i < lineSize; i = i + 4)
 	{
-		((u8bit *) mask)[i + 0] = (writeMask[way][line][i + 0] ? 0xff : 0x00);
-		((u8bit *) mask)[i + 1] = (writeMask[way][line][i + 1] ? 0xff : 0x00);
-		((u8bit *) mask)[i + 2] = (writeMask[way][line][i + 2] ? 0xff : 0x00);
-		((u8bit *) mask)[i + 3] = (writeMask[way][line][i + 3] ? 0xff : 0x00);
+		((u8bit*)mask)[i + 0] = (writeMask[way][line][i + 0] ? 0xff : 0x00);
+		((u8bit*)mask)[i + 1] = (writeMask[way][line][i + 1] ? 0xff : 0x00);
+		((u8bit*)mask)[i + 2] = (writeMask[way][line][i + 2] ? 0xff : 0x00);
+		((u8bit*)mask)[i + 3] = (writeMask[way][line][i + 3] ? 0xff : 0x00);
 	}
 }
 
@@ -1329,7 +1334,7 @@ void FetchCache::resetMask(u32bit way, u32bit line)
 }
 
 /*  Writes and replaces a full cache line.  */
-bool FetchCache::writeLine(u32bit way, u32bit line, u8bit *linedata)
+bool FetchCache::writeLine(u32bit way, u32bit line, u8bit* linedata)
 {
 	u32bit i;
 
@@ -1341,7 +1346,7 @@ bool FetchCache::writeLine(u32bit way, u32bit line, u8bit *linedata)
 	for (i = 0; i < lineSize; i = i + 4)
 	{
 		/*  Copy a data byte.  */
-		*((u32bit *) &cache[way][line][i]) = *((u32bit *) &linedata[i]);
+		*((u32bit*)&cache[way][line][i]) = *((u32bit*)&linedata[i]);
 
 		/*  Set write mask.  */
 		writeMask[way][line][i] = false;
@@ -1507,9 +1512,9 @@ bool FetchCache::flush()
 }
 
 /*  Returns the current cache request.  */
-CacheRequest *FetchCache::getRequest(u32bit &cacheRequest)
+CacheRequest* FetchCache::getRequest(u32bit& cacheRequest)
 {
-	CacheRequest *request;
+	CacheRequest* request;
 
 	/*  Check if there is a request in the queue.  */
 	if (activeRequests > 0)
@@ -1545,14 +1550,14 @@ void FetchCache::freeRequest(u32bit cacheRequest, bool freeSpill, bool freeFill)
 	u32bit way = requestQueue[cacheRequest].way;
 	u32bit line = requestQueue[cacheRequest].line;
 	u32bit i;
-	
+
 	GPU_DEBUG(
-	printf("%d\t", cycle);
-	printf("FetchCache (%s) => Free cache request for entry %d | freeSpill = %s | freeFill = %s | spill = %s | fill = %s\n",
-		name, cacheRequest, freeSpill ? "T" : "F", freeFill ? "T" : "F",
-		requestQueue[cacheRequest].spill ? "T" : "F", requestQueue[cacheRequest].fill ? "T" : "F");
+		printf("%d\t", cycle);
+		printf("FetchCache (%s) => Free cache request for entry %d | freeSpill = %s | freeFill = %s | spill = %s | fill = %s\n",
+			name, cacheRequest, freeSpill ? "T" : "F", freeFill ? "T" : "F",
+			requestQueue[cacheRequest].spill ? "T" : "F", requestQueue[cacheRequest].fill ? "T" : "F");
 	)
-	
+
 	/*  Free spill request.  */
 	requestQueue[cacheRequest].spill = requestQueue[cacheRequest].spill && !freeSpill;
 
@@ -1564,13 +1569,13 @@ void FetchCache::freeRequest(u32bit cacheRequest, bool freeSpill, bool freeFill)
 	if ((!requestQueue[cacheRequest].spill) && (!requestQueue[cacheRequest].fill))
 	{
 		GPU_DEBUG(
-		if (name[0] == 'Z' && name[6] == '1')
-		{
-			printf("%d\t", cycle);
-			printf("FetchCache (%s) => Request for line (%d, %d) completed\n", name, way, line);
-		}
+			if (name[0] == 'Z' && name[6] == '1')
+			{
+				printf("%d\t", cycle);
+				printf("FetchCache (%s) => Request for line (%d, %d) completed\n", name, way, line);
+			}
 		)
-				
+
 #if KONDAMASK_CACHE_DECAY
 		waitForDecay[way][line] = false;
 #endif
@@ -1716,41 +1721,29 @@ void FetchCache::setDebug(bool enable)
 #if KONDAMASK
 void FetchCache::decay()
 {
-	if (!KONDAMASK_CACHE_DECAY || decayCycles == 0)
+	if (!KONDAMASK_CACHE_DECAY)
 		return;
-
-	u64bit offCycles = badOffCycles + goodOffCycles;
-	if (cycle % 10000 == 0 && offCycles > 0)
-	{
-		double refetchesToMiss = (double)refetchesAfterDecay / (double)totalMisses * 100.0;
-		
-		u64bit offCycles = badOffCycles + goodOffCycles;
-		u64bit onCycles = cycle * numWays * numLines;
-		
-		double badToOff = (double)badOffCycles / (double)offCycles * 100.0;
-		double goodToOff = (double)goodOffCycles / (double)offCycles * 100.0;
-		double offToOn = (double)(offCycles) / (double)onCycles * 100.0;
-
-		//printf("\n%s Cycle %d => Misses = %d | Refetches = %.2f%% | BadToOff = %.2f%% | GoodToOff = %.2f%% | Off Cycles = %.2f%%  ",
-		//	name, cycle, totalMisses, refetchesToMiss, badToOff, goodToOff, offToOn);
-	}
 
 	for (u32bit l = 0; l < numLines; l++)
 	{
 		for (u32bit w = 0; w < numWays; w++)
 		{
-			if (valid[w][l] &&
+			if (isOff[w][l])
+				linesOffSum++;
+			else if (
+				(decayCycles != 0) &&
+				valid[w][l] &&
 				!reserve[w][l] &&
 				!replaceLine[w][l] &&
 				!waitForDecay[w][l])
 			{
 				/**
-				 * If waitForDecay flag is not true, check if we should mark it for decay.
-				 * If we do, call flush on that way, line.
-				 * If it is already true, it means we already called flush and marked it
-				 * as waitForDecay.
-				 * We reset that flag when we insert new data, in fetch()
-				 */
+				* If waitForDecay flag is not true, check if we should mark it for decay.
+				* If we do, call flush on that way, line.
+				* If it is already true, it means we already called flush and marked it
+				* as waitForDecay.
+				* We reset that flag when we insert new data, in fetch()
+				*/
 
 				accessCycles[w][l].lastOn = cycle;
 				if (cycle - accessCycles[w][l].lastHit + 1 > decayCycles)
@@ -1768,7 +1761,8 @@ void FetchCache::decay()
 					if (performedDecay)
 					{
 						decayed[w][l] = true;
-						
+						isOff[w][l] = true;
+
 						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
 							this->name, line2address(w, l),
 							GPUStatistics::StatisticsManager::CACHE_DECAY,
@@ -1786,9 +1780,9 @@ void FetchCache::decay()
 	}
 }
 
-/*  Copy back all the valid cache lines to memory.  
-	Line passed MUST be valid.
-	*/
+/*  Copy back all the valid cache lines to memory.
+Line passed MUST be valid.
+*/
 bool FetchCache::flushForDecay(u32bit line, u32bit way)
 {
 	/*  Get next free request queue entry.  */
@@ -1799,7 +1793,7 @@ bool FetchCache::flushForDecay(u32bit line, u32bit way)
 	if (freeRequests > 0)
 	{
 		/*  Add a write request to write back the fetch cache
-		line to memory.  */
+	line to memory.  */
 
 		/*  Add new request to memory request queue.  */
 		requestQueue[freeRequest].outAddress = oldAddress;
@@ -1825,15 +1819,15 @@ bool FetchCache::flushForDecay(u32bit line, u32bit way)
 
 		/*  Mark line as valid.  */
 		valid[way][line] = FALSE;
-		
+
 		// These two are for the decay
 		waitForDecay[way][line] = TRUE;
-		
+
 		accessCycles[way][line].lastOn = cycle;
-		
+
 		GPU_DEBUG(
 			printf("DECAY (%s) => line (%d, %d) flush requested | line reserves = %d | free requests = %d\n",
-				name, way, line,  reserve[way][line], freeRequests);
+			name, way, line, reserve[way][line], freeRequests);
 		)
 
 		return true;
@@ -1848,18 +1842,9 @@ bool FetchCache::flushForDecay(u32bit line, u32bit way)
 
 void FetchCache::onDecayedFetch(u32bit oldTag, u32bit way, u32bit line)
 {
-	u64bit offCycles = cycle - accessCycles[way][line].lastOn;
 	if (oldTag == tags[way][line])
 	{
-		refetchesAfterDecay++;
-		badOffCycles += offCycles;
-		
-		//printf("\n%s\t=> Refetched %x after decay at line (%d, %d) | Good Off Cycles = %d | Bad Off Cycles = %d | BtoG Ratio = %.2f%%\n",
-		//	name, line2address(way, line), way, line, goodOffCycles, badOffCycles, (double)badOffCycles/(double)goodOffCycles * 100.0);
-	}
-	else
-	{
-		goodOffCycles += offCycles;
+		decayedRefetches++;
 	}
 	decayed[way][line] = FALSE;
 }

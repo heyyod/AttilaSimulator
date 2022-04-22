@@ -284,6 +284,12 @@ public:
 
     void clock(u64bit cycle);
 
+#if KONDAMASK
+    FetchCache* GetFetchCache()
+    {
+        return cache;
+    }
+#endif
 };
 
 } // namespace gpu3d

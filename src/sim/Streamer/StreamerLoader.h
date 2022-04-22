@@ -321,6 +321,13 @@ public:
      */
      
     VertexInputMap &getVertexInputInfo();
+
+#if KONDAMASK
+    FetchCache* GetFetchCache()
+    {
+        return cache->GetFetchCache();
+    }
+#endif
 };
 
 } // namespace gpu3d

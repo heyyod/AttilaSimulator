@@ -477,6 +477,10 @@ public:
      */
      
     void setValidationMode(bool enable);
+
+#if KONDAMASK
+    u64bit simStartCycle = 0;
+#endif
         
 };
 

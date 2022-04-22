@@ -25,7 +25,7 @@ StatisticsManager::StatisticsManager() :
     startCycle(0), nCycles(1000), nextDump(999), lastCycle(-1), autoReset(true),
     osCycle(NULL), osFrame(NULL), osBatch(NULL), cyclesFlagNamesDumped(false)
 {
-	InitializeCacheAccessesCSV();
+	InitializeOutputFiles();
 }
 
 StatisticsManager& StatisticsManager::instance()
@@ -345,28 +345,96 @@ void StatisticsManager::LogCacheAccess(char* name, u64bit address, CACHE_LOG_INF
 	osCacheAccesses << std::endl;
 }
 
-void StatisticsManager::InitializeCacheAccessesCSV()
+void StatisticsManager::LogFrameDecayStats(char* name, u32bit frame, u32bit frameCycles, cache_decay_stats *stats, u32bit count)
 {
-	if (!KONDAMASK_CACHE_LOG_CSV)
-		return;
-
-	osCacheAccesses.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
-	if (!osCacheAccesses.is_open())
+	// In stats:
+	// 1 In
+	// 4 Tex L0
+	// 4 Tex L1
+	// 4 Z
+	// 4 Color
+	// 17 Total
+	// +
+	// texL0Avg, texL1Avg, zAvg, Color Avg
+	// 21 Total
+	
+	/*
+	* osDecayStats << "
+	* Trace;Frame;Cycles;
+	* InDecay;InOff;InDecayedRefetches;
+	* TexL0Decay;TexL1Decay;
+	* TexL0Off0;TexL0DecayedRefetches;TexL1Off0;TexL0DecayedRefetches;TexL0Off1;TexL0DecayedRefetches;TexL1Off1;TexL0DecayedRefetches;TexL0Off2;TexL0DecayedRefetches;TexL1Off2;TexL0DecayedRefetches;TexL0Off3;TexL0DecayedRefetches;TexL1Off3;TexL0DecayedRefetches;TexL0OffAvg;TexL0DecayedRefetchesAvg;TexL1OffAvg;TexL1DecayedRefetches;ZDecay;ZOff0;ZDecayedRefetches0;ZOff1;ZDecayedRefetches1;ZOff2;ZDecayedRefetches2;ZOff3;ZDecayedRefetches3;ZOffAvg;ZDecayedRefetchesAvg;ColorDecay;ColorOff0;ColorDecayedRefetches0;ColorOff1;ColorDecayedRefetches1;ColorOff2;ColorDecayedRefetches2;ColorOff3;ColorDecayedRefetches3;ColorOffAvg;ColorDecayedRefetchesAvg;" << std::endl;
+	*/
+	//              Trace           Frame            Cycles;
+	osDecayStats << Column(name) << Column(frame) << Column(frameCycles);
+	
+	//              InDecay                         InOff                             InDecayedRefetches;
+	osDecayStats << Column(stats[0].decayCycles) << Column(stats[0].offPercentage) << Column(stats[0].decayedRefetchesPercentage);
+	
+	//              TexL0Decay                      TexL1Decay
+	osDecayStats << Column(stats[1].decayCycles) << Column(stats[2].decayCycles);
+	
+	u32bit start = 1;
+	for (u32bit i = start; i < start + 10; i += 2)
 	{
-		printf("Couldn't open out/CacheAccesses.csv.\n");
-		return;
+		//              TexL0Offi                         TexL0DecayedRefetchesi;
+		osDecayStats << Column(stats[i].offPercentage) << Column(stats[i].decayedRefetchesPercentage);
+		
+		//              TexL1Offi                           TexL1DecayedRefetchesi;
+		osDecayStats << Column(stats[i+1].offPercentage) << Column(stats[i+1].decayedRefetchesPercentage);
 	}
-	osCacheAccesses << "Cycle;Cache Unit;Address;Hit/Miss;Set;Way;InsertToHitCycles;HitToHitCycles;CacheIdleCycles;CacheOffCycles" << std::endl;
+	
+	start = 11;  // Z Decay cycles
+	osDecayStats << Column(stats[start].decayCycles);
+	for (u32bit i = start; i < start + 5; i += 1)
+	{
+		//              ZOffi                         ZDecayedRefetchesi;
+		osDecayStats << Column(stats[i].offPercentage) << Column(stats[i].decayedRefetchesPercentage);
+	}
+	
+	start = 16;		// Color decay Cycles
+	osDecayStats << Column(stats[start].decayCycles);
+	for (u32bit i = start; i < start + 5; i += 1)
+	{
+		//              ColorOffi                         ColorDecayedRefetchesi;
+		osDecayStats << Column(stats[i].offPercentage) << Column(stats[i].decayedRefetchesPercentage);
+	}
+	
+	osDecayStats << std::endl;
 }
 
-void StatisticsManager::SaveCacheAccessesFile()
+void StatisticsManager::InitializeOutputFiles()
 {
-	if (!KONDAMASK_CACHE_LOG_CSV)
-		return;
+	if (KONDAMASK_CACHE_LOG_CSV)
+	{
+		osCacheAccesses.open("out/CacheAccesses.csv", std::ofstream::out | std::ofstream::trunc);
+		if (!osCacheAccesses.is_open())
+		{
+			printf("Couldn't open out/CacheAccesses.csv.\n");
+			return;
+		}
+		osCacheAccesses << "Cycle;Cache Unit;Address;Hit/Miss;Set;Way;InsertToHitCycles;HitToHitCycles;CacheIdleCycles;CacheOffCycles" << std::endl;
+	}
 
+	osDecayStats.open("out/DecayStats.csv", std::ofstream::out | std::ofstream::trunc);
+	if (!osDecayStats.is_open())
+	{
+		printf("Couldn't open out/DecayStats.csv.\n");
+		return;
+	}
+	osDecayStats << "Trace;Frame;Cycles;InDecay;InOff;InDecayedRefetches;TexL0Decay;TexL1Decay;TexL0Off0;TexL0DecayedRefetches0;TexL1Off0;TexL0DecayedRefetches0;TexL0Off1;TexL0DecayedRefetches1;TexL1Off1;TexL0DecayedRefetches1;TexL0Off2;TexL0DecayedRefetches2;TexL1Off2;TexL0DecayedRefetches2;TexL0Off3;TexL0DecayedRefetches3;TexL1Off3;TexL0DecayedRefetches3;TexL0OffAvg;TexL0DecayedRefetchesAvg;TexL1OffAvg;TexL1DecayedRefetchesAvg;ZDecay;ZOff0;ZDecayedRefetches0;ZOff1;ZDecayedRefetches1;ZOff2;ZDecayedRefetches2;ZOff3;ZDecayedRefetches3;ZOffAvg;ZDecayedRefetchesAvg;ColorDecay;ColorOff0;ColorDecayedRefetches0;ColorOff1;ColorDecayedRefetches1;ColorOff2;ColorDecayedRefetches2;ColorOff3;ColorDecayedRefetches3;ColorOffAvg;ColorDecayedRefetchesAvg;" << std::endl;
+}
+
+void StatisticsManager::SaveOutputFiles()
+{
 	if (osCacheAccesses.is_open())
 	{
 		osCacheAccesses.close();
+	}
+
+	if (osDecayStats.is_open())
+	{
+		osDecayStats.close();
 	}
 }
 #endif

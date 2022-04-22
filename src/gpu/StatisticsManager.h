@@ -150,6 +150,14 @@ namespace gpu3d
 
 // KONDAMASK
 			std::ofstream osCacheAccesses;
+			std::ofstream osDecayStats;
+
+			struct cache_decay_stats
+			{
+				u64bit decayCycles;
+				double offPercentage;
+				double decayedRefetchesPercentage;
+			};
 
 			enum CACHE_LOG_INFO
 			{
@@ -168,10 +176,12 @@ namespace gpu3d
 
 			void LogCacheAccess(char* name, u64bit address, CACHE_LOG_INFO logInfo, u32bit set, u32bit way,
 				u64bit thisCycle, u64bit insertCycle = 0, u64bit lastHitCycle = 0, u64bit lastOnCycle = 0, bool isReplace = false);
+		
+			void LogFrameDecayStats(char* name, u32bit frame, u32bit frameCycles, cache_decay_stats *stats, u32bit count);
+				
+			void InitializeOutputFiles();
 
-			void InitializeCacheAccessesCSV();
-
-			void SaveCacheAccessesFile();
+			void SaveOutputFiles();
 		};
 
 

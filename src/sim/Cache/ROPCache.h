@@ -728,7 +728,11 @@ namespace gpu3d
 
 		void stallReport(u64bit cycle, string &stallReport);
 
+#if KONDAMASK
+		FetchCache *GetFetchCache() { return cache; }
+#endif
 	};
+
 
 } // namespace gpu3d
 
