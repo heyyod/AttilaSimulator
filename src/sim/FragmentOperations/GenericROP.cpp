@@ -1655,9 +1655,7 @@ void GenericROP::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManag
 	FetchCache *cache = ropCache->GetFetchCache();
 	decayStats[0].decayCycles = cache->decayCycles;
 	decayStats[0].offPercentage += (double)cache->linesOffSum / (double)frameCycles / (double)cache->getLinesCount();
-	decayStats[0].decayedRefetchesPercentage += (double)cache->decayedRefetches / (double)cache->totalMisses;
 
     cache->linesOffSum = 0;
-    cache->decayedRefetches = 0;
 }
 #endif

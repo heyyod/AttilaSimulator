@@ -359,45 +359,53 @@ void StatisticsManager::LogFrameDecayStats(char* name, u32bit frame, u32bit fram
 	// 21 Total
 	
 	/*
-	* osDecayStats << "
-	* Trace;Frame;Cycles;
-	* InDecay;InOff;InDecayedRefetches;
-	* TexL0Decay;TexL1Decay;
-	* TexL0Off0;TexL0DecayedRefetches;TexL1Off0;TexL0DecayedRefetches;TexL0Off1;TexL0DecayedRefetches;TexL1Off1;TexL0DecayedRefetches;TexL0Off2;TexL0DecayedRefetches;TexL1Off2;TexL0DecayedRefetches;TexL0Off3;TexL0DecayedRefetches;TexL1Off3;TexL0DecayedRefetches;TexL0OffAvg;TexL0DecayedRefetchesAvg;TexL1OffAvg;TexL1DecayedRefetches;ZDecay;ZOff0;ZDecayedRefetches0;ZOff1;ZDecayedRefetches1;ZOff2;ZDecayedRefetches2;ZOff3;ZDecayedRefetches3;ZOffAvg;ZDecayedRefetchesAvg;ColorDecay;ColorOff0;ColorDecayedRefetches0;ColorOff1;ColorDecayedRefetches1;ColorOff2;ColorDecayedRefetches2;ColorOff3;ColorDecayedRefetches3;ColorOffAvg;ColorDecayedRefetchesAvg;" << std::endl;
+	Trace;Frame;Cycles;
+	InDecay;InOff;
+	TexL0Decay;TexL0Off0;TexL0Off1;TexL0Off2;TexL0Off3;TexL0OffAvg;
+	TexL1Decay;TexL1Off0;TexL1Off1;TexL1Off2;TexL1Off3;TexL1OffAvg;
+	ZDecay;ZOff0;ZOff1;ZOff2;ZOff3;ZOffAvg;
+	ColorDecay;ColorOff0;ColorOff1;ColorOff2;ColorOff3;ColorOffAvg;
 	*/
 	//              Trace           Frame            Cycles;
 	osDecayStats << Column(name) << Column(frame) << Column(frameCycles);
 	
-	//              InDecay                         InOff                             InDecayedRefetches;
-	osDecayStats << Column(stats[0].decayCycles) << Column(stats[0].offPercentage) << Column(stats[0].decayedRefetchesPercentage);
-	
-	//              TexL0Decay                      TexL1Decay
-	osDecayStats << Column(stats[1].decayCycles) << Column(stats[2].decayCycles);
+	//              InDecay                         InOff                          
+	osDecayStats << Column(stats[0].decayCycles) << Column(stats[0].offPercentage);
 	
 	u32bit start = 1;
+
+	//              TexL0Decay                  
+	osDecayStats << Column(stats[1].decayCycles);
 	for (u32bit i = start; i < start + 10; i += 2)
 	{
-		//              TexL0Offi                         TexL0DecayedRefetchesi;
-		osDecayStats << Column(stats[i].offPercentage) << Column(stats[i].decayedRefetchesPercentage);
-		
-		//              TexL1Offi                           TexL1DecayedRefetchesi;
-		osDecayStats << Column(stats[i+1].offPercentage) << Column(stats[i+1].decayedRefetchesPercentage);
+		//              TexL0Offi                        
+		osDecayStats << Column(stats[i].offPercentage);
 	}
+
+	// 				TexL1Decay
+	osDecayStats << Column(stats[2].decayCycles);
+	for (u32bit i = start; i < start + 10; i += 2)
+	{		
+		//              TexL1Offi                        
+		osDecayStats << Column(stats[i+1].offPercentage);
+	}
+
 	
+
 	start = 11;  // Z Decay cycles
 	osDecayStats << Column(stats[start].decayCycles);
 	for (u32bit i = start; i < start + 5; i += 1)
 	{
-		//              ZOffi                         ZDecayedRefetchesi;
-		osDecayStats << Column(stats[i].offPercentage) << Column(stats[i].decayedRefetchesPercentage);
+		//              ZOffi                      
+		osDecayStats << Column(stats[i].offPercentage);
 	}
 	
 	start = 16;		// Color decay Cycles
 	osDecayStats << Column(stats[start].decayCycles);
 	for (u32bit i = start; i < start + 5; i += 1)
 	{
-		//              ColorOffi                         ColorDecayedRefetchesi;
-		osDecayStats << Column(stats[i].offPercentage) << Column(stats[i].decayedRefetchesPercentage);
+		//              ColorOffi                     
+		osDecayStats << Column(stats[i].offPercentage);
 	}
 	
 	osDecayStats << std::endl;
@@ -422,7 +430,7 @@ void StatisticsManager::InitializeOutputFiles()
 		printf("Couldn't open out/DecayStats.csv.\n");
 		return;
 	}
-	osDecayStats << "Trace;Frame;Cycles;InDecay;InOff;InDecayedRefetches;TexL0Decay;TexL1Decay;TexL0Off0;TexL0DecayedRefetches0;TexL1Off0;TexL0DecayedRefetches0;TexL0Off1;TexL0DecayedRefetches1;TexL1Off1;TexL0DecayedRefetches1;TexL0Off2;TexL0DecayedRefetches2;TexL1Off2;TexL0DecayedRefetches2;TexL0Off3;TexL0DecayedRefetches3;TexL1Off3;TexL0DecayedRefetches3;TexL0OffAvg;TexL0DecayedRefetchesAvg;TexL1OffAvg;TexL1DecayedRefetchesAvg;ZDecay;ZOff0;ZDecayedRefetches0;ZOff1;ZDecayedRefetches1;ZOff2;ZDecayedRefetches2;ZOff3;ZDecayedRefetches3;ZOffAvg;ZDecayedRefetchesAvg;ColorDecay;ColorOff0;ColorDecayedRefetches0;ColorOff1;ColorDecayedRefetches1;ColorOff2;ColorDecayedRefetches2;ColorOff3;ColorDecayedRefetches3;ColorOffAvg;ColorDecayedRefetchesAvg;" << std::endl;
+	osDecayStats << "Trace;Frame;Cycles;InDecay;InOff;TexL0Decay;TexL0Off0;TexL0Off1;TexL0Off2;TexL0Off3;TexL0OffAvg;TexL1Decay;TexL1Off0;TexL1Off1;TexL1Off2;TexL1Off3;TexL1OffAvg;ZDecay;ZOff0;ZOff1;ZOff2;ZOff3;ZOffAvg;ColorDecay;ColorOff0;ColorOff1;ColorOff2;ColorOff3;ColorOffAvg;" << std::endl;
 }
 
 void StatisticsManager::SaveOutputFiles()

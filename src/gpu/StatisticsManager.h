@@ -156,7 +156,6 @@ namespace gpu3d
 			{
 				u64bit decayCycles;
 				double offPercentage;
-				double decayedRefetchesPercentage;
 			};
 
 			enum CACHE_LOG_INFO

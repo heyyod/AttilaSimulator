@@ -4228,22 +4228,12 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 						(&tex1)[0].offPercentage +
 						(&tex2)[0].offPercentage +
 						(&tex3)[0].offPercentage) / 4.0;
-				texL0Avg.decayedRefetchesPercentage =
-					((&tex0)[1].decayedRefetchesPercentage +
-						(&tex1)[1].decayedRefetchesPercentage +
-						(&tex2)[1].decayedRefetchesPercentage +
-						(&tex3)[1].decayedRefetchesPercentage) / 4.0;
 				
 				texL1Avg.offPercentage = 
 					((&tex0)[1].offPercentage + 
 						(&tex1)[1].offPercentage + 
 						(&tex2)[1].offPercentage + 
 						(&tex3)[1].offPercentage) / 4.0;
-				texL1Avg.decayedRefetchesPercentage = 
-					((&tex0)[1].decayedRefetchesPercentage + 
-						(&tex1)[1].decayedRefetchesPercentage + 
-						(&tex2)[1].decayedRefetchesPercentage + 
-						(&tex3)[1].decayedRefetchesPercentage) / 4.0;	
 				
 				GPUStatistics::StatisticsManager::cache_decay_stats &z0 = stats[11];
 				GPUStatistics::StatisticsManager::cache_decay_stats &z1 = stats[12];
@@ -4259,11 +4249,6 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 						z1.offPercentage + 
 						z2.offPercentage + 
 						z3.offPercentage) / 4.0;
-				zAvg.decayedRefetchesPercentage = 
-					(z0.decayedRefetchesPercentage + 
-						z1.decayedRefetchesPercentage + 
-						z2.decayedRefetchesPercentage + 
-						z3.decayedRefetchesPercentage) / 4.0;	
 				
 				GPUStatistics::StatisticsManager::cache_decay_stats &color0 = stats[16];
 				GPUStatistics::StatisticsManager::cache_decay_stats &color1 = stats[17];
@@ -4279,11 +4264,6 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 						color1.offPercentage + 
 						color2.offPercentage + 
 						color3.offPercentage) / 4.0;
-				colorAvg.decayedRefetchesPercentage = 
-					(color0.decayedRefetchesPercentage + 
-						color1.decayedRefetchesPercentage + 
-						color2.decayedRefetchesPercentage + 
-						color3.decayedRefetchesPercentage) / 4.0;
 				
 				GPUStatistics::StatisticsManager::instance().LogFrameDecayStats(simP.inputFile, frameCounter, frameCycles, stats, 21);
 #endif

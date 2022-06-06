@@ -265,19 +265,16 @@ FetchCache64::FetchCache64(u32bit ways, u32bit lines, u32bit lineBytes, u32bit r
 #if KONDAMASK_CACHE_DECAY
 	decayCycles = decayCyclesIn;
 	accessCycles = new cache_line_cycle_info * [numWays];
-	decayed = new bool * [numWays];
 	isOff = new bool* [numWays];
 
 	for (i = 0; i < numWays; i++)
 	{
 		accessCycles[i] = new cache_line_cycle_info[numLines];
-		decayed[i] = new bool[lineSize];
 		isOff[i] = new bool[lineSize];
 
 		for (j = 0; j < numLines; j++)
 		{
 			accessCycles[i][j].lastOn = 0;
-			decayed[i][j] = false;
 			isOff[i][j] = true;
 		}
 	}
@@ -333,6 +330,8 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 			accessCycles[way][line].lastHit);
 		accessCycles[way][line].lastHit = cycle;
 
+		hitCount++;
+
 		/*  Line was reserved.  */
 		return TRUE;
 	}
@@ -364,17 +363,10 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
-				totalMisses++;
-				u32bit oldTag = tags[way][line];
-				tags[way][line] = tag(address);
+				missCount++;
 				isOff[way][line] = false;
-				if (decayed[way][line])
-				{
-					onDecayedFetch(oldTag, way, line);
-				}
-#else
-				tags[way][line] = tag(address);
 #endif
+				tags[way][line] = tag(address);
 
 				stats.LogCacheAccess(
 					this->name, address,
@@ -557,6 +549,8 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 			accessCycles[way][line].lastHit);
 		accessCycles[way][line].lastHit = cycle;
 
+		hitCount++;
+
 		/*  Line was reserved.  */
 		return TRUE;
 	}
@@ -607,17 +601,10 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
-				totalMisses++;
-				u32bit oldTag = tags[way][line];
-				tags[way][line] = tag(address);
+				missCount++;
 				isOff[way][line] = false;
-				if (decayed[way][line])
-				{
-					onDecayedFetch(oldTag, way, line);
-				}
-#else
-				tags[way][line] = tag(address);
 #endif
+				tags[way][line] = tag(address);
 
 				stats.LogCacheAccess(
 					this->name, address,
@@ -1533,7 +1520,17 @@ void FetchCache64::setDebug(bool enable)
 
 #if KONDAMASK
 void FetchCache64::decay()
-{
+{	
+	if ((cycle + 1) % 10000 == 0)
+	{
+		std::cout << 
+			"\n" << cycle << " | " << name << 
+			" Accesses: " << missCount + hitCount <<
+			" Misses: " << missCount << 
+			" Hits: " << hitCount << 
+			"\n";
+	}
+
 	if (!KONDAMASK_CACHE_DECAY)
 		return;
 
@@ -1563,14 +1560,5 @@ void FetchCache64::decay()
 			}
 		}
 	}
-}
-
-void FetchCache64::onDecayedFetch(u32bit oldTag, u32bit way, u32bit line)
-{
-	if (oldTag == tags[way][line])
-	{
-		decayedRefetches++;
-	}
-	decayed[way][line] = FALSE;
 }
 #endif

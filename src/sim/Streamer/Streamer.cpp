@@ -1202,12 +1202,9 @@ void gpu3d::Streamer::onEndOfFrame(u64bit frameCycles, GPUStatistics::Statistics
 		FetchCache *cache = streamerLoader[i]->GetFetchCache();
 		decayStats[0].decayCycles = cache->decayCycles;
 		decayStats[0].offPercentage += (double)cache->linesOffSum / (double)frameCycles / (double)cache->getLinesCount();
-		decayStats[0].decayedRefetchesPercentage += (double)cache->decayedRefetches / (double)cache->totalMisses;
         
         cache->linesOffSum = 0;
-        cache->decayedRefetches = 0;
     }
 	decayStats[0].offPercentage /= (double)streamerLoaderUnits;
-	decayStats[0].decayedRefetchesPercentage /= (double)streamerLoaderUnits;
 }
 #endif

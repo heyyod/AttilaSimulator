@@ -3421,28 +3421,21 @@ void TextureUnit::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsMana
 		FetchCache64 *cacheL0 = textCacheL2->GetFetchCacheL0();
 		decayStats[0].decayCycles = cacheL0->decayCycles;
 		decayStats[0].offPercentage += (double)cacheL0->linesOffSum / (double)frameCycles / (double)cacheL0->getLinesCount();
-		decayStats[0].decayedRefetchesPercentage += (double)cacheL0->decayedRefetches / (double)cacheL0->totalMisses;
 		
 		FetchCache *cacheL1 = textCacheL2->GetFetchCacheL1();
 		decayStats[1].decayCycles = cacheL1->decayCycles;
 		decayStats[1].offPercentage += (double)cacheL1->linesOffSum / (double)frameCycles / (double)cacheL1->getLinesCount();
-		decayStats[1].decayedRefetchesPercentage += (double)cacheL1->decayedRefetches / (double)cacheL1->totalMisses;
-	
-		cacheL0->linesOffSum = 0;
-		cacheL0->decayedRefetches = 0;
 
+		cacheL0->linesOffSum = 0;
 		cacheL1->linesOffSum = 0;
-		cacheL1->decayedRefetches = 0;
 	}
 	else
 	{
 		FetchCache64 *cacheL0 = textCacheL1->GetFetchCache();
 		decayStats[0].decayCycles = cacheL0->decayCycles;
 		decayStats[0].offPercentage += (double)cacheL0->linesOffSum / (double)frameCycles / (double)cacheL0->getLinesCount();
-		decayStats[0].decayedRefetchesPercentage += (double)cacheL0->decayedRefetches / (double)cacheL0->totalMisses;
 	
 		cacheL0->linesOffSum = 0;
-		cacheL0->decayedRefetches = 0;
 	}
 }
 #endif

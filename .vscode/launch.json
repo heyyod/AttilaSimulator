@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/bin/bGPU-Uni",
             "args": [],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${workspaceFolder}/bin",
             "environment": [],
             "externalConsole": false,
