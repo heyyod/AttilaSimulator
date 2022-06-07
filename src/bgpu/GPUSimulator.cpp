@@ -4188,9 +4188,11 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 			if (commProc->isSwap())
 			{
 #if KONDAMASK_CACHE_DECAY
+				u64bit invalidCycles = 0;
 				if (!renderedFirstFrame)
 				{
 					lastFrameCycle = commProc->simStartCycle;
+					invalidCycles = commProc->simStartCycle;
 					renderedFirstFrame = true;
 				}
 				u64bit frameCycles = cycle - lastFrameCycle;
@@ -4219,10 +4221,10 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 				GPUStatistics::StatisticsManager::cache_decay_stats &tex3 = stats[7];
 				GPUStatistics::StatisticsManager::cache_decay_stats &texL0Avg = stats[9];
 				GPUStatistics::StatisticsManager::cache_decay_stats &texL1Avg = stats[10];
-				boxArray[8]->onEndOfFrame(frameCycles, &tex0); // FS0TU0
-				boxArray[11]->onEndOfFrame(frameCycles, &tex1); // FS1TU0
-				boxArray[14]->onEndOfFrame(frameCycles, &tex2); // FS2TU0
-				boxArray[17]->onEndOfFrame(frameCycles, &tex3); // FS3TU0    
+				boxArray[8]->onEndOfFrame(frameCycles, &tex0, invalidCycles); // FS0TU0
+				boxArray[11]->onEndOfFrame(frameCycles, &tex1, invalidCycles); // FS1TU0
+				boxArray[14]->onEndOfFrame(frameCycles, &tex2, invalidCycles); // FS2TU0
+				boxArray[17]->onEndOfFrame(frameCycles, &tex3, invalidCycles); // FS3TU0    
 				texL0Avg.offPercentage =
 					((&tex0)[0].offPercentage +
 						(&tex1)[0].offPercentage +
@@ -4240,10 +4242,10 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 				GPUStatistics::StatisticsManager::cache_decay_stats &z2 = stats[13];
 				GPUStatistics::StatisticsManager::cache_decay_stats &z3 = stats[14];
 				GPUStatistics::StatisticsManager::cache_decay_stats &zAvg = stats[15];
-				boxArray[18]->onEndOfFrame(frameCycles, &z0); // Z0
-				boxArray[20]->onEndOfFrame(frameCycles, &z1); // Z1
-				boxArray[22]->onEndOfFrame(frameCycles, &z2); // Z2
-				boxArray[24]->onEndOfFrame(frameCycles, &z3); // Z3
+				boxArray[18]->onEndOfFrame(frameCycles, &z0, invalidCycles); // Z0
+				boxArray[20]->onEndOfFrame(frameCycles, &z1, invalidCycles); // Z1
+				boxArray[22]->onEndOfFrame(frameCycles, &z2, invalidCycles); // Z2
+				boxArray[24]->onEndOfFrame(frameCycles, &z3, invalidCycles); // Z3
 				zAvg.offPercentage = 
 					(z0.offPercentage + 
 						z1.offPercentage + 
@@ -4255,10 +4257,10 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 				GPUStatistics::StatisticsManager::cache_decay_stats &color2 = stats[18];
 				GPUStatistics::StatisticsManager::cache_decay_stats &color3 = stats[19];
 				GPUStatistics::StatisticsManager::cache_decay_stats &colorAvg = stats[20];						
-				boxArray[19]->onEndOfFrame(frameCycles, &color0); // C0
-				boxArray[21]->onEndOfFrame(frameCycles, &color1); // C1
-				boxArray[23]->onEndOfFrame(frameCycles, &color2); // C2
-				boxArray[25]->onEndOfFrame(frameCycles, &color3); // C3
+				boxArray[19]->onEndOfFrame(frameCycles, &color0, invalidCycles); // C0
+				boxArray[21]->onEndOfFrame(frameCycles, &color1, invalidCycles); // C1
+				boxArray[23]->onEndOfFrame(frameCycles, &color2, invalidCycles); // C2
+				boxArray[25]->onEndOfFrame(frameCycles, &color3, invalidCycles); // C3
 				colorAvg.offPercentage = 
 					(color0.offPercentage + 
 						color1.offPercentage + 

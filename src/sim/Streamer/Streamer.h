@@ -265,7 +265,7 @@ namespace gpu3d
 		* decay stats that are passed. It's a ptr because the texture
 		* unit hase 2 caches: L0 and L1
 		*/
-		void onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats);
+		void onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats, u64bit invalidCycles = 0);
 #endif
 
 	};

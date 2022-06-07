@@ -196,7 +196,7 @@
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>None</DebugInformationFormat>
       <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4267;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6271;6385;6386;26451;26495;26812</DisableSpecificWarnings>
       <BufferSecurityCheck>
       </BufferSecurityCheck>
@@ -233,7 +233,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <WarningLevel>Level1</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>None</DebugInformationFormat>
       <DisableSpecificWarnings>4018;4065;4077;4100;4101;4146;4189;4244;4267;4290;4389;4456;4458;4477;4505;4701;4715;4996;6001;6011;6201;6328;6271;6385;6386;26451;26495;26812</DisableSpecificWarnings>
     </ClCompile>
     <Link>

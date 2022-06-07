@@ -1650,11 +1650,12 @@ void GenericROP::stallReport(u64bit cycle, string &stallReport)
 }
 
 #if KONDAMASK
-void GenericROP::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats)
+void GenericROP::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats, u64bit invalidCycles)
 {
 	FetchCache *cache = ropCache->GetFetchCache();
+	u64bit linesOff = cache->linesOffSum - cache->getLinesCount() * invalidCycles;
 	decayStats[0].decayCycles = cache->decayCycles;
-	decayStats[0].offPercentage += (double)cache->linesOffSum / (double)frameCycles / (double)cache->getLinesCount();
+	decayStats[0].offPercentage += (double)linesOff / (double)frameCycles / (double)cache->getLinesCount();
 
     cache->linesOffSum = 0;
 }

@@ -600,7 +600,7 @@ cycle, numFreeFilters, numToFilter, numFiltered);
 	/*  Check if shader state is reset.  */
 	if (state == SH_RESET)
 	{
-		GPU_DEBUG_BOX(printf("%s => RESET state.\n", getName()); )
+		GPU_DEBUG_BOX(printf("%s => RESET state.\n", getName());)
 
 		/*  Set default register values.  */
 		for (i = 0; i < MAX_TEXTURES; i++)
@@ -726,7 +726,7 @@ cycle, numFreeFilters, numToFilter, numFiltered);
 	}
 	else
 	{
-		GPU_DEBUG_BOX(printf("%s => READY state.\n", getName()); )
+		GPU_DEBUG_BOX(printf("%s => READY state.\n", getName());)
 
 		/*  Send back texture accesses result to the Shader Decode Execute unit.  */
 		sendTextureSample(cycle);
@@ -1658,7 +1658,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_ENABLE " << data.booleanVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_ENABLE " << data.booleanVal < < endl;)
 
 			break;
 
@@ -1699,7 +1699,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MODE " << data.txMode < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MODE " << data.txMode < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -1767,7 +1767,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureWidth[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WIDTH " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WIDTH " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -1790,7 +1790,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureHeight[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_HEIGHT " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_HEIGHT " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -1813,7 +1813,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureDepth[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_DEPTH " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_DEPTH " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -1836,7 +1836,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureWidth2[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WIDTH2 " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WIDTH2 " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -1859,7 +1859,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureHeight2[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_HEIGHT2 " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_HEIGHT2 " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -1882,7 +1882,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureDepth2[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_DEPTH2 " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_DEPTH2 " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -1905,7 +1905,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureBorder[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_BORDER " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_BORDER " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2096,7 +2096,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_FORMAT " << data.txFormat < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_FORMAT " << data.txFormat < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2119,7 +2119,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				textureReverse[subReg]?"TRUE":"FALSE");
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_REVERSE " << data.booleanVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_REVERSE " << data.booleanVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2142,7 +2142,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				textD3D9ColorConv[subReg]?"TRUE":"FALSE");
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_D3D9_COLOR_CONV " << data.booleanVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_D3D9_COLOR_CONV " << data.booleanVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2165,7 +2165,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				textD3D9VInvert[subReg]?"TRUE":"FALSE");
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_D3D9_V_INV " << data.booleanVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_D3D9_V_INV " << data.booleanVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2230,7 +2230,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_COMPRESSION " << data.txCompression < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_COMPRESSION " << data.txCompression < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2267,7 +2267,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_BLOCKING " << data.txBlocking < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_BLOCKING " << data.txBlocking < < endl;)
 
 			//  Write register in the Texture Emulator.
 			txEmul.writeRegister(reg, subReg, data);
@@ -2351,7 +2351,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WRAP_S " << data.txClamp < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WRAP_S " << data.txClamp < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2401,7 +2401,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WRAP_T " << data.txClamp < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WRAP_T " << data.txClamp < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2451,7 +2451,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WRAP_R " << data.txClamp < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_WRAP_R " << data.txClamp < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2473,7 +2473,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				printf("%s => Writing register GPU_TEXTURE_NON_NORMALIZED[%d] = ", getName(), subReg, data.booleanVal ? "T" : "F");
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_NON_NORMALIZED " << data.booleanVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_NON_NORMALIZED " << data.booleanVal < < endl;)
 
 			//  Write register in the Texture Emulator.
 			txEmul.writeRegister(reg, subReg, data);
@@ -2526,7 +2526,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MIN_FILTER " << data.txFilter < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MIN_FILTER " << data.txFilter < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2584,7 +2584,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MAG_FILTER " << data.txFilter < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MAG_FILTER " << data.txFilter < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2607,7 +2607,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				printf("%s => Write GPU_TEXTURE_ENABLE_COMPARISON[%d] = %s.\n", getName(), subReg, data.booleanVal ? "T" : "F");
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " ENABLE_COMPARISON " << data.booleanVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " ENABLE_COMPARISON " << data.booleanVal < < endl;)
 
 			//  Write register in the Texture Emulator.
 			txEmul.writeRegister(reg, subReg, data);
@@ -2666,7 +2666,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				}
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " COMPARISON_FUNCTION " << data.compare < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " COMPARISON_FUNCTION " << data.compare < < endl;)
 
 			//  Write register in the Texture Emulator.
 			txEmul.writeRegister(reg, subReg, data);
@@ -2688,7 +2688,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				printf("%s => Write GPU_TEXTURE_SRGB[%d] = %s.\n", getName(), subReg, data.booleanVal ? "T" : "F");
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " SRGB " << data.booleanVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " SRGB " << data.booleanVal < < endl;)
 
 			//  Write register in the Texture Emulator.
 			txEmul.writeRegister(reg, subReg, data);
@@ -2711,7 +2711,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureMinLOD[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MIN_LOD " << *((u32bit *) &data.f32Val) << endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MIN_LOD " << *((u32bit *) &data.f32Val) << endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2734,7 +2734,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureMaxLOD[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MAX_LOD " << *((u32bit *) &data.f32Val) << endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MAX_LOD " << *((u32bit *) &data.f32Val) << endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2757,7 +2757,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureLODWays[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_LOD_BIAS " << *((u32bit *) &data.f32Val) << endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_LOD_BIAS " << *((u32bit *) &data.f32Val) << endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2780,7 +2780,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureMinLevel[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MIN_LEVEL " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MIN_LEVEL " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2803,7 +2803,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureMaxLevel[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MAX_LEVEL " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_MAX_LEVEL " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2827,7 +2827,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, textureUnitLODWays[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_UNIT_LOD_BIAS " << *((u32bit *) &data.f32Val) << endl; )
+			GPU_TEX_TRACE(texTrace << "UPD " << subReg << " TEX_UNIT_LOD_BIAS " << *((u32bit *) &data.f32Val) << endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -2858,7 +2858,7 @@ void TextureUnit::processRegisterWrite(u64bit cycle, GPURegister reg, u32bit sub
 				getName(), subReg, maxAnisotropy[subReg]);
 			)
 
-			GPU_TEX_TRACE(texTrace < < "UPD " << subReg < < " TEX_MAX_ANISO " << data.uintVal < < endl; )
+			GPU_TEX_TRACE(texTrace < < "UPD " << subReg < < " TEX_MAX_ANISO " << data.uintVal < < endl;)
 
 			/*  Write register in the Texture Emulator.  */
 			txEmul.writeRegister(reg, subReg, data);
@@ -3414,17 +3414,19 @@ void TextureUnit::printTextureAccessInfo(TextureAccess *texAccess)
 }
 
 #if KONDAMASK
-void TextureUnit::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats)
+void TextureUnit::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats, u64bit invalidCycles)
 {
 	if (useTwoLevelCache)
 	{
 		FetchCache64 *cacheL0 = textCacheL2->GetFetchCacheL0();
+		u64bit linesOffL0 = cacheL0->linesOffSum - cacheL0->getLinesCount() * invalidCycles;
 		decayStats[0].decayCycles = cacheL0->decayCycles;
-		decayStats[0].offPercentage += (double)cacheL0->linesOffSum / (double)frameCycles / (double)cacheL0->getLinesCount();
-		
+		decayStats[0].offPercentage += (double)linesOffL0 / (double)frameCycles / (double)cacheL0->getLinesCount();
+
 		FetchCache *cacheL1 = textCacheL2->GetFetchCacheL1();
+		u64bit linesOffL1 = cacheL1->linesOffSum - cacheL1->getLinesCount() * invalidCycles;
 		decayStats[1].decayCycles = cacheL1->decayCycles;
-		decayStats[1].offPercentage += (double)cacheL1->linesOffSum / (double)frameCycles / (double)cacheL1->getLinesCount();
+		decayStats[1].offPercentage += (double)linesOffL1 / (double)frameCycles / (double)cacheL1->getLinesCount();
 
 		cacheL0->linesOffSum = 0;
 		cacheL1->linesOffSum = 0;
@@ -3432,9 +3434,10 @@ void TextureUnit::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsMana
 	else
 	{
 		FetchCache64 *cacheL0 = textCacheL1->GetFetchCache();
+		u64bit linesOffL0 = cacheL0->linesOffSum - cacheL0->getLinesCount() * invalidCycles;
 		decayStats[0].decayCycles = cacheL0->decayCycles;
-		decayStats[0].offPercentage += (double)cacheL0->linesOffSum / (double)frameCycles / (double)cacheL0->getLinesCount();
-	
+		decayStats[0].offPercentage += (double)linesOffL0 / (double)frameCycles / (double)cacheL0->getLinesCount();
+
 		cacheL0->linesOffSum = 0;
 	}
 }

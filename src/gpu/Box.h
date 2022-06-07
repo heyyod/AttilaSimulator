@@ -328,7 +328,7 @@ public:
     * decay stats that are passed. It's a ptr because the texture
     * unit hase 2 caches: L0 and L1
     */
-	virtual void onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats) {}
+	virtual void onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats, u64bit invalidCycles = 0) {}
 #endif
 
 };

@@ -1195,13 +1195,14 @@ VertexInputMap &Streamer::getVertexInputInfo(u32bit unit)
 }
 
 #if KONDAMASK
-void gpu3d::Streamer::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats)
+void gpu3d::Streamer::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats, u64bit invalidCycles)
 {
     for (u32bit i = 0; i < streamerLoaderUnits; i++)
     {
 		FetchCache *cache = streamerLoader[i]->GetFetchCache();
+		u64bit linesOff = cache->linesOffSum - cache->getLinesCount() * invalidCycles;
 		decayStats[0].decayCycles = cache->decayCycles;
-		decayStats[0].offPercentage += (double)cache->linesOffSum / (double)frameCycles / (double)cache->getLinesCount();
+		decayStats[0].offPercentage += (double)linesOff / (double)frameCycles / (double)cache->getLinesCount();
         
         cache->linesOffSum = 0;
     }

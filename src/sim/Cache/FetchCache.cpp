@@ -1632,16 +1632,6 @@ void FetchCache::setDebug(bool enable)
 #if KONDAMASK
 void FetchCache::decay()
 {
-	if ((cycle + 1) % 10000 == 0)
-	{
-		std::cout << 
-			"\n" << cycle << " | " << name << 
-			" Accesses: " << missCount + hitCount <<
-			" Misses: " << missCount << 
-			" Hits: " << hitCount << 
-			"\n";
-	}
-
 	if (!KONDAMASK_CACHE_DECAY)
 		return;
 
