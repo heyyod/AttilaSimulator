@@ -55,7 +55,7 @@ Streamer::Streamer(u32bit idxCycle, u32bit idxBufferSz, u32bit outFIFOSz, u32bit
     bool slForceAttrLoadBypass,
     char **slPrefixArray, char **shPrefixArray, char *name, Box *parent
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ):
 
@@ -184,7 +184,7 @@ printf("Creating StreamerLoader Unit %d\n", i);
                 slPrefixArray[i],                     /*  Streamer Loader Unit prefix. */
                 this
 #if KONDAMASK_CACHE_DECAY
-			, decayCycles
+			, decayInterval
 #endif
 		);
 
@@ -1200,12 +1200,27 @@ void gpu3d::Streamer::onEndOfFrame(u64bit frameCycles, GPUStatistics::Statistics
     for (u32bit i = 0; i < streamerLoaderUnits; i++)
     {
 		FetchCache *cache = streamerLoader[i]->GetFetchCache();
-		u64bit linesOff = cache->linesOffSum - cache->getLinesCount() * invalidCycles;
-		decayStats[0].decayCycles = cache->decayCycles;
-		decayStats[0].offPercentage += (double)linesOff / (double)frameCycles / (double)cache->getLinesCount();
-        
+		cache->onEndOfFrame();
+		
+		u64bit lineCount = cache->getLinesCount();
+		double divFactor = (double)frameCycles * (double)lineCount;
+		
+		u64bit linesOff = cache->linesOffSum - (lineCount * invalidCycles);
+		u64bit linesIdle = cache->linesIdleSum - (lineCount * invalidCycles);
+				
+		decayStats[0].decayInterval = cache->decayInterval;
+		decayStats[0].offTime += (double)linesOff / divFactor;
+		decayStats[0].idleTime += (double)linesIdle / divFactor;
+		decayStats[0].activeTime += (double) cache->linesActiveSum / divFactor;
+		decayStats[0].hits = cache->hitCount;
+		decayStats[0].misses = cache->missCount;
+		
         cache->linesOffSum = 0;
+		cache->linesIdleSum = 0;
+		cache->linesActiveSum = 0;
+		cache->hitCount = 0;
+		cache->missCount = 0;
     }
-	decayStats[0].offPercentage /= (double)streamerLoaderUnits;
+	decayStats[0].offTime /= (double)streamerLoaderUnits;
 }
 #endif

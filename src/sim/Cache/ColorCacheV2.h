@@ -103,7 +103,7 @@ namespace gpu3d
 			u32bit inputRequests, u32bit outputRequests, bool disableCompr, u32bit numStampUnits,
 			u32bit stampUnitStride, u32bit maxBlocks, u32bit blocksCycle, u32bit compCycles, u32bit decompCycles, char *postfix
 #if KONDAMASK_CACHE_DECAY
-			, u32bit decayCycles
+			, u32bit decayInterval
 #endif
 		);
 

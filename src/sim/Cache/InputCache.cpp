@@ -38,7 +38,7 @@ using namespace gpu3d;
 InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLine,
         u32bit ports, u32bit pWidth, u32bit reqQSize, u32bit inReqs
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -51,7 +51,7 @@ InputCache::InputCache(u32bit cacheId, u32bit ways, u32bit lines, u32bit bytesLi
     /*  Create the fetch cache object.  */
     cache = new FetchCache(ways, lines, lineSize, reqQSize, "InC"
 #if KONDAMASK_CACHE_DECAY
-		, decayCycles
+		, decayInterval
 #endif
 	);
 

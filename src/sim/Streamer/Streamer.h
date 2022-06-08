@@ -203,7 +203,7 @@ namespace gpu3d
 			bool slForceAttrLoadBypass,
 			char **slPrefixArray, char **shPrefixArray, char *name, Box *parent
 #if KONDAMASK_CACHE_DECAY
-			, u32bit decayCycles
+			, u32bit decayInterval
 #endif
 		);
 

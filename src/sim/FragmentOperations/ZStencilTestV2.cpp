@@ -51,7 +51,7 @@ ZStencilTestV2::ZStencilTestV2(u32bit numStamps, u32bit overWidth, u32bit overHe
     FragmentOpEmulator &fragEmu, RasterizerEmulator &rastEmul,
     char *name, char *prefix, Box *parent
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -208,7 +208,7 @@ ZStencilTestV2::ZStencilTestV2(u32bit numStamps, u32bit overWidth, u32bit overHe
         decomprCycles,                      /*  Number of cycles to decompress a Z block.  */
         postfix                             /*  Postfix for the cache statistics.  */
 #if KONDAMASK_CACHE_DECAY
-		, decayCycles
+		, decayInterval
 #endif
         );
 

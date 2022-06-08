@@ -3419,26 +3419,71 @@ void TextureUnit::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsMana
 	if (useTwoLevelCache)
 	{
 		FetchCache64 *cacheL0 = textCacheL2->GetFetchCacheL0();
-		u64bit linesOffL0 = cacheL0->linesOffSum - cacheL0->getLinesCount() * invalidCycles;
-		decayStats[0].decayCycles = cacheL0->decayCycles;
-		decayStats[0].offPercentage += (double)linesOffL0 / (double)frameCycles / (double)cacheL0->getLinesCount();
-
-		FetchCache *cacheL1 = textCacheL2->GetFetchCacheL1();
-		u64bit linesOffL1 = cacheL1->linesOffSum - cacheL1->getLinesCount() * invalidCycles;
-		decayStats[1].decayCycles = cacheL1->decayCycles;
-		decayStats[1].offPercentage += (double)linesOffL1 / (double)frameCycles / (double)cacheL1->getLinesCount();
-
+		cacheL0->onEndOfFrame();
+		
+		u64bit lineCountL0 = cacheL0->getLinesCount();
+		double divFactorL0 = (double)frameCycles * (double)lineCountL0;
+		
+		u64bit linesOffL0 = cacheL0->linesOffSum - (lineCountL0 * invalidCycles);
+		u64bit linesIdleL0 = cacheL0->linesIdleSum - (lineCountL0 * invalidCycles);
+		
+		decayStats[0].decayInterval = cacheL0->decayInterval;
+		decayStats[0].offTime += (double)linesOffL0 / divFactorL0;
+		decayStats[0].idleTime += (double) linesIdleL0 / divFactorL0;
+		decayStats[0].activeTime += (double) cacheL0->linesActiveSum / divFactorL0;
+		decayStats[0].hits = cacheL0->hitCount;
+		decayStats[0].misses = cacheL0->missCount;
+		
 		cacheL0->linesOffSum = 0;
+		cacheL0->linesIdleSum = 0;
+		cacheL0->linesActiveSum = 0;
+		cacheL0->hitCount = 0;
+		cacheL0->missCount = 0;
+		
+		FetchCache *cacheL1 = textCacheL2->GetFetchCacheL1();
+		cacheL1->onEndOfFrame();
+		
+		u64bit lineCountL1 = cacheL1->getLinesCount();
+		double divFactorL1 = (double)frameCycles * (double)lineCountL1;
+		
+		u64bit linesOffL1 = cacheL1->linesOffSum - (lineCountL1 * invalidCycles);
+		u64bit linesIdleL1 = cacheL1->linesIdleSum - (lineCountL1 * invalidCycles);
+		
+		decayStats[1].decayInterval = cacheL1->decayInterval;
+		decayStats[1].offTime += (double)linesOffL1 / divFactorL1;
+		decayStats[1].idleTime += (double) linesIdleL1 / divFactorL1;
+		decayStats[1].activeTime += (double) cacheL1->linesActiveSum / divFactorL1;
+		decayStats[1].hits = cacheL1->hitCount;
+		decayStats[1].misses = cacheL1->missCount;
+		
 		cacheL1->linesOffSum = 0;
+		cacheL1->linesIdleSum = 0;
+		cacheL1->linesActiveSum = 0;
+		cacheL1->hitCount = 0;
+		cacheL1->missCount = 0;
 	}
 	else
 	{
 		FetchCache64 *cacheL0 = textCacheL1->GetFetchCache();
-		u64bit linesOffL0 = cacheL0->linesOffSum - cacheL0->getLinesCount() * invalidCycles;
-		decayStats[0].decayCycles = cacheL0->decayCycles;
-		decayStats[0].offPercentage += (double)linesOffL0 / (double)frameCycles / (double)cacheL0->getLinesCount();
-
+		cacheL0->onEndOfFrame();
+		
+		u64bit lineCountL0 = cacheL0->getLinesCount();
+		double divFactorL0 = (double)frameCycles * (double)lineCountL0;
+		
+		u64bit linesOffL0 = cacheL0->linesOffSum - (lineCountL0 * invalidCycles);
+		u64bit linesIdleL0 = cacheL0->linesIdleSum - (lineCountL0 * invalidCycles);
+		
+		decayStats[0].decayInterval = cacheL0->decayInterval;
+		decayStats[0].offTime += (double)linesOffL0 / divFactorL0;
+		decayStats[0].idleTime += (double) linesIdleL0 / divFactorL0;
+		decayStats[0].activeTime += (double) cacheL0->linesActiveSum / divFactorL0;
+		decayStats[0].hits = cacheL0->hitCount;
+		decayStats[0].misses = cacheL0->missCount;
+		
 		cacheL0->linesOffSum = 0;
+		cacheL0->linesIdleSum = 0;
+		cacheL0->hitCount = 0;
+		cacheL0->missCount = 0;
 	}
 }
 #endif

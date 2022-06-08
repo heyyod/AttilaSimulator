@@ -207,7 +207,7 @@ public:
         u32bit numBanks, u32bit numAccess, u32bit bWidth, u32bit maxMiss,
         u32bit decomprLat, char *postfix
 #if KONDAMASK_CACHE_DECAY
-		, u32bit decayCycles
+		, u32bit decayInterval
 #endif
 	);
 

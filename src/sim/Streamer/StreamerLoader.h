@@ -285,7 +285,7 @@ public:
         u32bit portWidth, u32bit requestQSize, u32bit fillQSize, bool forceAttrLoadBypass,
         u32bit numShaders, char **shPrefixArray, char *name, char *prefix, Box *parent
 #if KONDAMASK_CACHE_DECAY
-		, u32bit decayCycles
+		, u32bit decayInterval
 #endif
 	);
 

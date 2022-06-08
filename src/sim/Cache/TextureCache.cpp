@@ -59,7 +59,7 @@ TextureCache::TextureCache(u32bit ways, u32bit lines, u32bit bytesLine,
 	u32bit pWidth, u32bit reqQSize, u32bit inReqs, u32bit numBanks,
 	u32bit maxAccess, u32bit bWidth, u32bit maxMiss, u32bit decompLat, char *postfix
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -79,7 +79,7 @@ TextureCache::TextureCache(u32bit ways, u32bit lines, u32bit bytesLine,
 	/*  Create the fetch cache object.  */
 	cache = new FetchCache64(ways, lines, lineSize, reqQSize, postfix
 #if KONDAMASK_CACHE_DECAY
-		, decayCycles
+		, decayInterval
 #endif
 	);
 

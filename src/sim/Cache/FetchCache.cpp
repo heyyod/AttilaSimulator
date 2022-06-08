@@ -254,7 +254,7 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 			panic("FetchCache", "FetchCache", "Error allocating active request list.");)
 
 #if KONDAMASK_CACHE_DECAY
-	decayCycles = decayCyclesIn;
+	decayInterval = decayCyclesIn;
 	accessCycles = new cache_line_cycle_info *[numWays];
 	waitForDecay = new bool *[numWays];
 	isOff = new bool *[numWays];
@@ -268,6 +268,8 @@ FetchCache::FetchCache(u32bit ways, u32bit lines, u32bit lineBytes, u32bit reqQS
 		for (j = 0; j < numLines; j++)
 		{
 			accessCycles[i][j].lastOn = 0;
+			accessCycles[i][j].lastHit = 0;
+			accessCycles[i][j].insert = 0;
 			waitForDecay[i][j] = false;
 			isOff[i][j] = true;
 		}
@@ -327,8 +329,11 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 			line, way, cycle,
 			accessCycles[way][line].insert,
 			accessCycles[way][line].lastHit);
+		
+		linesActiveSum += cycle - accessCycles[way][line].lastHit;
+		
 		accessCycles[way][line].lastHit = cycle;
-
+		
 		hitCount++;
 
 		/*  Line was reserved.  */
@@ -371,6 +376,8 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, DynamicObject 
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
 				missCount++;
+				linesActiveSum++;
+				linesIdleSum += cycle - accessCycles[way][line].lastHit - 1;
 				isOff[way][line] = false;
 #endif
 				tags[way][line] = tag(address);
@@ -574,6 +581,9 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 			line, way, cycle,
 			accessCycles[way][line].insert,
 			accessCycles[way][line].lastHit);
+		
+		linesActiveSum += cycle - accessCycles[way][line].lastHit;
+		
 		accessCycles[way][line].lastHit = cycle;
 
 		hitCount++;
@@ -633,6 +643,8 @@ bool FetchCache::fetch(u32bit address, u32bit &way, u32bit &line, bool &miss, Dy
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
 				missCount++;
+				linesActiveSum++;
+				linesIdleSum += cycle - accessCycles[way][line].lastHit - 1;
 				isOff[way][line] = false;
 #endif
 				tags[way][line] = tag(address);
@@ -1642,7 +1654,7 @@ void FetchCache::decay()
 			if (isOff[w][l])
 				linesOffSum++;
 			else if (
-				(decayCycles != 0) &&
+				(decayInterval != 0) &&
 				valid[w][l] &&
 				!reserve[w][l] &&
 				!replaceLine[w][l] &&
@@ -1657,20 +1669,19 @@ void FetchCache::decay()
 				 */
 
 				accessCycles[w][l].lastOn = cycle;
-				if (cycle - accessCycles[w][l].lastHit + 1 > decayCycles)
+				u64bit idleTime = cycle - accessCycles[w][l].lastHit;
+				if (idleTime > decayInterval)
 				{
 					bool performedDecay = true;
 					if (name[0] == 'C' || name[0] == 'Z' && dirty[w][l])
 					{
 						performedDecay = flushForDecay(l, w);
 					}
-					else
-					{
-						valid[w][l] = FALSE;
-					}
 
 					if (performedDecay)
 					{
+						valid[w][l] = FALSE;
+						
 						isOff[w][l] = true;
 
 						gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
@@ -1747,6 +1758,18 @@ bool FetchCache::flushForDecay(u32bit line, u32bit way)
 		line, way, cycle);
 
 	return false;
+}
+
+void FetchCache::onEndOfFrame()
+{
+	for (u32bit i = 0; i < numWays; i++)
+	{
+		for (u32bit j = 0; j < numLines; j++)
+		{
+			linesIdleSum += cycle - accessCycles[i][j].lastHit;
+			accessCycles[i][j].lastHit = cycle;
+		}
+	}
 }
 
 #endif

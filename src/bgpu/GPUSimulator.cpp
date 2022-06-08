@@ -4225,17 +4225,6 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 				boxArray[11]->onEndOfFrame(frameCycles, &tex1, invalidCycles); // FS1TU0
 				boxArray[14]->onEndOfFrame(frameCycles, &tex2, invalidCycles); // FS2TU0
 				boxArray[17]->onEndOfFrame(frameCycles, &tex3, invalidCycles); // FS3TU0    
-				texL0Avg.offPercentage =
-					((&tex0)[0].offPercentage +
-						(&tex1)[0].offPercentage +
-						(&tex2)[0].offPercentage +
-						(&tex3)[0].offPercentage) / 4.0;
-				
-				texL1Avg.offPercentage = 
-					((&tex0)[1].offPercentage + 
-						(&tex1)[1].offPercentage + 
-						(&tex2)[1].offPercentage + 
-						(&tex3)[1].offPercentage) / 4.0;
 				
 				GPUStatistics::StatisticsManager::cache_decay_stats &z0 = stats[11];
 				GPUStatistics::StatisticsManager::cache_decay_stats &z1 = stats[12];
@@ -4246,12 +4235,7 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 				boxArray[20]->onEndOfFrame(frameCycles, &z1, invalidCycles); // Z1
 				boxArray[22]->onEndOfFrame(frameCycles, &z2, invalidCycles); // Z2
 				boxArray[24]->onEndOfFrame(frameCycles, &z3, invalidCycles); // Z3
-				zAvg.offPercentage = 
-					(z0.offPercentage + 
-						z1.offPercentage + 
-						z2.offPercentage + 
-						z3.offPercentage) / 4.0;
-				
+								
 				GPUStatistics::StatisticsManager::cache_decay_stats &color0 = stats[16];
 				GPUStatistics::StatisticsManager::cache_decay_stats &color1 = stats[17];
 				GPUStatistics::StatisticsManager::cache_decay_stats &color2 = stats[18];
@@ -4261,12 +4245,7 @@ itVertexInput->second.timesRead, itVertexInput->second.differencesBetweenReads ?
 				boxArray[21]->onEndOfFrame(frameCycles, &color1, invalidCycles); // C1
 				boxArray[23]->onEndOfFrame(frameCycles, &color2, invalidCycles); // C2
 				boxArray[25]->onEndOfFrame(frameCycles, &color3, invalidCycles); // C3
-				colorAvg.offPercentage = 
-					(color0.offPercentage + 
-						color1.offPercentage + 
-						color2.offPercentage + 
-						color3.offPercentage) / 4.0;
-				
+								
 				GPUStatistics::StatisticsManager::instance().LogFrameDecayStats(simP.inputFile, frameCounter, frameCycles, stats, 21);
 #endif
 

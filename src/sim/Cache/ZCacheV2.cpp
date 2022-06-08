@@ -43,7 +43,7 @@ ZCacheV2::ZCacheV2(u32bit ways, u32bit lines, u32bit lineSz,
 	u32bit outReqs, bool zComprDisabled, u32bit numStampUnits, u32bit stampUnitStride, u32bit maxZBlocks, u32bit blocksPerCycle,
 	u32bit compCycles, u32bit decompCycles, char *postfix
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -51,7 +51,7 @@ ZCacheV2::ZCacheV2(u32bit ways, u32bit lines, u32bit lineSz,
 	inReqs, outReqs, zComprDisabled, numStampUnits, stampUnitStride, maxZBlocks, blocksPerCycle, compCycles,
 	decompCycles, ZSTENCILTEST, "ZCache", postfix
 #if KONDAMASK_CACHE_DECAY
-	, decayCycles
+	, decayInterval
 #endif
 )
 

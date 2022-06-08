@@ -301,7 +301,7 @@ public:
         FragmentOpEmulator &frOp, RasterizerEmulator &rastEmu,
         char *name, char *prefix, Box* parent
 #if KONDAMASK_CACHE_DECAY
-		, u32bit decayCycles
+		, u32bit decayInterval
 #endif
 	);
 

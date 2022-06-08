@@ -263,7 +263,7 @@ FetchCache64::FetchCache64(u32bit ways, u32bit lines, u32bit lineBytes, u32bit r
 	)
 
 #if KONDAMASK_CACHE_DECAY
-	decayCycles = decayCyclesIn;
+	decayInterval = decayCyclesIn;
 	accessCycles = new cache_line_cycle_info * [numWays];
 	isOff = new bool* [numWays];
 
@@ -275,6 +275,8 @@ FetchCache64::FetchCache64(u32bit ways, u32bit lines, u32bit lineBytes, u32bit r
 		for (j = 0; j < numLines; j++)
 		{
 			accessCycles[i][j].lastOn = 0;
+			accessCycles[i][j].lastHit = 0;
+			accessCycles[i][j].insert = 0;
 			isOff[i][j] = true;
 		}
 	}
@@ -328,6 +330,9 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 			line, way, cycle,
 			accessCycles[way][line].insert,
 			accessCycles[way][line].lastHit);
+		
+		linesActiveSum += cycle - accessCycles[way][line].lastHit;
+		
 		accessCycles[way][line].lastHit = cycle;
 
 		hitCount++;
@@ -364,6 +369,8 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, DynamicObjec
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
 				missCount++;
+				linesActiveSum++;
+				linesIdleSum += cycle - accessCycles[way][line].lastHit - 1;
 				isOff[way][line] = false;
 #endif
 				tags[way][line] = tag(address);
@@ -547,6 +554,9 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 			line, way, cycle,
 			accessCycles[way][line].insert,
 			accessCycles[way][line].lastHit);
+		
+		linesActiveSum += cycle - accessCycles[way][line].lastHit;
+		
 		accessCycles[way][line].lastHit = cycle;
 
 		hitCount++;
@@ -602,6 +612,8 @@ bool FetchCache64::fetch(u64bit address, u32bit& way, u32bit& line, bool& miss, 
 				/*  Set the new tag for the fetch cache line.  */
 #if KONDAMASK_CACHE_DECAY
 				missCount++;
+				linesActiveSum++;
+				linesIdleSum += cycle - accessCycles[way][line].lastHit - 1;
 				isOff[way][line] = false;
 #endif
 				tags[way][line] = tag(address);
@@ -1531,24 +1543,39 @@ void FetchCache64::decay()
 			if (isOff[w][l])
 				linesOffSum++;
 			else if (
-				(decayCycles != 0) &&
+				(decayInterval != 0) &&
 				valid[w][l] &&
 				!reserve[w][l] &&
 				!replaceLine[w][l])
 			{
 				accessCycles[w][l].lastOn = cycle;
-				if (cycle - accessCycles[w][l].lastHit > decayCycles)
+				
+				u64bit idleTime = cycle - accessCycles[w][l].lastHit;
+				if (idleTime > decayInterval)
 				{
-					gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
-						this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY,
-						l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
-
 					valid[w][l] = FALSE;
 					
 					isOff[w][l] = true;
+										
+					gpu3d::GPUStatistics::StatisticsManager::instance().LogCacheAccess(
+						this->name, line2address(w, l), GPUStatistics::StatisticsManager::CACHE_DECAY,
+						l, w, cycle, accessCycles[w][l].insert, accessCycles[w][l].lastHit, accessCycles[w][l].lastOn);
 				}
 			}
 		}
 	}
 }
+
+void FetchCache64::onEndOfFrame()
+{
+	for (u32bit i = 0; i < numWays; i++)
+	{
+		for (u32bit j = 0; j < numLines; j++)
+		{
+			linesIdleSum += cycle - accessCycles[i][j].lastHit;
+			accessCycles[i][j].lastHit = cycle;
+		}
+	}
+}
+
 #endif

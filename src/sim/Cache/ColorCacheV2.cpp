@@ -45,7 +45,7 @@ ColorCacheV2::ColorCacheV2(u32bit ways, u32bit lines, u32bit lineSz,
 	u32bit maxColorBlocks, u32bit blocksPerCycle,
 	u32bit compCycles, u32bit decompCycles, char *postfix
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -53,7 +53,7 @@ ColorCacheV2::ColorCacheV2(u32bit ways, u32bit lines, u32bit lineSz,
 	inReqs, outReqs, comprDisabled, numStampUnits, stampUnitStride, maxColorBlocks, blocksPerCycle, compCycles,
 	decompCycles, COLORWRITE, "ColorCache", postfix
 #if KONDAMASK_CACHE_DECAY
-	, decayCycles
+	, decayInterval
 #endif
 )
 

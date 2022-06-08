@@ -53,7 +53,7 @@ ColorWriteV2::ColorWriteV2(u32bit numStamps, u32bit overWidth, u32bit overHeight
 	FragmentOpEmulator &fragEmu,
 	char *name, char *prefix, Box *parent
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -196,7 +196,7 @@ ColorWriteV2::ColorWriteV2(u32bit numStamps, u32bit overWidth, u32bit overHeight
 		decomprCycles,                      /*  Number of cycles to decompress a color block.  */
 		postfix                             /*  Postfix for the cache statistics.  */
 #if KONDAMASK_CACHE_DECAY
-		, decayCycles
+		, decayInterval
 #endif
 	);
 

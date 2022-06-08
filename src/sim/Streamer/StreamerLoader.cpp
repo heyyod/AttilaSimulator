@@ -31,7 +31,7 @@ StreamerLoader::StreamerLoader(u32bit unitId, u32bit idxCycle, u32bit irqSize, u
     bool forceAttrLoadBypass, u32bit shNumber, char **shPrefixes,
     char *name, char *prefix, Box *parent
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -123,7 +123,7 @@ StreamerLoader::StreamerLoader(u32bit unitId, u32bit idxCycle, u32bit irqSize, u
         inputCacheReqQSize,             /*  Number of entries in the cache request queue.  */
         inputCacheFillQSize             /*  Number of entries in the cache input request queue.  */
 #if KONDAMASK_CACHE_DECAY
-		,decayCycles
+		,decayInterval
 #endif
 	);
 

@@ -442,18 +442,22 @@ namespace gpu3d
 		};
 		
 		u64bit cycle;
-		u64bit decayCycles;
+		u64bit decayInterval;
 		cache_line_cycle_info** accessCycles;
 		bool **waitForDecay;
 		bool **isOff;
         u64bit linesOffSum = 0;
-
+		u64bit linesActiveSum = 0; // Time between last hit and decay or new miss
+		u64bit linesIdleSum = 0; // Time between last hit and decay or new miss
+		
         u64bit missCount = 0;
         u64bit hitCount = 0;
 
         void decay();
 		
 		bool flushForDecay(u32bit line, u32bit way);
+		
+		void onEndOfFrame();
 
         u32bit getLinesCount()
         {

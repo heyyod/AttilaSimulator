@@ -154,8 +154,12 @@ namespace gpu3d
 
 			struct cache_decay_stats
 			{
-				u64bit decayCycles;
-				double offPercentage;
+				u64bit decayInterval;
+				double offTime;
+				double idleTime;
+				double activeTime;
+				u64bit hits;
+				u64bit misses;
 			};
 
 			enum CACHE_LOG_INFO

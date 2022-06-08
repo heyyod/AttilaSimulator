@@ -45,7 +45,7 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	u32bit maxColorBlocks, u32bit blocksPerCycle,
 	u32bit compCycles, u32bit decompCycles, GPUUnit gpuUnit, char *nameCache, char *postfix
 #if KONDAMASK_CACHE_DECAY
-	, u32bit decayCycles
+	, u32bit decayInterval
 #endif
 ) :
 
@@ -116,7 +116,7 @@ ROPCache::ROPCache(u32bit ways, u32bit lines, u32bit lineSz,
 	//  Create the fetch cache object.
 	cache = new FetchCache(ways, lines, lineSize, reqQSize, postfix
 #if KONDAMASK_CACHE_DECAY
-		, decayCycles
+		, decayInterval
 #endif
 	);
 

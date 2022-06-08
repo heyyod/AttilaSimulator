@@ -1653,10 +1653,25 @@ void GenericROP::stallReport(u64bit cycle, string &stallReport)
 void GenericROP::onEndOfFrame(u64bit frameCycles, GPUStatistics::StatisticsManager::cache_decay_stats *decayStats, u64bit invalidCycles)
 {
 	FetchCache *cache = ropCache->GetFetchCache();
-	u64bit linesOff = cache->linesOffSum - cache->getLinesCount() * invalidCycles;
-	decayStats[0].decayCycles = cache->decayCycles;
-	decayStats[0].offPercentage += (double)linesOff / (double)frameCycles / (double)cache->getLinesCount();
-
-    cache->linesOffSum = 0;
+	cache->onEndOfFrame();
+		
+	u64bit lineCount = cache->getLinesCount();
+	double divFactor = (double)frameCycles * (double)lineCount;
+		
+	u64bit linesOff = cache->linesOffSum - (lineCount * invalidCycles);
+	u64bit linesIdle = cache->linesIdleSum - (lineCount * invalidCycles);
+				
+	decayStats[0].decayInterval = cache->decayInterval;
+	decayStats[0].offTime += (double)linesOff / divFactor;
+	decayStats[0].idleTime += (double)linesIdle / divFactor;
+	decayStats[0].activeTime += (double) cache->linesActiveSum / divFactor;
+	decayStats[0].hits = cache->hitCount;
+	decayStats[0].misses = cache->missCount;
+		
+	cache->linesOffSum = 0;
+	cache->linesIdleSum = 0;
+	cache->linesActiveSum = 0;
+	cache->hitCount = 0;
+	cache->missCount = 0;
 }
 #endif
